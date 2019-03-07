@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.UsersDao">
+	<!-- 添加 -->
+	<insert id="add" parameterType="com.entity.Users">
+		insert into users	
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="u_id != null">
+				u_id,
+			</if>
+			<if test="u_username != null">
+				u_username,
+			</if>
+			<if test="u_phone != null">
+				u_phone,
+			</if>
+			<if test="u_pwd != null">
+				u_pwd,
+			</if>
+			<if test="u_realname != null">
+				u_realname,
+			</if>
+			<if test="u_sex != null">
+				u_sex,
+			</if>
+			<if test="u_birthday != null">
+				u_birthday,
+			</if>
+			<if test="u_address != null">
+				u_address,
+			</if>
+			<if test="u_intro != null">
+				u_intro,
+			</if>
+			<if test="u_photo != null">
+				u_photo,
+			</if>
+			<if test="u_email != null">
+				u_email,
+			</if>
+			<if test="u_stu_authentication != null">
+				u_stu_authentication,
+			</if>
+			<if test="u_vip != null">
+				u_vip,
+			</if>
+			<if test="u_vip_date != null">
+				u_vip_date,
+			</if>
+			<if test="u_vip_enddate != null">
+				u_vip_enddate,
+			</if>
+			<if test="u_gold != null">
+				u_gold,
+			</if>
+			<if test="u_qq != null">
+				u_qq,
+			</if>
+			<if test="d_id != null">
+				d_id,
+			</if>
+			<if test="u_year != null">
+				u_year,
+			</if>
+			<if test="u_position != null">
+				u_position,
+			</if>
+			<if test="u_company != null">
+				u_company,
+			</if>
+			<if test="u_project_experience != null">
+				u_project_experience,
+			</if>
+			<if test="u_social_reputation != null">
+				u_social_reputation,
+			</if>
+			<if test="u_other_msg != null">
+				u_other_msg,
+			</if>
+			<if test="u_teacher != null">
+				u_teacher,
+			</if>
+			<if test="u_create_date != null">
+				u_create_date,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="u_id != null">
+				#{u_id},
+			</if>
+			<if test="u_username != null">
+				#{u_username},
+			</if>
+			<if test="u_phone != null">
+				#{u_phone},
+			</if>
+			<if test="u_pwd != null">
+				#{u_pwd},
+			</if>
+			<if test="u_realname != null">
+				#{u_realname},
+			</if>
+			<if test="u_sex != null">
+				#{u_sex},
+			</if>
+			<if test="u_birthday != null">
+				#{u_birthday},
+			</if>
+			<if test="u_address != null">
+				#{u_address},
+			</if>
+			<if test="u_intro != null">
+				#{u_intro},
+			</if>
+			<if test="u_photo != null">
+				#{u_photo},
+			</if>
+			<if test="u_email != null">
+				#{u_email},
+			</if>
+			<if test="u_stu_authentication != null">
+				#{u_stu_authentication},
+			</if>
+			<if test="u_vip != null">
+				#{u_vip},
+			</if>
+			<if test="u_vip_date != null">
+				#{u_vip_date},
+			</if>
+			<if test="u_vip_enddate != null">
+				#{u_vip_enddate},
+			</if>
+			<if test="u_gold != null">
+				#{u_gold},
+			</if>
+			<if test="u_qq != null">
+				#{u_qq},
+			</if>
+			<if test="d_id != null">
+				#{d_id},
+			</if>
+			<if test="u_year != null">
+				#{u_year},
+			</if>
+			<if test="u_position != null">
+				#{u_position},
+			</if>
+			<if test="u_company != null">
+				#{u_company},
+			</if>
+			<if test="u_project_experience != null">
+				#{u_project_experience},
+			</if>
+			<if test="u_social_reputation != null">
+				#{u_social_reputation},
+			</if>
+			<if test="u_other_msg != null">
+				#{u_other_msg},
+			</if>
+			<if test="u_teacher != null">
+				#{u_teacher},
+			</if>
+			<if test="u_create_date != null">
+				#{u_create_date},
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 修改 -->
+	<update id="upd" parameterType="com.entity.Users">
+		update from users
+		<set>
+			<trim suffix="(" prefix=")" prefixOverrides=",">
+			<if test="u_username != null">
+				u_username,
+			</if>
+			<if test="u_phone != null">
+				u_phone,
+			</if>
+			<if test="u_pwd != null">
+				u_pwd,
+			</if>
+			<if test="u_realname != null">
+				u_realname,
+			</if>
+			<if test="u_sex != null">
+				u_sex,
+			</if>
+			<if test="u_birthday != null">
+				u_birthday,
+			</if>
+			<if test="u_address != null">
+				u_address,
+			</if>
+			<if test="u_intro != null">
+				u_intro,
+			</if>
+			<if test="u_photo != null">
+				u_photo,
+			</if>
+			<if test="u_email != null">
+				u_email,
+			</if>
+			<if test="u_stu_authentication != null">
+				u_stu_authentication,
+			</if>
+			<if test="u_vip != null">
+				u_vip,
+			</if>
+			<if test="u_vip_date != null">
+				u_vip_date,
+			</if>
+			<if test="u_vip_enddate != null">
+				u_vip_enddate,
+			</if>
+			<if test="u_gold != null">
+				u_gold,
+			</if>
+			<if test="u_qq != null">
+				u_qq,
+			</if>
+			<if test="d_id != null">
+				d_id,
+			</if>
+			<if test="u_year != null">
+				u_year,
+			</if>
+			<if test="u_position != null">
+				u_position,
+			</if>
+			<if test="u_company != null">
+				u_company,
+			</if>
+			<if test="u_project_experience != null">
+				u_project_experience,
+			</if>
+			<if test="u_social_reputation != null">
+				u_social_reputation,
+			</if>
+			<if test="u_other_msg != null">
+				u_other_msg,
+			</if>
+			<if test="u_teacher != null">
+				u_teacher,
+			</if>
+			<if test="u_create_date != null">
+				u_create_date,
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" prefixOverrides=",">
+			<if test="u_username != null">
+				#{u_username},
+			</if>
+			<if test="u_phone != null">
+				#{u_phone},
+			</if>
+			<if test="u_pwd != null">
+				#{u_pwd},
+			</if>
+			<if test="u_realname != null">
+				#{u_realname},
+			</if>
+			<if test="u_sex != null">
+				#{u_sex},
+			</if>
+			<if test="u_birthday != null">
+				#{u_birthday},
+			</if>
+			<if test="u_address != null">
+				#{u_address},
+			</if>
+			<if test="u_intro != null">
+				#{u_intro},
+			</if>
+			<if test="u_photo != null">
+				#{u_photo},
+			</if>
+			<if test="u_email != null">
+				#{u_email},
+			</if>
+			<if test="u_stu_authentication != null">
+				#{u_stu_authentication},
+			</if>
+			<if test="u_vip != null">
+				#{u_vip},
+			</if>
+			<if test="u_vip_date != null">
+				#{u_vip_date},
+			</if>
+			<if test="u_vip_enddate != null">
+				#{u_vip_enddate},
+			</if>
+			<if test="u_gold != null">
+				#{u_gold},
+			</if>
+			<if test="u_qq != null">
+				#{u_qq},
+			</if>
+			<if test="d_id != null">
+				#{d_id},
+			</if>
+			<if test="u_year != null">
+				#{u_year},
+			</if>
+			<if test="u_position != null">
+				#{u_position},
+			</if>
+			<if test="u_company != null">
+				#{u_company},
+			</if>
+			<if test="u_project_experience != null">
+				#{u_project_experience},
+			</if>
+			<if test="u_social_reputation != null">
+				#{u_social_reputation},
+			</if>
+			<if test="u_other_msg != null">
+				#{u_other_msg},
+			</if>
+			<if test="u_teacher != null">
+				#{u_teacher},
+			</if>
+			<if test="u_create_date != null">
+				#{u_create_date},
+			</if>
+		</trim>
+		</set>
+		where u_id = #{u_id}
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="del" parameterType="Integer">
+		delte from users where u_id = #{param1}
+	</delete>
+	
+	<!-- 查询所有 -->
+	<select id="queryAll" resultType="com.entity.Users">
+		select * from users
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="queryPage" resultType="com.entity.Users">
+		select * from users
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 == null">
+			limit 1
+		</if>
+	</select>
+	
+	<!-- 登陆 -->
+	<select id="queryByName" resultType="com.entity.Users">
+		select * from users
+		<where>
+			<if test="param1 != null and param2 != null">
+				u_username = #{param1} and u_pwd = #{param2} or
+				u_phone = #{param1} and u_pwd = #{param2} or
+				u_email = #{param1} and u_pwd = #{param2}
+			</if>
+		</where>
+	</select>
+</mapper>

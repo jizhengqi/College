@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit">
+<meta name="viewport"
+	content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>骇客学院</title>
+<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css"
+	href="css/passport.min.css?t=20170228" />
+<link type="text/css" href="css/nc.css?t=20170228" rel="stylesheet" />
+<script src="js/jquery.min.js?t=20170228"></script>
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/vue2.5.13.min.js"></script>
+<script type="text/javascript" src="js/axios0.18.0.min.js"></script>
+<script type="text/javascript" src="js/vue-resource.js"></script>
+<style type="text/css">
+	 body{
+		background: transparent;
+		}
+		#logos{
+			position: relative;
+			top:-100px;
+			left:300px;
+			height: 50px;
+			background: transparent;
+		}
+	</style>
+</head>
+<body>
+	<div class="passport-wrapper">
+		<header id="header" class="passport-header">
+			<div id="logos">
+				<a href="javascript:void(0)"><img src="img/logo.png"
+					height="200px" style="background: transparent;" /></a>
+			</div>
+		</header>
+		<!--feg-box-- -->
+		<div id="container">
+			<div class="passport-sign">
+				<div class="main-form main-form-sign">
+					<div class="passport-tab" id="login-tabs">
+						<div class="tabs">
+							<ul>
+								<li class="active">登录</li>
+								<li>手机动态码</li>
+							</ul>
+						</div>
+						<div class="tabbed">
+							<!-- tab-group -->
+							<div class="tab-group" style="display: block;">
+								<!-- form -->
+								<form class="passport-form passport-form-sign" id="login-form"
+									method="post">
+									<input type='hidden' value='7' name='expire' /> <input
+										type='hidden' value='https%3A%2F%2Fwww.jikexueyuan.com%2F'
+										name='referer' />
+									<div class="form-item">
+										<div class="form-cont">
+											<input type="text" id="uname" name="uname"
+												class="passport-txt xl w-full" tabindex="1"
+												placeholder="手机 / 用户名 / 邮箱" />
+										</div>
+									</div>
+									<div class="form-item">
+										<div class="form-cont">
+											<input type="password" id="pwd" name="password"
+												class="passport-txt xl w-full " tabindex="2"
+												placeholder="输入6~12位密码" />
+										</div>
+									</div>
+									<!-- <div class="form-item form-imgcode mb-25">
+                                <div class="form-cont">
+                                    <div class="layout-inner2">
+                                        <div class="al-verify" id="verifyId"></div>
+                                        <div class="al-verify-text" id="verifyText">请滑动验证</div>
+                                    </div>
+                                    <input type="hidden" id="JT_csessionid" name="csessionid"/>
+                                    <input type="hidden" id="JT_sig" name="sig"/>
+                                    <input type="hidden" id="JT_token" name="token"/>
+                                    <input type="hidden" id="JT_scene" name="scene"/>
+                                    <input type="hidden" name="jike_scene" value="passport-login"/>
+                                </div>
+                            </div> -->
+									<div class="form-item form-sevenday">
+										<div class="form-cont clearfix">
+											<label><input type="checkbox" name="expire"
+												class="passport-sevenday" />7天内免登录</label> <a href="/sso/forget"
+												class="forget-link">忘记密码</a>
+										</div>
+									</div>
+									<div class="form-item">
+										<div class="form-cont">
+											<button class="passport-btn passport-btn-def xl w-full"
+												tabindex="4" id="login" type="button" @click="logines()">登录</button>
+										</div>
+									</div>
+								</form>
+								<!-- form end -->
+							</div>
+							<!-- tab-group end -->
+							<!-- tab-group -->
+							<div class="tab-group">
+								<!-- form -->
+								<form class="passport-form passport-form-sign"
+									id="fastlogin-form" action="/submit/login_phoneV2" method="get">
+
+									<input type='hidden'
+										value='https%3A%2F%2Fwww.jikexueyuan.com%2F' name='referer' />
+
+									<div class="form-item">
+										<div class="form-cont">
+											<input type="text" name="phone"
+												class="passport-txt xl w-full " tabindex="1"
+												placeholder="请输入手机号" />
+										</div>
+									</div>
+
+									<div class="form-item form-imgcode">
+										<div class="form-cont">
+											<div class="layout-inner2">
+												<div class="al-verify" id="dVerifyId"></div>
+												<div class="al-verify-text" id="dVerifyText">请滑动验证</div>
+											</div>
+											<input type="hidden" id="JTD_csessionid" name="Dcsessionid" />
+											<input type="hidden" id="JTD_sig" name="Dsig" /> <input
+												type="hidden" id="JTD_token" name="Dtoken" /> <input
+												type="hidden" id="JTD_scene" name="Dscene" /> <input
+												type="hidden" name="Djike_scene" value="dynamic-login" />
+										</div>
+									</div>
+									<div class="form-item form-mcode mb-25">
+										<div class="form-cont">
+											<input type="text" name="verify_code"
+												class="passport-txt xl w-full " tabindex="3"
+												placeholder="动态码" />
+											<div class="btn-getcode">
+												<button type="button" class="passport-btn js-getcode">获取动态码</button>
+											</div>
+											<div class="passport-sms getVoice" style="display: none;">
+												未收到短信？使用<a href="javascript:;" class="js-getvoice">语音动态码</a>
+											</div>
+											<div class="passport-sms reVoice" style="display: none;">
+												<span class="js-revoice"></span>，请注意接听来电
+											</div>
+										</div>
+									</div>
+									<div class="form-item form-rememb">
+										<div class="form-cont">
+											<label><input type="checkbox" class="rememb"
+												id='remember' />记住手机号</label>
+										</div>
+									</div>
+									<div class="form-item">
+										<div class="form-cont">
+											<button type="button" id="fastlogin"
+												class="passport-btn passport-btn-def xl w-full" tabindex="4" >登录</button>
+										</div>
+									</div>
+								</form>
+								<!-- form end -->
+							</div>
+							<!-- tab-group end -->
+						</div>
+					</div>
+				</div>
+				<div class="aside">
+					<div class="passport-goto">
+						没有账号? <a href="Register.html" tabindex="5">免费注册</a>
+					</div>
+					<!--ad-->
+					<!--/ad-->
+					<div class="passport-third" style="margin-top:15px;">
+						<header class="hd">
+							<div class="layout-inner">
+								<h3>快速登录</h3>
+							</div>
+						</header>
+						<div class="links">
+							<a href="javascript:void(0)"><i
+								class="passport-icon icon-tencent"></i></a> <a
+								href="javascript:void(0)"><i
+								class="passport-icon icon-weibo"></i></a> <a
+								href="javascript:void(0)"><i
+								class="passport-icon icon-weixin"></i></a> <a
+								href="javascript:void(0)"><i class="passport-icon icon-eoe"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/nc.js?t=20170228"></script>
+		<script type="text/javascript" src="js/login_register.min.js?t=1548056240"></script>
+		<!-- <script src="js/setcookie.js?t=20170228"></script> -->
+		<!--feg-box end-->
+		<script type="text/javascript" src='js/growingio.js?t=20170228'></script>
+</body>
+<script type="text/javascript">
+	var app = new Vue({
+		el: "#container",
+		data: {
+			list: []
+		},
+		methods: {
+			logines: function(){
+				var url = "user/login?uname=" + $("#uname").val() + "&pwd=" + $("#pwd").val();
+				this.$http.post(url).then(function(response) {
+                    console.log(response.data);
+                    if(response.data == 1){
+                    	alert("登陆成功");
+                    	window.location.href = "index.html";
+                    }else{
+                    	alert("账号或密码错误");
+                    }
+                });
+			}
+		}
+	});
+</script>
+</html>

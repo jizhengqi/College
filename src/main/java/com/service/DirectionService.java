@@ -1,0 +1,23 @@
+package com.service;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.dao.DirectionDao;
+import com.entity.Direction;
+
+@Service
+@Transactional
+public class DirectionService {
+	
+	@Resource
+	DirectionDao dd;
+	
+	public List<Direction> queryAll(){
+		return dd.queryAll();
+	}
+}

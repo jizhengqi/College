@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.DirectionDao">
+	<!-- 查询所有技术方向 -->
+	<select id="queryAll" resultType="com.entity.Direction">
+		select d_id,d_name from direction
+	</select>
+</mapper>
