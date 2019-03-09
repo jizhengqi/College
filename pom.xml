@@ -10,6 +10,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <springbootVersion>2.0.3.RELEASE</springbootVersion>
     <springVersion>5.1.4.RELEASE</springVersion>
+    <jacksonVersion>2.9.7</jacksonVersion>
   </properties>
   <!-- 依赖的父类:spring依赖+tomcat -->
   <parent>
@@ -111,6 +112,24 @@
       <version>3.0.1</version>
       <scope>provided</scope>
     </dependency>
+    
+    <!-- jackson -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>${jacksonVersion}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-core</artifactId>
+		<version>${jacksonVersion}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-annotations</artifactId>
+		<version>${jacksonVersion}</version>
+	</dependency>
+    
   </dependencies>
   <build>
     <plugins>
