@@ -178,100 +178,33 @@
                     <div class="bd">
                         <ul class="aside-cList">
                             <li>
-                                <div>
-                                   <a cgid="2" v-for="item in list">{{item.d_name}}</a>
-                                   	<div class="list-show">
-                                        <div class="knowledge-system" v-for="i in liqt">
-                                            <p class="list-title knowledge-title"><span>知识体系</span></p>
-                                            <div>
-                                                <dl v-for="ias in i.Items">
-                                                 <dt><a href="" cgid="16" v-if="" >111</a></dt>
-                                                   <dd class="cf">
-                                                        <a href="scourse.html" cgid="76">{{ias.m_name}}</a>
-                                                        <a href="" cgid="77">CSS</a>
-                                                        <a href="" cgid="78">JavaScript</a>
-                                                        <a href="" cgid="79">HTML5</a>
-                                                        <a href="" cgid="80">CSS3</a>
-                                                        <a href="" cgid="81">技术前瞻</a>
-                                                    </dd>
-                                                </dl>
-                                            </div>
-                                            <div class="recommend-study">
-                                            <p class="list-title recommend-title"><span>推荐学习</span></p>
-                                            <ul class="recommend">
-                                                <li>
-                                                    <img src="img/bc5087ba-9bd9-422e-9084-39a492830d7e.png" alt="首页左侧导航目录-JavaScript闯关记（二）">
-                                                    <p>
-                                                        <a href="" target="_blank">
-                                                            带你领略JavaScript语言的精妙所在
-                                                        </a>
-                                                    </p>
-                                                </li>
-                                                <li>
-                                                    <img src="img/bc5087ba-9bd9-422e-9084-39a492830d7e.png" alt="首页左侧导航目录+PHP服务器配置">
-                                                    <p>
-                                                        <a href="" target="_blank">
-                                                            4小时带你玩转PHP服务器配置
-                                                        </a>
-                                                    </p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                                    <!-- <div class="list-show">
+                                <div v-for="item in list">
+                                    <a cgid="1" href="">{{item.d_name}}</a>
+                                    <div class="list-show">
                                         <div class="knowledge-system">
                                             <p class="list-title knowledge-title"><span>知识体系</span></p>
                                             <div>
-                                                <dl>
-                                                    <dt><a href="" cgid="16">前端基础</a></dt>
+                                                <dl v-for="i in liqt">
+                                                	<dt><a href="" cgid="58">{{i.l_name}}</a></dt>
                                                     <dd class="cf">
-                                                        <a href="scourse.html" cgid="76">HTML</a>
-                                                        <a href="" cgid="77">CSS</a>
-                                                        <a href="" cgid="78">JavaScript</a>
-                                                        <a href="" cgid="79">HTML5</a>
-                                                        <a href="" cgid="80">CSS3</a>
-                                                        <a href="" cgid="81">技术前瞻</a>
+                                                        <a href="" cgid="59">Android</a>
+                                                        <a href="" cgid="60">iOS</a>
                                                     </dd>
                                                 </dl>
                                                 <dl>
-                                                    <dt><a href="" cgid="18">前端进阶</a></dt>
+                                                    <dt><a href="" cgid="13">游戏开发</a></dt>
                                                     <dd class="cf">
-                                                        <a href="" cgid="97">Typescript</a>
-                                                        <a href="" cgid="98">前端安全</a>
-                                                        <a href="" cgid="99">项目实战</a>
+                                                        <a href="" cgid="63">Cocos</a>
+                                                        <a href="" cgid="64">Unity3D</a>
+                                                        <a href="" cgid="65">SpriteKit 2D</a>
+                                                        <a href="" cgid="66">Unreal</a>
                                                     </dd>
                                                 </dl>
                                                 <dl>
-                                                    <dt><a href="" cgid="17">前端框架</a></dt>
+                                                    <dt><a href="" cgid="14">常用框架</a></dt>
                                                     <dd class="cf">
-                                                        <a href="" cgid="82">jQuery</a>
-                                                        <a href="" cgid="83">jQuery UI</a>
-                                                        <a href="" cgid="84">jQuery Mobile</a>
-                                                        <a href="" cgid="85">Ext JS</a>
-                                                        <a href="" cgid="86">AngularJS</a>
-                                                        <a href="" cgid="87">ReactJS</a>
-                                                        <a href="" cgid="94">Bootstrap</a>
-                                                        <a href="" cgid="371">React Native</a>
-                                                        <a href="" cgid="372">Backbone</a>
-                                                        <a href="" cgid="373">Three.js</a>
-                                                        <a href="javascript:void(0) cgid="374">MooTools</a>
-                                                        <a href="" cgid="375">Compass</a>
-                                                    </dd>
-                                                </dl>
-                                                <dl>
-                                                    <dt><a href="" cgid="19">HTML5游戏</a></dt>
-                                                    <dd class="cf">
-                                                        <a href="" cgid="100">Canvas</a>
-                                                        <a href="" cgid="102">SVG</a>
-                                                        <a href="" cgid="103">WebGL</a>
-                                                        <a href="" cgid="105">Cocos2d-js</a>
-                                                        <a href="" cgid="106">CreateJS</a>
-                                                        <a href="" cgid="107">Flash</a>
-                                                        <a href="" cgid="108">Unreal</a>
-                                                        <a href="" cgid="109">Egret</a>
-                                                        <a href="" cgid="376">Phaser</a>
+                                                        <a href="" cgid="68">Cordova</a>
+                                                        <a href="" cgid="382">React Native</a>
                                                     </dd>
                                                 </dl>
                                             </div>
@@ -300,7 +233,7 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <div>
                                     <a cgid="1" href="">移动开发</a>
                                     <div class="list-show">
@@ -909,11 +842,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <div class="minbanner">
                 <h3 style="display: none;">极客广告位</h3>
                 <div class="ad-contain">
