@@ -1,11 +1,13 @@
 package com.controller;
 
-import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -35,6 +37,13 @@ public class UsersController {
 	}
 	
 	// 修改个人信息
+	@RequestMapping("upd")
+	@ResponseBody
+	public Integer upd(Users s){
+		us.upd(s);
+		rs = 1;
+		return rs;
+	}
 	
 	// 删除
 	
@@ -46,11 +55,13 @@ public class UsersController {
 	@RequestMapping("login")
 	@ResponseBody
 	public Integer login(String uname,String pwd,HttpSession session){
-		List<Users> list = us.queryByName(uname, pwd);
-		if(list.size() > 0){
+		Subject subject = SecurityUtils.getSubject();
+		UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(uname,pwd);
+		try {
 			rs = 1;
-			session.setAttribute("list", list);
-		}else{
+			subject.login(usernamePasswordToken);
+		} catch (Exception e) {
+			e.printStackTrace();
 			rs = 2;
 		}
 		return rs;

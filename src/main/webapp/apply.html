@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <title>布道师申请 - 骇客学院</title>
+  
+  <link rel="stylesheet" type="text/css" href="css/public.css"/>
+  
+    <link rel="stylesheet" type="text/css" href="css/lecturer.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
+    <link rel="stylesheet" type="text/css" href="css/toastr.css">
+
+    <!-- 此段必须要引入 t为小时级别的时间戳 -->
+    <link type="text/css" href="css/nc.css" rel="stylesheet"/>
+    <script type="text/javascript" src="js/nc.js"></script>
+    <!-- 引入结束 -->
+    <script type="text/javascript" src="js/vue2.5.13.min.js"></script>
+	<script type="text/javascript" src="js/axios0.18.0.min.js"></script>
+	<script type="text/javascript" src="js/vue-resource.js"></script>
+</head>
+</head>
+<body>
+  <!-- wrapper -->
+  <div class="wrapper">
+    <!-- header -->
+    		<header>
+			<!--<div id="header">
+				<a href="http://www.jikexueyuan.com/">
+					<img src="/Current/home/images/logo.png" class="logo" alt="骇客学院" />
+				</a>
+				<div class="loginbox_event"></div>
+			</div>-->
+            
+<script type="text/javascript" src="js/growingio.js?t=1513326254000"></script>
+<script type="text/javascript" src="js/mask.js?t=1513326254000"></script>
+<script type="text/javascript" src="js/jquery.min.js?t=1513326254000"></script>
+<script type="text/javascript" src="js/header.min.js?t=1544581681296"></script>
+<script type="text/javascript" src="js/web_socket.js?t=1513326254000"></script>
+<script type="text/javascript" src="js/websocket.js?t=1513326254000"></script>
+
+
+<div id="header_top_notice"></div>
+<div id="jk-header">
+	<div class="header">
+		<h1>
+			<a href="//www.jikexueyuan.com" class="logo" style="position: relative; top: -45px; left: -8px;">
+				<img src="img/logo.png?t=1513326254000" width="135" alt="骇客学院" />
+			</a>
+		</h1>
+		<nav style="width:490px;">
+			<ul>
+				<li>
+					<a href="index.html" class="home">首页</a>
+				</li>
+				<li class="careerpath">
+					<a href="c">职业</a><i class="slide-icon"></i>
+					<div class="zhiye-submenu slide-submeu">
+						<strong>前端</strong>
+						<a href="javascript:void(0)"><i class="web-icon"></i>Web前端工程师</a>
+						<a href="javascript:void(0)"><i class="wx-icon"></i>微信小程序</a>
+						<strong>移动端</strong>
+						<a href="javascript:void(0)"><i class="android-icon"></i>Android工程师</a>
+						<a href="//www.jikexueyuan.com/zhiye/ios"><i class="ios-icon"></i>iOS工程师</a>
+						<strong>后端</strong>
+						<a href="//www.jikexueyuan.com/zhiye/python"><i class="python-icon"></i>Python工程师</a>
+						<a href="//www.jikexueyuan.com/zhiye/php"><i class="php-icon"></i>PHP工程师</a>
+						<a href="//www.jikexueyuan.com/zhiye/go"><i class="golang-icon"></i>Golang工程师</a>
+						<a href="//www.jikexueyuan.com/zhiye/java"><i class="java-icon"></i>JavaWeb工程师</a>
+						<strong>大数据</strong>
+						<a href="//www.jikexueyuan.com/zhiye/bigdata"><i class="data-icon"></i>大数据平台研发工程师</a>
+						<strong>人工智能</strong>
+						<a href="//www.jikexueyuan.com/zhiye/ml"><i class="mlearning-icon"></i>机器学习工程师</a>
+						<strong>区块链</strong>
+						<a href="//www.jikexueyuan.com/zhiye/blockchain"><i class="yw-icon"></i>区块链工程师</a>
+						<!--<a href="#"><i class="yw-icon"></i>运维工程师</a>
+								<a href="#"><i class="xmjl-icon"></i>项目经理</a>-->
+						<strong>设计</strong>
+						<a href="//www.jikexueyuan.com/zhiye/ux"><i class="ui-icon"></i>UI/UX设计师</a>
+					</div>
+				</li>
+				<li>
+					<a href="//www.jikexueyuan.com/course/">课程</a><i class="slide-icon"></i>
+					<div class="slide-submeu">
+						<a href="//www.jikexueyuan.com/course/">课程库</a>
+						<a href="//ke.jikexueyuan.com/zhiye/">职业路径</a>
+						<a href="//www.jikexueyuan.com/path/">知识体系图</a>
+						<a href="//ke.jikexueyuan.com/xilie/">系列课程</a>
+					</div>
+				</li>
+				<li>
+					<a href="//www.jikexueyuan.com/partner">企业</a><i class="slide-icon"></i>
+					<div class="slide-submeu qy-box">
+						<a href="//zt.jikexueyuan.com/microsoftai"><i class="wr-icon"></i>微软人工智能 </a>
+						<a href="//zt.jikexueyuan.com/baiduai"><i class="baidu-icon"></i>百度AI图像技术课</a>
+						<a href="//zt.jikexueyuan.com/aws"><i class="aws-icon"></i>AWS云计算</a>
+						<a href="//zt.jikexueyuan.com/qcloud"><i class="txy-icon"></i>腾讯云课程专区</a>
+						<a href="//zt.jikexueyuan.com/qualcomm"><i class="gt-icon"></i>Qualcomm公开课 </a>
+						<a href="//zt.jikexueyuan.com/b" class="youke-nav"><i class="youke-icon bounce"></i>企业合作新模式</a>
+					</div>
+				</li>
+				<li>
+					<a href="//wiki.jikexueyuan.com/">社区</a><i class="slide-icon"></i>
+					<div class="slide-submeu">
+						<a href="//wiki.jikexueyuan.com/">Wiki</a>
+						<a href="//wenda.jikexueyuan.com/">技术问答</a>
+						<!--<a href="//qun.jikexueyuan.com/">社群</a>
+						<a href="//download.jikexueyuan.com/">资料下载</a>-->
+					</div>
+
+				</li>
+			</ul>
+		</nav>
+		<div class="search">
+			<input class="searchinput" id="searchinput" placeholder="搜索课程、问答或Wiki" />
+			<span class="search-icon" id="search-bottom"></span>
+			<div class="search-result">
+				<!-- <a href="javascript:;" class="search-hot">热门搜索 <span class="label label-green">职业课程</span></a>
+				<a href="javascript:;">hello world <span class="label label-blue">知识图谱</span></a>
+				<a href="javascript:;">hello world <span class="label label-purple">系列课程</span></a> -->
+			</div>
+		</div>
+		<div class="nav-other" id="nav-other">
+			<div class="centerbox" style="display: none;">
+				<a href="//xue.jikexueyuan.com/" class="learn-center" title="学习中心"></a>
+			</div>
+			<div class="centerbox" style="display: none;">
+				<a href="//www.jikexueyuan.com/member/notifications/" class="message" id="message" title="消息中心"><i class="have" id="have" style="display: none;"></i></a>
+			</div>
+		</div>
+	</div>
+</div>
+		</header>
+    <!-- header end -->
+    <div id="loading">
+      <div class="loading-length"></div>
+    </div>
+    <!-- container -->
+    
+<body>
+<div class="head">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="wrap">
+                    <a href="javascript:" class=" joinUs ">加入我们</a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+<section class="part1">
+    <div class="wrap">
+        <h2 class="title">技术分享，多种形式</h2>
+        <div class="bar"></div>
+        <p class="tip">诚邀各方向开发者，选择最适合自己的合作方式</p>
+        <ul class="cf">
+            <li>
+                <img src="img/part2-icon1.png">
+                <h3>策划布道师</h3>
+                <p>课程内容策划与审核</p>
+                <div class="hover">
+                    <p>需具备5年以上大型项目经验</p>
+                    <p>熟悉业内技术的最新发展方向</p>
+                    <p>技术传播者、业内知名开发者优先</p>
+                </div>
+            </li>
+            <li>
+                <img src="img/part2-icon2.png">
+                <h3>课程布道师</h3>
+                <p>某一课程设计及录制</p>
+                <div class="hover">
+                    <p>需具备3-5年相关项目经验</p>
+                    <p>技术知识过硬，精通所讲课程的体系结构</p>
+                    <p>具备课程设计能力，有授课经验者优先</p>
+                </div>
+            </li>
+            <li>
+                <img src="img/part2-icon3.png">
+                <h3>实战布道师</h3>
+                <p>项目实战指导以及答疑</p>
+                <div class="hover">
+                    <p>需具备1-3年实际开发经验</p>
+                    <p>良好的代码习惯，善于指导学员</p>
+                    <p>业余时间充裕，白天有时间的优先</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="part2">
+    <div class="wrap">
+        <h2 class="title">加入我们，尊享权益</h2>
+        <div class="bar"></div>
+        <p class="tip">我们重视每一位布道师，一直致力于提供更多权益</p>
+        <ul class="cf">
+            <li>
+                <img src="img/part3-1.png">
+                <h3>VIP课程</h3>
+                <p>3000+课程免费观看</p>
+            </li>
+            <li>
+                <img src="img/part3-2.png">
+                <h3>高额报酬</h3>
+                <p>收入不封顶，平均月入1W+</p>
+            </li>
+            <li>
+                <img src="img/part3-3.png">
+                <h3>技术圈人脉</h3>
+                <p>价值无限的技术交流圈</p>
+            </li>
+            <li>
+                <img src="img/part3-4.png">
+                <h3>课程优惠</h3>
+                <p>职业课程免费名额和优惠券</p>
+            </li>
+            <li>
+                <img src="img/part3-5.png">
+                <h3>晋升计划</h3>
+                <p>级别越高，平均收入越多</p>
+            </li>
+            <li>
+                <img src="img/part3-6.png">
+                <h3>专属礼包</h3>
+                <p>生日红包、节日专属礼包</p>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="part3">
+    <div class="wrap">
+        <h2 class="title">技术精湛，乐于分享</h2>
+        <div class="bar"></div>
+        <p class="tip">传道授业解惑，我们一起创建更多优质内容</p>
+        <div class="swiper-container2">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                    <li>
+                        <img width="216" height="256" src="img/4072df6d-b215-4cbd-af41-1720e3af85a2.jpg">
+                        <h3>王士强</h3>
+                        <p class="career">前端负责人</p>
+                        <p class="intro">曾任职于艺龙、中国移动飞信、猎聘网等知名企业，现任银客集团理财事业部前端负责人。</p>
+                        <a target="_blank" href="http://www.jikexueyuan.com/zhiye/course/38.html?type=8">查看线上课程</a>
+                    </li><li>
+                        <img width="216" height="256" src="img/64c45b66-3476-4794-9370-8a475f73df22.jpg">
+                        <h3>王剑</h3>
+                        <p class="career">全栈工程师</p>
+                        <p class="intro">6年Java Web开发和项目管理经验，曾在华为广东移动BOSS系统建设期间担任Team Leader。</p>
+                        <a target="_blank" href="http://www.jikexueyuan.com/zhiye/course/10.html?type=7">查看线上课程</a>
+                    </li><li>
+                        <img width="216" height="256" src="img/0adb278e-df55-471b-afe2-596a1e139242.jpg">
+                        <h3>张轲</h3>
+                        <p class="career">项目负责人</p>
+                        <p class="intro">北京蝶和医疗科技有限公司项目负责人，擅长Android的蓝牙通信、串口编程。</p>
+                        <a target="_blank" href="http://www.jikexueyuan.com/zhiye/course/51.html?type=18">查看线上课程</a>
+                    </li><li>
+                        <img width="216" height="256" src="img/3939b57f-c6ca-4081-b41e-0170f85f455f.jpg">
+                        <h3>胡振生</h3>
+                        <p class="career">移动端技术负责人</p>
+                        <p class="intro">创业公司移动端技术负责人，已上架的APP有《中塑之都》 《货牛商家版》 《货牛司机版》等。</p>
+                        <a target="_blank" href="http://www.jikexueyuan.com/zhiye/course/52.html?type=2">查看线上课程</a>
+                    </li>                </div>            </div>
+        </div>
+    </div>
+</section>
+<section class="part4">
+    <div class="wrap">
+        <h2 class="title">轻松四步，快速加入</h2>
+        <div class="bar"></div>
+        <p class="tip">欢迎热爱教育，乐于分享的技术开发者加入</p>
+        <ul class="cf">
+            <li>
+                <img src="img/part4-1.png">
+                <h3>提交申请</h3>
+                <p>等待工作人员联系</p>
+            </li>
+            <li>
+                <img src="img/part4-2.png">
+                <h3>审核通过</h3>
+                <p>确定合作方案</p>
+            </li>
+            <li>
+                <img src="img/part4-3.png">
+                <h3>签订协议</h3>
+                <p>正式合作开启</p>
+            </li>
+            <li>
+                <img src="img/part4-4.png">
+                <h3>费用支付</h3>
+                <p>每月结算费用</p>
+            </li>
+        </ul>
+        <div class="arrow-content cf">
+            <div class="arrow"><img src="img/arrow.png" alt=""></div>
+            <div class="arrow"><img src="img/arrow.png" alt=""></div>
+            <div class="arrow"><img src="img/arrow.png" alt=""></div>
+        </div>
+    </div>
+</section>
+<section class="part5">
+    <div class="wrap">
+        <h2 class="title">常见问题</h2>
+        <div class="bar"></div>
+        <ul class="cf">
+            <li>
+                <h3>目前招募哪些方向？</h3>
+                <p>Web前端、微信小程序（急需）、VR、Android、PHP、Python、
+                    <br />Go语言、 大数据等热门方向。
+                </p>
+            </li>
+            <li>
+                <h3>每月的收入如何？</h3>
+                <p>每月平均收入高于市场价格，大部分在3000-10000不等，
+                    <br />收入不封顶。
+                </p>
+            </li>
+            <li>
+                <h3>每周需花费多长时间？</h3>
+                <p>每周需3-10个小时准备合作内容。如遇特殊情况，可与客服人员
+                    <br />及时调整合作时间。
+                </p>
+            </li>
+            <li>
+                <h3>没有布道师经验可以吗？</h3>
+                <p>每种合作方式都有成熟的流程和培训，只要你技术过硬
+                    <br />都可以顺利完成。
+                </p>
+            </li>
+        </ul>
+    </div>
+</section>
+<div class="foot">
+    <div class="wrap">
+        <ul class="cf">
+            <li><img src="img/logo.png"></li>
+            <li>
+                <p class="contact">Email: bd@jikexueyuan.com <span>咨询QQ: 2885679101</span></p>
+                <p class="records">Copyright © 2013-2019 All Rights Reserved. 京ICP备11018032号-8 京公网安备11010802020210</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="form">
+    <div class="bg">
+        <i class="close"></i>
+        <h2 class="title">极客布道师申请表</h2>
+        <div class="bar"></div>
+        <form id="frm" method="post">
+        <ul class="form-cont">
+            <li>
+                <label for=""><sup>*</sup>姓名：</label>
+                <input type="text" name="u_realname" value="姬正奇" placeholder="输入您的姓名" autofocus="autofocus" id="realname">
+            </li>
+            <li>
+                <label for=""><sup>*</sup>手机：</label>
+                <input type="text" name="u_phone" value="13643835873" placeholder="输入您的手机号" id="mobile">
+            </li>
+            <li>
+                <label for=""><sup>*</sup>邮箱：</label>
+                <input type="text" name="u_email" placeholder="输入您的常用邮箱" id="email">
+            </li>
+            <li style="margin-bottom: 5px;">
+                <label for=""><sup>*</sup>QQ：</label>
+                <input type="text" name="u_qq" placeholder="输入您的QQ号码" id="qq">
+            </li>
+            <li>
+                <label for="" class="ckbox"><sup>*</sup>技术方向：</label>
+                <div class="cks">
+                    <label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="1">
+                            <em class="ckb"></em>
+                            <em class="ckt">Android工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="2">
+                            <em class="ckb"></em>
+                            <em class="ckt">Web大前端工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="5">
+                            <em class="ckb"></em>
+                            <em class="ckt">JavaWeb工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="6">
+                            <em class="ckb"></em>
+                            <em class="ckt">PHP工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="7">
+                            <em class="ckb"></em>
+                            <em class="ckt">iOS工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="8">
+                            <em class="ckb"></em>
+                            <em class="ckt">运维工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="9">
+                            <em class="ckb"></em>
+                            <em class="ckt">测试工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="10">
+                            <em class="ckb"></em>
+                            <em class="ckt">大数据工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="13">
+                            <em class="ckb"></em>
+                            <em class="ckt">Python Web工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="14">
+                            <em class="ckb"></em>
+                            <em class="ckt">Go语言工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="16">
+                            <em class="ckb"></em>
+                            <em class="ckt">UI/UX设计师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="26">
+                            <em class="ckb"></em>
+                            <em class="ckt">VR 工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="31">
+                            <em class="ckb"></em>
+                            <em class="ckt">人工智能工程师</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="33">
+                            <em class="ckb"></em>
+                            <em class="ckt">其他</em>
+                        </label><label>
+                            <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="34">
+                            <em class="ckb"></em>
+                            <em class="ckt">云计算工程师</em>
+                        </label>                </div>
+            </li>
+            <li id="showDirection" style="display: none;">
+                <label for=""></label>
+                <textarea maxlength="500" placeholder="请在这填写你的意向课程，如有线上课程请填写相关URL地址。" id="direction_desc"></textarea>
+            </li>
+            <li>
+                <label for=""><sup>*</sup>验证码：</label>
+                <div id="verify-cont" class="verify-cont"></div>
+            </li>
+            <li class="tips cf">
+                <p>详细信息将获得优先机会</p>
+                <p>展开<i class="arrows"></i></p>
+            </li>
+            <div class="moreInfo">
+                <li>
+                    <label for="">工作年限：</label>
+                    <div class="multi-select">
+                        <select id="theYear" name="">
+                            <option value="0">请选择工作年限</option>
+                            <option value="10年以上">10年以上</option>
+                            <option value="5-10年">5-10年</option>
+                            <option value="3-5年">3-5年</option>
+                            <option value="1-3年">1-3年</option>
+                            <option value="1年以下">1年以下</option>
+                        </select>
+                    </div>
+                </li>
+                <li>
+                    <label for="">工作职位：</label>
+                    <div class="multi-select">
+                        <select id="theJob">
+                            <option value="请选择工作职位">请选择工作职位</option>
+                            <option value="CEO">CEO</option>
+                            <option value="CTO">CTO</option>
+                            <option value="架构师">架构师</option>
+                            <option value="技术负责人">技术负责人</option>
+                            <option value="高级研发工程师">高级研发工程师</option>
+                            <option value="一线开发工程师">一线开发工程师</option>                        </select>
+                    </div>
+                </li>
+                <li>
+                    <label for="">所属公司：</label>
+                    <div class="multi-select">
+                        <select id="theCompany">
+                            <option value="请选择所属公司">请选择所属公司</option>
+                            <option value="政府、BAT等知名公司">政府、BAT等知名公司</option>
+                            <option value="大型一线互联网公司">大型一线互联网公司</option>
+                            <option value="中小型公司">中小型公司</option>
+                            <option value="创业公司">创业公司</option>
+                            <option value="自由职业">自由职业</option>
+                            <option value="其他">其他</option>
+                         </select>
+                    </div>
+                </li>
+                <li style="margin-bottom: 5px;margin-top:15px;display: none;" id="showCompany">
+                    <label for=""></label>
+                    <textarea maxlength="500" placeholder="请填写公司名称" id="company_desc"></textarea>
+                </li>
+                <li style="margin-bottom: 5px;">
+                    <label for="">项目经验：</label>
+                    <div class="multi-select">
+                        <select id="theProject">
+                            <option value="请选择项目经验">请选择项目经验</option>
+                            <option value="已上线、知名应用">已上线、知名应用</option>
+                            <option value="一般项目">一般项目</option>
+                            <option value="无">无</option>
+                        </select>
+                    </div>
+                </li>
+                <li style="margin-bottom: 5px;margin-top:15px;display: none;" id="showProject">
+                    <label for=""></label>
+                    <textarea maxlength="500" placeholder="请在这填写你的项目经验，如有线上地址请填写相关URL地址。" id="project_desc"></textarea>
+                </li>
+                <li style="margin-bottom: 5px;">
+                    <label for="" class="ckbox reputation">社会声誉：</label>
+                    <div class="cks">
+                        <label>
+                            <input type="checkbox" name="" hidden="hidden" class="input prestige_id" value="21">
+                            <em class="ckb"></em>
+                            <em class="ckt">社区负责人/论坛版主</em>
+                        </label><label>
+                            <input type="checkbox" name="" hidden="hidden" class="input prestige_id" value="22">
+                            <em class="ckb"></em>
+                            <em class="ckt">微信号/畅销书/博客/GitHub等作者</em>
+                        </label><label>
+                            <input type="checkbox" name="" hidden="hidden" class="input prestige_id" value="23">
+                            <em class="ckb"></em>
+                            <em class="ckt">技术大会讲师/演讲嘉宾</em>
+                        </label>                    </div>
+                </li>
+                <li style="margin-bottom: 5px;margin-top:15px;display: none;" id="showStigma">
+                    <label for=""></label>
+                    <textarea maxlength="500" placeholder="请在这填写相关详细信息，如所负责社区的地址、博客地址、Github地址、畅销书地址、参加的演讲大会名称等。" id="stigma_desc"></textarea>
+                </li>
+                <li>
+                    <label for="" class="ckbox">技术方向：</label>
+                    <div class="cks">
+                        <label>
+                            <input type="checkbox" name="" hidden="hidden" class="input cert_id" value="24">
+                            <em class="ckb"></em>
+                            <em class="ckt">认证证书</em>
+                            <i class="pop"><em class="pop-cont">如AWS技术专家</em></i>
+                        </label>
+                        <label>
+                            <input type="checkbox" name="" hidden="hidden" class="input cert_id" value="25">
+                            <em class="ckb"></em>
+                            <em class="ckt">技术定级</em>
+                            <i class="pop"><em class="pop-cont">如腾讯T3</em></i>
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <label for="">其他信息：</label>
+                    <textarea maxlength="500" placeholder="请在这里填写其他的介绍" id="intro"></textarea>
+                </li>
+            </div>
+            <a href="javascript:" class="btn-submit" id="subBtn" @click="submits()">立即提交</a>
+        </ul>
+        </form>
+    </div>
+</div>
+<div class="float-ban">
+    <div class="wrap">
+        <!-- <img src="img/float-content.png" alt="">
+        <a href="javascript:" class="plus  joinUs "></a>
+        <a href="https://static.meiqia.com/dist/standalone.html?eid=21444" target="_blank" class="consult"></a> -->
+    </div>
+</div>
+
+
+<input type="hidden" id="assistant_csessionid" name="csessionid"/>
+<input type="hidden" id="assistant_sig" name="sig"/>
+<input type="hidden" id="assistant_token" name="token"/>
+<input type="hidden" id="assistant_scene" name="scene"/>
+
+<!-- 此段必须要引入 -->
+<div id="_umfp" style="display:inline;width:1px;height:1px;overflow:hidden"></div>
+<!-- 引入结束 -->
+
+<!--<link href="http://e.jikexueyuan.com/static/css/register.css" rel="stylesheet" type="text/css">-->
+<!-- <script src="js/jquery.min.js"></script> -->
+<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="js/login_register.min.js?_=20170223"></script>
+<script type="text/javascript" src="js/jbase64.js"></script>
+<script type="text/javascript" src="js/setcookie.js"></script>
+
+<script type="text/javascript" src="js/swiper-3.4.0.jquery.min.js"></script>
+<script type="text/javascript" src="js/toastr.min.js"></script>
+<script type="text/javascript" src="js/lecturer.js"></script>
+<script type="text/javascript">
+    $(function(){
+        if ($('#verify-cont').length) {
+            window.assistant_nc = new noCaptcha();
+            var nc_appkey = 'FFFF000000000167A3A6';  // 应用标识,不可更改
+            var nc_scene = 'login';  //场景,不可更改
+            var nc_token = [nc_appkey, (new Date()).getTime(), Math.random()].join(':');
+            var nc_option = {
+                renderTo: '#verify-cont',//渲染到该DOM ID指定的Div位置
+                appkey: nc_appkey,
+                scene: nc_scene,
+                token: nc_token,
+                callback: function (data) {
+                    document.getElementById('assistant_csessionid').value = data.csessionid;
+                    document.getElementById('assistant_sig').value = data.sig;
+                    document.getElementById('assistant_token').value = nc_token;
+                    document.getElementById('assistant_scene').value = nc_scene;
+                }
+            };
+            assistant_nc.init(nc_option);
+        }
+    });
+</script>
+</body>
+
+
+    <!-- container end -->
+    <!-- footer -->
+    
+
+    <!-- footer end -->
+  </div>
+  <!-- wrapper end -->
+    <!--<link href="http://e.jikexueyuan.com/static/css/register.css" rel="stylesheet" type="text/css">-->
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="js/login_register.min.js?_=20170223"></script>
+    <script type="text/javascript" src="js/jbase64.js"></script>
+    <script type="text/javascript" src="js/setcookie.js"></script>
+
+    <script src="js/public.js"></script>
+    
+    <script type="text/javascript" src='js/growingio.js'></script>
+</body>
+<script type="text/javascript">
+	var app = new Vue({
+	    el: "#wrapper",
+	    data: {
+	        list: [],
+			liqt: []
+	    },
+	    methods: {
+	    	submits: function() {
+	            /* var url = "direction/queryAll";
+	            this.$http.post(url).then(function(response) {
+	            	console.log(response.data);
+	                this.list = response.data;
+	            }); */
+	            alert(1);
+	        }
+	    }
+	})
+</script>
+</html>
