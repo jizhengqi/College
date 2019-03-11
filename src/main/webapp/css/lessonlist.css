@@ -1,0 +1,198 @@
+.lesson-list {
+  margin-top: 15px;
+}
+.lesson-list li {
+  float: left;
+  width: 25%;
+  height: 50%;
+  border: 1px solid #f5f5f5;
+  border-right: 0;
+  border-top: 0;
+}
+.lesson-list li:nth-child(4),
+.lesson-list li:last-child {
+  border-right: 1px solid #f5f5f5;
+}
+.lesson-list li:nth-child(n+5) {
+  border-top: 0;
+}
+.lesson-list li:hover .lessonimg-box {
+  border: 1px solid #35b558;
+  border-bottom: 0;
+}
+.lesson-list li:hover .lesson-infor {
+  border: 1px solid #35b558;
+  border-top: 0;
+}
+.lesson-list .lessonimg-box {
+  border: 1px solid #fff;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 0;
+  width: 100%;
+  height: 135px;
+  position: relative;
+}
+.lesson-list .lessonimg-box img {
+  width: 246px;
+  height: 135px;
+}
+.lesson-list .lessonimg-box .lessonplay {
+  position: absolute;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.4);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.lesson-list .lessonimg-box .rz-icon,
+.lesson-list .lessonimg-box .vip-icon {
+  position: absolute;
+  z-index: 102;
+  display: inline-block;
+  top: -2px;
+  right: 8px;
+}
+.lesson-list .lessonimg-box .rz-icon {
+  background: url('../images/tag-rz.png') no-repeat;
+  background-size: 100%;
+  width: 61px;
+  height: 22px;
+}
+.lesson-list .lessonimg-box .vip-icon {
+  background: url('../images/tag-vip.png') no-repeat;
+  background-size: 100%;
+  width: 38px;
+  height: 22px;
+}
+.lesson-list .lessonimg-box .learn-statu {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 12px;
+  color: #fff;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 5px;
+  background: rgba(92, 92, 92, 0.8);
+}
+.lesson-list .lessonimg-box .playericon {
+  background: url('../images/icon-play.png');
+  background-size: 100%;
+  display: block;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  z-index: 120;
+  left: 50%;
+  top: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+}
+.lesson-list .lesson-infor {
+  border: 1px solid #fff;
+  border-top: 0;
+  padding: 10px;
+  position: relative;
+  z-index: 200;
+  overflow: hidden;
+  background: #fff;
+  height: 88px;
+}
+.lesson-list .lesson-infor .lesson-info-h2 {
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 16px;
+  height: 36px;
+  overflow: hidden;
+  font-weight: 400;
+}
+.lesson-list .lesson-infor .lesson-info-h2 a {
+  color: #333;
+}
+.lesson-list .lesson-infor .lesson-info-h2 a:hover {
+  color: #35b558;
+}
+.lesson-list .lesson-infor p {
+  color: gray;
+  font-size: 12px;
+  line-height: 18px;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-bottom: 10px;
+  display: none;
+}
+.lesson-list .timeandicon {
+  font-size: 12px;
+  color: gray;
+  position: relative;
+}
+.lesson-list .timeandicon dl {
+  width: 120px;
+  float: left;
+  white-space: nowrap;
+}
+.lesson-list .timeandicon dl dd {
+  font-size: 12px;
+}
+.lesson-list .timeandicon .learn-number {
+  float: right;
+  display: none;
+}
+.lesson-list .timeandicon .time-icon {
+  background: url('../images/icon-time.png') 0 0 no-repeat;
+  width: 14px;
+  height: 14px;
+  display: block;
+  float: left;
+  margin-right: 8px;
+  background-size: 14px 14px;
+}
+.lesson-list .timeandicon .xinhao-icon3 {
+  background: url('../images/icon-level-3.png') 0 0 no-repeat;
+  background-size: 14px 14px;
+  width: 14px;
+  height: 14px;
+  display: block;
+  float: left;
+  margin-right: 8px;
+}
+.lesson-list .timeandicon .xinhao-icon2 {
+  background: url('../images/icon-level-2.png') 0 0 no-repeat;
+  background-size: 14px 14px;
+  width: 14px;
+  height: 14px;
+  display: block;
+  float: left;
+  margin-right: 8px;
+}
+.lesson-list .timeandicon .xinhao-icon {
+  background: url('../images/icon-level-1.png') 0 0 no-repeat;
+  background-size: 14px 14px;
+  width: 14px;
+  height: 14px;
+  display: block;
+  float: left;
+  margin-right: 8px;
+}
+.lesson-list .timeandicon .lessonicon-box {
+  position: absolute;
+  right: 0;
+  text-align: right;
+  bottom: 4px;
+}
+.lesson-list .timeandicon .lessonicon-box a {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 3px;
+}
+.lesson-list .timeandicon .lessonicon-box a img {
+  display: block;
+  width: 14px;
+  height: 16px;
+}
+.mar-b8 {
+  margin-bottom: 8px;
+}

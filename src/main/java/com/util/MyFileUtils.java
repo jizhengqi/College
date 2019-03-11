@@ -1,6 +1,11 @@
 package com.util;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -76,5 +81,97 @@ public class MyFileUtils {
 		if (!file.getParentFile().exists()) {
 			file.getParentFile().mkdirs();
 		}
+	}
+
+	/**
+	 * 往文件中追加数据<br>
+	 * FileWriter
+	 * 
+	 * @param path
+	 * @param data
+	 * @param encoding
+	 * @return
+	 */
+	public static boolean writeToFile(String path, String data) {
+		File file = new File(path);
+		FileWriter fw = null;
+		boolean flag = false;
+		try {
+			fw = new FileWriter(file, true);
+			fw.write(data);
+			fw.write("\r\n");
+			flag = true;
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				fw.flush();
+				fw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+		return flag;
+	}
+
+	/**
+	 * 用RandomAccessFile将文本内容保存到一个文件中<br/>
+	 * 随机流实现断点续传效果
+	 * 
+	 * @param filePath
+	 *            文件路径
+	 * @param len
+	 *            内容在文件中的位置
+	 * @param content
+	 *            要存入文件的内容
+	 * @throws Exception
+	 */
+	public static boolean writeFileByContent(String filePath, int len,
+			String content) {
+		boolean ft = false;
+		RandomAccessFile raf = null;
+		FileOutputStream fos = null;
+		FileInputStream fis = null;
+		File tmp = null;
+		try {
+			File dest = new File(filePath);
+			tmp = File.createTempFile("tmp",
+					filePath.substring(filePath.lastIndexOf(".")));
+			tmp.deleteOnExit();
+			raf = new RandomAccessFile(dest, "rw");
+			fos = new FileOutputStream(tmp);
+			raf.seek(len);
+			byte[] b = new byte[1024];
+			int num = 0;
+			while (-1 != (num = raf.read(b))) {
+				fos.write(b, 0, num);
+			}
+			// 把插入的内容写进去
+			raf.seek(len);
+			raf.writeBytes(content);
+			// 再把临时文件的内容再拿过来写进去
+			raf.seek(len + content.getBytes().length);
+			fis = new FileInputStream(tmp);
+			int n = 0;
+			while ((n = fis.read()) != -1) {
+				raf.write(n);
+			}
+			ft = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// 删除临时文件
+				tmp.delete();
+				// 关闭输入输出流
+				fis.close();
+				fos.close();
+				raf.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return ft;
 	}
 }
