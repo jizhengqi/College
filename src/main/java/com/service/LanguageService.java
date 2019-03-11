@@ -31,33 +31,6 @@ public class LanguageService {
 	 * @return
 	 */
 	public Map<String, List<Map<String, List<String>>>> queryLangguage() {
-		// List<List<List<String>>> direction = new
-		// ArrayList<List<List<String>>>();
-		// List<List<String>> language = new ArrayList<List<String>>();
-		// List<String> module = new ArrayList<String>();
-		//
-		// List<Direction> list = directionDao.queryAll();
-		// List<Map<String, Object>> queryAll = moduleDao.queryAll();
-		//
-		// Integer length = list.size();
-		// Integer size = queryAll.size();
-		//
-		// for (int i = 0; i < length; i++) {
-		// language = new ArrayList<List<String>>();
-		// for (int j = 0; j < size; j++) {
-		// module = new ArrayList<String>();
-		// String m_name = (String) queryAll.get(j).get("m_name");
-		// if (null != m_name) {
-		// String[] split = m_name.split(",");
-		// for (String string : split) {
-		// module.add(string);
-		// }
-		// }
-		// language.add(module);
-		// }
-		// direction.add(language);
-		// }
-
 		Map<String, List<Map<String, List<String>>>> direction = new HashMap<String, List<Map<String, List<String>>>>();
 		List<Map<String, List<String>>> languages = new ArrayList<Map<String, List<String>>>();// 将语言放入集合
 		Map<String, List<String>> language = new HashMap<String, List<String>>();// 语言
