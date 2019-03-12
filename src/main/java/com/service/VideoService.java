@@ -29,8 +29,7 @@ public class VideoService {
 			return 0;
 		}
 		try {
-			MultipartFile[] files = { file, ziFile };
-			String[] uploadPaths = myFileUtils.uploads(files);
+			String[] uploadPaths = myFileUtils.uploads(file, ziFile);
 			// 将视频路径和资料路径上传到数据库
 			video.setV_url(uploadPaths[0]);
 			video.setV_data_url(uploadPaths[1]);
