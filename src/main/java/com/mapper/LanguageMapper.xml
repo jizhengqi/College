@@ -2,4 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.LanguageDao">
 	
+	<!-- 语言分类查询 -->
+	<select id="queryAll" resultType="com.entity.Language">
+		select * from language
+	</select>
+	
+	<!-- 添加语言分类 -->
+	<insert id="add">
+		insert into language(l_name,d_id)values(#{l_name},#{d_id})
+	</insert>
+	
+	<!-- 修改语言分类 -->
+	<update id="upd">
+		update from language set l_name=#{l_name},d_id=#{d_id} where l_id = #{l_id}
+	</update>
+	
+	<!-- 删除语言分类 -->
+	<delete id="del" parameterType="java.lang.Integer">
+		delete from language where l_id = #{param1}
+	</delete>
+	
 </mapper>

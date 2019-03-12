@@ -1,5 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.Skill_AskDao">
+	<!-- 添加技术问答 -->
+	<insert id="add" parameterType="com.entity.Skill_Ask">
+		insert into skill_ask
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="s_question != null">
+				s_question,
+			</if>
+			<if test="u_id != null">
+				u_id,
+			</if>
+			<if test="s_date != null">
+				s_data,
+			</if>
+			<if test="s_question != null">
+				s_question,
+			</if>
+			<if test="s_return_card != null">
+				s_return_card,
+			</if>
+			<if test="s_browse != null">
+				s_browse,
+			</if>
+			<if test="s_solve  != null">
+				s_solve,
+			</if>
+			<if test="c_id  != null">
+				c_id
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="s_question != null">
+				#{s_question},
+			</if>
+			<if test="u_id != null">
+				#{u_id},
+			</if>
+			<if test="s_date != null">
+				#{s_data},
+			</if>
+			<if test="s_question != null">
+				#{s_question},
+			</if>
+			<if test="s_return_card != null">
+				#{s_return_card},
+			</if>
+			<if test="s_browse != null">
+				#{s_browse},
+			</if>
+			<if test="s_solve  != null">
+				#{s_solve},
+			</if>
+			<if test="c_id  != null">
+				#{c_id}
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 修改技术问答 -->
+	<update id="upd" parameterType="com.entity.Skill_Ask">
+		update from skill_ask
+		<set>
+			<if test="s_question != null">
+				s_question = #{s_question},
+			</if>
+			<if test="u_id != null">
+				u_id = #{u_id},
+			</if>
+			<if test="s_date != null">
+				s_date = #{s_data},
+			</if>
+			<if test="s_question != null">
+				s_question = #{s_question},
+			</if>
+			<if test="s_return_card != null">
+				s_return_card = #{s_return_card},
+			</if>
+			<if test="s_browse != null">
+				s_browse = #{s_browse},
+			</if>
+			<if test="s_solve  != null">
+				s_solve = #{s_solve},
+			</if>
+			<if test="c_id  != null">
+				c_id = #{c_id}
+			</if>
+		</set>
+		where s_id = #{s_id}
+	</update>
+	
+	<!-- 删除技术问答 -->
+	<delete id="del" parameterType="java.lang.Integer">
+		delete from skill_ask where s_id = #{param1}
+	</delete>
+	
+	<!-- 查询某个技术问答 -->
+	<select id="queryById" parameterType="java.lang.Integer" resultType="com.entity.Skill_Ask">
+		select * from skill_ask where s_id = #{param1}
+	</select>
+	
+	<!-- 查询所有技术问答 -->
+	<select id="queryAll" resultType="com.entity.Skill_Ask">
+		select * from skill_ask
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="queryByPage" resultType="com.entity.Skill_Ask">
+		select * from skill_ask
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 == null">
+			limit 1
+		</if>
+	</select>
 	
 </mapper>

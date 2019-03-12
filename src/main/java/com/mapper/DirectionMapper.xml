@@ -5,4 +5,19 @@
 	<select id="queryAll" resultType="com.entity.Direction">
 		select d_id,d_name from direction order by d_id
 	</select>
+	
+	<!-- 添加技术方向 -->
+	<insert id="add" parameterType="com.entity.Direction">
+		insert into direction(d_name)values(#{d_name})
+	</insert>
+	
+	<!-- 修改技术方向 -->
+	<update id="upd" parameterType="com.entity.Direction">
+		update from direction set d_name=#{d_name} where d_id = #{d_id}
+	</update>
+	
+	<!-- 删除技术方向 -->
+	<delete id="del" parameterType="java.lang.Integer">
+		delete from direction where d_id = #{d_id}
+	</delete>
 </mapper>

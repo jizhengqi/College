@@ -11,14 +11,38 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.DirectionDao;
+import com.dao.LanguageDao;
 import com.dao.ModuleDao;
 import com.entity.Direction;
+import com.entity.Language;
 import com.util.MyFileUtils;
 
 @Service
 @Transactional
 public class LanguageService {
 
+	@Resource
+	LanguageDao ld;
+	
+	public void add(Language l){
+		ld.add(l);
+	}
+	
+	public void upd(Language l){
+		ld.upd(l);
+	}
+
+	public void del(Integer l_id){
+		ld.del(l_id);
+	}
+	
+	public List<Language> queryAll(){
+		return ld.queryAll();
+	}
+	
+	public void queryPage(){
+		
+	}
 	@Resource
 	DirectionDao directionDao;// 技术方向
 

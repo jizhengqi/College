@@ -46,4 +46,14 @@ public class UsersService {
 	public List<Users> queryByName(String uname,String pwd){
 		return ud.queryByName(uname,pwd);
 	}
+	
+	// 查询所有认证导师信息
+	public List<Users> queryByTeacher(Integer u_teacher){
+		return ud.queryByTeacher(u_teacher);
+	}
+	
+	// 查询所有VIP用户
+	public List<Users> queryByVIP(Integer u_vip){
+		return ud.queryByVIP(u_vip);
+	}
 }

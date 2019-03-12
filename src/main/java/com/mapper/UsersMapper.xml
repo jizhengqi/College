@@ -170,7 +170,7 @@
 	<update id="upd" parameterType="com.entity.Users">
 		update from users
 		<set>
-			<trim suffix="(" prefix=")" prefixOverrides=",">
+			<trim suffix="(" prefix=")" suffixOverrides=",">
 			<if test="u_username != null">
 				u_username,
 			</if>
@@ -247,7 +247,7 @@
 				u_create_date,
 			</if>
 		</trim>
-		<trim prefix="values(" suffix=")" prefixOverrides=",">
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
 			<if test="u_username != null">
 				#{u_username},
 			</if>
@@ -359,5 +359,15 @@
 				u_email = #{param1} and u_pwd = #{param2}
 			</if>
 		</where>
+	</select>
+	
+	<!-- 查询所有认证导师的用户 -->
+	<select id="queryByTeacher" parameterType="java.lang.Integer" resultType="com.entity.Users">
+		select * from users where u_teacher = 1
+	</select>
+	
+	<!-- 查询所有VIP用户 -->
+	<select id="queryByVIP" parameterType="java.lang.Integer" resultType="com.entity.Users">
+		select * from users where u_vip = 1
 	</select>
 </mapper>

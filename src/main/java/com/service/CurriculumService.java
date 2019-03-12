@@ -13,10 +13,40 @@ import com.entity.Curriculum;
 @Service
 @Transactional
 public class CurriculumService {
-
+	
 	@Resource
-	CurriculumDao curriculumDao;
-
+	CurriculumDao cd;
+	
+	// 添加课程详细信息
+	public void add(Curriculum c){
+		cd.add(c);
+	}
+	
+	// 修改课程信息
+	public void upd(Curriculum c){
+		cd.upd(c);
+	}
+	
+	// 删除课程信息
+	public void del(Integer c_id){
+		cd.del(c_id);
+	}
+	
+	// 查询某个课程信息
+	public List<Curriculum> queryById(Integer c_id){
+		return cd.queryById(c_id);
+	}
+	
+	// 查询所有课程信息
+	public List<Curriculum> queryAll(){
+		return cd.queryAll();
+	}
+	
+	// 分页查询课程信息
+	public List<Curriculum> queryByPage(Integer page,Integer limit){
+		return cd.queryByPage(page, limit);
+	}
+	
 	/**
 	 * 添加课程
 	 * 
@@ -24,7 +54,7 @@ public class CurriculumService {
 	 * @return
 	 */
 	public Integer addCurriculum(Curriculum curriculum) {
-		return curriculumDao.addCurriculum(curriculum);
+		return cd.addCurriculum(curriculum);
 	}
 
 	/**
@@ -34,6 +64,6 @@ public class CurriculumService {
 	 * @return
 	 */
 	public List<Curriculum> queryCurriculum(String u_id) {
-		return curriculumDao.queryCurriculum(u_id);
-	}
+		return cd.queryCurriculum(u_id);
+	}	
 }

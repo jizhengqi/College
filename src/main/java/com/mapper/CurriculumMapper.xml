@@ -1,13 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.CurriculumDao">
-	<insert id="addCurriculum" parameterType="Curriculum">
-		insert into curriculum(
-		c_name,c_introduction,c_author,c_date,c_background,c_Software,c_typeOfCourse,c_typeOfContent,c_level,c_users,m_id,u_id,c_vip) 
-		values(#{c_name},#{c_introduction},#{c_author},#{c_date},#{c_background},#{c_Software},#{c_typeOfCourse},#{c_typeOfContent},#{c_level},#{c_users},#{m_id},#{u_id},#{c_vip})
-	</insert>
-	<select id="queryCurriculum" resultType="Curriculum">
-		select c_id,c_name,c_introduction,c_author,c_date,c_background,c_Software,c_typeOfCourse,c_typeOfContent,c_level,c_users,m_id,u_id,c_vip 
-		from curriculum where u_id = #{param1}
+	
+	<!-- 修改课程详细信息 -->
+	<update id="upd" parameterType="com.entity.Curriculum">
+		update from curriculum
+		<set>
+			<if test="c_name != null">
+				c_name = #{c_name},
+			</if>
+			<if test="c_introduction != null">
+				c_introduction = #{c_introduction},
+			</if>
+			<if test="c_author != null">
+				c_author = #{c_author},
+			</if>
+			<if test="c_date != null">
+				c_date = #{c_date},
+			</if>
+			<if test="c_background != null">
+				c_background = #{c_background},
+			</if>
+			<if test="c_Software != null">
+				c_Software = #{c_Software},
+			</if>
+			<if test="c_typeOfCourse != null">
+				c_typeOfCourse = #{c_typeOfCourse},
+			</if>
+			<if test="c_typeOfContent != null">
+				c_typeOfContent = #{c_typeOfContent},
+			</if>
+			<if test="c_level != null">
+				c_level = #{c_level},
+			</if>
+			<if test="c_users != null">
+				c_users = #{c_users},
+			</if>
+			<if test="m_id != null">
+				m_id = #{m_id},
+			</if>
+			<if test="u_id != null">
+				u_id = #{u_id},
+			</if>
+			<if test="c_vip != null">
+				c_vip = #{c_vip}
+			</if>
+		</set>
+		where c_id = #{c_id}
+	</update>
+	
+	<!-- 删除课程详细信息 -->
+	<delete id="del" parameterType="java.lang.Integer">
+		delete from curriculum where c_id = #{param1}
+	</delete>
+	
+	<!-- 查询课程详细信息 -->
+	<select id="queryById" parameterType="java.lang.Integer" resultType="com.entity.Curriculum">
+		select * from curriculum where where c_id = #{param1}
+	</select>
+	
+	<!-- 查询所有课程详细信息 -->
+	<select id="queryAll" resultType="com.entity.Curriculum">
+		select * from curriculum
+	</select>
+	
+	<!-- 分页查询课程详细信息 -->
+	<select id="queryByPage" resultType="com.entity.Curriculum">
+		select * from curriculum
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 == null">
+			limit 1
+		</if>
 	</select>
 </mapper>

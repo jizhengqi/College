@@ -15,7 +15,25 @@ public interface CurriculumDao {
 	 * @return
 	 */
 	public Integer addCurriculum(Curriculum curriculum);
-
+	
+	// 添加课程详细信息
+	public void add(Curriculum c);
+	
+	// 修改课程详细信息
+	public void upd(Curriculum c);
+	
+	// 删除课程详细信息
+	public void del(Integer c_id);
+	
+	// 查询课程详细信息
+	public List<Curriculum> queryById(Integer c_id);
+	
+	// 查询所有课程信息
+	public List<Curriculum> queryAll();
+	
+	// 分页查询
+	public List<Curriculum> queryByPage(Integer page,Integer limit);
+	
 	/**
 	 * 查询自己录制的课程
 	 * 

@@ -5,4 +5,20 @@
 	<select id="queryAll" resultType="java.util.Map">
 		select DISTINCT l.d_id,l_name,(select group_concat(m_name) from module m where m.l_id = l.l_id) m_name from language l left join module m on l.l_id = m.l_id order by d_id
 	</select>
+	
+	<!-- 删除语言模块 -->
+	<delete id="del" parameterType="java.lang.Integer">
+		delete from module where m_id = #{param1}
+	</delete>
+	
+	<!-- 修改语言模块 -->
+	<update id="upd" parameterType="com.entity.Module">
+		update from module set m_name = #{m_name},l_id = #{l_id} where m_id = #{m_id}
+	</update>
+	
+	<!-- 添加语言模块 -->
+	<insert id="add" parameterType="com.entity.Module" >
+		insert into module(m_name,l_id)values(#{m_name},#{l_id})
+	</insert>
+	
 </mapper>

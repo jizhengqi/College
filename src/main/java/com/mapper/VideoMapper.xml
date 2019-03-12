@@ -1,6 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.VideoDao">
+	<!-- 添加视频详细信息 -->
+	<insert id="add" parameterType="com.entity.Video">
+		insert into video
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="v_name != null">
+				v_name,
+			</if>
+			<if test="v_url != null">
+				v_url,
+			</if>
+			<if test="v_intro != null">
+				v_intro,
+			</if>
+			<if test="v_content != null">
+				v_content,
+			</if>
+			<if test="v_date != null">
+				v_date,
+			</if>
+			<if test="c_id != null">
+				c_id,
+			</if>
+			<if test="v_data != null">
+				v_data,
+			</if>
+			<if test="v_data_url != null">
+				v_data_url,
+			</if>
+			<if test="v_play_num != null">
+				v_play_num,
+			</if>
+			<if test="v_vip != null">
+				v_vip
+			</if>
+		</trim>
+		<trim prefix="values(" suffix=")" suffixOverrides=",">
+			<if test="v_name != null">
+				#{v_name},
+			</if>
+			<if test="v_url != null">
+				#{v_url},
+			</if>
+			<if test="v_intro != null">
+				#{v_intro},
+			</if>
+			<if test="v_content != null">
+				#{v_content},
+			</if>
+			<if test="v_date != null">
+				#{v_date},
+			</if>
+			<if test="c_id != null">
+				#{c_id},
+			</if>
+			<if test="v_data != null">
+				#{v_data},
+			</if>
+			<if test="v_data_url != null">
+				#{v_data_url},
+			</if>
+			<if test="v_play_num != null">
+				#{v_play_num},
+			</if>
+			<if test="v_vip != null">
+				#{v_vip}
+			</if>
+		</trim>
+	</insert>
+	
+	<!-- 修改视频详细信息 -->
+	<update id="upd" parameterType="com.entity.Video">
+		update from video
+		<set>
+			<if test="v_name != null">
+				v_name = #{v_name},
+			</if>
+			<if test="v_url != null">
+				v_url = #{v_url},
+			</if>
+			<if test="v_intro != null">
+				v_intro = #{v_intro},
+			</if>
+			<if test="v_content != null">
+				v_content = #{v_content},
+			</if>
+			<if test="v_date != null">
+				v_date = #{v_date},
+			</if>
+			<if test="c_id != null">
+				c_id = #{c_id},
+			</if>
+			<if test="v_data != null">
+				v_data = #{v_data},
+			</if>
+			<if test="v_data_url != null">
+				v_data_url = #{v_data_url},
+			</if>
+			<if test="v_play_num != null">
+				v_play_num = #{v_play_num},
+			</if>
+			<if test="v_vip != null">
+				v_vip = #{v_vip}
+			</if>
+		</set>
+		where v_id = #{v_id}
+	</update>
+	
+	<!-- 删除视频详细信息 -->
+	<delete id="del" parameterType="java.lang.Integer">
+		delete from video where v_id = #{param1}
+	</delete>
+	
+	
+	<!-- 查询单个视频详细信息 -->
+	<select id="queryById" parameterType="java.lang.Integer" resultType="com.entity.Video">
+		select * from video where v_id = #{param1}
+	</select>
+	
+	<!-- 查询所有视频详细信息 -->
+	<select id="queryAll" resultType="com.entity.Video">
+		select * from video
+	</select>
+	
+	<!-- 分页查询视频详细信息 -->
+	<select id="">
+		select * from video
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 == null">
+			limit 1
+		</if>
+	</select>
 	<insert id="addVideo" parameterType="Video">
 		insert into video(v_name,v_url,v_intro,v_content,v_date,c_id,v_data,v_data_url,v_play_num,v_vip) 
 		values(#{v_name},#{v_url},#{v_intro},#{v_content},#{v_date},#{c_id},#{v_data},#{v_data_url},#{v_play_num},#{v_vip});
