@@ -15,6 +15,9 @@ public interface AdminsDao {
 	// 修改
 	public void upd(Admins a);
 	
+	// 登陆
+	public List<Admins> queryOne(String a_name,String a_pwd); 
+	
 	// 查询所有信息
 	public List<Admins> queryAll();
 	

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.AdminsDao">
-	
+	<select id="queryOne" resultType="com.entity.Admins">
+		select * from admins
+		<where>
+			<if test="param1 != null and param2 != null">
+				a_name = #{param1} and a_pwd = #{param2}
+			</if>
+		</where>
+	</select>
 </mapper>

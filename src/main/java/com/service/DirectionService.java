@@ -20,4 +20,17 @@ public class DirectionService {
 	public List<Direction> queryAll(){
 		return dd.queryAll();
 	}
+	
+	public void add(Direction d){
+		dd.add(d);
+	}
+	
+	public void upd(Direction d){
+		dd.upd(d);
+	}
+	
+	public void del(Integer d_id){
+		dd.del(d_id);
+	}
+	
 }

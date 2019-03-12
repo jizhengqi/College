@@ -109,13 +109,13 @@ public class ShiroConfiguration {
       * 登陆时会比较用户输入的密码，跟数据库密码配合盐值salt解密后是否一致。
       * @return
       */
-     /*@Bean
+     @Bean
      public HashedCredentialsMatcher hashedCredentialsMatcher(){
          HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
          hashedCredentialsMatcher.setHashAlgorithmName("md5");//散列算法:这里使用md5算法;
          //hashedCredentialsMatcher.setHashIterations(2);//散列的次数，比如散列两次，相当于 md5( md5(""));
          return hashedCredentialsMatcher;
-     }*/
+     }
 
 //     //注入缓存
 //     @Bean

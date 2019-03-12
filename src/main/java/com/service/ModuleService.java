@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.ModuleDao;
+import com.entity.Module;
 
 @Service
 @Transactional
@@ -20,5 +21,20 @@ public class ModuleService {
 	// 查询所有语言和所有语言板块
 	public List<Map<String,Object>> queryAll(){
 		return md.queryAll();
+	}
+	
+	// 添加语言模块
+	public void add(Module m){
+		md.add(m);
+	}
+	
+	// 修改语言模块
+	public void upd(Module m){
+		md.upd(m);
+	}
+	
+	// 删除语言模块
+	public void del(Integer m_id){
+		md.del(m_id);
 	}
 }

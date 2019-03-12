@@ -26,4 +26,10 @@ public interface UsersDao {
 	
 	// 分页查询
 	public List<Users> queryPage(Integer page,Integer limit);
+	
+	// 查询所有认证导师的用户
+	public List<Users> queryByTeacher(Integer u_teacher);
+	
+	// 查询所有VIP用户
+	public List<Users> queryByVIP(Integer u_vip);
 }
