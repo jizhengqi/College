@@ -3,7 +3,7 @@
 <mapper namespace="com.dao.DirectionDao">
 	<!-- 查询所有技术方向 -->
 	<select id="queryAll" resultType="com.entity.Direction">
-		select d_id,d_name from direction
+		select d_id,d_name from direction order by d_id
 	</select>
 	
 	<!-- 添加技术方向 -->

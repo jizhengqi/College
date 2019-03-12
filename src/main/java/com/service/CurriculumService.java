@@ -47,4 +47,23 @@ public class CurriculumService {
 		return cd.queryByPage(page, limit);
 	}
 	
+	/**
+	 * 添加课程
+	 * 
+	 * @param curriculum
+	 * @return
+	 */
+	public Integer addCurriculum(Curriculum curriculum) {
+		return cd.addCurriculum(curriculum);
+	}
+
+	/**
+	 * 查询自己录制的课程
+	 * 
+	 * @param u_id
+	 * @return
+	 */
+	public List<Curriculum> queryCurriculum(String u_id) {
+		return cd.queryCurriculum(u_id);
+	}	
 }

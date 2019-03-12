@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap4.0.0.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        /*引入阿里的icon*/
+
+        @font-face {
+            font-family: "iconfont";
+            src: url('iconfont.eot?t=1534844614970');
+            /* IE9*/
+            src: url('iconfont.eot?t=1534844614970#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAATgAAsAAAAAB1AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8qEgkY21hcAAAAYAAAABLAAABcOdatkBnbHlmAAABzAAAASwAAAFY2/C2dWhlYWQAAAL4AAAALwAAADYSY0OKaGhlYQAAAygAAAAcAAAAJAfeA4NobXR4AAADRAAAAAgAAAAICAAAAGxvY2EAAANMAAAABgAAAAYArAAAbWF4cAAAA1QAAAAgAAAAIAEPAH1uYW1lAAADdAAAAUUAAAJtPlT+fXBvc3QAAAS8AAAAIwAAADQ9SsrveJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByeGT0zYm7438AQw9zA0AAUZgTJAQDk9QxHeJxjYGBgZWBgYAZiHSBmYWBgDGFgZAABP6AoI1icmYELLM7CoARWwwISf2b0/z+MBPJZwCQDIxvDKOABkzJQHjisIJiBEQCjLgoxAHicHY3BTsJAGIR3drv/0hZaqXVLIKJSugVNQAOUxCKYeNKLMTHRB+Bi4sGTD2B8GV8C4zNxJepC/vxzmMzMxwRjfz/iW1wzn52xN8YQQLWRzDEdQJA60Co1C5gJhSAzLbZ3BB1TZwgjY2XTaceMixK2UZi8Y2u5Iesb+3ZIl9CJppTyAYaYFFObG21XEp3EI30EzlYbKTernX6B89ALAAFuvARwsiwI7sgPyXBo7p6ffLqe737Eh1K2Wxrifn65bKhKFjXbTtpS6rUu4LvlrFcSwL2y59Dpy/vjQMmZB7HYgRxnq78PwDqSMlpbHM9cv6pk1q3Vbin0KeNdomMDr+4h2W/2uF48+2o03kvhVPpF5gChW7WEoi8SonyIaNloPV3cyPoVZ+wfIBIx1XicY2BkYGAA4r3qZgbx/DZfGbhZGEDg+sL/xxD0/4MsDMwOQC4HAxNIFAA6yguGAHicY2BkYGBu+N/AEMPCAAJAkpEBFTABAEcIAmsEAAAABAAAAAAAAAAArAAAAAEAAAACAHEAAwAAAAAAAgAAAAoACgAAAP8AAAAAAAB4nGWPTU7DMBCFX/oHpBKqqGCH5AViASj9EatuWFRq911036ZOmyqJI8et1ANwHo7ACTgC3IA78EgnmzaWx9+8eWNPANzgBx6O3y33kT1cMjtyDRe4F65TfxBukF+Em2jjVbhF/U3YxzOmwm10YXmD17hi9oR3YQ8dfAjXcI1P4Tr1L+EG+Vu4iTv8CrfQ8erCPuZeV7iNRy/2x1YvnF6p5UHFockikzm/gple75KFrdLqnGtbxCZTg6BfSVOdaVvdU+zXQ+ciFVmTqgmrOkmMyq3Z6tAFG+fyUa8XiR6EJuVYY/62xgKOcQWFJQ6MMUIYZIjK6Og7VWb0r7FDwl57Vj3N53RbFNT/c4UBAvTPXFO6stJ5Ok+BPV8bUnV0K27LnpQ0kV7NSRKyQl7WtlRC6gE2ZVeOEXpc0Yk/KGdI/wAJWm7IAAAAeJxjYGKAAC4G7ICJkYmRmYGrOCMxLz05ozQxj4EBACJZBEAA') format('woff'), url('iconfont.ttf?t=1534844614970') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+            url('iconfont.svg?t=1534844614970#iconfont') format('svg');
+            /* iOS 4.1- */
+        }
+
+        .iconfont {
+            font-family: "iconfont" !important;
+            font-size: 16px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .icon-shangchuan:before {
+            content: "\e632";
+        }
+        .iconfont {
+            font-family: "iconfont";
+            font-size: 18px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+            padding-left: 20px
+        }
+        .uploadBox {
+            width: 400px;
+            border: 1px solid #ccc;
+            margin: 30px auto;
+        }
+        .fileBox,
+        .fileInfo {
+            margin: 16px;
+            height: 60px;
+            line-height: 60px;
+            border: 1px solid #ccc;
+            padding-left: 16px;
+            font-size: 16px;
+        }
+        .inputfile {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+        /*E + F 毗邻元素选择器，匹配所有紧随E元素之后的同级元素F*/
+        .inputfile+label {
+            color: #3e97df;
+            display: inline-block;
+        }
+        .inputfile:focus+label,
+        .inputfile+label:hover {
+            color: #0c89f0;
+        }
+
+        h3 {
+            padding: 10px 0 0 16px;
+            font-weight: normal;
+            font-size: 18px;
+            color: #666;
+        }
+
+        .filePart {
+            line-height: 30px;
+            overflow: hidden;
+            float: left;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 12px;
+            height: 30px;
+        }
+
+        .fileStatus {
+            overflow: hidden;
+            float: left;
+            height: 20px;
+            font-size: 10px;
+            line-height: 20px;
+        }
+
+        .ml10 {
+            margin-left: 10px;
+        }
+
+        .fileName {
+            width: 200px;
+        }
+
+        .fileSize {
+            width: 120px;
+            text-align: center;
+        }
+
+        .uploadFail {
+            color: #ff0800d3;
+        }
+
+        .uploadSuccess {
+            color: #2c832c;
+        }
+
+        /*对应CSS*/
+
+        .progress {
+            position: relative;
+            width: 80%;
+            height: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            /*注意这里*/
+            box-shadow: 0 0 1px 0px #ddd inset;
+        }
+        
+        .col-md-6{
+        	/* border: 1px solid #ccc; */
+            padding: 30px;
+        }
+
+        .progress span {
+            position: absolute;
+            display: inline-block;
+            width: 10%;
+            height: 100%;
+            background-color: #3e97df;
+        }
+        .appendMsg{
+        	border-right: 1px solid #ccc;
+        }
+        .col-md-8{
+        	padding-top: 25px;
+        	padding-left: 50px;
+        }
+        .ziliao{
+        	border: 1px solid #ccc;
+        	width: 135px;
+        	display: none;
+        }
+        #Zzc{
+        	position: absolute;
+        	margin: 0px;
+        	padding: 0px;
+        	background-color: black;
+        	opacity:0.7;
+        	width: 100%;
+        	height: 100%;
+        	top: 0px;
+        	left: 0px;
+        	z-index: 100px;
+        	display: none;
+        	font-size: 30px;;
+        }
+        #uploadMsg{
+        	padding: 5px 10px;
+        	width: 220px;
+        	margin: 200px auto;
+        	color: green;
+        	z-index: 150px;
+        	background-color: black;
+        }
+        #uploadSuccess{
+        	padding: 5px 10px;
+        	width: 220px;
+        	margin: -200px auto;
+        	color: green;
+        	z-index: 150px;
+        	background-color: black;
+        }
+        #uploadBtn{
+        	margin-left: 30px;
+        	margin-right: 30px;
+        }
+        #course{
+        	color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="m-5 row">
+        <div class="appendMsg col-md-6">
+        	<input type="hidden" id="c_id" value="1">
+            <legend><h2>所属课程：<span id="course">Struts详解</span></h2></legend>
+            <br>
+            <div class="form-group has-feedback">
+                <label>第?节标题：</label>
+                <input type="text" name="v_name" class="form-control">
+                <span class="glyphicon form-control-feedback"></span>
+                <p class="help-block">还可输入<span id="v_nameNum">30</span>字</p>
+            </div>
+            <div class="form-group">
+                <label>本节简介：</label> <!-- 不可拉伸 -->
+                <textarea rows="5" class="form-control" style="resize:none" name="v_intro"></textarea>
+                <p class="help-block">还可输入<span id="v_introNum">100</span>字</p>
+            </div>
+            <div class="form-group has-feedback">
+                <label>核心内容：</label>
+                <textarea rows="5" class="form-control" style="resize:none" name="v_content"></textarea>
+                <p class="help-block">还可输入<span id="v_contentNum">100</span>字</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>是否提供资料：</label>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" onclick="ziliao(1)" name="v_data" value="1">是
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" onclick="ziliao(0)" name="v_data" value="0">否
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+					<div id="ziliaos" class="ziliao">
+						<input type="file" id="ziliao" class="inputfile" @change="showDir($event)">
+						<label for="ziliao">
+	                        <i class="iconfont">&#xe632;</i>点击上传资料
+	                    </label>
+					</div>
+					<p class="help-block"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>VIP：</label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="v_vip" value="1">是
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="v_vip" value="0">否
+                    </label>
+                </div>
+            </div>
+            <div class="uploadBox">
+                <h3>上传视频</h3>
+                <div class="fileBox" id="fileBox">
+                    <!--内容改变事件       @change="handlerUpload($event)"-->
+                    <input type="file" id="myFile" class="inputfile" @change="showVideoDir($event)">
+                    <label for="myFile">
+                        <i class="iconfont">&#xe632;</i>点击上传视频
+                    </label>
+                </div>
+                <p class="help-block"></p>
+                <ul class="files">
+                    <li v-for="(file, index) in files">
+                        <div class="fileInfo">
+                            <div class="fileName filePart">
+                                {{ file.name }}
+                            </div>
+                            <div class="fileSize filePart ml10">
+                                {{file.size}}
+                            </div>
+                            <!--进度条-->
+                            <div class="progress">
+                                <span :style="{width:file.uploadPercentage,backgroundColor:file.uploadStatus==1 ||file.uploadStatus==2?'':'red'}"></span>
+                            </div>
+                            <div class="fileStatus">
+                                <span v-if="file.uploadStatus == -1" class="uploadFail">出错啦，请重新上传或者删除</span>
+                                <span v-if="file.uploadStatus == 2" class="uploadSuccess">已上传</span>
+                                <span v-if="file.uploadStatus == 1" class="uploadSuccess">上传中...</span>
+                                <span v-if="file.uploadStatus == -2" class="uploadFail">出错啦，文件类型不符合要求</span>
+                                <span v-if="file.uploadStatus == -3" class="uploadFail">出错啦，文件大小超出限制</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+            	<button id="uploadBtn" class="btn btn-lg"  @click="cancel()">取消</button>
+            	<button id="cancelBtn" class="btn btn-primary btn-lg" @click="handlerUpload()">上传</button>
+            </div>
+            <div>
+                <br>
+                <p class="help-block">上传提示：最后一步才是上传视频，上传视频之前需要将其他信息填写完毕！请认真上传！</p>
+                <p class="help-block">取消提示：将返回上一页面。</p>
+            </div>
+        </div>
+    </div>
+    <div id="Zzc"><div id="uploadMsg">上传中...</div><div id="uploadSuccess"></div></div>
+    
+    <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+    <script src="/vue/vue2.5.13.min.js"></script>
+    <script src="/vue/vue-axios/axios0.18.0.min.js"></script>
+    <script type="text/javascript" src="/vue/vue-router/vue-router.js" charset="utf-8"></script>
+    
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                files: [],
+                uploadSuccess: 0
+            },
+            created: function(){
+            	this.insertParam();
+            },
+            methods: {
+                handlerUpload: function() {
+                    if(!confirm("确定上传吗？")){
+                    	return;
+                    }
+                	//上传视频之前先判断其他信息是否填写完毕
+                    var v_name = $("input[name='v_name']").val();
+                    var v_intro = $("textarea[name='v_intro']").val();
+                    var v_content = $("textarea[name='v_content']").val();
+                    var v_data = document.getElementsByName("v_data");
+                    var selectData = null;   // selectvalue为radio中选中的值
+                    for(var i = 0; i < v_data.length; i++){
+                        if(v_data[i].checked == true) {
+                          	selectData = v_data[i].value;
+                            break;
+                        }
+                  	}
+                    var v_vip = document.getElementsByName("v_vip");
+                    var selectVip = null;   //  selectvalue为radio中选中的值
+                    for(var i = 0; i < v_vip.length; i++){
+                        if(v_vip[i].checked == true) {
+                          	selectVip = v_vip[i].value;
+                            break;
+                        }
+                  	}
+                    var c_id = $("#c_id").val();
+                    if(undefined == v_name || "" == v_name){
+                    	alert("请填写本节标题！");
+                    	$("input[name='v_name']").parent().removeClass("has-success");
+                		$("input[name='v_name']").next().removeClass("glyphicon-ok");
+                		$("input[name='v_name']").parent().addClass("has-error");
+                		$("input[name='v_name']").next().addClass("glyphicon-remove");
+                    	return;
+                    }else{
+                    	if(v_name.length > 30){
+                    		$("input[name='v_name']").parent().removeClass("has-success");
+                    		$("input[name='v_name']").next().removeClass("glyphicon-ok");
+                    		$("input[name='v_name']").parent().addClass("has-error");
+                    		$("input[name='v_name']").next().addClass("glyphicon-remove");
+                    		return;
+                    	}else{
+                    		$("input[name='v_name']").parent().removeClass("has-error");
+                    		$("input[name='v_name']").next().removeClass("glyphicon-remove");
+                    		$("input[name='v_name']").parent().addClass("has-success");
+                    		$("input[name='v_name']").next().addClass("glyphicon-ok");
+                    	}
+                    }
+                    if(undefined == v_intro || "" == v_intro){
+                    	alert("请填写本节简介！");
+                    	$("textarea[name='v_intro']").parent().removeClass("has-success");
+                		$("textarea[name='v_intro']").parent().addClass("has-error");
+                    	return;
+                    }else{
+                    	if(v_intro.length > 100){
+                    		$("textarea[name='v_intro']").parent().removeClass("has-success");
+                    		$("textarea[name='v_intro']").parent().addClass("has-error");
+                    		return;
+                    	}else{
+                    		$("textarea[name='v_intro']").parent().removeClass("has-error");
+                    		$("textarea[name='v_intro']").parent().addClass("has-success");
+                    	}
+                    }
+                    if(undefined == v_content || "" == v_content){
+                    	alert("请填写核心内容！");
+                    	$("textarea[name='v_content']").parent().removeClass("has-success");
+                		$("textarea[name='v_content']").parent().addClass("has-error");
+                    	return;
+                    }else{
+                    	if(v_content.length > 100){
+                    		$("textarea[name='v_content']").parent().removeClass("has-success");
+                    		$("textarea[name='v_content']").parent().addClass("has-error");
+                    		return;
+                    	}else{
+                    		$("textarea[name='v_content']").parent().removeClass("has-error");
+                    		$("textarea[name='v_content']").parent().addClass("has-success");
+                    	}
+                    }
+                    if(undefined == selectData || "" == selectData){
+                    	alert("请选择是否提供资料！");
+                    	return;
+                    }
+                    if(selectData == 1){
+                    	if($("#ziliao").val() == ""){
+                    		alert("请上传资料");
+                    		return;
+                    	}else{
+                    		var fileName = $("#ziliao")[0].files[0].name;
+                    		if(fileName.substring(fileName.lastIndexOf(".") + 1) != "zip"){
+                        		alert("文件格式错误，请选择Zip格式文件！");
+                        		return;
+                        	}
+                    	}
+                    }
+                    if(undefined == selectVip || "" == selectVip){
+                    	alert("请选择是否为Vip视频！");
+                    	return;
+                    }
+                    if($("#myFile").val() == ""){
+                		alert("请上传视频教程");
+                		return;
+                	}
+                  	//获取选定的文件
+                    let tFiles = $("#myFile")[0].files;
+                    let len = tFiles.length;
+                    //开始上传每一个文件//给每个文件设置一个进度条
+                    var item = {
+                        name: tFiles[0].name,
+                        uploadPercentage: 1,
+                        size: this.formatFileSize(tFiles[0].size, 0),
+                        uploadStatus: 0 //给每个文件设置一个上传状态
+                        //0	初始状态、1	上传中、2	已上传、-1	服务器错误、-2	上传文件类型不符合要求、-3	上传文件超出限制
+                    }
+                    //console.log(item)
+                    this.files.shift();//删除数组中的第一个，后面的一次向前推
+                    this.files.push(item);
+                    //开始上传文件 新建一个formData
+                    let param = new FormData();
+                    param.append("v_id", 3);//视频ID
+                    param.append("v_name", v_name);//本节标题
+                    param.append("v_intro", v_intro);//视频简介
+                    param.append("v_content", v_content);//视频内容
+                    param.append("v_date", new Date()); //自动添加
+                    param.append("c_id", c_id); //进入页面添加
+                    param.append("v_data", selectData); //选择是否提供资料
+                    var url = "/video/addVideo1";
+                    if(selectData == 1){
+                    	param.append("ziFile",$("#ziliao")[0].files[0]);//上传资料
+                    	url = "/video/addVideo";
+                    }
+                    param.append("v_play_num", 0); //视频观看次数
+                    param.append("v_vip", selectVip); //是否为VIP视频
+                    //通过append向form对象添加数据
+                    param.append("file", tFiles[0]);
+                    //FormData私有类对象，访问不到，可以通过get判断值是否传进去
+                    //console.log("file:"+param.get("file"));
+                    //判断大小
+                    if (!this.checkFileSize(tFiles[0].size)) {
+                        item.uploadStatus = -3;
+                        return false;
+                    }
+                    var fileName = tFiles[0].name;
+                    if (!this.checkFileType(fileName.substring(fileName.lastIndexOf(".") + 1))) {
+                        item.uploadStatus = -2;
+                        return false;
+                    }
+                    //通过axios上传文件
+                    //配置
+                    let config = {
+                        //添加请求头 
+                        headers: {
+                            "Content-Type": "multipart/form-data"
+                        },
+                        //添加上传进度监听事件
+                        onUploadProgress: e => {
+                            var completeProgress = ((e.loaded / e.total * 100) | 0) + "%";
+                            //console.log(this.files)
+                            item.uploadPercentage = completeProgress;
+                        }
+                    };
+                  	//隐藏上传按钮/取消按钮/视频提示
+                	$("#uploadBtn").hide();
+                	$("#cancelBtn").hide();
+                	$("#fileBox").next().hide();
+                	$("#ziliaos").next().hide();
+					//生成遮罩层
+                	this.showDiv();
+					//上传信息
+                    axios.post(url, param, config).then(function(
+                        response) {
+                        //console.log(response);
+                        item.uploadStatus = 2;
+                        $("#uploadSuccess").html("上传成功！<br>页面即将跳转,请稍后...");
+                        setTimeout(function(){
+                        	window.location.href = "index.html";//课程的列表
+                        },2000);
+                    }).catch(function(error) {
+                        //console.log(error);
+                        item.uploadStatus = -1;
+                        //上传错误，关闭遮罩层
+                        var div = document.getElementById("Zzc");
+                    	div.style.display = "none";
+                    });
+                },//格式化文件大小的函数
+                formatFileSize: function(fileSize, idx) {
+                    var units = ["B", "KB", "MB", "GB"];
+                    idx = idx || 0;
+                    if (fileSize < 1024 || idx === units.length - 1) {
+                        return fileSize.toFixed(1) +
+                            units[idx];
+                    }
+                    return this.formatFileSize(fileSize / 1024, ++idx);
+                },//检测文件类型的函数
+                checkFileType: function(fileType) {
+                    const acceptTypes = ['mp4', 'avi', 'flv', 'wmv'];
+                    for (var i = 0; i < acceptTypes.length; i++) {
+                        if (fileType === acceptTypes[i]) {
+                            return true;
+                        }
+                    }
+                    return false;
+                },//检测文件大小的函数
+                checkFileSize: function(fileSize) {
+                    //2M
+                    const MAX_SIZE = 1024 * 1024 * 1024;
+                    if (fileSize > MAX_SIZE) {
+                        return false;
+                    }
+                    return true;
+                },//显示遮罩层
+                showDiv: function(){
+                	var div = document.getElementById("Zzc");
+                	div.style.display = "block";
+                },//取消上传，返回上一页面
+                cancel: function(){
+                	window.history.go(-1);
+                },//显示资料上传的名称
+                showDir: function(e){
+                	var fileName = e.target.files[0].name;
+                	if(fileName.substring(fileName.lastIndexOf(".") + 1) != "zip"){
+                		alert("文件格式错误，请选择Zip格式文件！");
+                	}
+                	$("#ziliaos").next().html(fileName);
+                },//显示上传路径
+                showVideoDir: function(e){
+                	$("#fileBox").next().html(e.target.files[0].name);
+                },
+                insertParam: function(){
+                	/* let appId = this.$route.params.u_id;
+                	alert(appId); */
+                	$("#c_id").val(this.getParam("c_id"));
+                	$("#course").html(this.getParam("c_name"));
+                },
+                getParam: function(str){
+                	var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));
+            	    if (result == null || result.length < 1) {
+            	        console.log(result[1]);
+            	    }
+            	    return decodeURI(result[1]);
+                }
+            }
+        });
+        
+        //显示是否上传资料
+        function ziliao(obj){
+        	var idx = document.getElementById("ziliaos");
+        	if(obj == 1){
+        		idx.style.display = "block";
+        		$("#ziliaos").next().show();
+        	}else{
+        		idx.style.display = "none";
+        		$("#ziliaos").next().hide();
+        	}
+        }
+        
+      	//当按完字母键：实时监控留言剩余可输入字数
+        $("textarea[name='v_intro']").keyup(function(){
+            $("#v_introNum").html(100 - $(this).val().length);
+        });
+        //当按完回车键：实时监控留言剩余可输入字数
+        $("textarea[name='v_intro']").keyup(function(){
+            if(event.keyCode == 13){
+                $("#v_introNum").html(99 - $(this).val().length);
+            }
+        });
+        
+      	//当按完字母键：实时监控留言剩余可输入字数
+        $("textarea[name='v_content']").keyup(function(){
+            $("#v_contentNum").html(100 - $(this).val().length);
+        });
+        //当按完回车键：实时监控留言剩余可输入字数
+        $("textarea[name='v_content']").keyup(function(){
+            if(event.keyCode == 13){
+                $("#v_contentNum").html(99 - $(this).val().length);
+            }
+        });
+        
+      	//当按完字母键：实时监控留言剩余可输入字数
+        $("input[name='v_name']").keyup(function(){
+            $("#v_nameNum").html(30 - $(this).val().length);
+        });
+        //当按完回车键：实时监控留言剩余可输入字数
+        $("input[name='v_name']").keyup(function(){
+            if(event.keyCode == 13){
+                $("#v_nameNum").html(29 - $(this).val().length);
+            }
+        });
+    </script>
+</body>
+
+</html>

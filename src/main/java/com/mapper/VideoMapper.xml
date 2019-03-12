@@ -134,4 +134,11 @@
 			limit 1
 		</if>
 	</select>
+	<insert id="addVideo" parameterType="Video">
+		insert into video(v_name,v_url,v_intro,v_content,v_date,c_id,v_data,v_data_url,v_play_num,v_vip) 
+		values(#{v_name},#{v_url},#{v_intro},#{v_content},#{v_date},#{c_id},#{v_data},#{v_data_url},#{v_play_num},#{v_vip});
+	</insert>
+	<select id="queryVideo" resultType="Video">
+		select * from video where v_id = #{v_id}
+	</select>
 </mapper>

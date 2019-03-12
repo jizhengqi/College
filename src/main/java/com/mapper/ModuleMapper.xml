@@ -3,7 +3,7 @@
 <mapper namespace="com.dao.ModuleDao">
 	<!-- 查询所有语言和语言中的板块 -->
 	<select id="queryAll" resultType="java.util.Map">
-		select DISTINCT l.d_id,l_name,(select group_concat(m_name) from module m where m.l_id = l.l_id) m_name from language l left join module m on l.l_id = m.l_id
+		select DISTINCT l.d_id,l_name,(select group_concat(m_name) from module m where m.l_id = l.l_id) m_name from language l left join module m on l.l_id = m.l_id order by d_id
 	</select>
 	
 	<!-- 删除语言模块 -->

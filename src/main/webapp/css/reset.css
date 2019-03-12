@@ -1,0 +1,130 @@
+@charset "utf-8";
+* {
+  font-family: Verdana, "Lantinghei SC", "Hiragino Sans GB", "Microsoft Yahei", Helvetica, arial, "\5b8b\4f53", sans-serif;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body,
+section,
+article,
+header,
+footer,
+nav,
+section,
+video,
+div,
+button,
+dl,
+dt,
+dd,
+fieldset,
+figure,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+legend,
+ul,
+ol,
+li,
+p,
+span,
+select,
+th,
+td,
+textarea,
+pre,
+a,
+div,
+i,
+img {
+  margin: 0;
+  padding: 0;
+}
+img,
+fieldset,
+button {
+  border: 0;
+  outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+select,
+textarea {
+  font-size: 100%;
+  font-weight: 400;
+}
+body {
+  background: #f5f5f5;
+}
+strong {
+  font-weight: normal;
+}
+ol,
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #999;
+}
+sup {
+  vertical-align: text-top;
+}
+sub {
+  vertical-align: text-bottom;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+section,
+article,
+header,
+footer,
+nav,
+section,
+video {
+  display: block;
+}
+input {
+  outline: 0;
+  border: 0;
+}
+.cf {
+  zoom: 1;
+}
+.cf:after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+.fl {
+  float: left;
+}
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+th {
+  font-weight: normal;
+}
+td {
+  text-align: center;
+}
+p {
+  word-wrap: break-word;
+}
