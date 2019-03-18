@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.ModuleDao;
+import com.entity.Curriculum;
 import com.entity.Module;
 
 @Service
@@ -36,5 +37,10 @@ public class ModuleService {
 	// 删除语言模块
 	public void del(Integer m_id){
 		md.del(m_id);
+	}
+	
+	// 根据语言模块查询课程
+	public List<Curriculum> queryByModule(String m_name){
+		return md.queryByModule(m_name);
 	}
 }

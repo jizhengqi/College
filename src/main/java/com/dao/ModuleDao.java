@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.entity.Curriculum;
 import com.entity.Module;
 
 @Mapper
@@ -21,5 +22,8 @@ public interface ModuleDao {
 	
 	// 删除语言模块
 	public void del(Integer m_id);
+	
+	// 根据语言模块查询视频
+	public List<Curriculum> queryByModule(String m_name);
 	
 }

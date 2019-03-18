@@ -24,4 +24,13 @@ public class DirectionController {
 		List<Direction> list = ds.queryAll();
 		return list;
 	}
+	
+	/*
+	 * 根据技术方向查询所有课程
+	 */
+	@RequestMapping("queryByDirection")
+	@ResponseBody
+	public String queryByDirection(String d_name){
+		return null;
+	}
 }

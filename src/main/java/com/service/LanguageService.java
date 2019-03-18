@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.dao.DirectionDao;
 import com.dao.LanguageDao;
 import com.dao.ModuleDao;
+import com.entity.Curriculum;
 import com.entity.Direction;
 import com.entity.Language;
 
@@ -87,5 +88,10 @@ public class LanguageService {
 		}
 		// MyFileUtils.writeToFile("D:/direction.txt", direction.toString());
 		return direction;
+	}
+	
+	// 根据语言查询所有课程
+	public List<Curriculum> queryByLanguage(String l_name){
+		return ld.queryByLanguage(l_name);
 	}
 }

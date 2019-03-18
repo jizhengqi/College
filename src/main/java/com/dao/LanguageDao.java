@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.entity.Curriculum;
 import com.entity.Language;
 
 @Mapper
@@ -20,4 +21,7 @@ public interface LanguageDao {
 	
 	// 添加语言分类
 	public void add(Language l);
+	
+	// 根据语言查询所有课程
+	public List<Curriculum> queryByLanguage(String l_name);
 }
