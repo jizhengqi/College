@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>HTML视频教程_HTML在线学习-极客学院</title>
+    <meta name="keywords" content="HTML,HTML视频教程, HTML入门视频教程，HTML从入门到精通，HTML在线学习" />
+    <meta name="description" content="极客学院（jikexueyuan.com）HTML视频课程：包括HTML在线视频、HTML从入门到精通视频、及HTML实例源码，让你全面学习HTML,快速掌握HTML开发技能。" />
+    <link rel="stylesheet" href="css/common_sync0_libs_4d81287.css" />
+    <link rel="stylesheet" href="css/common_sync1_libs_769abc5.css" />
+    <link rel="stylesheet" href="css/header_d41d8cd.css" />
+    <link rel="stylesheet" href="css/cleft_ec22570.css" />
+    <link rel="stylesheet" href="css/course_fefbd4c.css" />
+    <link rel="stylesheet" href="css/loading_03ba72f.css" />
+    <link rel="stylesheet" href="css/lessonlist_d41d8cd.css" />
+
+    <script type="text/javascript" src="js/growingio.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/mask.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/jquery.min.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/header.min.js?t=1544581681296"></script>
+    <script type="text/javascript" src="js/web_socket.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/websocket.js?t=1513326254000"></script>
+    <script src="/vue/vue2.5.13.min.js"></script>
+    <script src="/vue/vue-axios/axios0.18.0.min.js"></script>
+    <script src="/vue/vue-resource/vue-resource.js"></script>
+    <script type="text/javascript" src="/vue/vue-router/vue-router.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header_top_notice"></div>
+        <div id="jk-header">
+            <div class="header">
+                <h1>
+                    <a href="//www.jikexueyuan.com" class="logo">
+                        <img src="img/logo.png?t=1513326254000" width="100" alt="极客学院" />
+                    </a>
+                </h1>
+                <nav style="width:490px;">
+                    <ul>
+                        <li>
+                            <a href="//www.jikexueyuan.com" class="home">首页</a>
+                        </li>
+                        <li class="careerpath">
+                            <a href="//www.jikexueyuan.com/zhiye/">职业</a><i class="slide-icon"></i>
+                            <div class="zhiye-submenu slide-submeu">
+                                <strong>前端</strong>
+                                <a href="//www.jikexueyuan.com/zhiye/web"><i class="web-icon"></i>Web前端工程师</a>
+                                <a href="//www.jikexueyuan.com/zhiye/wechatapp"><i class="wx-icon"></i>微信小程序</a>
+                                <strong>移动端</strong>
+                                <a href="//www.jikexueyuan.com/zhiye/android"><i class="android-icon"></i>Android工程师</a>
+                                <a href="//www.jikexueyuan.com/zhiye/ios"><i class="ios-icon"></i>iOS工程师</a>
+                                <strong>后端</strong>
+                                <a href="//www.jikexueyuan.com/zhiye/python"><i class="python-icon"></i>Python工程师</a>
+                                <a href="//www.jikexueyuan.com/zhiye/php"><i class="php-icon"></i>PHP工程师</a>
+                                <a href="//www.jikexueyuan.com/zhiye/go"><i class="golang-icon"></i>Golang工程师</a>
+                                <a href="//www.jikexueyuan.com/zhiye/java"><i class="java-icon"></i>JavaWeb工程师</a>
+                                <strong>大数据</strong>
+                                <a href="//www.jikexueyuan.com/zhiye/bigdata"><i class="data-icon"></i>大数据平台研发工程师</a>
+                                <strong>人工智能</strong>
+                                <a href="//www.jikexueyuan.com/zhiye/ml"><i class="mlearning-icon"></i>机器学习工程师</a>
+                                <strong>区块链</strong>
+                                <a href="//www.jikexueyuan.com/zhiye/blockchain"><i class="yw-icon"></i>区块链工程师</a>
+                                <!--<a href="#"><i class="yw-icon"></i>运维工程师</a>
+								<a href="#"><i class="xmjl-icon"></i>项目经理</a>-->
+                                <strong>设计</strong>
+                                <a href="//www.jikexueyuan.com/zhiye/ux"><i class="ui-icon"></i>UI/UX设计师</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="//www.jikexueyuan.com/course/">课程</a><i class="slide-icon"></i>
+                            <div class="slide-submeu">
+                                <a href="//www.jikexueyuan.com/course/">课程库</a>
+                                <a href="//ke.jikexueyuan.com/zhiye/">职业路径</a>
+                                <a href="//www.jikexueyuan.com/path/">知识体系图</a>
+                                <a href="//ke.jikexueyuan.com/xilie/">系列课程</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="//www.jikexueyuan.com/partner">企业</a><i class="slide-icon"></i>
+                            <div class="slide-submeu qy-box">
+                                <a href="//zt.jikexueyuan.com/microsoftai"><i class="wr-icon"></i>微软人工智能 </a>
+                                <a href="//zt.jikexueyuan.com/baiduai"><i class="baidu-icon"></i>百度AI图像技术课</a>
+                                <a href="//zt.jikexueyuan.com/aws"><i class="aws-icon"></i>AWS云计算</a>
+                                <a href="//zt.jikexueyuan.com/qcloud"><i class="txy-icon"></i>腾讯云课程专区</a>
+                                <a href="//zt.jikexueyuan.com/qualcomm"><i class="gt-icon"></i>Qualcomm公开课 </a>
+                                <a href="//zt.jikexueyuan.com/b" class="youke-nav"><i class="youke-icon bounce"></i>企业合作新模式</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="//wiki.jikexueyuan.com/">社区</a><i class="slide-icon"></i>
+                            <div class="slide-submeu">
+                                <a href="//wiki.jikexueyuan.com/">Wiki</a>
+                                <a href="//wenda.jikexueyuan.com/">技术问答</a>
+                                <!--<a href="//qun.jikexueyuan.com/">社群</a>
+						<a href="//download.jikexueyuan.com/">资料下载</a>-->
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="search">
+                    <input class="searchinput" id="searchinput" placeholder="搜索课程、问答或Wiki" />
+                    <span class="search-icon" id="search-bottom"></span>
+                    <div class="search-result">
+                        <!-- <a href="javascript:;" class="search-hot">热门搜索 <span class="label label-green">职业课程</span></a>
+				<a href="javascript:;">hello world <span class="label label-blue">知识图谱</span></a>
+				<a href="javascript:;">hello world <span class="label label-purple">系列课程</span></a> -->
+                    </div>
+                </div>
+                <div class="nav-other" id="nav-other">
+                    <div class="centerbox" style="display: none;">
+                        <a href="//xue.jikexueyuan.com/" class="learn-center" title="学习中心"></a>
+                    </div>
+                    <div class="centerbox" style="display: none;">
+                        <a href="//www.jikexueyuan.com/member/notifications/" class="message" id="message" title="消息中心"><i class="have" id="have" style="display: none;"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="pager">
+            <div id="container">
+                <!-- crumbs-->
+                <div class="crumbs">
+                    <div class="w-1000">
+                        <a href="//www.jikexueyuan.com">首页</a>
+                        <em>&gt;</em>
+                        <a href="//www.jikexueyuan.com/course/">职业课程库</a>
+                        <em>&gt;</em>
+                        <a href="//www.jikexueyuan.com/course/web/">前端开发</a>
+                        <em>&gt;</em>
+                        <a href="//www.jikexueyuan.com/course/webbase/">前端基础</a>
+                        <em>&gt;</em>
+                        <a href="//www.jikexueyuan.com/course/html/">HTML</a>
+                    </div>
+                </div>
+                <!-- crumbs-->
+                <div class="wrap w-1000">
+                    <div id="main" class="f_r">
+                        <!-- tagGather -->
+                        <div class="tagGather">
+                            <div class="bd">
+                                <div class="listbox">
+                                    <!-- sort -->
+                                    <div class="sort">
+                                        <div class="wrap">
+                                            <div class="sortMode">
+                                                <h1>HTML</h1>
+                                                <dl><dt><span class="type-title-one">最新</span><i class="arrow"></i></dt>
+                                                    <dd>
+                                                        <p class="lesson-new">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-0-0-0/" ref="nofollow">最新</a>
+                                                        </p>
+                                                        <p class="lesson-new">
+                                                            <a href="//www.jikexueyuan.com/course/html/2-0-0-0/" ref="nofollow">最热</a>
+                                                        </p>
+                                                    </dd>
+                                                </dl>
+                                                <!-- new课程类型 -->
+                                                <dl><dt><span class="type-title-tow">课程类型</span><i class="arrow"></i></dt>
+                                                    <dd>
+                                                        <p class="lesson-detailed">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-0-0-1/" ref="nofollow">VIP</a>
+                                                        </p>
+                                                        <p class="lesson-detailed">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-0-0-2/" ref="nofollow">免费</a>
+                                                        </p>
+                                                        <p class="lesson-detailed">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-0-0-3/" ref="nofollow">认证专享</a>
+                                                        </p>
+                                                        <p class="lesson-all">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-0-0-0/" ref="nofollow">全部</a>
+                                                        </p>
+                                                    </dd>
+                                                </dl>
+                                                <!-- /new课程类型 -->
+                                                <dl><dt><span class="type-title-tow">内容类型</span><i class="arrow"></i></dt>
+                                                    <dd>
+                                                        <p class="lesson-detailed">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-0-1-0/" ref="nofollow">知识精讲</a>
+                                                        </p>
+                                                        <p class="lesson-detailed">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-0-3-0/" ref="nofollow">项目实战</a>
+                                                        </p>
+                                                        <p class="lesson-all">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-0-0-0/" ref="nofollow">全部</a>
+                                                        </p>
+                                                    </dd>
+                                                </dl>
+                                                <dl><dt><span class="type-title-three">难度等级</span><i class="arrow"></i></dt>
+                                                    <dd>
+                                                        <p class="level-one">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-1-0-0/" ref="nofollow">初级</a>
+                                                        </p>
+                                                        <p class="level-one">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-3-0-0/" ref="nofollow">中级</a>
+                                                        </p>
+                                                        <p class="level-one">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-5-0-0/" ref="nofollow">高级</a>
+                                                        </p>
+                                                        <p class="level-all">
+                                                            <a href="//www.jikexueyuan.com/course/html/1-0-0-0/" ref="nofollow"> 全部 </a>
+                                                        </p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                            <div class="previewMode">
+                                                <ul>
+                                                    <li class="kuai-icon curr"><i class="icon"></i>
+                                                    </li>
+                                                    <li class="list-icon"><i class="icon"></i>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- sort end -->
+                                    <div class="lesson_loading">
+                                        <div class="spinner">
+                                            <div class="rect1"></div>
+                                            <div class="rect2"></div>
+                                            <div class="rect3"></div>
+                                            <div class="rect4"></div>
+                                            <div class="rect5"></div>
+                                        </div>
+                                        <div class="txt">课程加载中...</div>
+                                    </div>
+                                    <div class="lesson-list" id="changeid" style="display:none">
+                                        <ul class="cf" style="display: block;">
+                                            <!--list-->
+                                            <li id="2707" test="0" deg="0">
+                                                <div class="lessonimg-box">
+                                                    <a href="//www.jikexueyuan.com/course/2707.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">
+                                                        <img src="https://a1.jikexueyuan.com/home/201604/26/0ff6/571f242278c8d.jpg" class="lessonimg" title="整站项目开发实战之网站首页布局搭建" alt="整站项目开发实战之网站首页布局搭建">
+                                                        <div class="lessonplay" style="opacity: 0;">
+                                                            <i class="playericon" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1"></i>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="lesson-infor" style="height: 88px;">
+                                                    <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/2707.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">整站项目开发实战之网站首页布局搭建</a></h2>
+                                                    <p style="height: 0px; opacity: 0; display: none;">
+                                                        设计本课程的目的是让 Web 前端工程师，可以轻松将设计师提供的 PSD 效果图，切分成 HTML 网页文件，学完本课程可以掌握 PS 软件的切图技巧和 HTML 布局技巧。
+                                                    </p>
+                                                    <div class="timeandicon">
+                                                        <div class="cf">
+                                                            <dl>
+                                                                <dd class="mar-b8"><i class="time-icon"></i><em>5课时
+                                                                        85分钟</em>
+                                                                </dd>
+                                                                <dd class="zhongji">
+                                                                    <i class="xinhao-icon2"></i><em>中级</em>
+                                                                </dd>
+                                                            </dl>
+                                                            <em class="learn-number">44290人学习</em>
+                                                        </div>
+                                                        <div class="cf">
+                                                            <div class="lessonicon-box">
+                                                                <a href="//www.jikexueyuan.com/course/html/">
+                                                                    <img width="16" src="https://wirrorcdn.jikexueyuan.com/category/webbase.png" alt="html" title="HTML" jktag="&posGP=101001&posArea=0002&posOper=2005&aCId=2707&posColumn=2707.1&aCCate=html">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="1417" test="0" deg="0">
+                                                <div class="lessonimg-box">
+                                                    <i class="vip-icon"></i>
+                                                    <a href="//www.jikexueyuan.com/course/1417.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1417&posColumn=1417.2">
+                                                        <img src="https://a1.jikexueyuan.com/home/201506/19/13ac/558371d20963f.jpg" class="lessonimg" title="HTML5 本地存储的应用" alt="HTML5 本地存储的应用">
+                                                        <div class="lessonplay" style="opacity: 0;">
+                                                            <i class="playericon" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1417&posColumn=1417.2"></i>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="lesson-infor" style="height: 88px;">
+                                                    <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/1417.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1417&posColumn=1417.2">HTML5 本地存储的应用</a></h2>
+                                                    <p style="height: 0px; opacity: 0; display: none;">
+                                                        本课程讲解基于 HTML5 本地存储技术，专门用于 Cordova 及 HTML5 应用的非关系数据库 LokiJS 的应用，并演示基于 LokiJS 实现的文件收藏及分类、查看功能。
+                                                    </p>
+                                                    <div class="timeandicon">
+                                                        <div class="cf">
+                                                            <dl>
+                                                                <dd class="mar-b8"><i class="time-icon"></i><em>3课时
+                                                                        31分钟</em>
+                                                                </dd>
+                                                                <dd class="zhongji">
+
+                                                                    <i class="xinhao-icon2"></i><em>中级</em>
+                                                                </dd>
+
+                                                            </dl>
+                                                            <em class="learn-number">25960人学习</em>
+                                                        </div>
+                                                        <div class="cf">
+                                                            <div class="lessonicon-box">
+
+                                                                <a href="//www.jikexueyuan.com/course/html/">
+                                                                    <img width="16" src="https://wirrorcdn.jikexueyuan.com/category/webbase.png" alt="html" title="HTML" jktag="&posGP=101001&posArea=0002&posOper=2005&aCId=1417&posColumn=1417.1&aCCate=html">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li id="1360" test="0" deg="0">
+                                                <div class="lessonimg-box">
+                                                    <i class="rz-icon"></i>
+                                                    <a href="//www.jikexueyuan.com/course/1360.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1360&posColumn=1360.3">
+                                                        <img src="https://a1.jikexueyuan.com/home/201506/15/26c5/557e2d3dcb39d.jpg" class="lessonimg" title="HTML5 Canvas 图形绘制处理" alt="HTML5 Canvas 图形绘制处理">
+                                                        <div class="lessonplay" style="opacity: 0;">
+                                                            <i class="playericon" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1360&posColumn=1360.3"></i>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="lesson-infor" style="height: 88px;">
+                                                    <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/1360.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1360&posColumn=1360.3">HTML5 Canvas 图形绘制处理</a></h2>
+                                                    <p style="height: 0px; opacity: 0; display: none;">
+                                                        本套课程讲解HTML5 Canvas 图形绘制处理，包含图形组合，图形阴影绘制和使用图像。通过使用图形上下文对象的globalCompositeOperation属性就可以实现图形组合的方式。
+                                                    </p>
+                                                    <div class="timeandicon">
+                                                        <div class="cf">
+                                                            <dl>
+                                                                <dd class="mar-b8"><i class="time-icon"></i><em>3课时
+                                                                        22分钟</em>
+                                                                </dd>
+                                                                <dd class="zhongji">
+                                                                    <i class="xinhao-icon"></i><em>初级</em>
+                                                                </dd>
+                                                            </dl>
+                                                            <em class="learn-number">22638人学习</em>
+                                                        </div>
+                                                        <div class="cf">
+                                                            <div class="lessonicon-box">
+                                                                <a href="//www.jikexueyuan.com/course/html/">
+                                                                    <img width="16" src="https://wirrorcdn.jikexueyuan.com/category/webbase.png" alt="html" title="HTML" jktag="&posGP=101001&posArea=0002&posOper=2005&aCId=1360&posColumn=1360.1&aCCate=html">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!--list end-->
+                                        </ul>
+                                    </div>
+                                    <div id="page-nav"></div>
+                                </div>
+                                <!--listbox end -->
+                            </div>
+                        </div>
+                        <!-- tagGather end -->
+                    </div>
+                    <!-- left 分类 -->
+                    <div id="aside" class="f_l">
+                        <div class="aside-allCategory">
+                            <div class="hd">
+                                <h2><a href="//www.jikexueyuan.com/course"><i class="icon-course-curr"></i>课程库</a></h2>
+                            </div>
+                            <div class="bd">
+                                <ul class="aside-cList" v-for="(keys,values) in list">
+                                    <li>
+                                        <div>
+                                            <a cgid="2" href="//www.jikexueyuan.com/course/web/">{{values}}</a>
+                                            <div class="list-show">
+                                                <div v-for="(vkey,vvalues) in keys">
+                                                    <dl v-for="(key,value) in vkey">
+                                                        <dt><a href="//www.jikexueyuan.com/course/webbase/" cgid="16">{{value}}</a></dt>
+                                                        <dd class="cf">
+                                                            <a href="//www.jikexueyuan.com/course/html/" cgid="76" v-for="m in key">{{m}}</a>
+                                                        </dd>
+                                                    </dl>
+                                                </div>
+                                            </div><!-- list-show -->
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div> <!-- /bd -->
+                        </div>
+                        <ul class="hdlist">
+                            <li>
+                                <a href="//ke.jikexueyuan.com/zhiye/">
+                                    <i class="icon-zylj"></i>职业路径图
+                                </a>
+                            </li>
+                            <li>
+                                <a href="//www.jikexueyuan.com/path/">
+                                    <i class="icon-zstx"></i>知识体系图
+                                </a>
+                            </li>
+                            <li>
+                                <a href="//ke.jikexueyuan.com/xilie/">
+                                    <i class="icon-xlkc"></i>系列课程
+                                </a>
+                            </li>
+                            <li>
+                                <a href="//www.jikexueyuan.com/tag/">
+                                    <i class="icon-kcbq"></i>课程标签
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <link rel="stylesheet" href="css/footer.css?t=1513326254000" />
+        <div id="footer">
+            <div class="footer-content">
+                <div class="contact-way">
+                    <div class="other-way">
+                        <a href="//blog.jikexueyuan.com/28.html " target="_blank" class="weixin-icon"></a>
+                        <!--<a href="" class="tencen-icon"></a>-->
+                        <a href="//weibo.com/jikexueyuan" target="_blank" class="sina-icon"></a>
+                        <a href="//twitter.com/jikexueyuan" target="_blank" class="facebook-icon"></a>
+                        <a href="//plus.google.com/communities/117673330839635588089" target="_blank" class="google-icon"></a>
+                    </div>
+                </div>
+                <nav>
+                    <a href="//help.jikexueyuan.com/" target="_blank">关于我们</a><i>|</i>
+                    <a href="//help.jikexueyuan.com/join.html" target="_blank">加入我们</a><i>|</i>
+                    <a href="//help.jikexueyuan.com/contact.html" target="_blank">联系我们</a><i>|</i>
+                    <a href="//zt.jikexueyuan.com/b" target="_blank">企业合作</a><i>|</i>
+                    <a href="//j.jikexueyuan.com/evangelist/apply" target="_blank">讲师合作</a><i>|</i>
+                    <a href="//help.jikexueyuan.com/" target="_blank">帮助中心</a><i>|</i>
+                    <a href="//blog.jikexueyuan.com/" target="_blank">黑板报</a><i>|</i>
+                    <a href="//www.jikexueyuan.com/friendlink.html" target="_blank">友情链接</a>
+                </nav>
+                <div class="copyright">Copyright © 2013-2018 jikexueyuan.com All Rights Reserved. 京ICP备11018032号 京公网安备11010802013056</div>
+            </div>
+            <div class="gotop" id="gototop">
+                <span class="tel-icon">
+                    <div class="tel-number"></div>
+                </span>
+                <!-- <a class="service" href="javascript:void(0);" onclick="meiqia()"></a> -->
+                <span class="wx">
+                    <div class="appewm"></div>
+                </span>
+                <span class="top"><i></i></span>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/login_register.min.js?t=1513326254000"></script>
+        <script>
+            function gotop() {
+                var html = $("#gototop");
+                if ($(window).scrollTop() <= 0) {
+                    $("#gototop>.top>i").hide()
+                }
+                $("#gototop>.top").bind("click", function() {
+                    if ($(window).scrollTop() <= 0) {
+                        return false
+                    }
+                    $("body,html").animate({
+                        scrollTop: 0
+                    }, 200);
+                    return false
+                });
+                $(window).scroll(function() {
+                    if ($(window).scrollTop() > 0) {
+                        $("#gototop>.top>i").fadeIn()
+                    } else {
+                        $("#gototop>.top>i").fadeOut()
+                    }
+                })
+            }
+            $(function() {
+                gotop()
+            });
+
+        </script>
+        <script type="text/javascript" src="js/meiqia.js?t=1513326254000"></script>
+    </div>
+    <script type="text/javascript">
+        LazyLoad = function(e) {
+            function t(t, n) {
+                var s, r = e.createElement(t);
+                for (s in n) n.hasOwnProperty(s) && r.setAttribute(s, n[s]);
+                return r
+            }
+
+            function n(e) {
+                var t, n, s = i[e];
+                s && (t = s.callback, n = s.urls, n.shift(), u = 0, n.length || (t && t.call(s.context, s.obj), i[e] = null, f[e].length && r(e)))
+            }
+
+            function s() {
+                var t = navigator.userAgent;
+                o = {
+                    async: e.createElement("script").async === !0
+                }, (o.webkit = /AppleWebKit\//.test(t)) || (o.ie = /MSIE|Trident/.test(t)) || (o.opera = /Opera/.test(t)) || (o.gecko = /Gecko\//.test(t)) || (o.unknown = !0)
+            }
+
+            function r(r, u, h, g, d) {
+                var p, y, m, b, k, v, j = function() {
+                        n(r)
+                    },
+                    w = "css" === r,
+                    E = [];
+                if (o || s(), u)
+                    if (u = "string" == typeof u ? [u] : u.concat(), w || o.async || o.gecko || o.opera) f[r].push({
+                        urls: u,
+                        callback: h,
+                        obj: g,
+                        context: d
+                    });
+                    else
+                        for (p = 0, y = u.length; y > p; ++p) f[r].push({
+                            urls: [u[p]],
+                            callback: p === y - 1 ? h : null,
+                            obj: g,
+                            context: d
+                        });
+                if (!i[r] && (b = i[r] = f[r].shift())) {
+                    for (l || (l = e.head || e.getElementsByTagName("head")[0]), k = b.urls, p = 0, y = k.length; y > p; ++p) {
+                        if (v = k[p], w ? m = o.gecko ? t("style") : t("link", {
+                                href: v,
+                                rel: "stylesheet"
+                            }) : (m = t("script", {
+                                src: v
+                            }), m.async = !1), m.className = "lazyload", m.setAttribute("charset", "utf-8"), o.ie && !w && "onreadystatechange" in m && !("draggable" in m)) m.onreadystatechange = function() {
+                            /loaded|complete/.test(m.readyState) && (m.onreadystatechange = null, j())
+                        };
+                        else if (w && (o.gecko || o.webkit))
+                            if (o.webkit) {
+                                var T;
+                                if (b.urls[p] = m.href, T = c()) {
+                                    p--, y = k.length;
+                                    continue
+                                }
+                            } else m.innerHTML = '@import "' + v + '";', a(m);
+                        else m.onload = m.onerror = j;
+                        E.push(m)
+                    }
+                    var A = document.createDocumentFragment();
+                    for (p = 0, y = E.length; y > p; ++p) A.appendChild(E[p]);
+                    var x;
+                    return "css" === r ? x = l : "js" === r && (x = document.getElementById("pages-container") || l), x.appendChild(A), E
+                }
+            }
+
+            function a(e) {
+                var t;
+                try {
+                    t = !!e.sheet.cssRules
+                } catch (s) {
+                    return u += 1, void(200 > u ? setTimeout(function() {
+                        a(e)
+                    }, 50) : t && n("css"))
+                }
+                n("css")
+            }
+
+            function c() {
+                var e, t = i.css,
+                    s = !1;
+                if (t) {
+                    for (e = h.length; --e >= 0;)
+                        if (h[e].href === t.urls[0]) {
+                            s = !0, n("css");
+                            break
+                        } u += 1, t && (200 > u ? setTimeout(c, 50) : n("css"))
+                }
+                return s
+            }
+            var o, l, i = {},
+                u = 0,
+                f = {
+                    css: [],
+                    js: []
+                },
+                h = e.styleSheets;
+            return {
+                css: function(e, t, n, s) {
+                    r("css", e, t, n, s)
+                },
+                js: function(e, t, n, s) {
+                    r("js", e, t, n, s)
+                }
+            }
+        }(this.document);
+
+    </script>
+
+    <script type="text/javascript">
+        var _ready = false;
+        _list = [];
+        _when = function(cb) {
+            _ready ? cb() : _list.push(cb);
+        };
+        LazyLoad.js(['js/TweenMax.min_5a7da72.js', 'js/common_sync0_libs_978038b.js', 'js/setcookie_51991d5.js', 'js/swfobject_5fb5452.js', 'js/common_sync1_libs_e7422e7.js', 'js/jquery.pager_5dd328f.js', 'js/lessonlist_6d12115.js', 'js/loading_197f16e.js', 'js/PagerDemo_e88048d.js', 'js/category_d19a280.js', 'js/cleft_7128b88.js'], function() {
+            ! function() {
+                require("common:widget/loading/loading.js").init();
+                $('#changeid').fadeIn();
+            }();
+            ! function() {
+                require("common:widget/pager/PagerDemo.js").init(1, 1, 24);
+            }();
+            ! function() {
+                require('course:widget/category/category.js').init();
+            }();;
+            _ready = true;
+            var _item;
+            while ((_item = _list.shift())) {
+                _item();
+            }
+        });
+
+    </script>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: "#wrapper",
+            data: {
+                list: {},
+                liqt: []
+            },
+            created: function() {
+                //this.Directions();
+                this.alls();
+            },
+            methods: {
+                Directions: function() {
+                    var url = "direction/queryAll";
+                    this.$http.post(url).then(function(response) {
+                        console.log(response.data);
+                        this.list = response.data;
+                    });
+                },
+                alls: function() {
+                    var url = "language/query"; //"module/queryAll"
+                    this.$http.post(url).then(function(response) {
+                        console.log(response.data);
+                        this.list = response.data;
+                    });
+                }
+            }
+        })
+
+    </script>
+    <script type="text/javascript">
+        new Vue({
+            el: "#app",
+            data: {
+                list: [],
+                u_name: "",
+                u_id: 0
+            },
+            created: function() {
+                this.queryCourse();
+            },
+            methods: {
+                queryCourse: function() {
+                    var url = "/curriculum/queryCurriculum?u_id=1";
+                    this.$http.post(url).then(function(response) {
+                        if (response.status != 200) {
+                            alert(response.status);
+                            return;
+                        }
+                        this.list = response.data;
+                    });
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
