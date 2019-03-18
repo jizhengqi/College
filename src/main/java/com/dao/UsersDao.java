@@ -15,6 +15,9 @@ public interface UsersDao {
 	// 用户登陆
 	public List<Users> queryByName(String uname,String pwd);
 	
+	// 根据账号查询信息
+	public Users queryLog(String uname);
+	
 	// 修改用户
 	public void upd(Users s);
 	

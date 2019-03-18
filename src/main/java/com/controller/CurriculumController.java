@@ -1,6 +1,8 @@
 package com.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -45,6 +47,23 @@ public class CurriculumController {
 	@ResponseBody
 	public List<Curriculum> queryCurriculum(String u_id) {
 		return curriculumService.queryCurriculum(u_id);
+	}
+	
+	/**
+	 * 分页查询所有课程
+	 * 
+	 * @return
+	 */
+	@RequestMapping("queryByPage")
+	@ResponseBody
+	public Map<String,Object> queryByPage(Integer page,Integer limit){
+		List<Curriculum> list = curriculumService.queryByPage((page-1)*limit, limit);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("msg", "");
+		map.put("code", 0);
+		map.put("count", curriculumService.queryAll().size());
+		map.put("data", list);
+		return map;
 	}
 
 }

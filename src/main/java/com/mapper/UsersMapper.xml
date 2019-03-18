@@ -370,4 +370,8 @@
 	<select id="queryByVIP" parameterType="java.lang.Integer" resultType="com.entity.Users">
 		select * from users where u_vip = 1
 	</select>
+	
+	<select id="queryLog" parameterType="java.lang.String" resultType="com.entity.Users">
+		select * from users where u_phone = #{param1}
+	</select>
 </mapper>

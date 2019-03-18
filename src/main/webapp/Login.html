@@ -208,8 +208,7 @@
 			logines: function(){
 				var url = "user/login?uname=" + $("#uname").val() + "&pwd=" + $("#pwd").val();
 				this.$http.post(url).then(function(response) {
-                    console.log(response.data);
-                    if(response.data.rs == 1){
+                   if(response.data == 1){
                     	alert("登陆成功");
                     	window.location.href = "index.html";
                     }else{

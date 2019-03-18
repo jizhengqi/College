@@ -21,4 +21,7 @@ public interface AdminsDao {
 	// 查询所有信息
 	public List<Admins> queryAll();
 	
+	// 根据账号查询
+	public Admins queryById(String username);
+	
 }

@@ -3,25 +3,63 @@ package com.util;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.servlet.Filter;
 import org.apache.shiro.mgt.SecurityManager;
-import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.spring.LifecycleBeanPostProcessor;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
-import org.apache.shiro.web.mgt.CookieRememberMeManager;
-import org.apache.shiro.web.servlet.Cookie;
-import org.apache.shiro.web.servlet.SimpleCookie;
 
 @Configuration
 public class ShiroConfiguration {
 	
-	@Bean
+	@Configuration
+	public class ShiroConfig {
+		@Bean
+	    public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
+	        System.out.println("ShiroConfiguration.shirFilter()");
+	        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+	        shiroFilterFactoryBean.setSecurityManager(securityManager);
+	        //拦截器.
+	        Map<String,String> filterChainDefinitionMap = new LinkedHashMap<String,String>();
+	        // 配置不会被拦截的链接 顺序判断
+	        filterChainDefinitionMap.put("/*", "authc");
+	        filterChainDefinitionMap.put("/css/**", "anon");
+	        filterChainDefinitionMap.put("/img/**", "anon");
+	        filterChainDefinitionMap.put("/js/**", "anon");
+	        filterChainDefinitionMap.put("/video/**", "anon");
+	        filterChainDefinitionMap.put("user/login", "anon");
+	        filterChainDefinitionMap.put("/webapp/Login.html", "anon");
+	        //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
+	        filterChainDefinitionMap.put("/logout", "logout");
+	        //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
+	        //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
+	        // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
+	        shiroFilterFactoryBean.setLoginUrl("/Login.html");
+	        // 登录成功后要跳转的链接
+	        shiroFilterFactoryBean.setSuccessUrl("/index.html");
+	 
+	        //未授权界面;
+	        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
+	        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+	        return shiroFilterFactoryBean;
+	    }
+	 
+	    @Bean
+	    public UserRealm myShiroRealm(){
+	    	UserRealm myShiroRealm = new UserRealm();
+	        return myShiroRealm;
+	    }
+	 
+	 
+	    @Bean
+	    public SecurityManager securityManager(){
+	        DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
+	        securityManager.setRealm(myShiroRealm());
+	        return securityManager;
+	    }
+	}
+	
+	/*@Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         //设置安全管理器
@@ -29,8 +67,8 @@ public class ShiroConfiguration {
         //默认跳转到登陆页面
         shiroFilterFactoryBean.setLoginUrl("/Login.html");
         //登陆成功后的页面
-        /*shiroFilterFactoryBean.setSuccessUrl("/index");
-        shiroFilterFactoryBean.setUnauthorizedUrl("/403");*/
+        shiroFilterFactoryBean.setSuccessUrl("/index");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
         //自定义过滤器
        Map<String,Filter> filterMap = new LinkedHashMap<>();
@@ -40,8 +78,7 @@ public class ShiroConfiguration {
        Map<String,String> filterChainDefinitionMap = new LinkedHashMap<>();
        
        // 配置不会被拦截的链接 顺序判断
-//       filterChainDefinitionMap.put("/*", "authc");
-       filterChainDefinitionMap.put("/webapp/apply.html", "anon");
+       filterChainDefinitionMap.put("/*", "authc");
        filterChainDefinitionMap.put("/webapp/Login.html", "anon");
        filterChainDefinitionMap.put("/css/**", "anon");
        filterChainDefinitionMap.put("/img/**", "anon");
@@ -56,10 +93,10 @@ public class ShiroConfiguration {
         return shiroFilterFactoryBean;
     }
 	
-	/**
+	*//**
      * 核心的安全事务管理器
      * @return
-     */
+     *//*
     @Bean
     public SecurityManager securityManager(){
          DefaultWebSecurityManager securityManager=new DefaultWebSecurityManager();
@@ -69,10 +106,10 @@ public class ShiroConfiguration {
          return securityManager;
      }
      
-     /**
+     *//**
       * 记住我管理器
       * @return
-      */
+      *//*
      @Bean
      public CookieRememberMeManager rememberMeManager() {
           CookieRememberMeManager cookieRememberMeManager=new CookieRememberMeManager();
@@ -82,10 +119,10 @@ public class ShiroConfiguration {
           return  cookieRememberMeManager;
      }
      
-     /**
+     *//**
       * cookie对象
       * @return
-      */
+      *//*
      @Bean
      public Cookie rememberMeCookie() {
          SimpleCookie simpleCookie=new SimpleCookie("rememberMe");
@@ -94,21 +131,21 @@ public class ShiroConfiguration {
          return simpleCookie;
      }
      
-     /**
+     *//**
       * 身份认证Realm，此处的注入不可以缺少。否则会在UserRealm中注入对象会报空指针.
       * @return
-      */
+      *//*
      @Bean
      public UserRealm myShiroRealm(){
          UserRealm myShiroRealm = new UserRealm();
-         /*myShiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());*/
+         myShiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
          return myShiroRealm;
      }
-     /**
+     *//**
       * 哈希密码比较器。在myShiroRealm中作用参数使用
       * 登陆时会比较用户输入的密码，跟数据库密码配合盐值salt解密后是否一致。
       * @return
-      */
+      *//*
      @Bean
      public HashedCredentialsMatcher hashedCredentialsMatcher(){
          HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
@@ -126,12 +163,12 @@ public class ShiroConfiguration {
 //         return cacheManager;
 //     }
 
-     /**
+     *//**
       *  开启shiro aop注解支持.
       *  使用代理方式;所以需要开启代码支持;否则@RequiresRoles等注解无法生效
       * @param securityManager
       * @return
-      */
+      *//*
      @Bean
      public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager){
          AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
@@ -139,24 +176,24 @@ public class ShiroConfiguration {
          return authorizationAttributeSourceAdvisor;
      }
 
-     /**
+     *//**
       * Shiro生命周期处理器
       * @return
-      */
+      *//*
      @Bean
      public LifecycleBeanPostProcessor lifecycleBeanPostProcessor(){
          return new LifecycleBeanPostProcessor();
      }
 
-     /**
+     *//**
       * 自动创建代理
       * @return
-      */
+      *//*
      @Bean
      @DependsOn({"lifecycleBeanPostProcessor"})
      public DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator(){
          DefaultAdvisorAutoProxyCreator advisorAutoProxyCreator = new DefaultAdvisorAutoProxyCreator();
          advisorAutoProxyCreator.setProxyTargetClass(true);
          return advisorAutoProxyCreator;
-     }
+     }*/
 }

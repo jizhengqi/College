@@ -56,4 +56,9 @@ public class UsersService {
 	public List<Users> queryByVIP(Integer u_vip){
 		return ud.queryByVIP(u_vip);
 	}
+	
+	// 
+	public Users queryLog(String uname){
+		return ud.queryLog(uname);
+	}
 }

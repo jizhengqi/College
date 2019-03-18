@@ -56,10 +56,10 @@ public class UsersController {
 	@ResponseBody
 	public Integer login(String uname,String pwd,HttpSession session){
 		Subject subject = SecurityUtils.getSubject();
-		UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(uname,pwd);
+		UsernamePasswordToken token = new UsernamePasswordToken(uname,pwd);
 		try {
 			rs = 1;
-			subject.login(usernamePasswordToken);
+			subject.login(token);
 		} catch (Exception e) {
 			e.printStackTrace();
 			rs = 2;
