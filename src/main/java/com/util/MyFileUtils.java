@@ -48,8 +48,8 @@ public class MyFileUtils {
 	 * @throws Exception
 	 * @throws IllegalStateException
 	 */
-	public String[] uploads(MultipartFile[] file) throws IllegalStateException,
-			Exception {
+	public String[] uploads(MultipartFile... file)
+			throws IllegalStateException, Exception {
 		int length = file.length;
 		String[] uploadPaths = new String[length];
 		for (int i = 0; i < length; i++) {

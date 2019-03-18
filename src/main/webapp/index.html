@@ -105,10 +105,10 @@
                     </div>
                 </div>
                 <div class="nav-other" id="nav-other">
-                    <div class="centerbox" style="display: none;">
-                        <a href="" class="learn-center" title="学习中心"></a>
+                    <div class="centerbox"><!-- style="display: none;" -->
+                        <a href="userCourse.html" class="learn-center" title="学习中心"></a>
                     </div>
-                    <div class="centerbox" style="display: none;">
+                    <div class="centerbox"><!--  style="display: none;" -->
                         <a href="" class="message" id="message" title="消息中心">
                             <i class="have" id="have" style="display: none;"></i>
                         </a>
@@ -186,8 +186,8 @@
                                             <div v-for="(vkey,vvalues) in keys">
                                                 <dl v-for="(key,value) in vkey">
                                                     <dt><a href="" cgid="23">{{value}}</a></dt>
-                                                    <dd class="cf" v-for="m in key">
-                                                        <a href="" cgid="147">{{m}}</a>
+                                                    <dd class="cf">
+                                                        <a href="" cgid="147" v-for="m in key">{{m}}</a>
                                                     </dd>
                                                 </dl>
                                             </div>

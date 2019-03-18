@@ -20,6 +20,7 @@ public class UserRealm extends AuthorizingRealm {
 	@Resource
 	UsersService userService;
 
+	@SuppressWarnings("unused")
 	private Logger logger = Logger.getLogger(UserRealm.class);
 
 	/**

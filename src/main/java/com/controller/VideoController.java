@@ -47,9 +47,9 @@ public class VideoController {
 		return videoService.addVideo1(file, video);
 	}
 
-	@RequestMapping("queryVideo")
+	@RequestMapping("queryVideoByC_id")
 	@ResponseBody
-	public List<Video> queryVideo(Integer v_id) {
-		return videoService.queryVideo(v_id);
+	public List<Video> queryVideoByC_id(Integer c_id) {
+		return videoService.queryVideoByC_id(c_id);
 	}
 }

@@ -20,6 +20,11 @@
     <script type="text/javascript" src="js/header.min.js?t=1544581681296"></script>
     <script type="text/javascript" src="js/web_socket.js?t=1513326254000"></script>
     <script type="text/javascript" src="js/websocket.js?t=1513326254000"></script>
+
+    <script src="/vue/vue2.5.13.min.js"></script>
+    <script src="/vue/vue-axios/axios0.18.0.min.js"></script>
+    <script src="/vue/vue-resource/vue-resource.js"></script>
+    <script type="text/javascript" src="/vue/vue-router/vue-router.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -165,7 +170,7 @@
                     <img src="https://s1.jikexueyuan.com/course/images/next_585415f.png" courseurl="/course/2707_2.html?ss=1" class="cnext" id="lesson-next">
                     <video class='video-js vjs-default-skin' controls='controls' height='100%' id='play_video' poster="" last_play_position="0" time="234" seq="1" lesson_count="" data-setup='{"example_option":true,"customControlsOnMobile": true}' preload='none' width="100%">
                         <!-- 如果浏览器不兼容HTML5则使用flash播放 -->
-                        <source src="/file/ce3ec109-cf42-48a9-baa3-c9183b0dc244.mp4" type="video/mp4" />
+                        <source src="/file/dfb9a20f-25f5-4066-a5a3-71911a17c0eb.mp4" type="video/mp4" />
                         <object id="flash_fallback_1" class="vjs-flash-fallback" width="100%" height="100%" type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
                             <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
                             <param name="allowfullscreen" value="true" />
@@ -323,7 +328,7 @@
                 <script src="js/hotkeys_e175c92.js"></script>
                 <script src="js/uploader_ad281df.js"></script>
                 <script src="js/simditor_4c30884.js"></script>
-                <div class="lesson-teacher">
+                <div class="lesson-teacher" id="lesson">
                     <div class="bc-box">
                         <h2><a href="//www.jikexueyuan.com/course/2707.html">整站项目开发实战之网站首页布局搭建</a></h2>
                         <div class="timebox"><span>5课时，85分钟</span><span class="mar-l30">2016-04-26</span></div>
@@ -375,7 +380,7 @@
                         <span><a href="//www.jikexueyuan.com/tag/DIV CSS.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.5">DIV CSS</a></span>
                     </div>
                 </div>
-                <div class="video-list">
+                <div class="video-list" id="app">
                     <div class="lessonlist-nav cf">
                         <ul class="cf time-hot">
                             <li class="nav_on" jktag="&posOper=8037&posArea=0009&posColumn=9.1">课时列表</li>
@@ -383,55 +388,16 @@
                         </ul>
                     </div>
                     <div class="lesson-box" style="display: block;">
-                        <ul>
+                        <ul v-for="v in list">
                             <li class="on">
                                 <i class="lessonmbers"><em>1</em></i>
+                                <!--1\2\3...-->
                                 <div class="text-box">
                                     <h2>
-                                        <a href="//www.jikexueyuan.com/course/2707_1.html?ss=1" jktag="&posArea=0007&posAOper=8035&posColumn=9598.1"> 知识点概括及案例分析</a>
+                                        <a href="//www.jikexueyuan.com/course/2707_1.html?ss=1" jktag="&posArea=0007&posAOper=8035&posColumn=9598.1">{{v.v_name}}</a>
                                         <p class="f_r">03:54</p>
                                     </h2>
-                                    <p>本课时主要讲解，该企业网站项目开发需要用到的知识点，及项目案例分析和网站展示效果。</p>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="lessonmbers"><em>2</em></i>
-                                <div class="text-box">
-                                    <h2>
-                                        <a href="//www.jikexueyuan.com/course/2707_2.html?ss=1" jktag="&posArea=0007&posAOper=8035&posColumn=9599.2"> 浮动布局与定位布局的配合</a>
-                                        <p class="f_r">21:24</p>
-                                    </h2>
-                                    <p>本课时主要讲解，在搭建企业网站中经常会使用的两种布局方式，float 浮动布局和 position 定位布局，分析两种布局方式的利弊。</p>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="lessonmbers"><em>3</em></i>
-                                <div class="text-box">
-                                    <h2>
-                                        <a href="//www.jikexueyuan.com/course/2707_3.html?ss=1" jktag="&posArea=0007&posAOper=8035&posColumn=9600.3"> 必备的切图技巧及图片优化</a>
-                                        <p class="f_r">29:34</p>
-                                    </h2>
-                                    <p>本课时主要讲解，网站中经常会出现的图片格式，jpg/gif/png 的不同应用场景，详解图片压缩及优化，以及小图片拼合成大图的方式。</p>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="lessonmbers"><em>4</em></i>
-                                <div class="text-box">
-                                    <h2>
-                                        <a href="//www.jikexueyuan.com/course/2707_4.html?ss=1" jktag="&posArea=0007&posAOper=8035&posColumn=9601.4"> 背景图片定位的应用</a>
-                                        <p class="f_r">13:03</p>
-                                    </h2>
-                                    <p>本课时主要讲解，将 Photoshop 拼合的大图，分别应用到不同的小区块中。</p>
-                                </div>
-                            </li>
-                            <li>
-                                <i class="lessonmbers"><em>5</em></i>
-                                <div class="text-box">
-                                    <h2>
-                                        <a href="//www.jikexueyuan.com/course/2707_5.html?ss=1" jktag="&posArea=0007&posAOper=8035&posColumn=9602.5"> 简化代码——共用类似的 CSS 样式</a>
-                                        <p class="f_r">16:41</p>
-                                    </h2>
-                                    <p>本课时主要讲解，将页面中类似的样式和属性定义为公共 class 类。</p>
+                                    <p>{{v.v_intro}}</p>
                                 </div>
                             </li>
                         </ul>
@@ -908,7 +874,7 @@
         _when = function(cb) {
             _ready ? cb() : _list.push(cb);
         };
-        LazyLoad.js(['https://s1.jikexueyuan.com/common/js/TweenMax.min_5a7da72.js', 'https://s1.jikexueyuan.com/common/pkg/common_sync0_libs_978038b.js', 'https://s1.jikexueyuan.com/common/js/setcookie_51991d5.js', 'https://s1.jikexueyuan.com/common/js/swfobject_5fb5452.js', 'https://s1.jikexueyuan.com/common/pkg/common_sync1_libs_e7422e7.js', 'https://s1.jikexueyuan.com/common/video/video2_4d7ee09.js', 'https://s1.jikexueyuan.com/course/js/share_5f52bd0.js', 'https://s1.jikexueyuan.com/course/js/course_2f97b94.js', 'https://s1.jikexueyuan.com/common/widget/pager/jquery.pager_5dd328f.js', 'https://s1.jikexueyuan.com/course/js/lessonlist_6d12115.js', 'https://s1.jikexueyuan.com/course/widget/lessonteacher/lessonteacher_2968630.js', 'https://s1.jikexueyuan.com/course/widget/videolist/videolist_0edef5a.js'], function() {
+        LazyLoad.js(['js/TweenMax.min_5a7da72.js', 'js/common_sync0_libs_978038b.js', 'js/setcookie_51991d5.js', 'js/swfobject_5fb5452.js', 'js/common_sync1_libs_e7422e7.js', 'js/video2_4d7ee09.js', 'js/share_5f52bd0.js', 'js/course_2f97b94.js', 'js/jquery.pager_5dd328f.js', 'js/lessonlist_6d12115.js', 'js/lessonteacher_2968630.js', 'js/videolist_0edef5a.js'], function() {
             ! function() {
                 vov = null;
                 videojs.options.flash.swf = "";
@@ -947,6 +913,40 @@
                 _item();
             }
         });
+
+    </script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                list: []
+            },
+            created: function() {
+                this.getlist();
+            },
+            methods: {
+                getlist: function() {
+                    var url = "/video/queryVideoByC_id?c_id=11";
+                    this.$http.get(url).then(function(response) {
+                        if (response.status != 200) {
+                            alert(response.status);
+                            return;
+                        }
+                        this.list = response.data;
+                    });
+                }
+            }
+        })
+        
+        var lesson = new Vue({
+            el: "#lesson",
+            data: {
+                lists: {}
+            },
+            created: function(){
+                this.getlists();
+            }
+        })
 
     </script>
 </body>

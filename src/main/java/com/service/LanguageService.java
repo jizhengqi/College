@@ -15,7 +15,6 @@ import com.dao.LanguageDao;
 import com.dao.ModuleDao;
 import com.entity.Direction;
 import com.entity.Language;
-import com.util.MyFileUtils;
 
 @Service
 @Transactional
@@ -23,26 +22,27 @@ public class LanguageService {
 
 	@Resource
 	LanguageDao ld;
-	
-	public void add(Language l){
+
+	public void add(Language l) {
 		ld.add(l);
 	}
-	
-	public void upd(Language l){
+
+	public void upd(Language l) {
 		ld.upd(l);
 	}
 
-	public void del(Integer l_id){
+	public void del(Integer l_id) {
 		ld.del(l_id);
 	}
-	
-	public List<Language> queryAll(){
+
+	public List<Language> queryAll() {
 		return ld.queryAll();
 	}
-	
-	public void queryPage(){
-		
+
+	public void queryPage() {
+
 	}
+
 	@Resource
 	DirectionDao directionDao;// 技术方向
 
@@ -59,7 +59,7 @@ public class LanguageService {
 		List<Map<String, List<String>>> languages = new ArrayList<Map<String, List<String>>>();// 将语言放入集合
 		Map<String, List<String>> language = new HashMap<String, List<String>>();// 语言
 		List<String> module = new ArrayList<String>();// 模块集合
-
+		// 查询方向和语言、模块
 		List<Direction> list = directionDao.queryAll();
 		List<Map<String, Object>> queryAll = moduleDao.queryAll();
 		Integer length = list.size();
@@ -85,7 +85,7 @@ public class LanguageService {
 			}
 			direction.put(list.get(i).getD_name(), languages);
 		}
-		MyFileUtils.writeToFile("D:/direction.txt", direction.toString());
+		// MyFileUtils.writeToFile("D:/direction.txt", direction.toString());
 		return direction;
 	}
 }
