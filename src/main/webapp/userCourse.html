@@ -173,7 +173,7 @@
                                 <span class="learn-statu">
                                     学到第1课时
                                 </span>
-                                <a href="2707.html" target="_blank">
+                                <a v-bind:href="'2707.html?c_id='+c.c_id+'&c_name='+c.c_name" target="_blank">
                                     <img src="https://a1.jikexueyuan.com/home/201501/29/f702/54c99015e1130.jpg" class="lessonimg" v-bind:title="c.c_name" alt="c.c_name">
                                     <div class="lessonplay" style="opacity: 0;">
                                         <i class="playericon"></i>
@@ -194,7 +194,7 @@
                             </div>
                             <div class="lesson-infor">
                                 <h2 class="lesson-info-h2">
-                                    <a href="2707.html" target="_blank">{{c.c_name}}</a>
+                                    <a v-bind:href="'2707.html?c_id='+c.c_id+'&c_name='+c.c_name" target="_blank">{{c.c_name}}</a>
                                 </h2>
                                 <p>{{c.c_introduction}}</p>
                                 <div class="timeandicon">

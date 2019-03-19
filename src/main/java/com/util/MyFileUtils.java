@@ -32,7 +32,7 @@ public class MyFileUtils {
 				+ getSuffix(file.getOriginalFilename());
 		// 创建路径
 		File dest = new File(myWebConfig.getVideoDir() + uploadPath);
-		// 检测是否存在目录
+		// 检测存放视频的文件夹是否存在
 		checkDirectory(dest);
 		// 赋值文件到指定路径
 		file.transferTo(dest);
