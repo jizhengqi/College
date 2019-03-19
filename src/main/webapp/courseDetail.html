@@ -3,9 +3,9 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>HTML视频教程_HTML在线学习-极客学院</title>
+    <title>HTML视频教程_HTML在线学习-骇客学院</title>
     <meta name="keywords" content="HTML,HTML视频教程, HTML入门视频教程，HTML从入门到精通，HTML在线学习" />
-    <meta name="description" content="极客学院（jikexueyuan.com）HTML视频课程：包括HTML在线视频、HTML从入门到精通视频、及HTML实例源码，让你全面学习HTML,快速掌握HTML开发技能。" />
+    <meta name="description" content="骇客学院（jikexueyuan.com）HTML视频课程：包括HTML在线视频、HTML从入门到精通视频、及HTML实例源码，让你全面学习HTML,快速掌握HTML开发技能。" />
     <link rel="stylesheet" href="css/common_sync0_libs_4d81287.css" />
     <link rel="stylesheet" href="css/common_sync1_libs_769abc5.css" />
     <link rel="stylesheet" href="css/header_d41d8cd.css" />
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/course_fefbd4c.css" />
     <link rel="stylesheet" href="css/loading_03ba72f.css" />
     <link rel="stylesheet" href="css/lessonlist_d41d8cd.css" />
-
+	<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="js/growingio.js?t=1513326254000"></script>
     <script type="text/javascript" src="js/mask.js?t=1513326254000"></script>
     <script type="text/javascript" src="js/jquery.min.js?t=1513326254000"></script>
@@ -24,7 +24,7 @@
     <script src="/vue/vue-axios/axios0.18.0.min.js"></script>
     <script src="/vue/vue-resource/vue-resource.js"></script>
     <script type="text/javascript" src="/vue/vue-router/vue-router.js" charset="utf-8"></script>
-
+	
 </head>
 
 <body>
@@ -34,7 +34,7 @@
             <div class="header">
                 <h1>
                     <a href="//www.jikexueyuan.com" class="logo">
-                        <img src="img/logo.png?t=1513326254000" width="100" alt="极客学院" />
+                        <img src="img/logo.png?t=1513326254000" width="100" alt="骇客学院" />
                     </a>
                 </h1>
                 <nav style="width:490px;">
@@ -226,21 +226,21 @@
                                         <div class="txt">课程加载中...</div>
                                     </div>
                                     <div class="lesson-list" id="changeid" style="display:none">
-                                        <ul class="cf" style="display: block;">
+                                        <ul v-for="d in liqt" class="cf"  style="display: block;">
                                             <!--list-->
                                             <li id="2707" test="0" deg="0">
                                                 <div class="lessonimg-box">
-                                                    <a href="//www.jikexueyuan.com/course/2707.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">
-                                                        <img src="https://a1.jikexueyuan.com/home/201604/26/0ff6/571f242278c8d.jpg" class="lessonimg" title="整站项目开发实战之网站首页布局搭建" alt="整站项目开发实战之网站首页布局搭建">
+                                                    <a href="javascript:void(0)" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">
+                                                        <img src="https://a1.jikexueyuan.com/home/201604/26/0ff6/571f242278c8d.jpg" class="lessonimg" v-bind:title="d.c_name" v-bind:alt="d.c_name">
                                                         <div class="lessonplay" style="opacity: 0;">
-                                                            <i class="playericon" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1"></i>
+                                                           <a v-bind:href="'2707.html?c_id='+d.c_id+'&c_name='+d.c_name"><i class="playericon" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1"></i></a>
                                                         </div>
                                                     </a>
                                                 </div>
                                                 <div class="lesson-infor" style="height: 88px;">
-                                                    <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/2707.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">整站项目开发实战之网站首页布局搭建</a></h2>
+                                                    <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/2707.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">{{ d.c_name }}</a></h2>
                                                     <p style="height: 0px; opacity: 0; display: none;">
-                                                        设计本课程的目的是让 Web 前端工程师，可以轻松将设计师提供的 PSD 效果图，切分成 HTML 网页文件，学完本课程可以掌握 PS 软件的切图技巧和 HTML 布局技巧。
+                                                       	{{ d.c_introduction }}
                                                     </p>
                                                     <div class="timeandicon">
                                                         <div class="cf">
@@ -249,7 +249,7 @@
                                                                         85分钟</em>
                                                                 </dd>
                                                                 <dd class="zhongji">
-                                                                    <i class="xinhao-icon2"></i><em>中级</em>
+                                                                    <i class="xinhao-icon2"></i><em>{{ d.c_level }}</em>
                                                                 </dd>
                                                             </dl>
                                                             <em class="learn-number">44290人学习</em>
@@ -258,83 +258,6 @@
                                                             <div class="lessonicon-box">
                                                                 <a href="//www.jikexueyuan.com/course/html/">
                                                                     <img width="16" src="https://wirrorcdn.jikexueyuan.com/category/webbase.png" alt="html" title="HTML" jktag="&posGP=101001&posArea=0002&posOper=2005&aCId=2707&posColumn=2707.1&aCCate=html">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li id="1417" test="0" deg="0">
-                                                <div class="lessonimg-box">
-                                                    <i class="vip-icon"></i>
-                                                    <a href="//www.jikexueyuan.com/course/1417.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1417&posColumn=1417.2">
-                                                        <img src="https://a1.jikexueyuan.com/home/201506/19/13ac/558371d20963f.jpg" class="lessonimg" title="HTML5 本地存储的应用" alt="HTML5 本地存储的应用">
-                                                        <div class="lessonplay" style="opacity: 0;">
-                                                            <i class="playericon" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1417&posColumn=1417.2"></i>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="lesson-infor" style="height: 88px;">
-                                                    <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/1417.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1417&posColumn=1417.2">HTML5 本地存储的应用</a></h2>
-                                                    <p style="height: 0px; opacity: 0; display: none;">
-                                                        本课程讲解基于 HTML5 本地存储技术，专门用于 Cordova 及 HTML5 应用的非关系数据库 LokiJS 的应用，并演示基于 LokiJS 实现的文件收藏及分类、查看功能。
-                                                    </p>
-                                                    <div class="timeandicon">
-                                                        <div class="cf">
-                                                            <dl>
-                                                                <dd class="mar-b8"><i class="time-icon"></i><em>3课时
-                                                                        31分钟</em>
-                                                                </dd>
-                                                                <dd class="zhongji">
-
-                                                                    <i class="xinhao-icon2"></i><em>中级</em>
-                                                                </dd>
-
-                                                            </dl>
-                                                            <em class="learn-number">25960人学习</em>
-                                                        </div>
-                                                        <div class="cf">
-                                                            <div class="lessonicon-box">
-
-                                                                <a href="//www.jikexueyuan.com/course/html/">
-                                                                    <img width="16" src="https://wirrorcdn.jikexueyuan.com/category/webbase.png" alt="html" title="HTML" jktag="&posGP=101001&posArea=0002&posOper=2005&aCId=1417&posColumn=1417.1&aCCate=html">
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li id="1360" test="0" deg="0">
-                                                <div class="lessonimg-box">
-                                                    <i class="rz-icon"></i>
-                                                    <a href="//www.jikexueyuan.com/course/1360.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1360&posColumn=1360.3">
-                                                        <img src="https://a1.jikexueyuan.com/home/201506/15/26c5/557e2d3dcb39d.jpg" class="lessonimg" title="HTML5 Canvas 图形绘制处理" alt="HTML5 Canvas 图形绘制处理">
-                                                        <div class="lessonplay" style="opacity: 0;">
-                                                            <i class="playericon" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1360&posColumn=1360.3"></i>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                                <div class="lesson-infor" style="height: 88px;">
-                                                    <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/1360.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=1360&posColumn=1360.3">HTML5 Canvas 图形绘制处理</a></h2>
-                                                    <p style="height: 0px; opacity: 0; display: none;">
-                                                        本套课程讲解HTML5 Canvas 图形绘制处理，包含图形组合，图形阴影绘制和使用图像。通过使用图形上下文对象的globalCompositeOperation属性就可以实现图形组合的方式。
-                                                    </p>
-                                                    <div class="timeandicon">
-                                                        <div class="cf">
-                                                            <dl>
-                                                                <dd class="mar-b8"><i class="time-icon"></i><em>3课时
-                                                                        22分钟</em>
-                                                                </dd>
-                                                                <dd class="zhongji">
-                                                                    <i class="xinhao-icon"></i><em>初级</em>
-                                                                </dd>
-                                                            </dl>
-                                                            <em class="learn-number">22638人学习</em>
-                                                        </div>
-                                                        <div class="cf">
-                                                            <div class="lessonicon-box">
-                                                                <a href="//www.jikexueyuan.com/course/html/">
-                                                                    <img width="16" src="https://wirrorcdn.jikexueyuan.com/category/webbase.png" alt="html" title="HTML" jktag="&posGP=101001&posArea=0002&posOper=2005&aCId=1360&posColumn=1360.1&aCCate=html">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -609,57 +532,62 @@
         var app = new Vue({
             el: "#wrapper",
             data: {
-                list: {},
-                liqt: []
+                list: [],
+                liqt: [],
+                u_name: "",
+                u_id: 0
             },
             created: function() {
                 //this.Directions();
                 this.alls();
+                this.queryByCurriculum();
             },
             methods: {
                 Directions: function() {
-                    var url = "direction/queryAll";
+                    var url = "direction/queryAll";//查询所有的课程
                     this.$http.post(url).then(function(response) {
                         console.log(response.data);
                         this.list = response.data;
                     });
                 },
                 alls: function() {
-                    var url = "language/query"; //"module/queryAll"
+                    var url = "language/query"; //查询左边栏的课程库信息
                     this.$http.post(url).then(function(response) {
                         console.log(response.data);
                         this.list = response.data;
                     });
-                }
-            }
-        })
-
-    </script>
-    <script type="text/javascript">
-        new Vue({
-            el: "#app",
-            data: {
-                list: [],
-                u_name: "",
-                u_id: 0
-            },
-            created: function() {
-                this.queryCourse();
-            },
-            methods: {
-                queryCourse: function() {
-                    var url = "/curriculum/queryCurriculum?u_id=1";
-                    this.$http.post(url).then(function(response) {
+                },
+                queryByCurriculum:function(){
+            		var url = "";//根据条件查询学习课程
+            		if(this.getParam("d_name") != "" && this.getParam("d_name") != null){
+            			url = "direction/queryByDirection?d_name=" + this.getParam("d_name");
+            		}else if(this.getParam("l_name") != "" && this.getParam("l_name") != null){
+            			url = "language/queryByLanguage?l_name=" + this.getParam("l_name");
+            		}else if(this.getParam("m_name") != "" && this.getParam("m_name") != null){
+            			url = "module/queryByModule?m_name=" + this.getParam("m_name");
+            		}
+            		this.$http.post(url).then(function(response) {
                         if (response.status != 200) {
                             alert(response.status);
                             return;
                         }
-                        this.list = response.data;
+                        this.liqt = response.data;
+                        console.log(JSON.stringify(this.liqt));
                     });
+            	},
+            	getParam: function(str){
+                 	var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));
+                 	/* if (result == null || result.length < 1) {
+             	        console.log("result:" + result[1]);
+             	    } */
+             	    if(result == null || result.length < 1){
+             	    	return result;
+             	    }else{
+             	    	return decodeURI(result[1]);
+             	    }
                 }
             }
         });
-
     </script>
 </body>
 

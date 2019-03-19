@@ -179,15 +179,15 @@
                         <ul class="aside-cList" v-for="(keys,values) in list">
                             <li>
                                 <div>
-                                    <a cgid="3" href="">{{values}}</a>
+                                    <a cgid="3" v-bind:href="'courseDetail.html?d_name='+values">{{values}}</a>
                                     <div class="list-show">
                                         <div class="knowledge-system">
                                             <p class="list-title knowledge-title"><span>知识体系</span></p>
                                             <div v-for="(vkey,vvalues) in keys">
                                                 <dl v-for="(key,value) in vkey">
-                                                    <dt><a href="" cgid="23">{{value}}</a></dt>
+                                                    <dt><a v-bind:href="'courseDetail.html?l_name='+value" cgid="23">{{value}}</a></dt>
                                                     <dd class="cf">
-                                                        <a href="" cgid="147" v-for="m in key">{{m}}</a>
+                                                        <a v-bind:href="'courseDetail.html?m_name='+m" cgid="147" v-for="m in key">{{m}}</a>
                                                     </dd>
                                                 </dl>
                                             </div>
@@ -930,7 +930,7 @@
 	        		});
 	        	}
 	        }
-	    })
+	    });
 	</script>
 </body>
 

@@ -65,5 +65,13 @@ public class CurriculumController {
 		map.put("data", list);
 		return map;
 	}
+	
+	// 根据ID查询视频信息
+	@RequestMapping("queryById")
+	@ResponseBody
+	public List<Curriculum> queryById(Integer c_id){
+		List<Curriculum> list = curriculumService.queryById(c_id);
+		return list;
+	}
 
 }

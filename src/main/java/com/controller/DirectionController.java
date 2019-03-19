@@ -5,9 +5,11 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.entity.Curriculum;
 import com.entity.Direction;
 import com.service.DirectionService;
 
@@ -30,7 +32,8 @@ public class DirectionController {
 	 */
 	@RequestMapping("queryByDirection")
 	@ResponseBody
-	public String queryByDirection(String d_name){
-		return null;
+	public List<Curriculum> queryByDirection(String d_name,Model model){
+		List<Curriculum> list = ds.queryByDirection(d_name);
+		return list;
 	}
 }
