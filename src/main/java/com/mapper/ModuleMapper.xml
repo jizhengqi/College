@@ -21,4 +21,9 @@
 		insert into module(m_name,l_id)values(#{m_name},#{l_id})
 	</insert>
 	
+	<!-- 根据语言模块查询视频 -->
+	<select id="queryByModule" parameterType="java.lang.String" resultType="com.entity.Curriculum">
+		select * from curriculum where m_id = (select m_id from module where m_name = #{param1})
+	</select>
+	
 </mapper>

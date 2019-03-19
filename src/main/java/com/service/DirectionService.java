@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.DirectionDao;
+import com.entity.Curriculum;
 import com.entity.Direction;
 
 @Service
@@ -31,6 +32,10 @@ public class DirectionService {
 	
 	public void del(Integer d_id){
 		dd.del(d_id);
+	}
+	
+	public List<Curriculum> queryByDirection(String d_name){
+		return dd.queryByDirection(d_name);
 	}
 	
 }

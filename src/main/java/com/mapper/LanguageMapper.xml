@@ -22,4 +22,10 @@
 		delete from language where l_id = #{param1}
 	</delete>
 	
+	<!-- 根据语言查询所有课程 -->
+	<select id="queryByLanguage" parameterType="java.lang.String" resultType="com.entity.Curriculum">
+		select * from curriculum where m_id in (select m_id from module
+		 where l_id = (select l_id from language where l_name = #{param1}))
+	</select>
+	
 </mapper>

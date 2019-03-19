@@ -34,5 +34,6 @@ public interface VideoDao {
 	// 分页查询所有视频信息
 	public List<Video> queryByPage(Integer page, Integer limit);
 
+	// 跟据课程查询所有视频信息
 	public List<Video> queryVideoByC_id(Integer c_id);
 }

@@ -87,6 +87,7 @@ public class VideoService {
 		return vd.addVideo(video);
 	}
 
+	// 根据课程ID获取所有视频
 	public List<Video> queryVideoByC_id(Integer c_id) {
 		return vd.queryVideoByC_id(c_id);
 	}
