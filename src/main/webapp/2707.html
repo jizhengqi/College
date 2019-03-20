@@ -170,7 +170,7 @@
                     <img src="https://s1.jikexueyuan.com/course/images/next_585415f.png" courseurl="/course/2707_2.html?ss=1" class="cnext" id="lesson-next">
                     <video class='video-js vjs-default-skin' controls='controls' height='100%' id='play_video' poster="" last_play_position="0" time="234" seq="1" lesson_count="" data-setup='{"example_option":true,"customControlsOnMobile": true}' preload='none' width="100%">
                         <!-- 如果浏览器不兼容HTML5则使用flash播放 -->
-                        <source src="/file/f145bee9-b3cd-435f-b741-23d92f66b219.mp4" type="video/mp4" />
+                        <source src="/file/f145bee9-b3cd-435f-b741-23d92f66b219.mp4" type="video/mp4" id="s_play" />
                         <object id="flash_fallback_1" class="vjs-flash-fallback" width="100%" height="100%" type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
                             <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
                             <param name="allowfullscreen" value="true" />
@@ -390,13 +390,13 @@
                         </ul>
                     </div>
                     <div class="lesson-box" style="display: block;">
-                        <ul v-for="v in list">
+                        <ul v-for="(v,index) in list">
                             <li class="on">
                                 <i class="lessonmbers"><em>1</em></i>
                                 <!--1\2\3...-->
                                 <div class="text-box">
                                     <h2>
-                                        <a href="//www.jikexueyuan.com/course/2707_1.html?ss=1" jktag="&posArea=0007&posAOper=8035&posColumn=9598.1">{{v.v_name}}</a>
+                                        <a v-bind:href="'javascript:updVideo('+index+')'" jktag="&posArea=0007&posAOper=8035&posColumn=9598.1">{{v.v_name}}</a>
                                         <p class="f_r">03:54</p>
                                     </h2>
                                     <p>{{v.v_intro}}</p>
@@ -949,6 +949,10 @@
                         }
                         this.list = response.data;
                     });
+                },
+                updVideo: function(index){
+                	/* $("#s_play").prop("src","/file/" + this.list[index].url); */
+                	alert(this.list[index].url);
                 },
                 getParam: function(str){
                  	var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));
