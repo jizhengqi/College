@@ -35,4 +35,7 @@ public interface UsersDao {
 	
 	// 查询所有VIP用户
 	public List<Users> queryByVIP(Integer u_vip);
+	
+	// 根据编号判断用户是否是VIP
+	public List<Users> queryVipById(String u_id);
 }

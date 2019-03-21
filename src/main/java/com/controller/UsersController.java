@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -59,6 +60,8 @@ public class UsersController {
 		UsernamePasswordToken token = new UsernamePasswordToken(uname,pwd);
 		try {
 			rs = 1;
+			List<Users> list = us.queryByName(uname, pwd);
+			session.setAttribute("users", list);
 			subject.login(token);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -68,6 +71,30 @@ public class UsersController {
 	}
 	
 	// 查询登陆者信息
+	@RequestMapping("queryByUsers")
+	@ResponseBody
+	public Users queryByUsers(HttpSession session){
+		List<Users> list = (List<Users>) session.getAttribute("users");
+		Users users = list.get(0);
+		if(null != users){
+			return users;
+		}else{
+			return null;
+		}
+	}
+	
+	// 判断用户是否是VIP
+	@RequestMapping("queryVipById")
+	@ResponseBody
+	public Integer queryVipById(String u_id){
+		List<Users> list = us.queryVipById(u_id);
+		if(list.get(0).getU_vip() == 1){
+			rs = 1;
+		}else{
+			rs = 2;
+		}
+		return rs;
+	}
 	
 	// 获取验证码
 	@RequestMapping("getMsg")

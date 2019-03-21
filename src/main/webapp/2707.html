@@ -194,75 +194,50 @@
                 </div>
                 <div class="player-nav">
                     <ul>
-                        <li class="mulu">
+                        <li class="mulu" @click="a()" v-for="(t,index) in lint">
                             <i></i>
                             <p>目录</p>
-                            <div class="mulu-box" id="videolist">
-                                <div class="mulu-content">
-                                    <strong>目录 <span id="shouqi">收起&gt;</span></strong>
-                                    <!--case-->
-                                    <div class="case cf">
-                                        <div id="simTestContent2" class="simScrollCont">
-                                            <p>设计本课程的目的是让 Web 前端工程师，可以轻松将设计师提供的 PSD 效果图，切分成 HTML 网页文件，学完本课程可以掌握 PS 软件的切图技巧和 HTML 布局技巧。</p>
-                                            <dl class="lessonvideo-list">
-                                                <dd class="playing">
-                                                    <h2>
-                                                        <span class="sm-icon "></span>
-                                                        <a href="//www.jikexueyuan.com/course/2707_1.html?ss=1" jktag="&posGP=103001&posArea=0002&posOper=8005&posColumn=1.1">1.知识点概括及案例分析</a>
-                                                        <span class="lesson-time">00:03:54</span>
-                                                    </h2>
-                                                    <blockquote>本课时主要讲解，该企业网站项目开发需要用到的知识点，及项目案例分析和网站展示效果。</blockquote>
-                                                </dd>
-                                                <dd>
-                                                    <h2>
-                                                        <span class="sm-icon "></span>
-                                                        <a href="//www.jikexueyuan.com/course/2707_2.html?ss=1" jktag="&posGP=103001&posArea=0002&posOper=8005&posColumn=2.2">2.浮动布局与定位布局的配合</a>
-                                                        <span class="lesson-time">00:21:24</span>
-                                                    </h2>
-                                                    <blockquote>本课时主要讲解，在搭建企业网站中经常会使用的两种布局方式，float 浮动布局和 position 定位布局，分析两种布局方式的利弊。</blockquote>
-                                                </dd>
-                                                <dd>
-                                                    <h2>
-                                                        <span class="sm-icon "></span>
-                                                        <a href="//www.jikexueyuan.com/course/2707_3.html?ss=1" jktag="&posGP=103001&posArea=0002&posOper=8005&posColumn=3.3">3.必备的切图技巧及图片优化</a>
-                                                        <span class="lesson-time">00:29:34</span>
-                                                    </h2>
-                                                    <blockquote>本课时主要讲解，网站中经常会出现的图片格式，jpg/gif/png 的不同应用场景，详解图片压缩及优化，以及小图片拼合成大图的方式。</blockquote>
-                                                </dd>
-                                                <dd>
-                                                    <h2>
-                                                        <span class="sm-icon "></span>
-                                                        <a href="//www.jikexueyuan.com/course/2707_4.html?ss=1" jktag="&posGP=103001&posArea=0002&posOper=8005&posColumn=4.4">4.背景图片定位的应用</a>
-                                                        <span class="lesson-time">00:13:03</span>
-                                                    </h2>
-                                                    <blockquote>本课时主要讲解，将 Photoshop 拼合的大图，分别应用到不同的小区块中。</blockquote>
-                                                </dd>
-                                                <dd>
-                                                    <h2>
-                                                        <span class="sm-icon "></span>
-                                                        <a href="//www.jikexueyuan.com/course/2707_5.html?ss=1" jktag="&posGP=103001&posArea=0002&posOper=8005&posColumn=5.5">5.简化代码——共用类似的 CSS 样式</a>
-                                                        <span class="lesson-time">00:16:41</span>
-                                                    </h2>
-                                                    <blockquote>本课时主要讲解，将页面中类似的样式和属性定义为公共 class 类。</blockquote>
-                                                </dd>
-                                            </dl>
-                                        </div>
-                                        <div id="simScrollTest2" class="simScroll" style="visibility: visible;">
-                                            <div tag="simArea" class="simScrollDragArea" style="height: 202px;">
-                                                <div tag="simDrag" class="simScrollDrag" style="position: absolute; top: 2px; width: 14px; height: 39px;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--case end-->
-                                </div>
-                            </div>
+                            <div id="videos" style="display: none;">
+								<div style="width: 400px; height: 540px; background-color: #323232; position: absolute; left: -400px; top:-15px;">
+									<div class="mulu-content">
+										<strong>目录<span>收起&gt;</span></strong>
+										<!--case-->
+										<div class="case cf">
+											<div class="simScrollCont">
+												<p>{{ t.c_introduction }}</p>
+												<dl class="lessonvideo-list">
+													<dd class="playing">
+															<h2>
+														<span class="sm-icon "></span>
+														<a href="javascript:void(0)" jktag="&posGP=103001&posArea=0002&posOper=8005&posColumn=1.1" v-for="v in list">{{ index + 1 }}.{{ v.v_name }}</a>
+														<span class="lesson-time">00:14:45</span>
+													</h2>
+															<blockquote>{{ t.c_introduction }}</blockquote>
+														</dd>
+														
+												</dl>
+											</div>
+											<div id="simScrollTest2" class="simScroll" style="visibility: visible;">
+												<div tag="simArea" class="simScrollDragArea" style="height: 202px;">
+													<div tag="simDrag" class="simScrollDrag" style="position: absolute; top: 2px; width: 14px; height: 39px;"></div>
+												</div>
+											</div>
+									</div>
+								</div>
+                           </div>
                         </li>
-                        <li class="ask" onclick="javascript:;" id="q_pop" jktag="&posArea=0002&posOper=8017&posColumn=2.1">
+                        <li class="ask" @click="b()" id="q_pop" jktag="&posArea=0002&posOper=8017&posColumn=2.1">
                             <i></i>
                             <p>提问</p>
-                            <div class="ask-box">提交问题</div>
+                            <div id="tw" style="display: none; position: absolute; left:-600px; background-color: lightgray; width: 300px; height: 300px; z-index: 5;">
+                            	<br/><br/>
+                            	<input type="text" placeholder="请输入问题的标题" style="display: block; margin-left: 20px;" height="100px;" /><br/><br/>
+                            	<p style="color:black;">问题描述越详细，被解答的速度越快</p><br/><br/>
+                            	<textarea rows="10" cols="40" placeholder="文字请尽量表述清晰、详尽、完整、针对课程的问题请注明出现时间、以便于快速查找问题并及时为你解答。"></textarea><br/><br/>
+                            	<input type="button" value="提交" style="width: 50px;" height="50px;" >
+                            </div>
                         </li>
-                        <li class="xiazai">
+                        <li class="xiazai" @click="upload(vip)">
                             <a href="javascript:void(0)" class="down-course down-ajax" id="down_video"><i></i>
                                 <p>下载</p>
                             </a>
@@ -270,27 +245,22 @@
                                 <a href="javascript:void(0)" class="down-course down-ajax" jktag="&posArea=0002&posOper=8006&posColumn=3.1">下载本节视频</a>
                             </div>
                         </li>
-                        <li class="xianlu">
-                            <i></i>
-                            <p>线路</p>
-                            <div class="xianlu-box">
-                                <em>视频太卡？试试切换线路</em>
-                                <span class="bc-blue"><a href="//www.jikexueyuan.com/course/2707_1.html">√ 线路1</a></span>
-                                <span><a href="//www.jikexueyuan.com/course/2707_1.html?ss=2" jktag="&posGP=103001&posArea=0002&posOper=8018&posColumn=4.2&aVXl=2">√ 线路2</a></span>
-                            </div>
-                        </li>
-
-                        <li class="shouchang user-action" id="shouchang">
-
-
+                        <li class="shouchang user-action" id="shouchang" @click="shoucang()">
                             <i class="" jktag="&posArea=0002&posOper=8019&posColumn=5.2"></i>
-
                             <p>收藏</p>
                             <div class="shouchang-box">收藏课程</div>
                         </li>
                         <li class="fenxiang">
                             <i></i>
                             <p>分享</p>
+                            <div class="fenxiang-box">
+                                <i class="sina-icon" jktag="&posArea=0002&posOper=8020&posColumn=6.1"></i>
+                                <i class="qq-icon" jktag="&posArea=0002&posOper=8021&posColumn=6.2"></i>
+                            </div>
+                        </li>
+                        <li class="xianlu">
+                            <i></i>
+                            <p>笔记</p>
                             <div class="fenxiang-box">
                                 <i class="sina-icon" jktag="&posArea=0002&posOper=8020&posColumn=6.1"></i>
                                 <i class="qq-icon" jktag="&posArea=0002&posOper=8021&posColumn=6.2"></i>
@@ -922,11 +892,13 @@
             el: "#wrapper",
             data: {
                 list: [],
-                lint:[]
+                lint:[],
+                vip:""
             },
             created: function() {
                 this.getlist();
                 this.getCurriculum();
+                this.getUsers();
             },
             methods: {
             	getCurriculum: function(){
@@ -954,6 +926,27 @@
                 	/* $("#s_play").prop("src","/file/" + this.list[index].url); */
                 	alert(this.list[index].url);
                 },
+                getUsers: function(){
+                	var url = "/user/queryByUsers";
+                	this.$http.get(url).then(function(response) {
+                        if (response.status != 200) {
+                            alert(response.status);
+                            return;
+                        }
+                        console.log(JSON.stringify(response.data));
+                        this.getVIP(response.data.u_id);
+                    });
+                },
+                getVIP: function(param){
+                	var url = "/user/queryVipById?u_id=" + param;
+                	this.$http.get(url).then(function(response) {
+                        if (response.status != 200) {
+                            alert(response.status);
+                            return;
+                        }
+                        this.vip = response.data;
+                    });
+                },
                 getParam: function(str){
                  	var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));
                  	/* if (result == null || result.length < 1) {
@@ -977,7 +970,35 @@
                 this.getlists();
             }
         }) */
-
+    </script>
+    <script type="text/javascript">
+    var cc = 1;
+	    function a(){
+	    	if(cc == 1){
+	    		$("#videos").show(600);
+	    		cc = 2;
+	    	}else if(cc == 2){
+	    		$("#videos").hide(600);
+	    		cc = 1;
+	    	}
+	    }
+	    
+	    function b(){
+	    	$("#tw").show(600);
+	    }
+	    
+	    function upload(vip){
+	    	if(vip == 1){
+	    		
+	    	}else{
+	    		alert("穷逼,连个会员都充不起！！！");
+	    		/* alert("请选择充值会员,或者与原作者联系,谢谢！！！"); */
+	    	}
+	    }
+	    
+	    function shoucang(){
+	    	
+	    }
     </script>
 </body>
 

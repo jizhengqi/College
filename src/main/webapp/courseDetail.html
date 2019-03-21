@@ -284,13 +284,13 @@
                                 <ul class="aside-cList" v-for="(keys,values) in list">
                                     <li>
                                         <div>
-                                            <a cgid="2" href="//www.jikexueyuan.com/course/web/">{{values}}</a>
+                                            <a cgid="2" v-bind:href="'courseDetail.html?d_name='+values">{{values}}</a>
                                             <div class="list-show">
                                                 <div v-for="(vkey,vvalues) in keys">
                                                     <dl v-for="(key,value) in vkey">
-                                                        <dt><a href="//www.jikexueyuan.com/course/webbase/" cgid="16">{{value}}</a></dt>
+                                                        <dt><a v-bind:href="'courseDetail.html?l_name='+value" cgid="16">{{value}}</a></dt>
                                                         <dd class="cf">
-                                                            <a href="//www.jikexueyuan.com/course/html/" cgid="76" v-for="m in key">{{m}}</a>
+                                                            <a v-bind:href="'courseDetail.html?m_name='+m" cgid="76" v-for="m in key">{{m}}</a>
                                                         </dd>
                                                     </dl>
                                                 </div>

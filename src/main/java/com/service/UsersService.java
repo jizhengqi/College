@@ -61,4 +61,9 @@ public class UsersService {
 	public Users queryLog(String uname){
 		return ud.queryLog(uname);
 	}
+	
+	// 根据编号查询用户是否是VIP
+	public List<Users> queryVipById(String u_id){
+		return ud.queryVipById(u_id);
+	}
 }
