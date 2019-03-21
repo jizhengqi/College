@@ -122,7 +122,7 @@
 				#{u_stu_authentication},
 			</if>
 			<if test="u_vip != null">
-				#{u_vip},
+				0,
 			</if>
 			<if test="u_vip_date != null">
 				#{u_vip_date},
@@ -373,5 +373,10 @@
 	
 	<select id="queryLog" parameterType="java.lang.String" resultType="com.entity.Users">
 		select * from users where u_phone = #{param1}
+	</select>
+	
+	<!-- 根据编号查询用户是否是VIP -->
+	<select id="queryVipById" parameterType="java.lang.String" resultType="com.entity.Users">
+		select * from users where u_id = #{param1}
 	</select>
 </mapper>
