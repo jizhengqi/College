@@ -59,4 +59,10 @@ public class VideoController {
 		return videoService.queryVideoByC_id(c_id);
 	}
 	
+
+	@RequestMapping("downloadVideo")
+	public void download(String backName, String filePath,
+			HttpServletResponse response) {
+		videoService.download(backName, filePath, response);
+	}
 }

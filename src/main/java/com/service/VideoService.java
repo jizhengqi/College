@@ -1,8 +1,11 @@
 package com.service;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -90,5 +93,19 @@ public class VideoService {
 	// 根据课程ID获取所有视频
 	public List<Video> queryVideoByC_id(Integer c_id) {
 		return vd.queryVideoByC_id(c_id);
+	}
+
+	/**
+	 * 下载视频
+	 * 
+	 * @param backName
+	 * @param filePath
+	 * @param response
+	 */
+	public void download(String backName, String filePath,
+			HttpServletResponse response) {
+		BufferedInputStream bis = null;// 输入流
+		BufferedOutputStream bos = null;// 输出流
+		myFileUtils.download(backName, filePath, bis, bos, response);
 	}
 }

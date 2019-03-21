@@ -1,11 +1,15 @@
 package com.util;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -59,28 +63,6 @@ public class MyFileUtils {
 	}
 
 	/**
-	 * 截取文件后缀<br>
-	 * 例如：.jpg
-	 * 
-	 * @param fileName
-	 * @return
-	 */
-	public static String getSuffix(String fileName) {
-		return fileName.substring(fileName.lastIndexOf("."));
-	}
-
-	/**
-	 * 检测目录是否存在
-	 * 
-	 * @param file
-	 */
-	public static void checkDirectory(File file) {
-		if (!file.getParentFile().exists()) {
-			file.getParentFile().mkdirs();
-		}
-	}
-
-	/**
 	 * 往文件中追加数据<br>
 	 * FileWriter
 	 * 
@@ -110,6 +92,77 @@ public class MyFileUtils {
 
 		}
 		return flag;
+	}
+
+	/**
+	 * 单文件下载
+	 * 
+	 * @param backName
+	 *            返回前台下载的文件名(中文处理)
+	 * @param filePath
+	 *            访问文件路径
+	 * @param bis
+	 *            输入流
+	 * @param bos
+	 *            输出流
+	 * @param response
+	 *            响应
+	 */
+	public void download(String backName, String filePath,
+			BufferedInputStream bis, BufferedOutputStream bos,
+			HttpServletResponse response) {
+		response.setContentType("text/html;charset=UTF-8");// 设置返回中文编码格式
+		backName = backName + getSuffix(filePath);// 获取返回文件名全称
+		filePath = myWebConfig.getVideoDir() + filePath;// 拼接访问路径
+		try {
+			response.setContentType("application/x-msdownload;");// 设置响应头类型为下载
+			response.setHeader("Content-disposition", "attachment; filename="
+					+ new String(backName.getBytes("UTF-8"), "ISO8859-1"));// 设置返回文件名(避免中文乱码)
+			response.setHeader("Content-Length",
+					String.valueOf(new File(filePath).length()));// 避免出现安全警告
+			bis = new BufferedInputStream(new FileInputStream(filePath));// 读取文件流
+			bos = new BufferedOutputStream(response.getOutputStream());// 强制输出下载
+			byte[] buff = new byte[2048];
+			int len;
+			while (-1 != (len = bis.read(buff, 0, buff.length))) {
+				bos.write(buff, 0, len);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (null != bos)
+					bos.close();
+				if (null != bis)
+					bis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * 截取文件后缀<br>
+	 * 例如：.jpg
+	 * 
+	 * @param fileName
+	 *            文件全路径
+	 * @return
+	 */
+	private static String getSuffix(String fileName) {
+		return fileName.substring(fileName.lastIndexOf("."));
+	}
+
+	/**
+	 * 检测父级目录是否存在
+	 * 
+	 * @param file
+	 *            目录
+	 */
+	private static void checkDirectory(File file) {
+		if (!file.getParentFile().exists()) {
+			file.getParentFile().mkdirs();
+		}
 	}
 
 }

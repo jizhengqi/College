@@ -1,0 +1,911 @@
+body {
+  background: #fff;
+}
+.content {
+  width: 1000px;
+  height: 270px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.content.order {
+  border-bottom: 1px solid #e4e4e4;
+  height: auto;
+}
+.content.order .cmiddle {
+  line-height: 2.4em;
+}
+.content.order .cright {
+  width: 100%;
+  position: static;
+  clear: both;
+  margin-top: -42px;
+  overflow: hidden;
+}
+.content.order .cright .payment {
+  position: static;
+  padding: 10px 0;
+}
+.content.order p {
+  position: relative;
+}
+.content.order p label {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.content.order p span {
+  display: block;
+  margin-left: 75px;
+  width: 555px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.content > div {
+  float: left;
+  height: 100%;
+}
+.content .cleft {
+  width: 120px;
+  padding-right: 40px;
+}
+.content .cleft img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.content .cmiddle {
+  width: 630px;
+  line-height: 2.2em;
+}
+.content .cmiddle .tit {
+  font-size: 18px;
+  font-weight: 500;
+}
+.content .cmiddle p {
+  font-size: 12px;
+  color: #666;
+}
+.content .cmiddle .link {
+  margin-top: 15px;
+}
+.content .cmiddle .link a {
+  color: #2d85ca;
+}
+.content .cright {
+  width: 250px;
+  position: relative;
+  text-align: right;
+}
+.content .cright .payment {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  font-size: 12px;
+}
+.content .cright .payment strong {
+  font-size: 18px;
+  color: #ff5c00;
+  font-weight: 400;
+}
+.payment {
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.payment dt {
+  font-size: 16px;
+  color: #333;
+  font-weight: normal;
+  line-height: 1em;
+  margin-bottom: 20px;
+}
+.payment dd {
+  float: left;
+  width: 152px;
+  height: 52px;
+  margin-right: 40px;
+}
+.payment dd img {
+  display: block;
+  width: auto;
+  height: 30px;
+  margin: 0 auto;
+}
+.payment dd span {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e4e4e4;
+  padding: 10px 0;
+  cursor: pointer;
+}
+.payment dd span.active {
+  border: 1px solid #35b558;
+}
+.payment .btnbox {
+  text-align: right;
+  margin-top: 15px;
+}
+.btn-pay {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  background-color: #ff8530;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 50px;
+  text-align: center;
+  color: #fff;
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.btn-pay.disabled {
+  cursor: not-allowed;
+  background-color: #e8e8e8;
+}
+.gotopay .disabled {
+  cursor: not-allowed;
+  background-color: #e8e8e8;
+}
+.paystatus {
+  width: 1000px;
+  min-height: 300px;
+  margin: 0 auto;
+  position: relative;
+}
+.paystatus dl {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  margin-left: -250px;
+  width: 500px;
+}
+.paystatus dt {
+  color: #333333;
+  font-size: 18px;
+  height: 40px;
+  line-height: 40px;
+  font-weight: 500;
+}
+.paystatus dt img {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+  vertical-align: top;
+}
+.paystatus dt strong {
+  color: #ff5c00;
+}
+.paystatus dd {
+  color: #666;
+  font-size: 12px;
+  line-height: 40px;
+  padding-left: 60px;
+}
+.paystatus dd a {
+  color: #2d85ca;
+}
+.paystatus dd.link {
+  margin-top: 15px;
+}
+.mg-r30 {
+  margin-right: 30px;
+}
+.mg-r60 {
+  margin-right: 60px;
+}
+#alipayPop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -300px;
+  margin-top: -150px;
+  z-index: 10000;
+  width: 600px;
+  height: 300px;
+  text-align: center;
+  background: #fff;
+}
+.alipay-pop .close {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.alipay-pop .close:before{
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background: #666;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.alipay-pop .close:after{
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background: #666;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.alipay-pop .tit {
+  height: 60px;
+  font-size: 14px;
+  color: #333;
+}
+.alipay-pop .status {
+  padding-bottom: 20px;
+}
+.alipay-pop .status > a {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #e4e4e4;
+  padding: 30px 0 20px;
+}
+.alipay-pop .status > a.active,
+.alipay-pop .status > a:hover {
+  border-color: #35b558;
+}
+.alipay-pop .status p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5em;
+}
+.alipay-pop .status p span {
+  display: block;
+  font-size: 12px;
+  color: #666;
+}
+.alipay-pop .status img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 17px;
+}
+.pay-pop .status {
+  padding-bottom: 20px;
+}
+.pay-pop .status > a {
+  display: inline-block;
+  width: 100px;
+  height: 110px;
+  border: 1px solid #e4e4e4;
+  padding: 30px 0 20px;
+}
+#wechatPop{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -300px;
+  margin-top: -160px;
+  z-index: 10000;
+  width: 600px;
+  height: 320px;
+  padding: 40px 20px;
+  text-align: center;
+  background: #fff;
+}
+.wechat-pop .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+.wechat-pop .close:before{
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background: #666;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.wechat-pop .close:after{
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background: #666;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.wechat-pop .bd {
+  text-align: center;
+}
+.wechat-pop .bd .wcode {
+  width: 100%;
+  height: 200px;
+  padding: 20px;
+  background: url("../images/bg-code.png") center center no-repeat;
+  background-size: 200px 200px;
+}
+.wechat-pop .bd .wcode > img {
+  width: 160px;
+  height: 160px;
+}
+.wechat-pop .bd > li {
+  float: left;
+  width: 50%;
+}
+.wechat-pop .bd > li:first-child {
+  border-right: 1px dashed #cccccc;
+  padding: 20px;
+}
+.wechat-pop .bd .tit {
+  width: 160px;
+  height: auto;
+  padding: 40px 0 20px;
+}
+.wechat-pop .bd .txt {
+  font-size: 18px;
+  color: #666;
+  line-height: 2em;
+}
+.wechat-pop .bd .price {
+  color: #ff8530;
+  font-size: 24px;
+  line-height: 2em;
+}
+.wechat-pop img {
+  display: block;
+  margin: 0 auto;
+}
+#newpay {
+  width: 1000px;
+  margin: 0 auto;
+  font-weight: none;
+}
+#newpay h2 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+#newpay section {
+  border: 1px solid #e4e4e4;
+  background: #fff;
+  padding: 30px;
+}
+.reduce-border-top {
+  border-top: 1px solid #e4e4e4;
+}
+.reduce {
+  font-size: 12px;
+  text-align: right;
+  padding: 30px 0;
+  border-bottom: 1px solid #e4e4e4;
+}
+.reduce input[type=checkbox] {
+  display: none;
+}
+.reduce .zindex {
+  z-index: 20;
+}
+.reduce .jk-money {
+  color: #FF5C00;
+}
+.what .information em {
+  border-left: 1px solid #E4E4E4;
+  border-top: 1px solid #E4E4E4;
+  background: #f5f5f5;
+  width: 10px;
+  display: block;
+  height: 10px;
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  /* IE 9 */
+  -moz-transform: rotate(45deg);
+  /* Firefox */
+  -webkit-transform: rotate(45deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(45deg);
+  /* Opera */
+  margin-top: -21px;
+  margin-left: 36px;
+  margin-bottom: 10px;
+}
+.what .information {
+  width: 200px;
+  left: -44px;
+  top: 30px;
+  background: #fff;
+  position: absolute;
+  color: #555;
+  border: 1px solid #e4e4e4;
+  padding: 15px;
+  text-align: left;
+  display: none;
+}
+.what .information a {
+  color: #2d85ca;
+}
+.what .information a:hover {
+  text-decoration: underline;
+}
+.jkb{
+  margin-bottom:4px;
+}
+.jkb:last-child{
+  margin-bottom:0;
+}
+.jkb input[type=checkbox]:checked ~ label:after {
+  opacity: 1;
+}
+.coupon,
+.coupon-pass {
+  text-align: right;
+}
+.coupon .desc input[type=checkbox]:checked ~ label:after,
+.coupon-pass .desc input[type=checkbox]:checked ~ label:after {
+  opacity: 1;
+}
+.coupon-check,
+.jkb-check {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #bbb;
+  background-color: #fff;
+  margin-right: 5px;
+}
+.coupon-check:after,
+.jkb-check:after {
+  opacity: 0;
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 4px;
+  background: transparent;
+  top: 2px;
+  left: 2px;
+  border: 2px solid #35b558;
+  border-top: none;
+  border-right: none;
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.coupon-pass .coupon-check:after {
+  border-color: #ccc;
+}
+.coupon-over {
+  text-align: right;
+}
+.coupon-over .desc input[type=checkbox]:checked ~ label:after {
+  opacity: 0;
+}
+.coupon-over .coupon-check {
+  background-color: #f4f4f4;
+  cursor: not-allowed;
+}
+.coupon-id {
+  display: none;
+  width: 250px;
+  padding: 15px;
+  margin-top: 5px;
+}
+.coupon-id .coupon-code {
+  width: 100%;
+  height: 30px;
+}
+.coupon-id .coupon-code > input {
+  float: left;
+  width: 150px;
+  height: 30px;
+  line-height: 26px;
+  border: 1px solid #e4e4e4;
+  background-color: #fff;
+  font-size: 12px;
+  color: #333;
+  padding: 0 8px;
+}
+.coupon-id .coupon-code > a {
+  float: right;
+  width: 60px;
+  height: 30px;
+  border-radius: 3px;
+  font-size: 12px;
+  color: #fff;
+  line-height: 30px;
+  text-align: center;
+  background-color: #ccc;
+  outline: none;
+  border: 0 none;
+  cursor: default;
+}
+.coupon-id .coupon-code > a.on {
+  background-color: #35B558;
+  cursor: pointer;
+}
+.coupon-id > p {
+  display: none;
+  font-size: 12px;
+  text-align: left;
+  margin-top: 10px;
+}
+.coupon-id > p.tip {
+  color: #d23322;
+}
+.pass .coupon-code > input {
+  color: #999;
+  background-color: #f5f5f5;
+}
+.pass .coupon-code > a {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.pass p.tip {
+  color: #ff8530;
+}
+.gotopay {
+  color: #333;
+  display: block;
+  margin-top: 20px;
+  margin-right: 20px;
+  padding-left: 30px;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: right;
+  /*font-family: "微软雅黑";*/
+}
+.gotopay > div:nth-child(1) {
+  font-size: 14px;
+  margin: 15px 0;
+}
+.gotopay > div:nth-child(1) span {
+  font-size: 18px;
+  color: #ff5c00;
+}
+.gotopay > div:nth-child(2) {
+  width: 150px;
+  margin-top: -1px;
+}
+#newpay .lesson {
+  background-color: #fff;
+  border: 1px solid #e4e4e4;
+}
+#newpay .lesson .lesson-infor {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e4e4e4;
+}
+#newpay .lesson .lesson-infor .order-id {
+  font-size: 12px;
+  color: #999;
+  padding-bottom: 25px;
+}
+#newpay .lesson .lesson-infor div:nth-child(1) {
+  width: 660px;
+  float: left;
+  font-size: 12px;
+  font-weight: normal;
+}
+#newpay .lesson .lesson-infor div:nth-child(1) img {
+  float: left;
+  margin-right: 15px;
+}
+#newpay .lesson .lesson-infor div:nth-child(1) h3 {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 14px;
+  margin-bottom: 13px;
+}
+#newpay .lesson .lesson-infor div:nth-child(1) .timeornumber {
+  color: #999;
+  font-weight: normal;
+  display: block;
+  margin-bottom: 13px;
+}
+#newpay .lesson .lesson-infor div:nth-child(2) {
+  width: 260px;
+  float: right;
+  line-height: 70px;
+}
+#newpay .lesson .lesson-infor div:nth-child(2) p {
+  line-height: 12px;
+  font-size: 12px!important;
+  text-align: right;
+}
+#newpay .lesson .lesson-infor div:nth-child(2) .price {
+  font-size: 14px;
+  line-height: 40px;
+  margin-right: 20px;
+  display: block;
+}
+#newpay .lesson .lesson-infor div:nth-child(2) .vip {
+  background: #ff8530;
+  padding: 1px 4px;
+  font-size: 12px;
+  color: #fff;
+  vertical-align: middle;
+}
+#newpay .lesson .lesson-infor div:nth-child(2) .vipnumber {
+  color: #ff8530;
+  border: 1px solid #ff8530;
+  padding: 0 5px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+body {
+  background: #f5f5f5;
+}
+#way {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e4e4e4;
+}
+.remark {
+  height: 40px;
+  line-height: 40px;
+  text-align: right;
+  font-size: 12px;
+  color: #999;
+}
+.remark .icon-warn {
+  display: inline-block;
+  vertical-align: text-bottom;
+  width: 15px;
+  height: 15px;
+  background: url("../images/icon-warn.png") 0 0 no-repeat;
+}
+.usecoupon {
+  display: none;
+  border: 1px solid #e4e4e4;
+}
+.usecoupon .nav {
+  height: 40px;
+  line-height: 40px;
+  background: #fafafa;
+  padding: 0 20px;
+}
+.usecoupon .nav span {
+  height: 38px;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 38px;
+  padding: 0 20px;
+}
+.usecoupon .nav span:hover {
+  cursor: pointer;
+}
+.usecoupon .nav #active {
+  border-bottom: 2px solid #008000;
+  cursor: pointer;
+}
+.slid-down {
+  background: url("../images/icon-down.png") center center no-repeat;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.slidown {
+  transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  /* IE 9 */
+  -moz-transform: rotate(0deg);
+  /* Firefox */
+  -webkit-transform: rotate(0deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(0deg);
+}
+.slidup {
+  transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  /* IE 9 */
+  -moz-transform: rotate(-90deg);
+  /* Firefox */
+  -webkit-transform: rotate(-90deg);
+  /* Safari 和 Chrome */
+  -o-transform: rotate(-90deg);
+}
+.what {
+  position: relative;
+  z-index: 1;
+  padding: 6px;
+}
+.what:before {
+  content: "?";
+  border-radius: 50%;
+  padding: 0 4px;
+  display: inline-block;
+  line-height: 15px;
+  background: #999;
+  color: #f5f5f5;
+  cursor: pointer;
+  text-align: left;
+}
+#usecoupon .coupon-list {
+  min-height: 140px;
+  overflow: hidden;
+  background: #fff;
+  padding: 30px 30px 0px 30px;
+}
+#usecoupon .coupon-list .nothing {
+  font-size: 12px;
+  color: #a0a0a0;
+  text-align: center;
+  display: none;
+  line-height: 80px;
+}
+#usecoupon .coupon-list .c-type {
+  position: relative;
+  width: 180px;
+  height: 100px;
+  text-align: center;
+  border: 1px solid #e4e4e4;
+  float: left;
+  margin-right: 19px;
+  margin-left: 19px;
+}
+#usecoupon .coupon-list .c-type i {
+  border-radius: 50%;
+  background: #fff url(../images/icon-pay-succ.png) center center no-repeat;
+  background-size: 20px 20px;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  z-index: 100;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+  display: none;
+}
+#usecoupon .coupon-down {
+  margin: 30px 0;
+}
+#usecoupon .coupon-down span:nth-child(1) {
+  display: inline-block;
+  width: 100px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+#usecoupon .coupon-down span:nth-child(1) i {
+  float: right;
+  margin-left: 10px;
+}
+#usecoupon .coupon-down span:nth-child(2) {
+  float: right;
+  font-size: 12px;
+  display: none;
+}
+.what:hover .information {
+  background-color: #f5f5f5;
+  display: inline-block;
+}
+.choose {
+  border: 1px solid #35B558!important;
+}
+.choose i {
+  display: block!important;
+}
+.c-type {
+  margin-bottom: 30px;
+}
+.c-type:hover {
+  cursor: pointer;
+}
+.c-type .c-money {
+  width: 100%;
+  height: 70px;
+  font-size: 12px;
+  color: #35B558;
+  line-height: 70px;
+  text-align: center;
+}
+.c-type .c-money em {
+  font-size: 24px;
+}
+.c-type .c-time {
+  background: #35b558 url(../images/wave.png) 0 0 repeat-x;
+  font-size: 12px;
+  height: 30px;
+  color: #fff;
+  line-height: 30px;
+}
+.c-special .c-money {
+  color: #70a8db!important;
+}
+.c-special .c-time {
+  color: #fff!important;
+  background: #70a8db url(../images/waveblue.png) 0 0 repeat-x;
+}
+
+.pay-mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.alipay-mask{
+  display: none;
+}
+
+.wechat-mask{
+  display: none;
+}
+#warning {
+  position: fixed;
+  top: -40px;
+  left: 50%;
+  z-index: 60000;
+  opacity: 0;
+  padding: 4px 20px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+}
+.waring-success {
+  background: #35b558;
+}
+.waring-failure {
+  background: #ff5c00;
+}
+.waring-sub {
+  background: #2d85ca;
+}
+.payment .moragedaddcolor{
+  background-color: #963e00;
+  display: inline-block;
+  width: 170px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+  outline: 0 none;
+  border: 0 none;
+  cursor: pointer;
+}
+.payment .agreesaddbind{
+  width: 100%;
+  height: 20px;
+  font-size: 12px;
+  margin:10px 0;
+  margin-bottom:15px;
+}
+.agreesaddbind span{
+  /*margin-right: 20px;*/
+}
+.allreadyreded{
+  font-size: 12px;
+  color: #333;
+}
+

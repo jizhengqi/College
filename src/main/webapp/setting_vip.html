@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <title>极客学院</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <title>我的VIP</title>
+    <link rel="stylesheet" type="text/css" href="css/index.min.css">
+    <script type="text/javascript" src="js/growingio.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/mask.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/jquery.min.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/header.min.js?t=1544581681296"></script>
+    <script type="text/javascript" src="js/web_socket.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/websocket.js?t=1513326254000"></script>
+</head>
+
+<body>
+    <div id="header_top_notice"></div>
+    <div id="jk-header">
+        <div class="header">
+            <h1>
+                <a href="//www.jikexueyuan.com" class="logo">
+                    <img src="img/logo.png?t=1513326254000" width="100" alt="极客学院" />
+                </a>
+            </h1>
+            <nav style="width:490px;">
+                <ul>
+                    <li>
+                        <a href="//www.jikexueyuan.com" class="home">首页</a>
+                    </li>
+                    <li class="careerpath">
+                        <a href="//www.jikexueyuan.com/zhiye/">职业</a><i class="slide-icon"></i>
+                        <div class="zhiye-submenu slide-submeu">
+                            <strong>前端</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/web"><i class="web-icon"></i>Web前端工程师</a>
+                            <a href="//www.jikexueyuan.com/zhiye/wechatapp"><i class="wx-icon"></i>微信小程序</a>
+                            <strong>移动端</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/android"><i class="android-icon"></i>Android工程师</a>
+                            <a href="//www.jikexueyuan.com/zhiye/ios"><i class="ios-icon"></i>iOS工程师</a>
+                            <strong>后端</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/python"><i class="python-icon"></i>Python工程师</a>
+                            <a href="//www.jikexueyuan.com/zhiye/php"><i class="php-icon"></i>PHP工程师</a>
+                            <a href="//www.jikexueyuan.com/zhiye/go"><i class="golang-icon"></i>Golang工程师</a>
+                            <a href="//www.jikexueyuan.com/zhiye/java"><i class="java-icon"></i>JavaWeb工程师</a>
+                            <strong>大数据</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/bigdata"><i class="data-icon"></i>大数据平台研发工程师</a>
+                            <strong>人工智能</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/ml"><i class="mlearning-icon"></i>机器学习工程师</a>
+                            <strong>区块链</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/blockchain"><i class="yw-icon"></i>区块链工程师</a>
+                            <!--<a href="#"><i class="yw-icon"></i>运维工程师</a>
+								<a href="#"><i class="xmjl-icon"></i>项目经理</a>-->
+                            <strong>设计</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/ux"><i class="ui-icon"></i>UI/UX设计师</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="//www.jikexueyuan.com/course/">课程</a><i class="slide-icon"></i>
+                        <div class="slide-submeu">
+                            <a href="//www.jikexueyuan.com/course/">课程库</a>
+                            <a href="//ke.jikexueyuan.com/zhiye/">职业路径</a>
+                            <a href="//www.jikexueyuan.com/path/">知识体系图</a>
+                            <a href="//ke.jikexueyuan.com/xilie/">系列课程</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="//www.jikexueyuan.com/partner">企业</a><i class="slide-icon"></i>
+                        <div class="slide-submeu qy-box">
+                            <a href="//zt.jikexueyuan.com/microsoftai"><i class="wr-icon"></i>微软人工智能 </a>
+                            <a href="//zt.jikexueyuan.com/baiduai"><i class="baidu-icon"></i>百度AI图像技术课</a>
+                            <a href="//zt.jikexueyuan.com/aws"><i class="aws-icon"></i>AWS云计算</a>
+                            <a href="//zt.jikexueyuan.com/qcloud"><i class="txy-icon"></i>腾讯云课程专区</a>
+                            <a href="//zt.jikexueyuan.com/qualcomm"><i class="gt-icon"></i>Qualcomm公开课 </a>
+                            <a href="//zt.jikexueyuan.com/b" class="youke-nav"><i class="youke-icon bounce"></i>企业合作新模式</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="//wiki.jikexueyuan.com/">社区</a><i class="slide-icon"></i>
+                        <div class="slide-submeu">
+                            <a href="//wiki.jikexueyuan.com/">Wiki</a>
+                            <a href="//wenda.jikexueyuan.com/">技术问答</a>
+                            <!--<a href="//qun.jikexueyuan.com/">社群</a>
+						<a href="//download.jikexueyuan.com/">资料下载</a>-->
+                        </div>
+
+                    </li>
+                </ul>
+            </nav>
+            <div class="search">
+                <input class="searchinput" id="searchinput" placeholder="搜索课程、问答或Wiki" />
+                <span class="search-icon" id="search-bottom"></span>
+                <div class="search-result">
+                    <!-- <a href="javascript:;" class="search-hot">热门搜索 <span class="label label-green">职业课程</span></a>
+				<a href="javascript:;">hello world <span class="label label-blue">知识图谱</span></a>
+				<a href="javascript:;">hello world <span class="label label-purple">系列课程</span></a> -->
+                </div>
+            </div>
+            <div class="nav-other" id="nav-other">
+                <div class="centerbox" style="display: none;">
+                    <a href="//xue.jikexueyuan.com/" class="learn-center" title="学习中心"></a>
+                </div>
+                <div class="centerbox" style="display: none;">
+                    <a href="//www.jikexueyuan.com/member/notifications/" class="message" id="message" title="消息中心"><i class="have" id="have" style="display: none;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <nav class="leftnav" id="leftNav">
+            <ul>
+                <li><a href="setting_user.html" class="">个人资料</a></li>
+                <li>
+                    <a href="setting_ca.html" class="">认证学员</a>
+                    <i class="pro-icon"></i> <span></span>
+                </li>
+                <li><a href="setting_vip.html" class="active">我的VIP</a></li>
+                <li><a href="setting_pro.html" class="">我的Pro</a></li>
+                <li><a href="setting_order.html" class="">我的订单</a></li>
+                <li><a href="setting_jkb.html" class="">我的极客币</a></li>
+                <li><a href="setting_quan.html" class="">我的优惠券</a></li>
+                <li><a href="security.html" class="">账号安全</a></li>
+                <li><a href="setting_message.html" class="">消息设置</a></li>
+                <li><a href="setting_sns.html" class="">绑定第三方账号</a></li>
+            </ul>
+        </nav>
+        <div class="main">
+            <h2>我的VIP</h2>
+            <section class="vip">
+                <div class="statusvip">
+                    <div class="statusvip-content">
+                        <h3>
+                            您尚无VIP会员资格 </h3>
+                        <!-- <h3>VIP会员资格已到期</h3> -->
+                        <a href="vip.html" class="green-btn">购买</a>
+                        <div class="statusvip-bar">
+                            <div class="statusvip-bar-now" style="width:0%"></div>
+                        </div>
+                    </div>
+                    <aside class="statusvip-aside">
+                        <h3>剩余：0天</h3>
+                    </aside>
+                </div>
+                <!-- <div class="get">
+                    <div class="getarea">
+                        <h3>F码兑换VIP</h3>
+                        <div class="getarea-form">
+                            <input type="text" placeholder="请输入F码" id="getInput">
+                            <button class="green-btn" id="getBtn">兑换</button>
+                        </div>
+                        <p>「F码」可以在各种活动中领取，或向其他会员索要。</p>
+                    </div>
+                    <aside>
+                        <div class="getp">
+                            <p>关注极客学院官方微信</p>
+                            <p>福利活动全知道</p>
+                        </div>
+                        <div class="getcode">
+                            <img src="img/2code.png" alt="二维码">
+                        </div>
+                    </aside>
+                </div>
+                <div class="exchange">
+                    <div class="exchange-nav">
+                        <ul id="exNav" class="cf">
+                            <li class="active">VIP兑换记录</li>
+                            <li>F码兑换记录</li>
+                            <li>已领取F码<span>0</span></li>
+                        </ul>
+                    </div>
+                    <div class="exchange-content">
+                        <ul id="exCon" class="ex-option">
+                            <li class="ex-option-one" style="display:list-item;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>日期</th>
+                                            <th>数量</th>
+                                            <th>种类</th>
+                                            <th>开始时间</th>
+                                            <th>结束时间</th>
+                                            <th>备注</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li class="ex-option-two">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>F码</th>
+                                            <th>兑换时间</th>
+                                            <th>兑换结果</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li class="ex-option-three">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>F码</th>
+                                            <th>兑换时间</th>
+                                            <th>有效时间</th>
+                                            <th>状态</th>
+                                            <th>好友奖励</th>
+                                            <th>我的奖励</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div> -->
+    </div>
+</body>
+
+
+<script>
+    window.IS_SELF = 0;
+
+</script>
+<script src="js/index.js"></script>
+<script src="js/common.js"></script>
+<link rel="stylesheet" href="css/footer.css?t=1513326254000" />
+<div id="footer" style="margin-top: 300px;">
+    <div class="footer-content">
+        <div class="contact-way">
+            <div class="other-way">
+                <a href="//blog.jikexueyuan.com/28.html " target="_blank" class="weixin-icon"></a>
+                <!--<a href="" class="tencen-icon"></a>-->
+                <a href="//weibo.com/jikexueyuan" target="_blank" class="sina-icon"></a>
+                <a href="//twitter.com/jikexueyuan" target="_blank" class="facebook-icon"></a>
+                <a href="//plus.google.com/communities/117673330839635588089" target="_blank" class="google-icon"></a>
+            </div>
+        </div>
+        <nav>
+            <a href="//help.jikexueyuan.com/" target="_blank">关于我们</a><i>|</i>
+            <a href="//help.jikexueyuan.com/join.html" target="_blank">加入我们</a><i>|</i>
+            <a href="//help.jikexueyuan.com/contact.html" target="_blank">联系我们</a><i>|</i>
+            <a href="//zt.jikexueyuan.com/b" target="_blank">企业合作</a><i>|</i>
+            <a href="//j.jikexueyuan.com/evangelist/apply" target="_blank">讲师合作</a><i>|</i>
+            <a href="//help.jikexueyuan.com/" target="_blank">帮助中心</a><i>|</i>
+            <a href="//blog.jikexueyuan.com/" target="_blank">黑板报</a><i>|</i>
+            <a href="//www.jikexueyuan.com/friendlink.html" target="_blank">友情链接</a>
+        </nav>
+        <div class="copyright">Copyright © 2013-2018 jikexueyuan.com All Rights Reserved. 京ICP备11018032号 京公网安备11010802013056</div>
+    </div>
+    <div class="gotop" id="gototop">
+        <span class="tel-icon">
+            <div class="tel-number"></div>
+        </span>
+        <!-- <a class="service" href="javascript:void(0);" onclick="meiqia()"></a> -->
+        <span class="wx">
+            <div class="appewm"></div>
+        </span>
+        <span class="top"><i></i></span>
+    </div>
+</div>
+<script type="text/javascript" src="js/login_register.min.js?t=1513326254000"></script>
+<script>
+    function gotop() {
+        var html = $("#gototop");
+        if ($(window).scrollTop() <= 0) {
+            $("#gototop>.top>i").hide()
+        }
+        $("#gototop>.top").bind("click", function() {
+            if ($(window).scrollTop() <= 0) {
+                return false
+            }
+            $("body,html").animate({
+                scrollTop: 0
+            }, 200);
+            return false
+        });
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 0) {
+                $("#gototop>.top>i").fadeIn()
+            } else {
+                $("#gototop>.top>i").fadeOut()
+            }
+        })
+    }
+    $(function() {
+        gotop()
+    });
+
+</script>
+<script type="text/javascript" src="js/meiqia.js?t=1513326254000"></script>
+
+</html>

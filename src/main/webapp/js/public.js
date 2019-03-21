@@ -1117,11 +1117,11 @@ var login = {
         '<a href="' + www_url + '/member/" id="login-user">' +
         uname +
         '</a>' +
-        '<img src="//e.jikexueyuan.com/static/images/jiaotou.png"' +
+        '<img src="img/jiaotou.png"' +
         'class="jiaotou">' +
         '</p>' +
         '<div class="user-center absolute">' +
-        '<img src="//e.jikexueyuan.com/static/images/abc.png" class="sj-icon absolute">' +
+        '<img src="img/abc.png" class="sj-icon absolute">' +
         '<div>' +
         // '<a href="' + my_url + '">' +
         //     '个人主页' +
