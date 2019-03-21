@@ -170,6 +170,7 @@
                     <img src="https://s1.jikexueyuan.com/course/images/next_585415f.png" courseurl="/course/2707_2.html?ss=1" class="cnext" id="lesson-next">
                     <video class='video-js vjs-default-skin' controls='controls' height='100%' id='play_video' poster="" last_play_position="0" time="234" seq="1" lesson_count="" data-setup='{"example_option":true,"customControlsOnMobile": true}' preload='none' width="100%">
                         <!-- 如果浏览器不兼容HTML5则使用flash播放 -->
+                        <input type="hidden" value="java开发之路(一)" id="video_name" />
                         <source src="/file/f145bee9-b3cd-435f-b741-23d92f66b219.mp4" type="video/mp4" id="s_play" />
                         <object id="flash_fallback_1" class="vjs-flash-fallback" width="100%" height="100%" type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
                             <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
@@ -288,10 +289,10 @@
             <!-- 认证弹窗 -->
             <script src="//e.jikexueyuan.com/certificate/js/certificate.min.js"></script>
             <script>
-                var courseInfo = {
-			id: '2707',
-			title: '整站项目开发实战之网站首页布局搭建'
-		}
+            var courseInfo = {
+				id: '2707',
+				title: '整站项目开发实战之网站首页布局搭建'
+			}
 </script>
             <div class="lesson-table cf">
                 <script src="js/module_171ec63.js"></script>
@@ -301,11 +302,11 @@
                 <div class="lesson-teacher" id="lesson" v-for="n in lint">
                     <div class="bc-box">
                         <h2><a href="//www.jikexueyuan.com/course/2707.html">{{ n.c_name }}</a></h2>
-                        <div class="timebox"><span>5课时，85分钟</span><span class="mar-l30">{{ n.c_date }}</span></div>
+                        <div class="timebox"><span>5课时，85分钟</span><span class="mar-l30"><i>发布时间：</i>{{ n.c_date }}</span></div>
                         <div class="teacher-infor cf">
                             <a href="//my.jikexueyuan.com/0zVXXaVWg/record/"><img src="img/563026331ba49.jpg" v-bind:alt="n.c_author"></a>
                             <div class="infor-text">
-                                <strong><a href="//my.jikexueyuan.com/0zVXXaVWg/record/">{{ n.c_author }}</a></strong>
+                                <strong><a href="//my.jikexueyuan.com/0zVXXaVWg/record/"><i>作者：</i>{{ n.c_author }}</a></strong>
                                 <p>骇客学院签约布道师</p>
                             </div>
                         </div>
@@ -360,6 +361,7 @@
                         </ul>
                     </div>
                     <div class="lesson-box" style="display: block;">
+                    	<input type="hidden" value="1" id="video_id" />
                         <ul v-for="(v,index) in list">
                             <li class="on">
                                 <i class="lessonmbers"><em>1</em></i>
@@ -893,7 +895,8 @@
             data: {
                 list: [],
                 lint:[],
-                vip:""
+                vip:"",
+                u_ids:""
             },
             created: function() {
                 this.getlist();
@@ -935,6 +938,7 @@
                         }
                         console.log(JSON.stringify(response.data));
                         this.getVIP(response.data.u_id);
+                        this.u_ids = response.data.u_id;
                     });
                 },
                 getVIP: function(param){
@@ -945,6 +949,17 @@
                             return;
                         }
                         this.vip = response.data;
+                    });
+                },
+                shoucang: function(){
+                	var v_ids = $("#video_id").val();
+                	var url = "/collect/queryByCollect?u_id=" + this.u_ids + "&c_id=" + this.getParam("c_id") + "&v_id=" + v_ids;
+                	this.$http.get(url).then(function(response) {
+                        if (response.data == 1) {
+                            alert("取消收藏");
+                        }else if(response.data == 2){
+                        	alert("收藏成功");
+                        }
                     });
                 },
                 getParam: function(str){
@@ -988,17 +1003,60 @@
 	    }
 	    
 	    function upload(vip){
+	    	console.log($("#s_play").attr("src"));
+	    	var s = document.getElementsByTagName("source").HTMLElement;
+	    	console.log(s);
 	    	if(vip == 1){
 	    		
+	    		/* window.location.href = "video/downloadVideo?backName="+ $("#video_name").val() +"&filePath=f145bee9-b3cd-435f-b741-23d92f66b219.mp4"; */
 	    	}else{
 	    		alert("穷逼,连个会员都充不起！！！");
 	    		/* alert("请选择充值会员,或者与原作者联系,谢谢！！！"); */
 	    	}
 	    }
 	    
-	    function shoucang(){
-	    	
-	    }
+	    function getDuration() {
+            if (!isNaN(v.duration)) {
+                clearInterval(timer);
+                var duration = v.duration;
+                var hour = parseInt(duration / 3600);
+                var minute = parseInt(duration % 3600 / 60);
+                var sec = parseInt(duration % 60);
+                if (hour == 0) {
+                    alert("视频长度为" + minute + ":" + sec);
+                } else {
+                    alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
+                }
+            } else {
+                tryTime++;
+                //超过获取视频长度最大重试次数
+                if (tryTime >= maxTry) {
+                    clearInterval(timer);
+                    alert('无法获取视频长度！');
+                }
+            }
+        }
+        var timer, tryTime, maxTry = 5,delay = 500;
+        function setVideoSrc(f) {
+            clearInterval(timer);
+            var url = URL.createObjectURL(f.files[0]);
+            v.src = url;
+            tryTime = 0;
+            timer = setInterval(getDuration, delay); //直接获取不到duration，会NaN，计时器来获取
+        }
+
+        function showTime() {
+            var duration = v.currentTime;
+            var hour = parseInt(duration / 3600);
+            var minute = parseInt(duration % 3600 / 60);
+            var sec = parseInt(duration % 60);
+            if (hour == 0) {
+                alert("视频长度为" + minute + ":" + sec);
+            } else {
+                alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
+            }
+
+        }
     </script>
 </body>
 
