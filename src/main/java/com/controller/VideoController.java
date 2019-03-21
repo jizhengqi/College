@@ -3,6 +3,7 @@ package com.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.entity.Video;
 import com.service.VideoService;
-import com.util.MyFileUtils;
 
 /**
  * SpringBoot读取配置文件 ConfigurableApplicationContext cac = //
@@ -29,9 +29,6 @@ public class VideoController {
 
 	@Resource
 	VideoService videoService;
-
-	@Resource
-	private MyFileUtils myFileUtils;
 
 	@RequestMapping("addVideo")
 	@ResponseBody
@@ -51,5 +48,11 @@ public class VideoController {
 	@ResponseBody
 	public List<Video> queryVideoByC_id(Integer c_id) {
 		return videoService.queryVideoByC_id(c_id);
+	}
+
+	@RequestMapping("downloadVideo")
+	public void download(String backName, String filePath,
+			HttpServletResponse response) {
+		videoService.download(backName, filePath, response);
 	}
 }

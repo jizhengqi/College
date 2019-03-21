@@ -132,6 +132,7 @@
                 </tr>
             </table>
         </div>
+        <input type="button" value="下载" onclick="download()">
     </div>
 </body>
 <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
@@ -317,6 +318,10 @@
     $("textarea").focus(function() {
         $(this).parent().removeClass("has-error");
     });
+    
+    function download(){
+    	window.location.href = "video/downloadVideo?backName=朱士展&filePath=dfb9a20f-25f5-4066-a5a3-71911a17c0eb.mp4";
+    }
 
 </script>
 

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>选择支付方式 - 极客学院支付平台</title>
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+
+<body>
+    <script type="text/javascript" src="js/growingio.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/mask.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/jquery.min.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/header.min.js?t=1544581681296"></script>
+    <script type="text/javascript" src="js/web_socket.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/websocket.js?t=1513326254000"></script>
+    <div id="header_top_notice"></div>
+    <div id="jk-header">
+        <div class="header">
+            <h1>
+                <a href="//www.jikexueyuan.com" class="logo">
+                    <img src="img/logo.png?t=1513326254000" width="100" alt="极客学院" />
+                </a>
+            </h1>
+            <nav style="width:490px;">
+                <ul>
+                    <li>
+                        <a href="//www.jikexueyuan.com" class="home">首页</a>
+                    </li>
+                    <li class="careerpath">
+                        <a href="//www.jikexueyuan.com/zhiye/">职业</a><i class="slide-icon"></i>
+                        <div class="zhiye-submenu slide-submeu">
+                            <strong>前端</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/web"><i class="web-icon"></i>Web前端工程师</a>
+                            <a href="//www.jikexueyuan.com/zhiye/wechatapp"><i class="wx-icon"></i>微信小程序</a>
+                            <strong>移动端</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/android"><i class="android-icon"></i>Android工程师</a>
+                            <a href="//www.jikexueyuan.com/zhiye/ios"><i class="ios-icon"></i>iOS工程师</a>
+                            <strong>后端</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/python"><i class="python-icon"></i>Python工程师</a>
+                            <a href="//www.jikexueyuan.com/zhiye/php"><i class="php-icon"></i>PHP工程师</a>
+                            <a href="//www.jikexueyuan.com/zhiye/go"><i class="golang-icon"></i>Golang工程师</a>
+                            <a href="//www.jikexueyuan.com/zhiye/java"><i class="java-icon"></i>JavaWeb工程师</a>
+                            <strong>大数据</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/bigdata"><i class="data-icon"></i>大数据平台研发工程师</a>
+                            <strong>人工智能</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/ml"><i class="mlearning-icon"></i>机器学习工程师</a>
+                            <strong>区块链</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/blockchain"><i class="yw-icon"></i>区块链工程师</a>
+                            <!--<a href="#"><i class="yw-icon"></i>运维工程师</a>
+								<a href="#"><i class="xmjl-icon"></i>项目经理</a>-->
+                            <strong>设计</strong>
+                            <a href="//www.jikexueyuan.com/zhiye/ux"><i class="ui-icon"></i>UI/UX设计师</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="//www.jikexueyuan.com/course/">课程</a><i class="slide-icon"></i>
+                        <div class="slide-submeu">
+                            <a href="//www.jikexueyuan.com/course/">课程库</a>
+                            <a href="//ke.jikexueyuan.com/zhiye/">职业路径</a>
+                            <a href="//www.jikexueyuan.com/path/">知识体系图</a>
+                            <a href="//ke.jikexueyuan.com/xilie/">系列课程</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="//www.jikexueyuan.com/partner">企业</a><i class="slide-icon"></i>
+                        <div class="slide-submeu qy-box">
+                            <a href="//zt.jikexueyuan.com/microsoftai"><i class="wr-icon"></i>微软人工智能 </a>
+                            <a href="//zt.jikexueyuan.com/baiduai"><i class="baidu-icon"></i>百度AI图像技术课</a>
+                            <a href="//zt.jikexueyuan.com/aws"><i class="aws-icon"></i>AWS云计算</a>
+                            <a href="//zt.jikexueyuan.com/qcloud"><i class="txy-icon"></i>腾讯云课程专区</a>
+                            <a href="//zt.jikexueyuan.com/qualcomm"><i class="gt-icon"></i>Qualcomm公开课 </a>
+                            <a href="//zt.jikexueyuan.com/b" class="youke-nav"><i class="youke-icon bounce"></i>企业合作新模式</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="//wiki.jikexueyuan.com/">社区</a><i class="slide-icon"></i>
+                        <div class="slide-submeu">
+                            <a href="//wiki.jikexueyuan.com/">Wiki</a>
+                            <a href="//wenda.jikexueyuan.com/">技术问答</a>
+                            <!--<a href="//qun.jikexueyuan.com/">社群</a>
+						<a href="//download.jikexueyuan.com/">资料下载</a>-->
+                        </div>
+
+                    </li>
+                </ul>
+            </nav>
+            <div class="search">
+                <input class="searchinput" id="searchinput" placeholder="搜索课程、问答或Wiki" />
+                <span class="search-icon" id="search-bottom"></span>
+                <div class="search-result">
+                </div>
+            </div>
+            <div class="nav-other" id="nav-other">
+                <div class="centerbox" style="display: none;">
+                    <a href="//xue.jikexueyuan.com/" class="learn-center" title="学习中心"></a>
+                </div>
+                <div class="centerbox" style="display: none;">
+                    <a href="//www.jikexueyuan.com/member/notifications/" class="message" id="message" title="消息中心"><i class="have" id="have" style="display: none;"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="css/pay_v2.css?v=201708081031">
+    <div class="wrapper">
+        <div id="newpay">
+            <h2>支付中心</h2>
+            <section class="lesson payment">
+                <div class="lesson-infor cf" style="border-bottom:0px;">
+                    <div>
+                        <img src="img/6e91a712-730b-4119-abf4-a4d4cf657187.png" width="105" height="70" alt="" />
+                        <h3>VIP服务购买</h3>
+                        <span class="timeornumber">服务周期1年</span>
+                    </div>
+
+                    <div>
+                        <p>
+                            <span class="price" style="padding-top: 10px;font-size: 20px;"> ￥260.00</span>
+                        </p>
+                    </div>
+
+                </div>
+                <form id="openWin" action="/v1/order/detail" method="get">
+                    <input type="hidden" id="order_num" name="order_num" value="20190320161408005002NXUbj2M8" />
+                    <input type="hidden" id="_token" name="_token" value="fe1f05af4142f8ae3c3c6924c15b178f" />
+                    <input type="hidden" id="app_id" name="_token" value="5" />
+                    <input type="hidden" id="good_id" name="good_id" value="2" />
+                    <input type="hidden" id="uid" name="uid" value="6290732" />
+                    <input type="hidden" id="coupon_sn" name="" value="" />
+                    <!-- 优惠 -->
+                    <div class=" reduce-border-top">
+                    </div>
+                    <dl class="cf" id="way">
+                        <dt>选择支付方式</dt>
+                        <dd>
+                            <span class="wechat active">
+                                <img src="img/WeChat.jpg" />
+                            </span>
+                        </dd>
+
+                        <dd>
+                            <span class="alipay">
+                                <img src="img/alipay.jpg" />
+                            </span>
+                        </dd>
+
+                    </dl>
+                </form>
+
+                <div class="gotopay cf">
+                    <div><label>实际支付金额：￥<span id="payMoney" data-pay="260.00">260.00</span></label> </div>
+                    <p class="agreesaddbind">
+                        <span>
+                            <label for="redolded" class="allreadyreded" id="allreadyreded">
+                                <input type="checkbox" name="redold" id="redolded" class="egaree" checked="checked"> 我已阅读并同意
+                            </label>
+                            <a href="http://help.jikexueyuan.com/agreement.html" target="_blank">《极客学院用户付费协议》</a>
+                        </span>
+                    </p>
+                    <!--end -->
+                    <div class="btn-pay signIn" id="btnPay">去支付</div>
+                </div>
+
+            </section>
+
+            <p class="remark"><i class="icon-warn"></i> 请在 24 小时内完成支付，逾期订单将自动关闭。</p>
+        </div>
+        <!-- footer -->
+
+    </div>
+
+    <!-- alipay pop -->
+    <div class="pay-mask alipay-mask">
+        <div class="passport-popup alipay-pop" id="alipayPop">
+            <div class="layout-inner">
+                <i class="close"></i>
+                <h4 class="tit">根据你的支付结果选择</h4>
+                <div class="bd">
+                    <div class="status cf" id="payRes">
+                        <a href="/v1/order/detail?order_num=20190320161408005002NXUbj2M8&uid=6290732&app_id=5&sign=434DE45F51B661987653740841010A22" target="_blank" class=" mg-r30">
+                            <img src="img/icon-pay-succ.png" />
+                            <p>支付成功<span>查看订单详情</span></p>
+                        </a>
+                        <a href="//help.jikexueyuan.com/faq/pay.html" target="_blank">
+                            <img src="img/icon-pay-fail.png" />
+                            <p>支付失败<span>查看常见问题</span></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /alipay pop -->
+    <!-- wechat pop -->
+
+    <div class="pay-mask wechat-mask">
+        <div class="passport-popup wechat-pop" id="wechatPop">
+            <div class="layout-inner">
+                <i class="close"></i>
+
+                <ul class="bd cf">
+                    <li>
+                        <div class="wcode">
+                            <img id="QRCode" src="" alt="二维码" />
+                        </div>
+                    </li>
+                    <li>
+                        <h1><img class="tit" src="img/wechat.png" alt="微信支付"></h1>
+                        <p class="txt">请使用微信扫描左侧<br />二维码以完成支付</p>
+                        <p class="price">￥<i id="wxPay"></i></p>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /wechat pop -->
+
+    <script type="text/javascript" src="js/public.js?v=20170222"></script>
+    <script type="text/javascript" src="js/pay_v2.js?v=20171226111100"></script>
+    <script>
+        $(function() {
+            
+        });
+
+    </script>
+    <link rel="stylesheet" href="css/footer.css?t=1513326254000" />
+    <div id="footer">
+        <div class="footer-content">
+            <div class="contact-way">
+                <div class="other-way">
+                    <a href="//blog.jikexueyuan.com/28.html " target="_blank" class="weixin-icon"></a>
+                    <!--<a href="" class="tencen-icon"></a>-->
+                    <a href="//weibo.com/jikexueyuan" target="_blank" class="sina-icon"></a>
+                    <a href="//twitter.com/jikexueyuan" target="_blank" class="facebook-icon"></a>
+                    <a href="//plus.google.com/communities/117673330839635588089" target="_blank" class="google-icon"></a>
+                </div>
+            </div>
+            <nav>
+                <a href="//help.jikexueyuan.com/" target="_blank">关于我们</a><i>|</i>
+                <a href="//help.jikexueyuan.com/join.html" target="_blank">加入我们</a><i>|</i>
+                <a href="//help.jikexueyuan.com/contact.html" target="_blank">联系我们</a><i>|</i>
+                <a href="//zt.jikexueyuan.com/b" target="_blank">企业合作</a><i>|</i>
+                <a href="//j.jikexueyuan.com/evangelist/apply" target="_blank">讲师合作</a><i>|</i>
+                <a href="//help.jikexueyuan.com/" target="_blank">帮助中心</a><i>|</i>
+                <a href="//blog.jikexueyuan.com/" target="_blank">黑板报</a><i>|</i>
+                <a href="//www.jikexueyuan.com/friendlink.html" target="_blank">友情链接</a>
+            </nav>
+            <div class="copyright">Copyright © 2013-2018 jikexueyuan.com All Rights Reserved. 京ICP备11018032号 京公网安备11010802013056</div>
+        </div>
+        <div class="gotop" id="gototop">
+            <span class="tel-icon">
+                <div class="tel-number"></div>
+            </span>
+            <!-- <a class="service" href="javascript:void(0);" onclick="meiqia()"></a> -->
+            <span class="wx">
+                <div class="appewm"></div>
+            </span>
+            <span class="top"><i></i></span>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/login_register.min.js?t=1513326254000"></script>
+    <script>
+        function gotop() {
+            var html = $("#gototop");
+            if ($(window).scrollTop() <= 0) {
+                $("#gototop>.top>i").hide()
+            }
+            $("#gototop>.top").bind("click", function() {
+                if ($(window).scrollTop() <= 0) {
+                    return false
+                }
+                $("body,html").animate({
+                    scrollTop: 0
+                }, 200);
+                return false
+            });
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 0) {
+                    $("#gototop>.top>i").fadeIn()
+                } else {
+                    $("#gototop>.top>i").fadeOut()
+                }
+            })
+        }
+        $(function() {
+            gotop()
+        });
+
+    </script>
+    <script type="text/javascript" src="js/meiqia.js?t=1513326254000"></script>
+
+</body>
+
+</html>
