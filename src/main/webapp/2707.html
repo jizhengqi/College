@@ -109,12 +109,34 @@
 				<a href="javascript:;">hello world <span class="label label-purple">系列课程</span></a> -->
                     </div>
                 </div>
-                <div class="nav-other" id="">
-                    <div class="centerbox" style="display: none;">
-                        <a href="//xue.jikexueyuan.com/" class="learn-center" title="学习中心"></a>
+                <div class="nav-other">
+                    <div id="y-login">
+                        <div class="centerbox" style="display: inline-block;">
+                            <a href="ke_doing.html" class="learn-center" title="学习中心"></a>
+                        </div>
+                        <div class="centerbox" style="display: inline-block;">
+                            <a href="" class="message" id="message" title="消息中心">
+                                <i class="have" id="have" style="display: none;"></i>
+                            </a>
+                        </div>
+                        <span class="userinfo-login" id="userinfo-login" style="display: inline-block;">
+                            <a href="setting_user.html">
+                                <img src="https://assets.jikexueyuan.com/user/avtar/default.gif" id="userpoto">
+                            </a>
+                            <i id="uservip-icon"></i>
+                            <div class="slide-submeu user-slide">
+                                <a href="ke_doing.html"><i class="learningcenter-icon"></i>学习中心</a>
+                                <a href="learn_center.html"><i class="homepage-icon"></i>个人主页</a>
+                                <a href="setting_user.html"><i class="set-icon"></i>账号设置</a>
+                                <a href="/logout"><i class="exit-icon"></i>退出登录</a>
+                            </div>
+                        </span>
                     </div>
-                    <div class="centerbox" style="display: none;">
-                        <a href="//www.jikexueyuan.com/member/notifications/" class="message" id="message" title="消息中心"><i class="have" id="have" style="display: none;"></i></a>
+                    <div id="n-login">
+                        <span class="userinfo-notlogin">
+                            <a href="Login.html">登录</a><i></i>
+                            <a href="Register.html">注册</a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -199,43 +221,43 @@
                             <i></i>
                             <p>目录</p>
                             <div id="videos" style="display: none;">
-								<div style="width: 400px; height: 540px; background-color: #323232; position: absolute; left: -400px; top:-15px;">
-									<div class="mulu-content">
-										<strong>目录<span>收起&gt;</span></strong>
-										<!--case-->
-										<div class="case cf">
-											<div class="simScrollCont">
-												<p>{{ t.c_introduction }}</p>
-												<dl class="lessonvideo-list">
-													<dd class="playing">
-															<h2>
-														<span class="sm-icon "></span>
-														<a href="javascript:void(0)" jktag="&posGP=103001&posArea=0002&posOper=8005&posColumn=1.1" v-for="v in list">{{ index + 1 }}.{{ v.v_name }}</a>
-														<span class="lesson-time">00:14:45</span>
-													</h2>
-															<blockquote>{{ t.c_introduction }}</blockquote>
-														</dd>
-														
-												</dl>
-											</div>
-											<div id="simScrollTest2" class="simScroll" style="visibility: visible;">
-												<div tag="simArea" class="simScrollDragArea" style="height: 202px;">
-													<div tag="simDrag" class="simScrollDrag" style="position: absolute; top: 2px; width: 14px; height: 39px;"></div>
-												</div>
-											</div>
-									</div>
-								</div>
-                           </div>
+                                <div style="width: 400px; height: 540px; background-color: #323232; position: absolute; left: -400px; top:-15px;">
+                                    <div class="mulu-content">
+                                        <strong>目录<span>收起&gt;</span></strong>
+                                        <!--case-->
+                                        <div class="case cf">
+                                            <div class="simScrollCont">
+                                                <p>{{ t.c_introduction }}</p>
+                                                <dl class="lessonvideo-list">
+                                                    <dd class="playing">
+                                                        <h2>
+                                                            <span class="sm-icon "></span>
+                                                            <a href="javascript:void(0)" jktag="&posGP=103001&posArea=0002&posOper=8005&posColumn=1.1" v-for="v in list">{{ index + 1 }}.{{ v.v_name }}</a>
+                                                            <span class="lesson-time">00:14:45</span>
+                                                        </h2>
+                                                        <blockquote>{{ t.c_introduction }}</blockquote>
+                                                    </dd>
+
+                                                </dl>
+                                            </div>
+                                            <div id="simScrollTest2" class="simScroll" style="visibility: visible;">
+                                                <div tag="simArea" class="simScrollDragArea" style="height: 202px;">
+                                                    <div tag="simDrag" class="simScrollDrag" style="position: absolute; top: 2px; width: 14px; height: 39px;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         </li>
                         <li class="ask" @click="b()" id="q_pop" jktag="&posArea=0002&posOper=8017&posColumn=2.1">
                             <i></i>
                             <p>提问</p>
                             <div id="tw" style="display: none; position: absolute; left:-600px; background-color: lightgray; width: 300px; height: 300px; z-index: 5;">
-                            	<br/><br/>
-                            	<input type="text" placeholder="请输入问题的标题" style="display: block; margin-left: 20px;" height="100px;" /><br/><br/>
-                            	<p style="color:black;">问题描述越详细，被解答的速度越快</p><br/><br/>
-                            	<textarea rows="10" cols="40" placeholder="文字请尽量表述清晰、详尽、完整、针对课程的问题请注明出现时间、以便于快速查找问题并及时为你解答。"></textarea><br/><br/>
-                            	<input type="button" value="提交" style="width: 50px;" height="50px;" >
+                                <br /><br />
+                                <input type="text" placeholder="请输入问题的标题" style="display: block; margin-left: 20px;" height="100px;" /><br /><br />
+                                <p style="color:black;">问题描述越详细，被解答的速度越快</p><br /><br />
+                                <textarea rows="10" cols="40" placeholder="文字请尽量表述清晰、详尽、完整、针对课程的问题请注明出现时间、以便于快速查找问题并及时为你解答。"></textarea><br /><br />
+                                <input type="button" value="提交" style="width: 50px;" height="50px;">
                             </div>
                         </li>
                         <li class="xiazai" @click="upload(vip)">
@@ -289,7 +311,7 @@
             <!-- 认证弹窗 -->
             <script src="//e.jikexueyuan.com/certificate/js/certificate.min.js"></script>
             <script>
-            var courseInfo = {
+                var courseInfo = {
 				id: '2707',
 				title: '整站项目开发实战之网站首页布局搭建'
 			}
@@ -314,7 +336,7 @@
                             <b>课程背景：</b>
                             <br />
                             {{ n.c_background }}
-                           <!--  随着 Web 前端工程师的需求越来越多，Web 前端人员也大幅增长，企业对工程师的要求也逐步提高，对工程师的经验要求非常严格，新手 Web 前端工程师没有经验很难拿到高工资。那么我们这个课程，就是通过商业项目进行开发，让新手 Web 前端工程师能够掌握商业开发中的技巧及细节。 -->
+                            <!--  随着 Web 前端工程师的需求越来越多，Web 前端人员也大幅增长，企业对工程师的要求也逐步提高，对工程师的经验要求非常严格，新手 Web 前端工程师没有经验很难拿到高工资。那么我们这个课程，就是通过商业项目进行开发，让新手 Web 前端工程师能够掌握商业开发中的技巧及细节。 -->
                             <br />
                             <br />
                             <b>核心内容：</b>
@@ -361,7 +383,7 @@
                         </ul>
                     </div>
                     <div class="lesson-box" style="display: block;">
-                    	<input type="hidden" value="1" id="video_id" />
+                        <input type="hidden" value="1" id="video_id" />
                         <ul v-for="(v,index) in list">
                             <li class="on">
                                 <i class="lessonmbers"><em>1</em></i>
@@ -894,27 +916,28 @@
             el: "#wrapper",
             data: {
                 list: [],
-                lint:[],
-                vip:"",
-                u_ids:""
+                lint: [],
+                vip: "",
+                u_ids: ""
             },
             created: function() {
                 this.getlist();
                 this.getCurriculum();
                 this.getUsers();
+                this.showUser();
             },
             methods: {
-            	getCurriculum: function(){
-            		var url = "/curriculum/queryById?c_id=" + this.getParam("c_id");
-            		 $("#ApHead").html(this.getParam("c_name"));
-            		 this.$http.get(url).then(function(response) {
-                         if (response.status != 200) {
-                             alert(response.status);
-                             return;
-                         }
-                         this.lint = response.data;
-                     });
-            	},
+                getCurriculum: function() {
+                    var url = "/curriculum/queryById?c_id=" + this.getParam("c_id");
+                    $("#ApHead").html(this.getParam("c_name"));
+                    this.$http.get(url).then(function(response) {
+                        if (response.status != 200) {
+                            alert(response.status);
+                            return;
+                        }
+                        this.lint = response.data;
+                    });
+                },
                 getlist: function() {
                     var url = "/video/queryVideoByC_id?c_id=" + this.getParam("c_id");
                     this.$http.get(url).then(function(response) {
@@ -925,13 +948,13 @@
                         this.list = response.data;
                     });
                 },
-                updVideo: function(index){
-                	/* $("#s_play").prop("src","/file/" + this.list[index].url); */
-                	alert(this.list[index].url);
+                updVideo: function(index) {
+                    /* $("#s_play").prop("src","/file/" + this.list[index].url); */
+                    alert(this.list[index].url);
                 },
-                getUsers: function(){
-                	var url = "/user/queryByUsers";
-                	this.$http.get(url).then(function(response) {
+                getUsers: function() {
+                    var url = "/user/queryByUsers";
+                    this.$http.get(url).then(function(response) {
                         if (response.status != 200) {
                             alert(response.status);
                             return;
@@ -941,9 +964,9 @@
                         this.u_ids = response.data.u_id;
                     });
                 },
-                getVIP: function(param){
-                	var url = "/user/queryVipById?u_id=" + param;
-                	this.$http.get(url).then(function(response) {
+                getVIP: function(param) {
+                    var url = "/user/queryVipById?u_id=" + param;
+                    this.$http.get(url).then(function(response) {
                         if (response.status != 200) {
                             alert(response.status);
                             return;
@@ -951,31 +974,61 @@
                         this.vip = response.data;
                     });
                 },
-                shoucang: function(){
-                	var v_ids = $("#video_id").val();
-                	var url = "/collect/queryByCollect?u_id=" + this.u_ids + "&c_id=" + this.getParam("c_id") + "&v_id=" + v_ids;
-                	this.$http.get(url).then(function(response) {
+                shoucang: function() {
+                    var v_ids = $("#video_id").val();
+                    var url = "/collect/queryByCollect?u_id=" + this.u_ids + "&c_id=" + this.getParam("c_id") + "&v_id=" + v_ids;
+                    this.$http.get(url).then(function(response) {
                         if (response.data == 1) {
                             alert("取消收藏");
-                        }else if(response.data == 2){
-                        	alert("收藏成功");
+                        } else if (response.data == 2) {
+                            alert("收藏成功");
                         }
                     });
                 },
-                getParam: function(str){
-                 	var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));
-                 	/* if (result == null || result.length < 1) {
+                getParam: function(str) {
+                    var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));
+                    /* if (result == null || result.length < 1) {
              	        console.log("result:" + result[1]);
              	    } */
-             	    if(result == null || result.length < 1){
-             	    	return result;
-             	    }else{
-             	    	return decodeURI(result[1]);
-             	    }
+                    if (result == null || result.length < 1) {
+                        return result;
+                    } else {
+                        return decodeURI(result[1]);
+                    }
+                },
+                showUser: function() {//通过cookie查询用户是否处于登陆状态
+                    var url = "user/queryByUsers";
+                    var str = this.getCookie("phone");
+                    var formData = new FormData();
+                    formData.append("phone", str)
+                    if (str != "") {
+                        this.$http.post(url, formData).then(function(response) {
+                            //console.log("data:" + response.data.u_phone);
+                            if (response.data.u_phone == str) {
+                                $("#y-login").show();//如果查询的用户账号与本地储存的值相等
+                                $("#n-login").hide();//则显示长在登录状态，否则显示离线状态
+                            } else {
+                                $("#y-login").hide();
+                                $("#n-login").show();
+                            }
+                        });
+                    } else {
+                        $("#y-login").hide();
+                        $("#n-login").show();
+                    }
+                },
+                getCookie: function(key) {
+                    var arr1 = document.cookie.split("; ");
+                    for (var i = 0; i < arr1.length; i++) {
+                        var arr2 = arr1[i].split("="); //通过=截断，把name=Jack截断成[name,Jack]数组;
+                        if (arr2[0] == key) {
+                            return decodeURI(arr2[1]);
+                        }
+                    }
                 }
             }
         });
-        
+
         /* var lesson = new Vue({
             el: "#lesson",
             data: {
@@ -985,37 +1038,39 @@
                 this.getlists();
             }
         }) */
+
     </script>
     <script type="text/javascript">
-    var cc = 1;
-	    function a(){
-	    	if(cc == 1){
-	    		$("#videos").show(600);
-	    		cc = 2;
-	    	}else if(cc == 2){
-	    		$("#videos").hide(600);
-	    		cc = 1;
-	    	}
-	    }
-	    
-	    function b(){
-	    	$("#tw").show(600);
-	    }
-	    
-	    function upload(vip){
-	    	console.log($("#s_play").attr("src"));
-	    	var s = document.getElementsByTagName("source").HTMLElement;
-	    	console.log(s);
-	    	if(vip == 1){
-	    		
-	    		/* window.location.href = "video/downloadVideo?backName="+ $("#video_name").val() +"&filePath=f145bee9-b3cd-435f-b741-23d92f66b219.mp4"; */
-	    	}else{
-	    		alert("穷逼,连个会员都充不起！！！");
-	    		/* alert("请选择充值会员,或者与原作者联系,谢谢！！！"); */
-	    	}
-	    }
-	    
-	    function getDuration() {
+        var cc = 1;
+
+        function a() {
+            if (cc == 1) {
+                $("#videos").show(600);
+                cc = 2;
+            } else if (cc == 2) {
+                $("#videos").hide(600);
+                cc = 1;
+            }
+        }
+
+        function b() {
+            $("#tw").show(600);
+        }
+
+        function upload(vip) {
+            console.log($("#s_play").attr("src"));
+            var s = document.getElementsByTagName("source").HTMLElement;
+            console.log(s);
+            if (vip == 1) {
+
+                /* window.location.href = "video/downloadVideo?backName="+ $("#video_name").val() +"&filePath=f145bee9-b3cd-435f-b741-23d92f66b219.mp4"; */
+            } else {
+                alert("穷逼,连个会员都充不起！！！");
+                /* alert("请选择充值会员,或者与原作者联系,谢谢！！！"); */
+            }
+        }
+
+        function getDuration() {
             if (!isNaN(v.duration)) {
                 clearInterval(timer);
                 var duration = v.duration;
@@ -1036,7 +1091,9 @@
                 }
             }
         }
-        var timer, tryTime, maxTry = 5,delay = 500;
+        var timer, tryTime, maxTry = 5,
+            delay = 500;
+
         function setVideoSrc(f) {
             clearInterval(timer);
             var url = URL.createObjectURL(f.files[0]);
@@ -1057,6 +1114,7 @@
             }
 
         }
+
     </script>
 </body>
 
