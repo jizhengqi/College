@@ -620,6 +620,7 @@
                             if (response.data.u_phone == str) {
                                 $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
                                 $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
+                                $("#userpoto").attr("src", response.data.u_photo);
                             } else {
                                 $("#y-login").hide();
                                 $("#n-login").show();

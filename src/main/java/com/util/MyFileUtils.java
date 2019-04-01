@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.UUID;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
@@ -16,9 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Component
 public class MyFileUtils {
-
-	@Resource
-	private MyWebConfig myWebConfig;
 
 	/**
 	 * 单文件上传
@@ -29,13 +25,13 @@ public class MyFileUtils {
 	 * @throws Exception
 	 * @throws IllegalStateException
 	 */
-	public String upload(MultipartFile file) throws IllegalStateException,
-			Exception {
+	public String upload(String path, MultipartFile file)
+			throws IllegalStateException, Exception {
 		// 解决中文问题,中文路径,视频显示问题
 		String uploadPath = UUID.randomUUID()
 				+ getSuffix(file.getOriginalFilename());
 		// 创建路径
-		File dest = new File(myWebConfig.getVideoDir() + uploadPath);
+		File dest = new File(path + uploadPath);
 		// 检测存放视频的文件夹是否存在
 		checkDirectory(dest);
 		// 赋值文件到指定路径
@@ -52,12 +48,12 @@ public class MyFileUtils {
 	 * @throws Exception
 	 * @throws IllegalStateException
 	 */
-	public String[] uploads(MultipartFile... file)
+	public String[] uploads(String path, MultipartFile... file)
 			throws IllegalStateException, Exception {
 		int length = file.length;
 		String[] uploadPaths = new String[length];
 		for (int i = 0; i < length; i++) {
-			uploadPaths[i] = upload(file[i]);
+			uploadPaths[i] = upload(path, file[i]);
 		}
 		return uploadPaths;
 	}
@@ -113,7 +109,6 @@ public class MyFileUtils {
 			HttpServletResponse response) {
 		response.setContentType("text/html;charset=UTF-8");// 设置返回中文编码格式
 		backName = backName + getSuffix(filePath);// 获取返回文件名全称
-		filePath = myWebConfig.getVideoDir() + filePath;// 拼接访问路径
 		try {
 			response.setContentType("application/x-msdownload;");// 设置响应头类型为下载
 			response.setHeader("Content-disposition", "attachment; filename="

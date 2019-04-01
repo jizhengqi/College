@@ -39,13 +39,13 @@
             <div class="passport-sign">
                 <div class="main-form" id="main-form">
                     <h2>新用户注册</h2>
-                    <p></p>
+                    <p id="showError" style="color: brown;"></p>
                     <!-- form -->
                     <form class="passport-form passport-form-sign" id="registert" method="post">
                         <input type='hidden' value='http%3A%2F%2Flocalhost%3A8080%2Findex.html' name='referer' />
                         <div class="form-item">
                             <div class="form-cont">
-                                <input type="text" name="u_phone" id="phone" class="passport-txt xl w-full" tabindex="1" autocomplete="off" placeholder="请输入手机号" />
+                                <input type="text" name="u_phone" id="phone" @blur="checkName()" class="passport-txt xl w-full" tabindex="1" autocomplete="off" placeholder="请输入手机号" />
                             </div>
                         </div>
                         <div class="form-item">
@@ -128,10 +128,14 @@
         },
         methods: {
             ReMsgs: function() {
+                this.checkName();
                 var datas = document.getElementById("phone").value;
                 var url = "user/getMsg?phone=" + datas;
                 this.$http.post(url).then(function(response) {
-                    console.log(response.data);
+                    if(response.data == null){
+                        document.getElementById("showError").innerHTML = "请输入正确的手机号码！";
+                        document.getElementById("showError").style.color = "brown";
+                    }
                     document.getElementById("msgs").value = response.data;
                 });
             },
@@ -141,13 +145,48 @@
                     var url = "user/logins";
                     this.$http.post(url, str).then(function(response) {
                         if (response.data != 1) {
-                            alert("信息错误");
+                            document.getElementById("showError").innerHTML = "注册失败！";
+                            document.getElementById("showError").style.color = "brown";
                             return;
                         }
                         window.location.href = "index.html";
                     });
                 } else {
-                    alert("验证码输入错误！！！");
+                    document.getElementById("showError").innerHTML = "验证码输入错误！";
+                    document.getElementById("showError").style.color = "brown";
+                }
+            },
+            checkName: function(){
+                var phone = document.getElementById("phone").value;
+                if(phone == ""){
+                    return;
+                }
+                var result = 0;
+                var vals = phone.split('');
+                var nums = [1,2,3,4,5,6,7,8,9,0];
+                for (var i = 0; i < nums.length; i++) {
+                    for(var j = 0; j < vals.length; j ++){
+                        if(nums[i] == vals[j]){
+                            result ++;
+                        }
+                    }
+                }
+                if(result == vals.length){
+                	var formData = new FormData();
+                    formData.append("phone",phone)
+                    this.$http.post("user/checkPhone", formData).then(function(response) {
+                        if(response.data == 1){
+                            document.getElementById("showError").innerHTML = "该手机号已被注册";
+                            document.getElementById("showError").style.color = "brown";
+                        }else{
+                            document.getElementById("showError").innerHTML = "该手机还未注册";
+                            document.getElementById("showError").style.color = "forestgreen";
+                        }
+                    });
+                }else{
+                    document.getElementById("showError").innerHTML = "请输入数字，而不是字母之类的字符。";
+                    document.getElementById("showError").style.color = "brown";
+                    return;
                 }
             }
         }

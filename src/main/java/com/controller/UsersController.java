@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,11 +21,14 @@ import org.apache.shiro.authz.UnauthorizedException;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.entity.Users;
 import com.service.UsersService;
 import com.util.CookieUtils;
+import com.util.DateUtils;
 import com.util.SendTelMsgUtils;
 
 @Controller
@@ -160,6 +164,88 @@ public class UsersController {
 		SendTelMsgUtils stm = new SendTelMsgUtils();
 		String count = stm.sendMsgToPhone(phone);
 		return count;
+	}
+
+	@RequestMapping("checkPhone")
+	@ResponseBody
+	public Integer checkPhone(String phone) {
+		return us.checkUserName(phone) == true ? 1 : 0;
+	}
+
+	/**
+	 * 修改用户头像
+	 * 
+	 * @param file
+	 * @return
+	 */
+	@RequestMapping("uploadPic")
+	@ResponseBody
+	public String uploadPic(@RequestParam("file") MultipartFile file,
+			String phone, HttpSession session) {
+		Users user = (Users) session.getAttribute(phone);
+		return us.uploadPic(file, user, session);
+	}
+
+	/**
+	 * 修改用户信息
+	 * 
+	 * @param username
+	 * @param phone
+	 * @param session
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping("editUserName")
+	public void editUserName(Users user, String birthday, HttpSession session,
+			HttpServletResponse response) throws IOException {
+		if (birthday != "" && birthday != null) {
+			Date date = DateUtils.StringToDate(birthday, "yyyy-MM-dd");
+			user.setU_birthday(date);
+		}
+		System.out.println("参数：" + user);
+		System.out.println(us.editUserName(user, session));
+		response.sendRedirect("/setting_user.html");
+	}
+
+	/**
+	 * 修改用户手机号
+	 * 
+	 * @param phone
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("editPhone")
+	@ResponseBody
+	public Integer editPhone(String phone, String newPhone, HttpSession session) {
+		return us.editPhone(phone, newPhone, session);
+	}
+
+	/**
+	 * 修改邮箱
+	 * 
+	 * @param phone
+	 * @param u_phone
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("editEmail")
+	@ResponseBody
+	public Integer editEmail(String phone, String u_email, HttpSession session) {
+		return us.editEmail(phone, u_email, session);
+	}
+
+	/**
+	 * 修改密码
+	 * 
+	 * @param phone
+	 * @param u_pwd
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("editPwd")
+	@ResponseBody
+	public Integer editPwd(String phone, String u_pwd, HttpSession session) {
+		return us.editPwd(phone, u_pwd, session);
 	}
 
 }

@@ -154,7 +154,9 @@
 
                     <div class="common-data">
                         <h3><span id="username"></span>
-                            <a href="//my.jikexueyuan.com/setting/ca/" class="pro-icon"></a> <a href="//my.jikexueyuan.com/setting/vip/" class="novip-icon"></a> </h3>
+                            <a href="setting_ca.html" class="pro-icon"></a>
+                            <a href="setting_vip.html" class="novip-icon" id="setvip"></a>
+                        </h3>
                         <p class="common-data-info"><span id="sex">性别：保密</span>
                             <span class="local" id="address">现居住地：河南省 郑州市</span></p>
                         <p class="common-data-detail" id="intro">一句话介绍一下自己吧，让别人更了解你</p>
@@ -413,15 +415,8 @@
                         if (response.data.u_phone == str) {
                             $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
                             $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
-                        } else {
-                            $("#y-login").hide();
-                            $("#n-login").show();
-                        }
-                        if(null != response.data.u_photo){
-                        	$("#touxiang").attr("src",response.data.u_photo);
-                        }
-                        $("#username").html(response.data.u_username);//设置个人用户名
-                        if(null != response.data.u_sex){
+                            $("#userpoto").attr("src", response.data.u_photo);
+                            $("#touxiang").attr("src", response.data.u_photo);
                             if(response.data.u_sex == 1){
                                 $("#sex").html("性别：男");//设置性别
                             }else if(response.data.u_sex == 0){
@@ -429,12 +424,18 @@
                             }else{
                                 $("#sex").html("性别：保密");//设置性别
                             }
-                        }
-                        if(null != response.data.u_address){
-                            $("#address").html("现居住地：" + response.data.u_address);//设置住址
-                        }
-                        if(null != response.data.u_intro){
-                            $("#intro").html(response.data.u_intro);//设置自我介绍
+                            $("#username").html(response.data.u_username); //设置个人用户名
+                            $("#address").html("现居住地：" + response.data.u_address); //设置住址
+                            $("#intro").html(response.data.u_intro); //设置自我介绍
+                            //判断是否是VIP
+                            if (response.data.u_vip == null) {
+                                $("#setvip").css("background-image", "url(img/novip.png)");
+                            } else {
+                                $("#setvip").css("background-image", "url(img/vip.png)");
+                            }
+                        } else {
+                            $("#y-login").hide();
+                            $("#n-login").show();
                         }
                     });
                 } else {

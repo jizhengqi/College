@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>整站项目开发实战之网站首页布局搭建-骇客学院</title>
     <meta name="keywords" content="" />
-    <meta name="description" content="课程背景：随着 Web 前端工程师的需求越来越多，Web 前端人员也大幅增长，企业对工程师的要求也逐步提高，对工程师的经验要求非常严格，新手 Web 前端工程师没有经验很难拿到高工资。那么我们这个课程，就是通过商业项目进行开发，让新手 " />
+    <meta name="description" content="课程背景：随着 Web 前端工程师的需求越来越多，Web 前端人员也大幅增长，企业对工程师的要求也逐步提高，对工程师的经验要求非常严格，新手 Web 前端工程师没有经验很难拿到高工资。那么我们这个课程，就是通过商业项目进行开发，让新手" />
     <link rel="stylesheet" href="css/common_sync0_libs_4d81287.css" />
     <link rel="stylesheet" href="css/common_sync1_libs_769abc5.css" />
     <link rel="stylesheet" href="css/header_d41d8cd.css" />
@@ -367,6 +367,7 @@
                             <a class="orinagebtn" id="course_download" course_id="2707" title="下载课程对应的源代码、素材等资料" href="javascript:void('0');" jktag="&posArea=0003&posOper=8015&posColumn=0.1">资料下载</a>
                         </div>
                     </div>
+<!--
                     <div class="less-tag">
                         <span><a href="//www.jikexueyuan.com/tag/HTML5.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.1">HTML5</a></span>
                         <span><a href="//www.jikexueyuan.com/tag/HTML.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.2">HTML</a></span>
@@ -374,6 +375,7 @@
                         <span><a href="//www.jikexueyuan.com/tag/Photoshop.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.4">Photoshop</a></span>
                         <span><a href="//www.jikexueyuan.com/tag/DIV CSS.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.5">DIV CSS</a></span>
                     </div>
+-->
                 </div>
                 <div class="video-list" id="app">
                     <div class="lessonlist-nav cf">
@@ -390,7 +392,7 @@
                                 <!--1\2\3...-->
                                 <div class="text-box">
                                     <h2>
-                                        <a v-bind:href="'javascript:updVideo('+index+')'" jktag="&posArea=0007&posAOper=8035&posColumn=9598.1">{{v.v_name}}</a>
+                                        <a v-bind:href="'javascript:updVideo('+index+');'">{{v.v_name}}</a>
                                         <p class="f_r">03:54</p>
                                     </h2>
                                     <p>{{v.v_intro}}</p>

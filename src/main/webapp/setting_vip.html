@@ -140,18 +140,17 @@
         <nav class="leftnav" id="leftNav">
             <ul>
                 <li><a href="setting_user.html" class="">个人资料</a></li>
-                <li>
-                    <a href="setting_ca.html" class="">认证学员</a>
-                    <i class="pro-icon"></i> <span></span>
+                <li id="setting_ca">
+                    <!--认证学员-->
                 </li>
                 <li><a href="setting_vip.html" class="active">我的VIP</a></li>
-                <li><a href="setting_pro.html" class="">我的Pro</a></li>
-                <li><a href="setting_order.html" class="">我的订单</a></li>
+                <!--<li><a href="setting_pro.html" class="">我的Pro</a></li>
+                <li><a href="setting_order.html" class="">我的订单</a></li>-->
                 <li><a href="setting_jkb.html" class="">我的极客币</a></li>
-                <li><a href="setting_quan.html" class="">我的优惠券</a></li>
+                <!--<li><a href="setting_quan.html" class="">我的优惠券</a></li>-->
                 <li><a href="security.html" class="">账号安全</a></li>
                 <li><a href="setting_message.html" class="">消息设置</a></li>
-                <li><a href="setting_sns.html" class="">绑定第三方账号</a></li>
+                <!--<li><a href="setting_sns.html" class="">绑定第三方账号</a></li>-->
             </ul>
         </nav>
         <div class="main">
@@ -262,7 +261,7 @@
 <script src="js/index.js"></script>
 <script src="js/common.js"></script>
 <link rel="stylesheet" href="css/footer.css?t=1513326254000" />
-<div id="footer" style="margin-top: 300px;">
+<div id="footer" style="margin-top: 0px;">
     <div class="footer-content">
         <div class="contact-way">
             <div class="other-way">
@@ -347,6 +346,13 @@
                         if (response.data.u_phone == str) {
                             $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
                             $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
+                            $("#userpoto").attr("src", response.data.u_photo);
+                            //判断是否认证学院
+                            if(response.data.u_stu_authentication != null){
+                                $("#setting_ca").html("<a href='setting_ca.html' class=''>认证学员</a><i class='pro-icon'></i> <span></span>");
+                            }else{
+                                $("#setting_ca").html("<a href='setting_ca.html' class=''>认证学员</a><i class='nopro-icon'></i> <span></span>");
+                            }
                         } else {
                             $("#y-login").hide();
                             $("#n-login").show();

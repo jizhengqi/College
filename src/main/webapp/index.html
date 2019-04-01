@@ -6,7 +6,6 @@
     <title>骇客学院IT在线教育平台</title>
     <meta name="keywords" content="极客学院,IT职业教育,IT在线教育平台,IT在线教育,IT在线学习,it职业培训,android,ios,flash,java,python,html5,swift,cocos2dx" />
     <meta name="description" content="极客学院作为中国专业IT职业在线教育平台,拥有海量高清IT职业课程,涵盖30+个技术领域,如Android,iOS ,Flash,Java,Python,HTML5,Swift,Cocos2dx等视频教程.根据IT在线学习特点,极客学院推出IT学习知识体系图,IT职业学习实战路径图,帮助IT学习者从零基础起步,结合IT实战案例演练,系统学习,助你快速成为IT优秀技术人才！" />
-
     <link rel="stylesheet" href="css/common_sync0_libs_4d81287.css" />
     <link rel="stylesheet" href="css/common_sync1_libs_769abc5.css" />
     <link rel="stylesheet" href="https://s1.jikexueyuan.com/common/widget/header/header_d41d8cd.css" />
@@ -151,7 +150,8 @@
                         <div class="banner-pagination"></div>
                     </div>
                 </div>
-                <div class="subscription-container">
+<!--
+                <div class="subscription-container" style="display: none;">
                     <h3>极客头条</h3>
                     <ul class="subscription-list">
                         <li>
@@ -194,6 +194,7 @@
                         </div>
                     </form>
                 </div>
+-->
                 <div class="aside-allCategory">
                     <div class="bd">
                         <ul class="aside-cList" v-for="(keys,values) in list">
@@ -240,6 +241,7 @@
                     </div>
                 </div>
             </div>
+<!--
             <div class="minbanner">
                 <h3 style="display: none;">极客广告位</h3>
                 <div class="ad-contain">
@@ -254,6 +256,8 @@
                     </a>
                 </div>
             </div>
+-->
+<!--
             <div class="jk-uptodate">
                 <h2>最新课程</h2>
                 <ul>
@@ -299,6 +303,8 @@
                     </li>
                 </ul>
             </div>
+-->
+<!--
             <div class="zhiye">
                 <h2>职业方向</h2>
                 <a href="/zhiye/" target="_blank">更多职业方向&nbsp;&gt;&gt;</a>
@@ -395,6 +401,8 @@
                     </li>
                 </ul>
             </div>
+-->
+<!--
             <div class="vip">
                 <h2>知识体系</h2>
                 <a href="/path" target="_blank">更多知识体系&nbsp;&gt;&gt;</a>
@@ -548,6 +556,7 @@
                     </li>
                 </ul>
             </div>
+-->
 
             <section class="jk-story">
                 <div class="story-container" style="cursor: -webkit-grab;">
@@ -939,10 +948,10 @@
                     var url = "language/query"; //"module/queryAll"
                     this.$http.post(url).then(function(response) {
                         //console.log(response.data);
-                        this.list = response.data;//查询所有的技术方向、语言、模块
+                        this.list = response.data; //查询所有的技术方向、语言、模块
                     });
                 },
-                showUser: function() {//通过cookie查询用户是否处于登陆状态
+                showUser: function() { //通过cookie查询用户是否处于登陆状态
                     var url = "user/queryByUsers";
                     var str = this.getCookie("phone");
                     var formData = new FormData();
@@ -951,8 +960,9 @@
                         this.$http.post(url, formData).then(function(response) {
                             //console.log("data:" + response.data.u_phone);
                             if (response.data.u_phone == str) {
-                                $("#y-login").show();//如果查询的用户账号与本地储存的值相等
-                                $("#n-login").hide();//则显示长在登录状态，否则显示离线状态
+                                $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
+                                $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
+                                $("#userpoto").attr("src", response.data.u_photo);
                             } else {
                                 $("#y-login").hide();
                                 $("#n-login").show();

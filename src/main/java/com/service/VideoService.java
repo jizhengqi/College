@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.dao.VideoDao;
 import com.entity.Video;
 import com.util.MyFileUtils;
+import com.util.MyWebConfig;
 
 @Service
 @Transactional
@@ -22,6 +23,9 @@ public class VideoService {
 
 	@Resource
 	VideoDao vd;
+
+	@Resource
+	private MyWebConfig myWebConfig;
 
 	// 添加视频详细信息
 	public void add(Video v) {
@@ -62,7 +66,8 @@ public class VideoService {
 			return 0;
 		}
 		try {
-			String[] uploadPaths = myFileUtils.uploads(file, ziFile);
+			String[] uploadPaths = myFileUtils.uploads(
+					myWebConfig.getVideoDir(), file, ziFile);
 			// 将视频路径和资料路径上传到数据库
 			video.setV_url(uploadPaths[0]);
 			video.setV_data_url(uploadPaths[1]);
@@ -80,7 +85,8 @@ public class VideoService {
 		}
 		try {
 			// 将视频上传到本地磁盘
-			String uploadPath = myFileUtils.upload(file);
+			String uploadPath = myFileUtils.upload(myWebConfig.getVideoDir(),
+					file);
 			// 将视频路径添加到数据库
 			video.setV_url(uploadPath);
 		} catch (Exception e) {
@@ -106,6 +112,7 @@ public class VideoService {
 			HttpServletResponse response) {
 		BufferedInputStream bis = null;// 输入流
 		BufferedOutputStream bos = null;// 输出流
-		myFileUtils.download(backName, filePath, bis, bos, response);
+		String path = myWebConfig.getVideoDir() + filePath;// 拼接下载路径
+		myFileUtils.download(backName, path, bis, bos, response);
 	}
 }

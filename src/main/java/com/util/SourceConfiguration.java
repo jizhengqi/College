@@ -21,6 +21,8 @@ public class SourceConfiguration extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/file/**").addResourceLocations(
 				"file:" + myWebConfig.getVideoDir());
+		registry.addResourceHandler("/files/**").addResourceLocations(
+				"file:" + myWebConfig.getPicDir());
 		super.addResourceHandlers(registry);
 	}
 }
