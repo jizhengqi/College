@@ -1,6 +1,8 @@
 package com.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -81,6 +83,32 @@ public class UsersController {
 		}else{
 			return null;
 		}
+	}
+	
+	// 查询所有认证布道师的用户
+	@RequestMapping("queryByTeacher")
+	@ResponseBody
+	public Map<String,Object> queryByTeacher(Integer page,Integer limit){
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<Users> list = us.queryByTeacher((page-1)*limit,limit);
+		map.put("msg", "");
+		map.put("code", 0);
+		map.put("count", us.queryByTeachers().size());
+		map.put("data", list);
+		return map;
+	}
+	
+	// 查询所有VIP的用户
+	@RequestMapping("queryByVIP")
+	@ResponseBody
+	public Map<String,Object> queryByVIP(Integer page,Integer limit){
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<Users> list = us.queryByVIP((page-1)*limit,limit);
+		map.put("msg", "");
+		map.put("code", 0);
+		map.put("count", us.queryByVIPs().size());
+		map.put("data", list);
+		return map;
 	}
 	
 	// 判断用户是否是VIP

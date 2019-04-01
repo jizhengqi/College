@@ -26,4 +26,24 @@
 		select * from curriculum where m_id = (select m_id from module where m_name = #{param1})
 	</select>
 	
+	<!-- 查询所有语言模块 -->
+	<select id="SelectAll" resultType="com.entity.Module">
+		select * from module
+	</select>
+	
+	<!-- 分页查询所语言模块 -->
+	<select id="queryModule" resultType="com.entity.Module">
+		select * from module
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 ==null">
+			limit 1
+		</if>
+	</select>
+	
+	<select id="queryByl_id" parameterType="java.lang.Integer" resultType="com.entity.Module">
+		select * from module where l_id = #{param1}
+	</select>
+	
 </mapper>

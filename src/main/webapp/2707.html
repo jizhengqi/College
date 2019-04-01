@@ -927,7 +927,7 @@
                 },
                 updVideo: function(index){
                 	/* $("#s_play").prop("src","/file/" + this.list[index].url); */
-                	alert(this.list[index].url);
+                	
                 },
                 getUsers: function(){
                 	var url = "/user/queryByUsers";
@@ -1003,9 +1003,7 @@
 	    }
 	    
 	    function upload(vip){
-	    	console.log($("#s_play").attr("src"));
-	    	var s = document.getElementsByTagName("source").HTMLElement;
-	    	console.log(s);
+	    	console.log(JSON.stringify($("#play_video").find("video").attr("src")));
 	    	if(vip == 1){
 	    		
 	    		/* window.location.href = "video/downloadVideo?backName="+ $("#video_name").val() +"&filePath=f145bee9-b3cd-435f-b741-23d92f66b219.mp4"; */

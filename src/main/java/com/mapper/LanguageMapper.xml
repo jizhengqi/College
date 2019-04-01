@@ -28,4 +28,23 @@
 		 where l_id = (select l_id from language where l_name = #{param1}))
 	</select>
 	
+	<!-- 分页查询所有语言分类 -->
+	<select id="queryLanguage" resultType="com.entity.Language">
+		select * from language
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 ==null">
+			limit 1
+		</if>
+	</select>
+	
+	<select id="queryByD_id" parameterType="java.lang.Integer" resultType="com.entity.Language">
+		select * from language where d_id = #{param1}
+	</select>
+	
+	<select id="SelectByD_id" resultType="map">
+		select l.l_id,l.l_name,d.d_id did,d_name from language l left join direction d on l.d_id = d.d_id
+	</select>
+	
 </mapper>

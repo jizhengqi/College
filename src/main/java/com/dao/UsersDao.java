@@ -31,10 +31,16 @@ public interface UsersDao {
 	public List<Users> queryPage(Integer page,Integer limit);
 	
 	// 查询所有认证导师的用户
-	public List<Users> queryByTeacher(Integer u_teacher);
+	public List<Users> queryByTeacher(Integer page,Integer limit);
+	
+	// 查询所有认证导师
+	public List<Users> queryByTeachers();
 	
 	// 查询所有VIP用户
-	public List<Users> queryByVIP(Integer u_vip);
+	public List<Users> queryByVIP(Integer page,Integer limit);
+	
+	// 分页查询VIP
+	public List<Users> queryByVIPs();
 	
 	// 根据编号判断用户是否是VIP
 	public List<Users> queryVipById(String u_id);

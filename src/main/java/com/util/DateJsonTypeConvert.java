@@ -23,7 +23,7 @@ public class DateJsonTypeConvert extends JsonSerializer<Date> {
 			SerializerProvider arg2) throws IOException,
 			JsonProcessingException {
 		// 自己定义日期格式
-		SimpleDateFormat sdf = new SimpleDateFormat(setPattern(5));
+		SimpleDateFormat sdf = new SimpleDateFormat(setPattern(1));
 		// 将数据以json格式输出
 		generator.writeString(sdf.format(date));
 	}

@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.entity.Curriculum;
+import com.entity.Language;
 import com.service.LanguageService;
 
 @Controller
@@ -35,4 +37,18 @@ public class LanguageController {
 		List<Curriculum> list = languageService.queryByLanguage(l_name);
 		return list;
 	}
+	
+	// 查询所有语言分类
+	@RequestMapping("queryLanguage")
+	@ResponseBody
+	public Map<String,Object> queryLanguage(Integer page,Integer limit){
+		List<Language> list = languageService.queryAll();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("msg", "");
+		map.put("code", "");
+		map.put("count", languageService.queryAll().size());
+		map.put("data", languageService.queryLanguage((page-1)*limit, limit));
+		return map;
+	}
+	
 }

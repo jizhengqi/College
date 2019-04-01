@@ -38,4 +38,9 @@ public class DirectionService {
 		return dd.queryByDirection(d_name);
 	}
 	
+	// 分页查询所有技术方向
+	public List<Direction> queryDirection(Integer page,Integer limit){
+		return dd.queryDirection(page, limit);
+	}
+	
 }

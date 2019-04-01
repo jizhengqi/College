@@ -26,4 +26,15 @@
 		select * from curriculum where m_id in (select m_id from module where l_id in(select l_id from language
 		 where d_id = (select d_id from direction where d_name = #{param1})))
 	</select>
+	
+	<!-- 分页查询所有技术方向 -->
+	<select id="queryDirection" resultType="com.entity.Direction">
+		select * from direction
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 ==null">
+			limit 1
+		</if>
+	</select>
 </mapper>
