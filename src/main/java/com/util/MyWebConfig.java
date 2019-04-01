@@ -11,6 +11,8 @@ public class MyWebConfig {
 
 	private String videoDir;
 
+	private String picDir;
+
 	/**
 	 * 从配置文件中读取视频上传路径
 	 * 
@@ -23,4 +25,18 @@ public class MyWebConfig {
 	public void setVideoDir(String videoDir) {
 		this.videoDir = videoDir;
 	}
+
+	/**
+	 * 从配置文件中获取图片上传路径
+	 * 
+	 * @return
+	 */
+	public String getPicDir() {
+		return picDir;
+	}
+
+	public void setPicDir(String picDir) {
+		this.picDir = picDir;
+	}
+
 }

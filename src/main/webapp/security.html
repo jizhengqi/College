@@ -16,6 +16,9 @@
     <script type="text/javascript" src="js/header.min.js?t=1544581681296"></script>
     <script type="text/javascript" src="js/web_socket.js?t=1513326254000"></script>
     <script type="text/javascript" src="js/websocket.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/vue2.5.13.min.js"></script>
+    <script type="text/javascript" src="js/axios0.18.0.min.js"></script>
+    <script type="text/javascript" src="js/vue-resource.js"></script>
 </head>
 
 <body>
@@ -100,12 +103,34 @@
 				<a href="javascript:;">hello world <span class="label label-purple">系列课程</span></a> -->
                     </div>
                 </div>
-                <div class="nav-other" id="nav-other">
-                    <div class="centerbox" style="display: none;">
-                        <a href="//xue.jikexueyuan.com/" class="learn-center" title="学习中心"></a>
+                <div class="nav-other">
+                    <div id="y-login">
+                        <div class="centerbox" style="display: inline-block;">
+                            <a href="ke_doing.html" class="learn-center" title="学习中心"></a>
+                        </div>
+                        <div class="centerbox" style="display: inline-block;">
+                            <a href="" class="message" id="message" title="消息中心">
+                                <i class="have" id="have" style="display: none;"></i>
+                            </a>
+                        </div>
+                        <span class="userinfo-login" id="userinfo-login" style="display: inline-block;">
+                            <a href="setting_user.html">
+                                <img src="https://assets.jikexueyuan.com/user/avtar/default.gif" id="userpoto">
+                            </a>
+                            <i id="uservip-icon"></i>
+                            <div class="slide-submeu user-slide">
+                                <a href="ke_doing.html"><i class="learningcenter-icon"></i>学习中心</a>
+                                <a href="learn_center.html"><i class="homepage-icon"></i>个人主页</a>
+                                <a href="setting_user.html"><i class="set-icon"></i>账号设置</a>
+                                <a href="/logout"><i class="exit-icon"></i>退出登录</a>
+                            </div>
+                        </span>
                     </div>
-                    <div class="centerbox" style="display: none;">
-                        <a href="//www.jikexueyuan.com/member/notifications/" class="message" id="message" title="消息中心"><i class="have" id="have" style="display: none;"></i></a>
+                    <div id="n-login">
+                        <span class="userinfo-notlogin">
+                            <a href="Login.html">登录</a><i></i>
+                            <a href="Register.html">注册</a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -115,19 +140,18 @@
         <div class="wrapper">
             <nav class="leftnav" id="leftNav">
                 <ul>
-                    <li><a href="setting_user.html" class="">个人资料</a></li>
-                    <li>
-                        <a href="setting_ca.html" class="">认证学员</a>
-                        <i class="pro-icon"></i> <span></span>
+                    <li><a href="setting_user.html">个人资料</a></li>
+                    <li id="setting_ca">
+                        <!--认证学员-->
                     </li>
                     <li><a href="setting_vip.html" class="">我的VIP</a></li>
-                    <li><a href="setting_pro.html" class="">我的Pro</a></li>
-                    <li><a href="setting_order.html" class="">我的订单</a></li>
+                    <!--<li><a href="setting_pro.html" class="">我的Pro</a></li>
+                <li><a href="setting_order.html" class="">我的订单</a></li>-->
                     <li><a href="setting_jkb.html" class="">我的极客币</a></li>
-                    <li><a href="setting_quan.html" class="">我的优惠券</a></li>
+                    <!--<li><a href="setting_quan.html" class="">我的优惠券</a></li>-->
                     <li><a href="security.html" class="active">账号安全</a></li>
                     <li><a href="setting_message.html" class="">消息设置</a></li>
-                    <li><a href="setting_sns.html" class="">绑定第三方账号</a></li>
+                    <!--<li><a href="setting_sns.html" class="">绑定第三方账号</a></li>-->
                 </ul>
             </nav>
             <div class="main" id="main">
@@ -136,18 +160,17 @@
                     <ul>
                         <li>
                             <label>绑定手机</label>
-                            <span>15903801149</span>
+                            <span id="phone"></span>
                             <a @click="setPhone()" href="javascript:;">修改手机号</a>
                         </li>
                         <li>
                             <label>绑定邮箱</label>
-                            <span>
-                                没有绑定 </span>
-                            <a @click="setEmail()" href="javascript:;">绑定邮箱</a>
+                            <span id="email">没有绑定</span>
+                            <a @click="setEmail($event)" href="javascript:;">绑定邮箱</a>
                         </li>
                         <li>
                             <label>设置密码</label>
-                            <span>******** <span class="ora">( 设置密码前，请先绑定邮箱或手机 )</span></span>
+                            <span>******** <span class="ora"></span></span>
                             <!-- 没绑定邮箱或手机不显示设定密码 -->
                             <a @click="setPwd()" href="javascript:;">修改登录密码</a>
                         </li>
@@ -160,7 +183,7 @@
             <div class="wrap">
                 <div class="hd">
                     <h2>验证身份</h2>
-                    <i class="close popclose" @click="closePopup()"></i>
+                    <i class="close popclose" @click="closePopup($event)"></i>
                 </div>
                 <div class="bd">
                     <form class="form form-setting">
@@ -169,10 +192,8 @@
                         <fieldset>
                             <div class="form-item">
                                 <div class="item-cont w-lg">
-                                    <select class="select w-lg" id="verifyType" name="">
-                                        <option value="1">通过登录密码验证身份 </option>
-                                        <option value="2">通过手机号
-                                            159****1149 验证 </option>
+                                    <select class="select w-lg" id="verifyType" name="" @change="changeVerify($event)">
+                                        <option value="1">通过登录密码验证身份</option>
                                     </select>
                                 </div>
                             </div>
@@ -185,14 +206,14 @@
                                         <label>验证码</label>
                                     </div>
                                     <div class="item-cont no-right">
-                                        <input class="txt w-xs auth-code" type='text' />
-                                        <a href="javascript:;" class="get-code orange-btn">发送验证码</a>
+                                        <input class="txt w-xs auth-code" id="ver-code" type='text' />
+                                        <a href="javascript:;" class="get-code orange-btn" @click="sendMsg($event)">发送验证码</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-item">
                                 <div class="item-cont">
-                                    <input type="button" id="verifyIdBtn" class="btn green-btn lg" value="验证身份" />
+                                    <input type="button" id="verifyBtn" @click="verifyBtn()" class="btn green-btn lg" value="验证身份" />
                                 </div>
                             </div>
                         </fieldset>
@@ -201,55 +222,13 @@
                 <!-- /bd -->
             </div>
         </div>
-        <!-- /验证身份 -->
-        <!-- 设定初始密码 -->
-        <div class="popup" style="display: none; " id="setPwdPopup">
-            <div class="wrap">
-                <div class="hd">
-                    <h2>初始设定密码</h2>
-                    <i class="close popclose"></i>
-                </div>
-                <div class="bd">
-                    <form class="form form-setting">
-                        <fieldset>
-                            <div class="form-item">
-                                <div class="item-label">
-                                    <label>密码</label>
-                                </div>
-                                <div class="item-cont no-right">
-                                    <input class="txt sm" id='initPwd' type='password' placeholder="输入你的初始密码" />
-                                    <div class="safety pwd-strong">
-                                        <span class="level-1" level="1">弱</span>
-                                        <span class="level-2" level="2">中</span>
-                                        <span class="level-3" level="3">强</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-item">
-                                <div class="item-label">
-                                    <label>确认密码</label>
-                                </div>
-                                <div class="item-cont no-right">
-                                    <input class="txt sm" id='initPwdConfirm' type='password' placeholder="确认密码" />
-                                </div>
-                            </div>
-                            <div class="form-item">
-                                <div class="item-cont">
-                                    <input type="button" class="btn green-btn lg initPwdBtn" value="设定密码" />
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
         <!-- /设定初始密码 -->
         <!-- 修改密码 -->
-        <div class="popup" style="width:360px; display: none" id="password-pop">
+        <div class="popup" style="width:360px; display: none;margin: 100px auto;z-index: 100px;top: 50px;left: 520px;" id="password-pop">
             <div class="wrap">
                 <div class="hd">
                     <h2>修改密码</h2>
-                    <i class="close popclose"></i>
+                    <i class="close popclose" @click="closePopup($event)"></i>
                 </div>
                 <div class="bd">
                     <form class="form form-setting">
@@ -259,7 +238,7 @@
                                     <label>新密码</label>
                                 </div>
                                 <div class="item-cont">
-                                    <input type="password" class="txt sm new-pw" maxlength="32" />
+                                    <input type="password" class="txt sm new-pw" id="newPwd" maxlength="32" />
                                     <div class="safety pwd-strong">
                                         <span class="level-1" level="1">弱</span>
                                         <span class="level-2" level="2">中</span>
@@ -272,12 +251,12 @@
                                     <label>确认密码</label>
                                 </div>
                                 <div class="item-cont no-right">
-                                    <input type="password" class="txt sm repeat-pw" maxlength="32" />
+                                    <input type="password" class="txt sm repeat-pw" id="rePwd" maxlength="32" />
                                 </div>
                             </div>
                             <div class="form-item">
                                 <div class="item-cont">
-                                    <input type="button" class="btn green-btn lg changepw-btn" value="确认修改" />
+                                    <input type="button" @click="editPwd()" class="btn green-btn lg changepw-btn" value="确认修改" />
                                 </div>
                             </div>
                         </fieldset>
@@ -287,11 +266,11 @@
         </div>
         <!-- /修改密码 -->
         <!-- 绑定邮箱 -->
-        <div class="popup" style="width: 360px; height: 242px; display: none;" id="set-email">
+        <div class="popup" style="width: 360px; height: 242px; display: none;margin: 100px auto;z-index: 100px;top: 50px;left: 520px;" id="set-email">
             <div class="wrap">
                 <div class="hd">
                     <h2>绑定邮箱</h2>
-                    <i class="close popclose"></i>
+                    <i class="close popclose" @click="closePopup($event)"></i>
                 </div>
                 <div class="bd">
                     <form class="form form-setting h-auto">
@@ -301,12 +280,12 @@
                                     <label>邮箱</label>
                                 </div>
                                 <div class="item-cont no-right">
-                                    <input class="txt sm init-email" />
+                                    <input class="txt sm init-email" id="init_email" />
                                 </div>
                             </div>
                             <div class="form-item">
                                 <div class="item-cont">
-                                    <input type="button" class="btn green-btn lg set-email-btn" value="确认绑定" />
+                                    <input type="button" @click="bindEmail($event)" class="btn green-btn lg set-email-btn" value="确认绑定" />
                                 </div>
                             </div>
                         </fieldset>
@@ -316,11 +295,11 @@
         </div>
         <!-- /绑定邮箱 -->
         <!-- 修改邮箱 -->
-        <div class="popup" style="width: 360px; height: 242px;display: none;" id="change-email">
+        <div class="popup" style="width: 360px; height: 242px;display: none;margin: 100px auto;z-index: 100px;top: 50px;left: 520px;" id="change-email">
             <div class="wrap">
                 <div class="hd">
                     <h2>修改邮箱</h2>
-                    <i class="close popclose"></i>
+                    <i class="close popclose" @click="closePopup($event)"></i>
                 </div>
                 <div class="bd">
                     <form class="form form-setting h-auto">
@@ -330,52 +309,12 @@
                                     <label>邮箱</label>
                                 </div>
                                 <div class="item-cont no-right">
-                                    <input class="txt sm new-email" />
+                                    <input class="txt sm new-email" id="set_email" />
                                 </div>
                             </div>
                             <div class="form-item">
                                 <div class="item-cont">
-                                    <input type="button" class="btn green-btn lg change-email-btn" value="确认修改" />
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- /修改邮箱 -->
-        <!-- 绑定手机号 data-state = 'alter/bind' -->
-        <div class="popup" style="width: 360px; height: 301px; display: none;" id="set-phone" data-state='bind'>
-            <div class="wrap">
-                <div class="hd">
-                    <h2>绑定手机号</h2>
-                    <i class="close popclose"></i>
-                </div>
-                <div class="bd">
-                    <form class="form form-setting h-auto">
-                        <fieldset>
-                            <div class="form-item">
-                                <div class="item-label">
-                                    <label>手机号</label>
-                                    <!-- <label>新手机号</label> -->
-                                </div>
-                                <div class="item-cont no-right">
-                                    <input class="txt sm init-phone phoneNum" />
-                                </div>
-                            </div>
-                            <div class="form-item">
-                                <div class="item-label">
-                                    <label>验证码</label>
-                                </div>
-                                <div class="item-cont no-right">
-                                    <input class="txt w-xs auth-code" type='text' />
-                                    <a href="javascript:;" class="get-code orange-btn">发送验证码</a>
-                                </div>
-                            </div>
-                            <div class="form-item">
-                                <div class="item-cont">
-                                    <input type="button" class="btn green-btn lg set-phone-btn" value="确认绑定" />
-                                    <!-- <input type="button" class="btn btn-primary sm p-sm set-phone-btn" value="确认修改" /> -->
+                                    <input type="button" @click="bindEmail($event)" class="btn green-btn lg change-email-btn" value="确认修改" />
                                 </div>
                             </div>
                         </fieldset>
@@ -385,11 +324,11 @@
         </div>
         <!-- /绑定手机号 -->
         <!-- 修改手机号 -->
-        <div class="popup" style="width: 360px; height: 301px; display: none;" id="change-phone" data-state='alter'>
+        <div class="popup" style="width: 360px; height: 301px; display: none;margin: 100px auto;z-index: 100px;top: 50px;left: 520px;" id="change-phone" data-state='alter'>
             <div class="wrap">
                 <div class="hd">
                     <h2>修改手机号</h2>
-                    <i class="close popclose"></i>
+                    <i class="close popclose" @click="closePopup($event)"></i>
                 </div>
                 <div class="bd">
                     <form class="form form-setting h-auto">
@@ -399,7 +338,7 @@
                                     <label>新手机号</label>
                                 </div>
                                 <div class="item-cont no-right">
-                                    <input class="txt sm new-phone phoneNum" />
+                                    <input class="txt sm new-phone phoneNum" id="phoneNum" />
                                 </div>
                             </div>
                             <div class="form-item">
@@ -407,13 +346,13 @@
                                     <label>验证码</label>
                                 </div>
                                 <div class="item-cont no-right">
-                                    <input class="txt w-xs auth-code" type='text' />
-                                    <a href="javascript:;" class="get-code orange-btn">发送验证码</a>
+                                    <input class="txt w-xs auth-code" type='text' id="newCode" />
+                                    <a href="javascript:;" class="get-code orange-btn" @click="sendPhone()">发送验证码</a>
                                 </div>
                             </div>
                             <div class="form-item">
                                 <div class="item-cont">
-                                    <input type="button" class="btn green-btn lg change-phone-btn" value="确认修改" />
+                                    <input type="button" @click="changePhoneSubmit()" class="btn green-btn lg change-phone-btn" value="确认修改" />
                                 </div>
                             </div>
                         </fieldset>
@@ -476,6 +415,7 @@
 <script type="text/javascript" src="js/vue2.5.13.min.js"></script>
 <script type="text/javascript" src="js/axios0.18.0.min.js"></script>
 <script type="text/javascript" src="js/vue-resource.js"></script>
+<script type="text/javascript" src="js/myscript.js"></script>
 <script>
     function gotop() {
         var html = $("#gototop");
@@ -507,26 +447,218 @@
     new Vue({
         el: '#bodys',
         data: {
-
+            pwd: "",
+            phone: "",
+            msg: "",
+            temp: ""
         },
         created: function() {
-
+            this.showUser();
         },
-        methods: {
+        methods: { //弹出身份验证弹窗
             setPhone: function() {
                 $("#verify-pop").show();
-            },
-            setEmail: function() {
-
-            },
+                this.temp = "#change-phone";
+            }, //弹出添加/修改邮箱窗口
+            setEmail: function(e) {
+                if ($(e.target).prev().html() == "没有绑定") {
+                    $("#set-email").show();
+                } else {
+                    $("#change-email").show();
+                }
+            }, //弹出身份验证窗口
             setPwd: function() {
                 $("#verify-pop").show();
+                this.temp = "#password-pop";
+            }, //关闭各种窗口
+            closePopup: function(obj) {
+                $(obj.target).parent().parent().parent().hide();
+                $("#verifyPwd").val("");
+                $("#ver-code").val("");
+                $("#phoneNum").val("");
+                $("#newCode").val("");
+            }, //页面初始化时，显示数据
+            showUser: function() { //通过cookie查询用户是否处于登陆状态
+                var url = "user/queryByUsers";
+                var str = this.getCookie("phone");
+                var formData = new FormData();
+                formData.append("phone", str)
+                if (str != "") {
+                    this.$http.post(url, formData).then(function(response) {
+                        //console.log("data:" + response.data.u_phone);
+                        if (response.data.u_phone == str) {
+                            $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
+                            $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
+                            $("#userpoto").attr("src", response.data.u_photo);
+                            var u_email = response.data.u_email;
+                            if (null != u_email) {
+                                $("#email").html(u_email.substr(0, 3) + "****" + u_email.substr(6));
+                            }
+                            this.pwd = response.data.u_pwd; //将用户密码放入全局变量
+                            this.phone = str;
+                            var phone2 = '通过手机号' + str.substr(0, 3) + "****" + str.substr(7) + '验证';
+                            document.getElementById("verifyType").add(new Option(phone2, 2), null);
+                            $("#phone").html(str.substr(0, 3) + "****" + str.substr(7));
+                            //判断是否认证学院
+                            if(response.data.u_stu_authentication != null){
+                                $("#setting_ca").html("<a href='setting_ca.html' class=''>认证学员</a><i class='pro-icon''></i> <span></span>");
+                            }else{
+                                $("#setting_ca").html("<a href='setting_ca.html' class=''>认证学员</a><i class='nopro-icon' style='background-image: url(img/nopro.png);'></i> <span></span>");
+                            }
+                        } else {
+                            $("#y-login").hide();
+                            $("#n-login").show();
+                        }
+                    });
+                } else {
+                    $("#y-login").hide();
+                    $("#n-login").show();
+                }
+            }, //通过本地cookie查询登录信息
+            getCookie: function(key) {
+                var arr1 = document.cookie.split("; ");
+                for (var i = 0; i < arr1.length; i++) {
+                    var arr2 = arr1[i].split("="); //通过=截断，把name=Jack截断成[name,Jack]数组;
+                    if (arr2[0] == key) {
+                        return decodeURI(arr2[1]);
+                    }
+                }
+            }, //选择身份验证的方式
+            changeVerify: function(e) {
+                if ($(e.target).val() == 1) {
+                    $("#verifyPwd").show();
+                    $("#verifyOther").hide();
+                    $("#verify-pop").css("width", "350px");
+                } else {
+                    $("#verifyPwd").hide();
+                    $("#verifyOther").show();
+                    $("#verify-pop").css("width", "420px");
+                }
+            }, //用手机验证码进行身份验证
+            sendMsg: function(e) {
+                var formData = new FormData();
+                formData.append("phone", this.phone);
+                this.$http.post("user/getMsg", formData).then(function(response) {
+                    this.msg = response.bodyText;
+                })
+            }, //判断是修改手机号还是修改密码操作
+            verifyBtn: function() {
+                if ($("#verifyType").val() == 1) {
+                    if (this.pwd == $("#ver-pwd").val()) { //用密码进行身份验证
+                        $("#verify-pop").hide();
+                        $(this.temp).show();
+                    } else {
+                        this.showMsg("输入的密码不对");
+                    }
+                } else {
+                    if (this.msg == $("#ver-code").val()) {
+                        $("#verify-pop").hide();
+                        $(this.temp).show();
+                    } else {
+                        this.showMsg("输入的验证码不对");
+                    }
+                }
+            }, //修改用户手机号前给用户手机发送验证码用来确认
+            sendPhone: function() {
+                if ($("#phoneNum").val() != "") {
+                    if ($("#phoneNum").val() == this.phone) {
+                        this.showMsg("不能输入正在绑定的手机号");
+                        return;
+                    }
+                    var formData = new FormData();
+                    formData.append("phone", $("#phoneNum").val());
+                    this.$http.post("user/getMsg", formData).then(function(response) {
+                        this.msg = response.bodyText;
+                        console.log(response);
+                    })
+                } else {
+                    this.showMsg("请输入新手机号");
+                }
+            }, //修改用户手机号
+            changePhoneSubmit: function() {
+                if (this.msg == $("#newCode").val()) {
+                    var formData = new FormData();
+                    formData.append("newPhone", $("#phoneNum").val());
+                    formData.append("phone", this.phone);
+                    this.$http.post("user/editPhone", formData).then(function(response) {
+                        if (response.data == 1) {
+                            this.setCookie("phone", $("#phoneNum").val(), 7);
+                            window.location.reload();
+                        }
+                    })
+                } else {
+                    this.showMsg("输入的验证码不正确！");
+                }
+            }, //绑定/修改邮箱
+            bindEmail: function(e) {
+                var u_emails = "";
+                if ($(e.target).val() == "确认绑定") {
+                    u_emails = $("#init_email").val();
+                } else {
+                    u_emails = $("#set_email").val();
+                }
+                if (u_emails == "") {
+                    this.showMsg("请输入正确的邮箱");
+                    return;
+                }
+                var formData = new FormData();
+                formData.append("u_email", u_emails);
+                formData.append("phone", this.phone);
+                this.$http.post("user/editEmail", formData).then(function(response) {
+                    if (response.data == 1) {
+                        window.location.reload();
+                    }
+                })
+            }, //修改密码
+            editPwd: function() {
+                if ($("#newPwd").val() != "") {
+                    if ($("#rePwd").val() != "") {
+                        if ($("#newPwd").val() == $("#rePwd").val()) {
+                            var formData = new FormData();
+                            formData.append("u_pwd", $("#newPwd").val());
+                            formData.append("phone", this.phone);
+                            this.$http.post("user/editPwd", formData).then(function(response) {
+                                if (response.data == 1) {
+                                    window.location.reload();
+                                }
+                            })
+                        } else {
+                            this.showMsg("密码不一致");
+                        }
+                    } else {
+                        this.showMsg("请输入确认密码");
+                    }
+                } else {
+                    this.showMsg("请输入新密码");
+                }
             },
-            closePopup: function() {
-                $("#verify-pop").hide();
+            setCookie: function(key, value, t) {
+                if (t > 0) {
+                    var oDate = new Date();
+                    oDate.setDate(oDate.getDate() + t);
+                    document.cookie = key + "=" + value + "; expires=" + oDate.toDateString();
+                }
+            },
+            showMsg: function(text) {
+                $("body").append("<div id='successMsg' class='successMsg'>" + text + "</div>");
+                $(".successMsg").css('margin', '100px auto');
+                $(".successMsg").css('display', 'none');
+                $(".successMsg").css('color', '#FFFFFF');
+                $(".successMsg").css('text-align', 'center');
+                $(".successMsg").css('position', 'fixed');
+                $(".successMsg").css('left', '60px');
+                $(".successMsg").css('top', '0px');
+                $(".successMsg").css('margin-left', '40%');
+                $(".successMsg").css('background-color', '#32B657');
+                $(".successMsg").css('font-size', '20px');
+                $(".successMsg").css('z-index', '9999');
+                $(".successMsg").css('border-radius', '5px');
+                $(".successMsg").css('line-height', '40px');
+                $(".successMsg").css('padding', '10px');
+                $("#successMsg").show().delay(1000).fadeOut(900);
             }
         }
-    })
+    });
 
 </script>
 <script type="text/javascript" src="js/meiqia.js?t=1513326254000"></script>

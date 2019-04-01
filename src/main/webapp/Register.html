@@ -1,57 +1,60 @@
-
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>骇客学院</title>
-	<link rel="stylesheet" type="text/css" href="css/passport.min.css?t=20170228"/>
-	<script src="js/jquery.min.js?t=20170228"></script>
-	<script type="text/javascript" src="js/vue2.5.13.min.js"></script>
-	<script type="text/javascript" src="js/axios0.18.0.min.js"></script>
-	<script type="text/javascript" src="js/vue-resource.js"></script>
-	<style type="text/css">
-	 body{
-		background: transparent;
-	}
-		#logos{
-			position: relative;
-			top:-100px;
-			left:300px;
-			height: 50px;
-			background: transparent;
-		}
-	</style>
+    <title>骇客学院</title>
+    <link rel="stylesheet" type="text/css" href="css/passport.min.css?t=20170228" />
+    <script src="js/jquery.min.js?t=20170228"></script>
+    <script type="text/javascript" src="js/vue2.5.13.min.js"></script>
+    <script type="text/javascript" src="js/axios0.18.0.min.js"></script>
+    <script type="text/javascript" src="js/vue-resource.js"></script>
+    <style type="text/css">
+        body {
+            background: transparent;
+        }
+
+        #logos {
+            position: relative;
+            top: -100px;
+            left: 300px;
+            height: 50px;
+            background: transparent;
+        }
+
+    </style>
 </head>
 
 <body>
-	<div class="passport-wrapper">
-    <header id="header" class="passport-header">
-        <div id="logos"><a href="javascript:void(0)" ><img src="img/logo.png" height="200px" style="background: transparent;" /></a></div>
-    </header>	<!--feg-box-- -->
-	<link type="text/css" href="css/nc.css?t=20170228" rel="stylesheet"/>
-<div id="container">
-    <div class="passport-sign">
-        <div class="main-form" id="main-form">
-            <h2>新用户注册</h2>
-            <p></p>
-            <!-- form -->
-            <form class="passport-form passport-form-sign" id="registert" method="post">
-               <input type='hidden' value='http%3A%2F%2Flocalhost%3A8080%2Findex.html' name='referer'/>
-                <div class="form-item">
-                    <div class="form-cont">
-                        <input type="text" name="u_phone" id="phone" class="passport-txt xl w-full" tabindex="1" autocomplete="off" placeholder="请输入手机号" />
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div class="form-cont">
-                        <input type="password" name="u_pwd" id="pwd" class="passport-txt xl w-full" tabindex="2" autocomplete="off" placeholder="输入6~12位密码" />
-                    </div>
-                </div>
+    <div class="passport-wrapper">
+        <header id="header" class="passport-header">
+            <div id="logos"><a href="javascript:void(0)"><img src="img/logo.png" height="200px" style="background: transparent;" /></a></div>
+        </header>
+        <!--feg-box-- -->
+        <link type="text/css" href="css/nc.css?t=20170228" rel="stylesheet" />
+        <div id="container">
+            <div class="passport-sign">
+                <div class="main-form" id="main-form">
+                    <h2>新用户注册</h2>
+                    <p id="showError" style="color: brown;"></p>
+                    <!-- form -->
+                    <form class="passport-form passport-form-sign" id="registert" method="post">
+                        <input type='hidden' value='http%3A%2F%2Flocalhost%3A8080%2Findex.html' name='referer' />
+                        <div class="form-item">
+                            <div class="form-cont">
+                                <input type="text" name="u_phone" id="phone" @blur="checkName()" class="passport-txt xl w-full" tabindex="1" autocomplete="off" placeholder="请输入手机号" />
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-cont">
+                                <input type="password" name="u_pwd" id="pwd" class="passport-txt xl w-full" tabindex="2" autocomplete="off" placeholder="输入6~12位密码" />
+                            </div>
+                        </div>
 
-                <!-- <div class="form-item form-imgcode">
+                        <!-- <div class="form-item form-imgcode">
                     <div class="form-cont">
                         <div class="layout-inner2">
                             <div class="al-verify" id="regVerifyId"></div>
@@ -64,89 +67,131 @@
                         <input type="hidden" name="jike_scene" value="passport-reg"/>
                     </div>
                 </div> -->
-                <div class="form-item form-mcode mb-25">
-                    <div class="form-cont">
-                    	<input type="hidden" id="msgs" name="msgs">
-                        <input type="text" name="verify_code" id="yzm" class="passport-txt xl w-full" tabindex="4" autocomplete="off" placeholder="动态码" />
-                        <div class="btn-getcode">
-                            <button type="button" class="passport-btn js-getcode" @click="ReMsgs()" >获取动态码</button>
+                        <div class="form-item form-mcode mb-25">
+                            <div class="form-cont">
+                                <input type="hidden" id="msgs" name="msgs">
+                                <input type="text" name="verify_code" id="yzm" class="passport-txt xl w-full" tabindex="4" autocomplete="off" placeholder="动态码" />
+                                <div class="btn-getcode">
+                                    <button type="button" class="passport-btn js-getcode" @click="ReMsgs()">获取动态码</button>
+                                </div>
+                                <div class="passport-sms getVoice" style="display: none;">未收到短信？使用<a href="javascript:;" class="js-getvoice">语音动态码</a></div>
+                                <div class="passport-sms reVoice" style="display: none;"><span class="js-revoice"></span>，请注意接听来电</div>
+                            </div>
                         </div>
-                        <div class="passport-sms getVoice" style="display: none;">未收到短信？使用<a href="javascript:;" class="js-getvoice" >语音动态码</a></div>
-                        <div class="passport-sms reVoice" style="display: none;"><span class="js-revoice"></span>，请注意接听来电</div>
-                    </div>
+                        <div class="form-item form-treaty">
+                            <div class="form-cont">
+                                <input type="checkbox" name="treaty" checked="checked" value="treaty" />
+                                <span>同意</span><a href="http://www.jikexueyuan.com/help/service.html" target="_blank" class="treaty">骇客学院用户协议</a>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-cont">
+                                <button type="button" name="register" id="register" class="passport-btn passport-btn-def xl w-full" tabindex="5" @click="Registers()">注册</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- form end -->
                 </div>
-                <div class="form-item form-treaty">
-                    <div class="form-cont">
-                        <input type="checkbox" name="treaty" checked="checked" value="treaty"/>
-                        <span>同意</span><a href="http://www.jikexueyuan.com/help/service.html" target="_blank" class="treaty">骇客学院用户协议</a>
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div class="form-cont">
-                        <button type="button" name="register" id="register" class="passport-btn passport-btn-def xl w-full" tabindex="5" @click="Registers()" >注册</button>
-                    </div>
-                </div>
-            </form>
-            <!-- form end -->
-        </div>
-        <div class="aside">
-            <div class="passport-goto mg-b100" style="margin-bottom:0px;">已有帐号 <a href="Login.html" tabindex="6" >立即登录</a></div>
-            <!--ad-->
-                        <!--/ad-->
+                <div class="aside">
+                    <div class="passport-goto mg-b100" style="margin-bottom:0px;">已有帐号 <a href="Login.html" tabindex="6">立即登录</a></div>
+                    <!--ad-->
+                    <!--/ad-->
 
-            <div class="passport-third" style="margin-top:20px;">
-                <header class="hd">
-                    <div class="layout-inner">
-                        <h3>快速登录</h3>
+                    <div class="passport-third" style="margin-top:20px;">
+                        <header class="hd">
+                            <div class="layout-inner">
+                                <h3>快速登录</h3>
+                            </div>
+                        </header>
+                        <div class="links">
+                            <a href="javascript:void(0)"><i class="passport-icon icon-tencent"></i></a>
+                            <a href="javascript:void(0)"><i class="passport-icon icon-weibo"></i></a>
+                            <a href="javascript:void(0)"><i class="passport-icon icon-weixin"></i></a>
+                            <a href="javascript:void(0)"><i class="passport-icon icon-eoe"></i></a>
+                        </div>
                     </div>
-                </header>
-                <div class="links">
-                    <a href="javascript:void(0)" ><i class="passport-icon icon-tencent"></i></a>
-                    <a href="javascript:void(0)" ><i class="passport-icon icon-weibo"></i></a>
-                    <a href="javascript:void(0)" ><i class="passport-icon icon-weixin"></i></a>
-                    <a href="javascript:void(0)" ><i class="passport-icon icon-eoe"></i></a>
+
                 </div>
             </div>
-
         </div>
+        <script type="text/javascript" src="js/nc.js?t=20170228"></script>
+        <script type="text/javascript" src="js/login_register.min.js?t=1548056240"></script>
+        <!--feg-box end-->
+        <script type="text/javascript" src='js/growingio.js?t=20170228'></script>
     </div>
-</div>
-<script type="text/javascript" src="js/nc.js?t=20170228"></script>
-<script type="text/javascript" src="js/login_register.min.js?t=1548056240"></script>	<!--feg-box end-->
-<script type="text/javascript" src='js/growingio.js?t=20170228'></script>
 </body>
-	<script type="text/javascript">
-	 var add = new Vue({
+<script type="text/javascript">
+    var add = new Vue({
         el: "#main-form",
         data: {
             list: []
         },
         methods: {
-	        ReMsgs: function() {
-        	   var datas = document.getElementById("phone").value;
-               var url = "user/getMsg?phone=" + datas;
+            ReMsgs: function() {
+                this.checkName();
+                var datas = document.getElementById("phone").value;
+                var url = "user/getMsg?phone=" + datas;
                 this.$http.post(url).then(function(response) {
-                    console.log(response.data);
+                    if(response.data == null){
+                        document.getElementById("showError").innerHTML = "请输入正确的手机号码！";
+                        document.getElementById("showError").style.color = "brown";
+                    }
                     document.getElementById("msgs").value = response.data;
                 });
-	        },
+            },
             Registers: function() {
-            if(document.getElementById("msgs").value == document.getElementById("yzm").value){
-            	let str = new FormData(document.getElementById("registert"));
-                var url = "user/logins";
-                this.$http.post(url,str).then(function(response) {
-                    if(response.data != 1){
-                        alert("信息错误");
-                        return;
+                if (document.getElementById("msgs").value == document.getElementById("yzm").value) {
+                    let str = new FormData(document.getElementById("registert"));
+                    var url = "user/logins";
+                    this.$http.post(url, str).then(function(response) {
+                        if (response.data != 1) {
+                            document.getElementById("showError").innerHTML = "注册失败！";
+                            document.getElementById("showError").style.color = "brown";
+                            return;
+                        }
+                        window.location.href = "index.html";
+                    });
+                } else {
+                    document.getElementById("showError").innerHTML = "验证码输入错误！";
+                    document.getElementById("showError").style.color = "brown";
+                }
+            },
+            checkName: function(){
+                var phone = document.getElementById("phone").value;
+                if(phone == ""){
+                    return;
+                }
+                var result = 0;
+                var vals = phone.split('');
+                var nums = [1,2,3,4,5,6,7,8,9,0];
+                for (var i = 0; i < nums.length; i++) {
+                    for(var j = 0; j < vals.length; j ++){
+                        if(nums[i] == vals[j]){
+                            result ++;
+                        }
                     }
-                    window.location.href="index.html";
-                });
-            }else{
-            	alert("验证码输入错误！！！");
+                }
+                if(result == vals.length){
+                	var formData = new FormData();
+                    formData.append("phone",phone)
+                    this.$http.post("user/checkPhone", formData).then(function(response) {
+                        if(response.data == 1){
+                            document.getElementById("showError").innerHTML = "该手机号已被注册";
+                            document.getElementById("showError").style.color = "brown";
+                        }else{
+                            document.getElementById("showError").innerHTML = "该手机还未注册";
+                            document.getElementById("showError").style.color = "forestgreen";
+                        }
+                    });
+                }else{
+                    document.getElementById("showError").innerHTML = "请输入数字，而不是字母之类的字符。";
+                    document.getElementById("showError").style.color = "brown";
+                    return;
+                }
             }
-          }
         }
     });
-    
-	</script>
+
+</script>
+
 </html>

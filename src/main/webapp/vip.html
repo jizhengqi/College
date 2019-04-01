@@ -17,6 +17,9 @@
     <script type="text/javascript" src="js/header.min.js?t=1544581681296"></script>
     <script type="text/javascript" src="js/web_socket.js?t=1513326254000"></script>
     <script type="text/javascript" src="js/websocket.js?t=1513326254000"></script>
+    <script type="text/javascript" src="js/vue2.5.13.min.js"></script>
+    <script type="text/javascript" src="js/axios0.18.0.min.js"></script>
+    <script type="text/javascript" src="js/vue-resource.js"></script>
 </head>
 
 <body>
@@ -25,14 +28,14 @@
         <div id="jk-header">
             <div class="header">
                 <h1>
-                    <a href="//www.jikexueyuan.com" class="logo">
+                    <a href="index.html" class="logo">
                         <img src="img/logo.png?t=1513326254000" width="100" alt="极客学院" />
                     </a>
                 </h1>
                 <nav style="width:490px;">
                     <ul>
                         <li>
-                            <a href="//www.jikexueyuan.com" class="home">首页</a>
+                            <a href="index.html" class="home">首页</a>
                         </li>
                         <li class="careerpath">
                             <a href="//www.jikexueyuan.com/zhiye/">职业</a><i class="slide-icon"></i>
@@ -101,12 +104,34 @@
 				<a href="javascript:;">hello world <span class="label label-purple">系列课程</span></a> -->
                     </div>
                 </div>
-                <div class="nav-other" id="nav-other">
-                    <div class="centerbox" style="display: none;">
-                        <a href="//xue.jikexueyuan.com/" class="learn-center" title="学习中心"></a>
+                <div class="nav-other">
+                    <div id="y-login">
+                        <div class="centerbox" style="display: inline-block;">
+                            <a href="ke_doing.html" class="learn-center" title="学习中心"></a>
+                        </div>
+                        <div class="centerbox" style="display: inline-block;">
+                            <a href="" class="message" id="message" title="消息中心">
+                                <i class="have" id="have" style="display: none;"></i>
+                            </a>
+                        </div>
+                        <span class="userinfo-login" id="userinfo-login" style="display: inline-block;">
+                            <a href="setting_user.html">
+                                <img src="https://assets.jikexueyuan.com/user/avtar/default.gif" id="userpoto">
+                            </a>
+                            <i id="uservip-icon"></i>
+                            <div class="slide-submeu user-slide">
+                                <a href="ke_doing.html"><i class="learningcenter-icon"></i>学习中心</a>
+                                <a href="learn_center.html"><i class="homepage-icon"></i>个人主页</a>
+                                <a href="setting_user.html"><i class="set-icon"></i>账号设置</a>
+                                <a href="/logout"><i class="exit-icon"></i>退出登录</a>
+                            </div>
+                        </span>
                     </div>
-                    <div class="centerbox" style="display: none;">
-                        <a href="//www.jikexueyuan.com/member/notifications/" class="message" id="message" title="消息中心"><i class="have" id="have" style="display: none;"></i></a>
+                    <div id="n-login">
+                        <span class="userinfo-notlogin">
+                            <a href="Login.html">登录</a><i></i>
+                            <a href="Register.html">注册</a>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -548,6 +573,49 @@
             var _item;
             while ((_item = _list.shift())) {
                 _item();
+            }
+        });
+
+
+        new Vue({
+            el: '#wrapper',
+            data: {
+                
+            },
+            created: function() {
+                this.showUser();
+            },
+            methods: {
+                showUser: function() { //通过cookie查询用户是否处于登陆状态
+                    var url = "user/queryByUsers";
+                    var str = this.getCookie("phone");
+                    var formData = new FormData();
+                    formData.append("phone", str)
+                    if (str != "") {
+                        this.$http.post(url, formData).then(function(response) {
+                            //console.log("data:" + response.data.u_phone);
+                            if (response.data.u_phone == str) {
+                                $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
+                                $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
+                            } else {
+                                $("#y-login").hide();
+                                $("#n-login").show();
+                            }
+                        });
+                    } else {
+                        $("#y-login").hide();
+                        $("#n-login").show();
+                    }
+                },
+                getCookie: function(key) {
+                    var arr1 = document.cookie.split("; ");
+                    for (var i = 0; i < arr1.length; i++) {
+                        var arr2 = arr1[i].split("="); //通过=截断，把name=Jack截断成[name,Jack]数组;
+                        if (arr2[0] == key) {
+                            return decodeURI(arr2[1]);
+                        }
+                    }
+                }
             }
         });
 

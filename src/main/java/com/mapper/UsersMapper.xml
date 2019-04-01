@@ -168,162 +168,83 @@
 	
 	<!-- 修改 -->
 	<update id="upd" parameterType="com.entity.Users">
-		update from users
+		update users
 		<set>
-			<trim suffix="(" prefix=")" suffixOverrides=",">
 			<if test="u_username != null">
-				u_username,
+				u_username = #{u_username},
 			</if>
 			<if test="u_phone != null">
-				u_phone,
+				u_phone = #{u_phone},
 			</if>
 			<if test="u_pwd != null">
-				u_pwd,
+				u_pwd = #{u_pwd},
 			</if>
 			<if test="u_realname != null">
-				u_realname,
+				u_realname = #{u_realname},
 			</if>
 			<if test="u_sex != null">
-				u_sex,
+				u_sex = #{u_sex},
 			</if>
 			<if test="u_birthday != null">
-				u_birthday,
+				u_birthday = #{u_birthday},
 			</if>
 			<if test="u_address != null">
-				u_address,
+				u_address = #{u_address},
 			</if>
 			<if test="u_intro != null">
-				u_intro,
+				u_intro = #{u_intro},
 			</if>
 			<if test="u_photo != null">
-				u_photo,
+				u_photo = #{u_photo},
 			</if>
 			<if test="u_email != null">
-				u_email,
+				u_email = #{u_email},
 			</if>
 			<if test="u_stu_authentication != null">
-				u_stu_authentication,
+				u_stu_authentication = #{u_stu_authentication},
 			</if>
 			<if test="u_vip != null">
-				u_vip,
+				u_vip = #{u_vip},
 			</if>
 			<if test="u_vip_date != null">
-				u_vip_date,
+				u_vip_date = #{u_vip_date},
 			</if>
 			<if test="u_vip_enddate != null">
-				u_vip_enddate,
+				u_vip_enddate = #{u_vip_enddate},
 			</if>
 			<if test="u_gold != null">
-				u_gold,
+				u_gold = #{u_gold},
 			</if>
 			<if test="u_qq != null">
-				u_qq,
+				u_qq = #{u_qq},
 			</if>
 			<if test="d_id != null">
-				d_id,
+				d_id = #{d_id},
 			</if>
 			<if test="u_year != null">
-				u_year,
+				u_year = #{u_year},
 			</if>
 			<if test="u_position != null">
-				u_position,
+				u_position = #{u_position},
 			</if>
 			<if test="u_company != null">
-				u_company,
+				u_company = #{u_company},
 			</if>
 			<if test="u_project_experience != null">
-				u_project_experience,
+				u_project_experience = #{u_project_experience},
 			</if>
 			<if test="u_social_reputation != null">
-				u_social_reputation,
+				u_social_reputation = #{u_social_reputation},
 			</if>
 			<if test="u_other_msg != null">
-				u_other_msg,
+				u_other_msg = #{u_other_msg},
 			</if>
 			<if test="u_teacher != null">
-				u_teacher,
+				u_teacher = #{u_teacher},
 			</if>
 			<if test="u_create_date != null">
-				u_create_date,
+				u_create_date = #{u_create_date}
 			</if>
-		</trim>
-		<trim prefix="values(" suffix=")" suffixOverrides=",">
-			<if test="u_username != null">
-				#{u_username},
-			</if>
-			<if test="u_phone != null">
-				#{u_phone},
-			</if>
-			<if test="u_pwd != null">
-				#{u_pwd},
-			</if>
-			<if test="u_realname != null">
-				#{u_realname},
-			</if>
-			<if test="u_sex != null">
-				#{u_sex},
-			</if>
-			<if test="u_birthday != null">
-				#{u_birthday},
-			</if>
-			<if test="u_address != null">
-				#{u_address},
-			</if>
-			<if test="u_intro != null">
-				#{u_intro},
-			</if>
-			<if test="u_photo != null">
-				#{u_photo},
-			</if>
-			<if test="u_email != null">
-				#{u_email},
-			</if>
-			<if test="u_stu_authentication != null">
-				#{u_stu_authentication},
-			</if>
-			<if test="u_vip != null">
-				#{u_vip},
-			</if>
-			<if test="u_vip_date != null">
-				#{u_vip_date},
-			</if>
-			<if test="u_vip_enddate != null">
-				#{u_vip_enddate},
-			</if>
-			<if test="u_gold != null">
-				#{u_gold},
-			</if>
-			<if test="u_qq != null">
-				#{u_qq},
-			</if>
-			<if test="d_id != null">
-				#{d_id},
-			</if>
-			<if test="u_year != null">
-				#{u_year},
-			</if>
-			<if test="u_position != null">
-				#{u_position},
-			</if>
-			<if test="u_company != null">
-				#{u_company},
-			</if>
-			<if test="u_project_experience != null">
-				#{u_project_experience},
-			</if>
-			<if test="u_social_reputation != null">
-				#{u_social_reputation},
-			</if>
-			<if test="u_other_msg != null">
-				#{u_other_msg},
-			</if>
-			<if test="u_teacher != null">
-				#{u_teacher},
-			</if>
-			<if test="u_create_date != null">
-				#{u_create_date},
-			</if>
-		</trim>
 		</set>
 		where u_id = #{u_id}
 	</update>

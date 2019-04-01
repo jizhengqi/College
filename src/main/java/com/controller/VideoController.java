@@ -1,11 +1,8 @@
 package com.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
@@ -36,7 +33,7 @@ public class VideoController {
 
 	@Resource
 	private MyFileUtils myFileUtils;
-	
+
 	Integer rs;
 
 	@RequestMapping("addVideo")
@@ -58,7 +55,6 @@ public class VideoController {
 	public List<Video> queryVideoByC_id(Integer c_id) {
 		return videoService.queryVideoByC_id(c_id);
 	}
-	
 
 	@RequestMapping("downloadVideo")
 	public void download(String backName, String filePath,
