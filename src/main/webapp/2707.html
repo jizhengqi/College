@@ -172,7 +172,7 @@
             <!-- 弹窗 end-->
             <div class="crumbs">
                 <div class="w-1000">
-                    
+
                     <a href="//www.jikexueyuan.com/">首页</a>
                     <em>&gt;</em>
                     <a href="//www.jikexueyuan.com/course/">职业课程库</a>
@@ -368,7 +368,7 @@
                             <a class="orinagebtn" id="course_download" course_id="2707" title="下载课程对应的源代码、素材等资料" href="javascript:void('0');" jktag="&posArea=0003&posOper=8015&posColumn=0.1">资料下载</a>
                         </div>
                     </div>
-<!--
+                    <!--
                     <div class="less-tag">
                         <span><a href="//www.jikexueyuan.com/tag/HTML5.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.1">HTML5</a></span>
                         <span><a href="//www.jikexueyuan.com/tag/HTML.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.2">HTML</a></span>
@@ -952,9 +952,8 @@
                         videoList = response.data;
                     });
                 },
-                updVideo: function(index){
-                	/* $("#s_play").prop("src","/file/" + this.list[index].url); */
-                	
+                updVideo: function(index) {
+                    /* $("#s_play").prop("src","/file/" + this.list[index].url); */
                 },
                 getVIP: function(param) {
                     var url = "user/queryVipById?u_id=" + param;
@@ -966,7 +965,7 @@
                         this.vip = response.data;
                     });
                 },
-                shoucang: function() {//收藏视频
+                shoucang: function() { //收藏视频
                     var v_ids = $("#video_id").val();
                     var url = "collect/queryByCollect?u_id=" + this.u_ids + "&c_id=" + this.getParam("c_id") + "&v_id=" + v_ids;
                     this.$http.get(url).then(function(response) {
@@ -975,7 +974,7 @@
                         } else if (response.data == 2) {
                             alert("收藏成功");
                         }
-                    }).catch(function(reason){
+                    }).catch(function(reason) {
                         console.log(reason);
                     });
                 },
@@ -990,7 +989,7 @@
                         return decodeURI(result[1]);
                     }
                 },
-                showUser: function() {//通过cookie查询用户是否处于登陆状态
+                showUser: function() { //通过cookie查询用户是否处于登陆状态
                     var url = "user/queryByUsers";
                     var str = this.getCookie("phone");
                     var formData = new FormData();
@@ -999,8 +998,8 @@
                         this.$http.post(url, formData).then(function(response) {
                             //console.log("data:" + response.data.u_phone);
                             if (response.data.u_phone == str) {
-                                $("#y-login").show();//如果查询的用户账号与本地储存的值相等
-                                $("#n-login").hide();//则显示长在登录状态，否则显示离线状态
+                                $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
+                                $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
                                 $("#userpoto").attr("src", response.data.u_photo);
                                 this.u_ids = response.data.u_id;
                                 this.getVIP(response.data.u_id);
@@ -1038,7 +1037,7 @@
 
     </script>
     <script type="text/javascript">
-        function updVideo(e){
+        function updVideo(e) {
             console.log(videoList);
             alert(videoList[e].v_url);
         }
@@ -1063,56 +1062,56 @@
             var s = document.getElementsByTagName("source").HTMLElement;
             console.log(s);
             if (vip == 1) {
-
                 /* window.location.href = "video/downloadVideo?backName="+ $("#video_name").val() +"&filePath=f145bee9-b3cd-435f-b741-23d92f66b219.mp4"; */
             } else {
                 alert("穷逼,连个会员都充不起！！！");
                 /* alert("请选择充值会员,或者与原作者联系,谢谢！！！"); */
             }
         }
-        if (!isNaN(v.duration)) {
-            clearInterval(timer);
-            var duration = v.duration;
-            var hour = parseInt(duration / 3600);
-            var minute = parseInt(duration % 3600 / 60);
-            var sec = parseInt(duration % 60);
-            if (hour == 0) {
-                alert("视频长度为" + minute + ":" + sec);
-            } else {
-                alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
-            }
-        } else {
-            tryTime++;
-            //超过获取视频长度最大重试次数
-            if (tryTime >= maxTry) {
+
+        function getDuration() {
+            if (!isNaN(v.duration)) {
                 clearInterval(timer);
-                alert('无法获取视频长度！');
-            }
-        }
-        var timer, tryTime, maxTry = 5,
-            delay = 500;
-
-        function setVideoSrc(f) {
-            clearInterval(timer);
-            var url = URL.createObjectURL(f.files[0]);
-            v.src = url;
-            tryTime = 0;
-            timer = setInterval(getDuration, delay); //直接获取不到duration，会NaN，计时器来获取
-        }
-
-        function showTime() {
-            var duration = v.currentTime;
-            var hour = parseInt(duration / 3600);
-            var minute = parseInt(duration % 3600 / 60);
-            var sec = parseInt(duration % 60);
-            if (hour == 0) {
-                alert("视频长度为" + minute + ":" + sec);
+                var duration = v.duration;
+                var hour = parseInt(duration / 3600);
+                var minute = parseInt(duration % 3600 / 60);
+                var sec = parseInt(duration % 60);
+                if (hour == 0) {
+                    alert("视频长度为" + minute + ":" + sec);
+                } else {
+                    alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
+                }
             } else {
-                alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
+                tryTime++;
+                //超过获取视频长度最大重试次数
+                if (tryTime >= maxTry) {
+                    clearInterval(timer);
+                    alert('无法获取视频长度！');
+                }
+            }
+            var timer, tryTime, maxTry = 5,
+                delay = 500;
+
+            function setVideoSrc(f) {
+                clearInterval(timer);
+                var url = URL.createObjectURL(f.files[0]);
+                v.src = url;
+                tryTime = 0;
+                timer = setInterval(getDuration, delay); //直接获取不到duration，会NaN，计时器来获取
             }
 
+            function showTime() {
+                var duration = v.currentTime;
+                var hour = parseInt(duration / 3600);
+                var minute = parseInt(duration % 3600 / 60);
+                var sec = parseInt(duration % 60);
+                if (hour == 0) {
+                    alert("视频长度为" + minute + ":" + sec);
+                } else {
+                    alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
+                }
+            }
         }
-
     </script>
 </body>
 
