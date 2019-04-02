@@ -952,9 +952,9 @@
                         videoList = response.data;
                     });
                 },
-                updVideo: function(index) {
-                    /* $("#s_play").prop("src","/file/" + this.list[index].url); */
-                    alert(this.list[index].url);
+                updVideo: function(index){
+                	/* $("#s_play").prop("src","/file/" + this.list[index].url); */
+                	
                 },
                 getVIP: function(param) {
                     var url = "user/queryVipById?u_id=" + param;
@@ -1070,26 +1070,23 @@
                 /* alert("请选择充值会员,或者与原作者联系,谢谢！！！"); */
             }
         }
-
-        function getDuration() {
-            if (!isNaN(v.duration)) {
-                clearInterval(timer);
-                var duration = v.duration;
-                var hour = parseInt(duration / 3600);
-                var minute = parseInt(duration % 3600 / 60);
-                var sec = parseInt(duration % 60);
-                if (hour == 0) {
-                    alert("视频长度为" + minute + ":" + sec);
-                } else {
-                    alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
-                }
+        if (!isNaN(v.duration)) {
+            clearInterval(timer);
+            var duration = v.duration;
+            var hour = parseInt(duration / 3600);
+            var minute = parseInt(duration % 3600 / 60);
+            var sec = parseInt(duration % 60);
+            if (hour == 0) {
+                alert("视频长度为" + minute + ":" + sec);
             } else {
-                tryTime++;
-                //超过获取视频长度最大重试次数
-                if (tryTime >= maxTry) {
-                    clearInterval(timer);
-                    alert('无法获取视频长度！');
-                }
+                alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
+            }
+        } else {
+            tryTime++;
+            //超过获取视频长度最大重试次数
+            if (tryTime >= maxTry) {
+                clearInterval(timer);
+                alert('无法获取视频长度！');
             }
         }
         var timer, tryTime, maxTry = 5,

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.ModuleDao;
 import com.entity.Curriculum;
+import com.entity.Direction;
 import com.entity.Module;
 
 @Service
@@ -42,5 +43,19 @@ public class ModuleService {
 	// 根据语言模块查询课程
 	public List<Curriculum> queryByModule(String m_name){
 		return md.queryByModule(m_name);
+	}
+	
+	// 查询所有语言模块
+	public List<Module> SelectAll(){
+		return md.SelectAll();
+	}
+	
+	// 分页查询所有技术方向
+	public List<Module> queryModule(Integer page,Integer limit){
+		return md.queryModule(page, limit);
+	}
+	
+	public List<Module> queryByl_id(Integer l_id){
+		return md.queryByL_id(l_id);
 	}
 }

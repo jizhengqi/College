@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -24,4 +25,13 @@ public interface LanguageDao {
 	
 	// 根据语言查询所有课程
 	public List<Curriculum> queryByLanguage(String l_name);
+	
+	// 分页查询所有语言信息
+	public List<Language> queryLanguage(Integer page,Integer limit);
+	
+	// 查询某个技术方向的所有语言分类
+	public List<Language> queryByD_id(Integer d_id);
+	
+	// 查询
+	public List<Map<String,Object>> SelectByD_id();
 }

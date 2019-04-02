@@ -24,4 +24,8 @@ public interface DirectionDao {
 	
 	// 根据技术方向查询所有课程信息
 	public List<Curriculum> queryByDirection(String d_name);
+	
+	// 分页插叙所有课程信息
+	public List<Direction> queryDirection(Integer page,Integer limit);
+
 }

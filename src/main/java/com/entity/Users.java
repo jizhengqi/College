@@ -3,6 +3,12 @@ package com.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.util.DateJsonTypeConvert;
+
 public class Users implements Serializable {
 
 	/**
@@ -16,6 +22,7 @@ public class Users implements Serializable {
 	private String u_pwd;
 	private String u_realname;
 	private Integer u_sex;
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date u_birthday;
 	private String u_address;
 	private String u_intro;
@@ -72,6 +79,7 @@ public class Users implements Serializable {
 	public void setU_sex(Integer u_sex) {
 		this.u_sex = u_sex;
 	}
+	@JsonSerialize(using = DateJsonTypeConvert.class)
 	public Date getU_birthday() {
 		return u_birthday;
 	}

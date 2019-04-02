@@ -4,83 +4,158 @@
 <meta charset="utf-8">
 <meta name="renderer" content="webkit|ie-comp|ie-stand">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="stylesheet" type="text/css" href="/static/h-ui/css/H-ui.min.css" />
-<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/H-ui.admin.css" />
-<link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
-<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/skin/default/skin.css" id="skin" />
-<link rel="stylesheet" type="text/css" href="/static/h-ui.admin/css/style.css" />
-<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script> 
+<link rel="stylesheet" type="text/css"
+	href="/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="/static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css"
+	href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css"
+	href="/static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css"
+	href="/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" href="/WeAdmin/static/css/font.css">
+<link rel="stylesheet" href="/WeAdmin/static/css/weadmin.css">
+<script type="text/javascript" src="/lib/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="/lib/layer/2.4/layer.js"></script>
-<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script> 
-<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
-
+<script type="text/javascript" src="/static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="/static/h-ui.admin/js/H-ui.admin.js"></script>
+<!--/_footer 作为公共模版分离出去-->
 <!--请在下方写此页面业务相关的脚本-->
-<script type="text/javascript" src="/lib/My97DatePicker/4.8/WdatePicker.js"></script> 
-<script type="text/javascript" src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript"
+	src="/lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript"
+	src="/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="/js/vue2.5.13.min.js"></script>
+<script type="text/javascript" src="/js/axios0.18.0.min.js"></script>
+<script type="text/javascript" src="/js/vue-resource.js"></script>
 <title>技术列表</title>
-<script type="text/html" id="barDemo">
-  	<button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
-  	<button class="layui-btn layui-btn-xs" lay-event="del">删除</button>
-</script>
-<script type="text/html" id="bDemo">
-	<button class="layui-btn layui-btn-xs" lay-event="add">添加</button>
-  	<button class="layui-btn layui-btn-xs" lay-event="edit">编辑</button>
-  	<button class="layui-btn layui-btn-xs" lay-event="del">删除</button>
-</script>
-<script type="text/javascript">
-	layui.use('table', function() {
-		var table = layui.table;
-		table.render({
-			elem : '#test',
-			url : 'user/query',
-			cols : [ [ //标题栏
-			{field : 'userid',title : '编号',width : 80,style : "height:50px"}
-			, {field : 'username',title : '用户名',width : 120}
-			, {field : 'pwd',title : '密码',width : 120}
-			, {toolbar : '#barDemo',width : 300}
-			] ],
-			page : true,
-		});
-		table.on('tool(test)', function(obj) { //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
-			var data = obj.data; //获得当前行数据
-			var layEvent = obj.event; //获得 lay-event 对应的值
-			if (layEvent === 'edit') { //修改
-				layer.open({
-					type : 1,
-					content : $("#frm"),
-					area : [ '500px', '380px' ],
-					title : '修改'
-				});
-				$("#userid").val(data.userid);
-				$("#username").val(data.username);
-				$("#pwd").val(data.pwd);
-			} else if (layEvent === 'del') { //删除
-				$.ajax({
-					url : 'user/del',
-					data : {
-						"userid" : $("#userid").val()
-					},
-					type : 'post',
-					success : function(data) {
-						if (data == 1) {
-							layer.close(layer.index);
-							window.location.reload();
-						}
+</head>
+<body>
+	<nav class="breadcrumb">
+		<i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span>
+		技术方向管理 <span class="c-gray en">&gt;</span> 技术列表 <a
+			class="btn btn-success radius r"
+			style="line-height:1.6em;margin-top:3px"
+			href="javascript:location.replace(location.href);" title="刷新"><i
+			class="Hui-iconfont">&#xe68f;</i></a>
+	</nav>
+	<div>
+		<div class="weadmin-block">
+			<button class="layui-btn" id="expand">全部展开</button>
+			<button class="layui-btn" id="collapse">全部收起</button>
+		</div>
+		<div id="test"></div>
+	</div>
+
+	<input type="hidden" id="va">
+	<script type="text/javascript">
+	var url = "/direction/queryByAll";
+	$(function(){
+		$.post(url).then(function(response){
+			//自定义的render渲染输出多列表格
+			var layout = [{
+					name: '菜单名称',
+					treeNodes: true,
+					headerClass: 'value_col',
+					colClass: 'value_col',
+					style: 'width: 60%'
+				},
+				{
+					name: '状态',
+					headerClass: 'td-status',
+					colClass: 'td-status',
+					style: 'width: 10%',
+					render: function(row) {
+						return '<span class="layui-btn layui-btn-normal layui-btn-xs">已启用</span>';
 					}
+				},
+				{
+					name: '操作',
+					headerClass: 'td-manage',
+					colClass: 'td-manage',
+					style: 'width: 20%',
+					render: function(row) {
+						return '<a onclick="member_stop(this,\'10001\')" href="javascript:;" title="启用"><i class="layui-icon">&#xe601;</i></a>' +
+							'<a title="添加子类" onclick="" href="javascript:;"><i class="layui-icon">&#xe654;</i></a>' +
+							'<a title="编辑" href="javascript:;"><i class="layui-icon">&#xe642;</i></a>' +
+							'<a title="删除" href="javascript:;">\<i class="layui-icon">&#xe640;</i></a>';
+						//return '<a class="layui-btn layui-btn-danger layui-btn-mini" onclick="del(' + row.id + ')"><i class="layui-icon">&#xe640;</i> 删除</a>'; //列渲染
+					}
+				},
+			];
+			//加载扩展模块 treeGird
+			//		layui.config({
+			//			  base: './teser"}]}]}}'
+			//			  ,version: '101100'
+			//			}).use('admin');
+			layui.extend({
+				admin: '{/}../../static/js/admin',
+				treeGird: '{/}../../lib/layui/lay/treeGird' // {/}的意思即代表采用自有路径，即不跟随 base 路径
+			});
+			
+			layui.use(['treeGird', 'jquery', 'admin', 'layer'], function() {
+				var layer = layui.layer,
+					$ = layui.jquery,
+					admin = layui.admin,
+					treeGird = layui.treeGird;
+				var tree1 = layui.treeGird({
+					elem: '#test', //传入元素选择器
+					spreadable: false, //设置是否全展开，默认不展开
+					nodes: JSON.parse("["+response+"]"),
+					layout: layout
+				});
+				$('#collapse').on('click', function() {
+					layui.collapse(tree1);
+				});
+			
+				$('#expand').on('click', function() {
+					layui.expand(tree1);
+				});
+				
+				$('#edit').on('click', function() {
+					alert(this.id);
+				});
+			});
+		});
+	});
+	
+	/*分类-停用*/
+	function member_stop(obj, id) {
+		var confirmTip;
+		if($(obj).attr('title') == '启用') {
+			confirmTip = '确认要停用吗？';
+		} else {
+			confirmTip = '确认要启用吗？';
+		}
+		layer.confirm(confirmTip, function(index) {
+			if($(obj).attr('title') == '启用') {
+				//发异步把用户状态进行更改
+				$(obj).attr('title', '停用')
+				$(obj).find('i').html('&#xe62f;');
+				$(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
+				layer.msg('已停用!', {
+					icon: 5,
+					time: 1000
+				});
+			} else {
+				$(obj).attr('title', '启用')
+				$(obj).find('i').html('&#xe601;');
+	
+				$(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
+				layer.msg('已启用!', {
+					icon: 6,
+					time: 1000
 				});
 			}
 		});
-	});
+	}
+	
 </script>
-</head>
-<body>
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 技术方向管理 <span class="c-gray en">&gt;</span> 技术列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
-<div class="page-container">
-	<table id="test"></table>
-</div>
-
 </body>
 </html>

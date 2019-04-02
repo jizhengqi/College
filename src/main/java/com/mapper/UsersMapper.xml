@@ -283,15 +283,33 @@
 	</select>
 	
 	<!-- 查询所有认证导师的用户 -->
-	<select id="queryByTeacher" parameterType="java.lang.Integer" resultType="com.entity.Users">
+	<select id="queryByTeacher" resultType="com.entity.Users">
 		select * from users where u_teacher = 1
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 == null">
+			limit 1
+		</if>
 	</select>
 	
 	<!-- 查询所有VIP用户 -->
-	<select id="queryByVIP" parameterType="java.lang.Integer" resultType="com.entity.Users">
+	<select id="queryByVIP" resultType="com.entity.Users">
+		select * from users where u_vip = 1
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="">
+			limit 1
+		</if>
+	</select>
+	
+	<!-- 查询所有用户 -->
+	<select id="queryByVIPs" resultType="com.entity.Users">
 		select * from users where u_vip = 1
 	</select>
 	
+	<!-- 根据手机号查询个人信息 -->
 	<select id="queryLog" parameterType="java.lang.String" resultType="com.entity.Users">
 		select * from users where u_phone = #{param1}
 	</select>
@@ -299,5 +317,10 @@
 	<!-- 根据编号查询用户是否是VIP -->
 	<select id="queryVipById" parameterType="java.lang.String" resultType="com.entity.Users">
 		select * from users where u_id = #{param1}
+	</select>
+	
+	<!-- 查询所有认证导师 -->
+	<select id="queryByTeachers" resultType="com.entity.Users">
+		select * from users where u_teacher = 1
 	</select>
 </mapper>

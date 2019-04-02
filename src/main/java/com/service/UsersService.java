@@ -53,13 +53,23 @@ public class UsersService {
 	}
 
 	// 查询所有认证导师信息
-	public List<Users> queryByTeacher(Integer u_teacher) {
-		return ud.queryByTeacher(u_teacher);
+	public List<Users> queryByTeacher(Integer page,Integer limit){
+		return ud.queryByTeacher(page,limit);
+	}
+	
+	// 查询所有认证导师
+	public List<Users> queryByTeachers(){
+		return ud.queryByTeachers();
 	}
 
 	// 查询所有VIP用户
-	public List<Users> queryByVIP(Integer u_vip) {
-		return ud.queryByVIP(u_vip);
+	public List<Users> queryByVIP(Integer page,Integer limit){
+		return ud.queryByVIP(page,limit);
+	}
+	
+	// 查询所有VIP
+	public List<Users> queryByVIPs(){
+		return ud.queryByVIPs();
 	}
 
 	//
