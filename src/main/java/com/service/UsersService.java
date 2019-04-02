@@ -222,4 +222,28 @@ public class UsersService {
 		return rs;
 	}
 
+	/**
+	 * 认证学员
+	 * 
+	 * @param phone
+	 * @param user
+	 * @param session
+	 * @return
+	 */
+	public Integer editMsg(String phone, Users user, HttpSession session) {
+		Integer rs = 0;
+		try {
+			Users sessionUser = (Users) session.getAttribute(phone);
+			sessionUser.setU_address(user.getU_address());
+			sessionUser.setU_sex(user.getU_sex());
+			sessionUser.setU_stu_authentication(user.getU_stu_authentication());
+			ud.upd(sessionUser);
+			session.setAttribute(phone, sessionUser);
+			rs = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
 }
