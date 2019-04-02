@@ -33,5 +33,5 @@ public interface LanguageDao {
 	public List<Language> queryByD_id(Integer d_id);
 	
 	// 查询
-	public List<Map<String,Object>> SelectByD_id();
+	public List<Map<String,Object>> SelectByD_id(Integer page,Integer limit);
 }

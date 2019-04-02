@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.LanguageDao">
-	
 	<!-- 语言分类查询 -->
 	<select id="queryAll" resultType="com.entity.Language">
 		select * from language
@@ -45,6 +44,12 @@
 	
 	<select id="SelectByD_id" resultType="map">
 		select l.l_id,l.l_name,d.d_id did,d_name from language l left join direction d on l.d_id = d.d_id
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 == null">
+			limit 1
+		</if>
 	</select>
 	
 </mapper>

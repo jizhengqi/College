@@ -103,4 +103,8 @@ public class LanguageService {
 	public List<Language> queryByD_id(Integer d_id){
 		return ld.queryByD_id(d_id);
 	}
+	
+	public List<Map<String,Object>> SelectByD_id(Integer page,Integer limit){
+		return ld.SelectByD_id(page, limit);
+	}
 }

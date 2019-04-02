@@ -42,8 +42,18 @@
 		</if>
 	</select>
 	
-	<select id="queryByl_id" parameterType="java.lang.Integer" resultType="com.entity.Module">
+	<select id="queryByL_id" parameterType="java.lang.Integer" resultType="com.entity.Module">
 		select * from module where l_id = #{param1}
+	</select>
+	
+	<select id="SelectByL_id" resultType="map">
+		select m_id,m_name,l.l_id lid,l_name from module m left join language l on m.l_id = l.l_id
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 == null">
+			limit 1
+		</if>
 	</select>
 	
 </mapper>
