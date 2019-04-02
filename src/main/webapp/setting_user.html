@@ -123,7 +123,7 @@
                             <a href="ke_doing.html"><i class="learningcenter-icon"></i>学习中心</a>
                             <a href="learn_center.html"><i class="homepage-icon"></i>个人主页</a>
                             <a href="setting_user.html"><i class="set-icon"></i>账号设置</a>
-                            <a href="/logout"><i class="exit-icon"></i>退出登录</a>
+                            <a href="user/logout?path=index"><i class="exit-icon"></i>退出登录</a>
                         </div>
                     </span>
                 </div>
@@ -147,13 +147,9 @@
                     <!--认证学员-->
                 </li>
                 <li><a href="setting_vip.html" class="">我的VIP</a></li>
-                <!--<li><a href="setting_pro.html" class="">我的Pro</a></li>
-                <li><a href="setting_order.html" class="">我的订单</a></li>-->
                 <li><a href="setting_jkb.html" class="">我的极客币</a></li>
-                <!--<li><a href="setting_quan.html" class="">我的优惠券</a></li>-->
                 <li><a href="security.html" class="">账号安全</a></li>
                 <li><a href="setting_message.html" class="">消息设置</a></li>
-                <!--<li><a href="setting_sns.html" class="">绑定第三方账号</a></li>-->
             </ul>
         </nav>
         <div class="main">
@@ -490,7 +486,7 @@
                                 this.onloads("北京市");
                                 this.setCity("北京市", "北京市");
                             }
-                            //判断是否认证学院
+                            //判断是否认证学员
                             if(response.data.u_stu_authentication != null){
                                 $("#setting_ca").html("<a href='setting_ca.html' class=''>认证学员</a><i class='pro-icon'></i> <span></span>");
                             }else{

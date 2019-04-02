@@ -27,8 +27,8 @@
         <div id="jk-header">
             <div class="header">
                 <h1>
-                    <a href="index.html" class="logo" style="position: relative; top: -45px; left: -8px;">
-                        <img src="img/logo.png" width="135" alt="骇客学院" />
+                    <a href="index.html" class="logo">
+                        <img src="img/logo.png" width="100px" alt="骇客学院" />
                     </a>
                 </h1>
                 <nav style="width:490px;">
@@ -206,9 +206,9 @@
                                             <p class="list-title knowledge-title"><span>知识体系</span></p>
                                             <div v-for="(vkey,vvalues) in keys">
                                                 <dl v-for="(key,value) in vkey">
-                                                    <dt><a v-bind:href="'courseDetail.html?l_name='+value" cgid="23">{{value}}</a></dt>
+                                                    <dt><a v-bind:href="'courseDetail.html?l_name='+value + '&d_name=' + values" cgid="23">{{value}}</a></dt>
                                                     <dd class="cf">
-                                                        <a v-bind:href="'courseDetail.html?m_name='+m" cgid="147" v-for="m in key">{{m}}</a>
+                                                        <a v-bind:href="'courseDetail.html?m_name='+m+'&l_name='+value + '&d_name=' + values" cgid="147" v-for="m in key">{{m}}</a>
                                                     </dd>
                                                 </dl>
                                             </div>

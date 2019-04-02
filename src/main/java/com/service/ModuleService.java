@@ -10,52 +10,51 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.ModuleDao;
 import com.entity.Curriculum;
-import com.entity.Direction;
 import com.entity.Module;
 
 @Service
 @Transactional
 public class ModuleService {
-	
+
 	@Resource
 	ModuleDao md;
-	
+
 	// 查询所有语言和所有语言板块
-	public List<Map<String,Object>> queryAll(){
+	public List<Map<String, Object>> queryAll() {
 		return md.queryAll();
 	}
-	
+
 	// 添加语言模块
-	public void add(Module m){
+	public void add(Module m) {
 		md.add(m);
 	}
-	
+
 	// 修改语言模块
-	public void upd(Module m){
+	public void upd(Module m) {
 		md.upd(m);
 	}
-	
+
 	// 删除语言模块
-	public void del(Integer m_id){
+	public void del(Integer m_id) {
 		md.del(m_id);
 	}
-	
+
 	// 根据语言模块查询课程
-	public List<Curriculum> queryByModule(String m_name){
+	public List<Curriculum> queryByModule(String m_name) {
 		return md.queryByModule(m_name);
 	}
-	
+
 	// 查询所有语言模块
-	public List<Module> SelectAll(){
+	public List<Module> SelectAll() {
 		return md.SelectAll();
 	}
-	
+
 	// 分页查询所有技术方向
-	public List<Module> queryModule(Integer page,Integer limit){
+	public List<Module> queryModule(Integer page, Integer limit) {
 		return md.queryModule(page, limit);
 	}
-	
-	public List<Module> queryByl_id(Integer l_id){
+
+	public List<Module> queryByl_id(Integer l_id) {
 		return md.queryByL_id(l_id);
 	}
 	

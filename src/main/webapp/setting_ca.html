@@ -27,14 +27,14 @@
         <div id="jk-header">
             <div class="header">
                 <h1>
-                    <a href="//www.jikexueyuan.com" class="logo">
+                    <a href="index.html" class="logo">
                         <img src="img/logo.png?t=1513326254000" width="100" alt="极客学院" />
                     </a>
                 </h1>
                 <nav style="width:490px;">
                     <ul>
                         <li>
-                            <a href="//www.jikexueyuan.com" class="home">首页</a>
+                            <a href="index.html" class="home">首页</a>
                         </li>
                         <li class="careerpath">
                             <a href="//www.jikexueyuan.com/zhiye/">职业</a><i class="slide-icon"></i>
@@ -121,7 +121,7 @@
                                 <a href="ke_doing.html"><i class="learningcenter-icon"></i>学习中心</a>
                                 <a href="learn_center.html"><i class="homepage-icon"></i>个人主页</a>
                                 <a href="setting_user.html"><i class="set-icon"></i>账号设置</a>
-                                <a href="/logout"><i class="exit-icon"></i>退出登录</a>
+                                <a href="user/logout?path=index"><i class="exit-icon"></i>退出登录</a>
                             </div>
                         </span>
                     </div>
@@ -143,24 +143,55 @@
                         <!--认证学员-->
                     </li>
                     <li><a href="setting_vip.html" class="">我的VIP</a></li>
-                    <!--<li><a href="setting_pro.html" class="">我的Pro</a></li>
-                <li><a href="setting_order.html" class="">我的订单</a></li>-->
                     <li><a href="setting_jkb.html" class="">我的极客币</a></li>
-                    <!--<li><a href="setting_quan.html" class="">我的优惠券</a></li>-->
                     <li><a href="security.html" class="">账号安全</a></li>
                     <li><a href="setting_message.html" class="">消息设置</a></li>
-                    <!--<li><a href="setting_sns.html" class="">绑定第三方账号</a></li>-->
                 </ul>
             </nav>
-            <div class="main" id="main">
+            <div class="main" id="main1" style="display: none;">
                 <!--学院认证情况-->
+                <h2>认证学员<i class="pro-icon"></i> </h2>
+                <section class="indentify">
+                    <p class="indentify-ok">您已成为极客学院认证学员，享受认证学员专属特权。</p>
+                    <div class="indentify-privilege"><img src="img/privilege.jpg" style="margin-left: 80px;">
+                        <ul>
+                            <li>点亮专属认证标识</li>
+                            <li>免费观看 80% 会员课程</li>
+                            <li>获得个性化课程推荐</li>
+                            <li>资源下载、专属优惠等</li>
+                        </ul>
+                    </div><a href="index.html" class="indentify-okbtn">马上去学习</a>
+                </section>
             </div>
-            <div class="caMask" style="display: none;">
+            <div class="main" id="main2" style="display: none;">
+                <!--学院认证情况-->
+                <h2>认证学员<i class="nopro-icon"></i></h2>
+                <section class="indentify">
+                    <h3>认证学员特权</h3>
+                    <div class="indentify-privilege"><img src="img/privilege.jpg" style="margin-left:80px;">
+                        <ul>
+                            <li>点亮专属认证标识</li>
+                            <li>免费观看 80% 会员课程</li>
+                            <li>获得个性化课程推荐</li>
+                            <li>资源下载、专属优惠等</li>
+                        </ul>
+                    </div>
+                    <div class="indentify-stepbar" style="background-image: url(img/stepbar.png);margin-left: 80px;">
+                        <h4>申请成为极客学院认证学员，仅需3步</h4>
+                    </div>
+                    <ul class="indentify-steps">
+                        <li>添加当前职业状态</li>
+                        <li>选择感兴趣的职业方向</li>
+                        <li>完成认证</li>
+                    </ul><button class="indentify-btn green-btn" @click="certificate()">申请认证</button>
+                </section>
+            </div>
+            <div class="caMask" id="caMask1" style="display: none;">
                 <div class="caPopup">
                     <span class="caClose" @click="closeProp($event)"></span>
                     <div class="caContainer">
                         <div class="caContainerOne">
-                            <span class="caStep">第 <span class="caStepNum">1</span> 步</span>
+                            <!--<span class="caStep">第 <span class="caStepNum">1</span> 步</span>-->
                             <h2>成为认证学员<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAjCAYAAADizJiTAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkRERTZDRTM5M0YzRjExRTY4RDVDRkNBOEM3RTlEMDcxIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkRERTZDRTNBM0YzRjExRTY4RDVDRkNBOEM3RTlEMDcxIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RERFNkNFMzczRjNGMTFFNjhENUNGQ0E4QzdFOUQwNzEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RERFNkNFMzgzRjNGMTFFNjhENUNGQ0E4QzdFOUQwNzEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6UcqOkAAAFR0lEQVR42rRYb4hUVRQ/8+bPzuzMrNvk6qZmCokibNgfgiIzgoQIFGsR+mAYQmGMRCp9iKAvBVGJLUQLfqgPaR8iWJL6ULKWIhi5xuaGaCy5mbttuznu7Ow4szPz5nXO3fP0zp17573ZXQ/8mDf33Xve751z7jnn3YDjOODKyMkALIKEpesyLJKEFrjeQkQZLQjdm5IlZhFFRtVDZwIxs1hEaV0SEfMxNyC9DEkBkUNUDPM3Ic7UPbBJd9PkNkR8AV6IMfKIaba4LNsQGcTF+Vo0iEgpMbgQoZeNMCmbxzoQe/j3ZS+idyFuKGMRJmk1eIknERsQa6TxEcQlxGmJjLrxOphsF+Jzfs5ujtO3EVnhyiv9dYsfRQxxLLkkOgwklyEOILZzzJqEYvIbxCHEhHKvG7GZf1WhF+hBnFCJEplXEYOIsxyTSw3u3ot4o8l4pbg8jOjV3HsR8RZbFHhD7WMuNRYlyz2HeIjz37fsurjGXR8gdhpTQnS1+K0Ur5qmfIV4U5Nn70P8xCS3yuESYrdSXG3hHOaSeYHdNIz4Xcp/HxncdEva7t2PJghC5o99YIWWQLWSVafsZO+9royTYY4hPlNjmiZPIs7xzb+le0TuO8QFieQrXiSD4Q5IrNgDiXt2i+tAMAGtS7fppnazPjX9fc9hVxeTcuAe49z2C5t/VrrfiTjoFYTJVWmwkByBru3ZUWhpfwKCLSt10w+yXlmGTCVQFipx590AViTttXGIXNuq9O0QYNLFG6egbeVeUy5NK2NTuoqnSzlUEUqaPLnDy5rkciucuq0cr2msnB+CeOcu07IdrF8Wt9zCmqcdAV3Cv45Yrow9hWiX4zDUej9E4l0Qbl0vrkPRtRBJdNUpS637WLifMkECyQasGJRmBqFSuAJ2mbaH0Ev6+w0dmLEyBTRd0CM1i5DY8k0/CLf6kao91wxFU88IsvT/38GtYGcnZf39CoegvPMt17SEBuGwQv4zmz0LE789C0614EmylDsvrA2ODQFMWbSG1pIOk34dD8tgUV3Q1+66qTNoFW+y2b/ehyTGaRGJBSOdYg2t9dKv8rAMja6u9EE92VMwcWG7kWxu7IjIo5Hkw7jzT8DUyHtijU/9jhdRXQc+ZrJYIYME/nyn9glIPDN8APLjX8Ld6z+F8s3LkLvWi2RPmtSMefHQEbU1Vh3QViFM4uROIkZlkohkr34I/ww8jn4Lig1nlyYhN9oLbav3N4qQAY01bT+Nc5l7UFdOcyJur3kjTDvxZd3QsuQxmBn/AhwkG4qthc4H+0UOzU98Lcin1h0SljfIFOuHRh+FJqJFhSgtPI54qS64kEwSqw5ZlhoRcvP0tR7c4RGIYY2nFxGdd7zLRPS4hljRL9ECfxvJ0sMdVc0ODVgRiLZvESQpBZXzF5HoJ7cqUyS+UdyjhE9znWpJ3UQ9hud7llA3TtXJ49zi1TanWJmIyM3JPhj9eQNcv/waVMsZAbqmMbpHc8KtG9Xlh1mvStJu5nM5p2kOjiAeqK37QRj/dbMuN87FTGEYJoaeF3GsSJ+h0881ewBRYdfENa2Z20yIuu1HlErUZ2gZ86bvfctD/7Qh0Kk1e1cX9B5S5HVpzdoyPw/mQ9ThhlpXBMht5M+jJncp7jzK83sNyT1jqIpzm9bnIZnf73rKQXIrP8odu+m7XiZZ0t10myW/JyUl/rYynZQQiR8ZzUhZOSmB+bpeJfOfqUGZh+RZn+1ncrOneQ4fseSbOM3TJfNGp3mLej5a4fOpLJN1z0eN2Yl3ecHH+egdOcitsnXzd/rE+X8BBgAMv7sOSij24wAAAABJRU5ErkJggg=="></h2>
                             <p class="caInfo">成为极客学院认证学员，点亮专属身份标识，<span class="color333">免费观看</span> 全站 80% 以上会员课程。</p>
                             <div class="caPopup-container">
@@ -173,30 +204,30 @@
                                         <div class="fromConOne">
                                             <span>性别：</span>
                                             <div class="caSelect caSexSelect">
-                                                <button class="color333">男</button>
-                                                <ul style="display: block;">
-                                                    <li value="1">男</li>
-                                                    <li value="0">女</li>
-                                                    <li value="2">保密</li>
-                                                </ul>
+                                                <span class="select-box-sex">
+                                                    <select id="usex" name="u_sex">
+                                                        <option value="2">保密</option>
+                                                        <option value="1">男</option>
+                                                        <option value="0">女</option>
+                                                    </select>
+                                                </span>
                                             </div>
                                             <span>现居住地：</span>
                                             <div class="caSelect caProSelect">
-                                                <button class="color333">河南省</button>
-                                                <ul style="display: block;">
-                                                    <!--省份-->
-                                                </ul>
-                                            </div>
-                                            <div class="caSelect caCitySelect">
-                                                <button class="color333">郑州市</button>
-                                                <ul style="display: none;">
-                                                    <!--城市-->
-                                                </ul>
+                                                <span class="select-box-home">
+                                                    <select class="select-home" id="proviceSel" data-value="18" onchange="changeCity()">
+                                                    </select>
+                                                </span>
+                                                <span class="select-box-home">
+                                                    <select class="select-home" id="citySel" data-value="278">
+                                                    </select>
+                                                </span>
+                                                <input id="truename" class="u_address" type="hidden" name="u_address">
                                             </div>
                                         </div>
-                                        </div>
+                                    </div>
                                     <div class="caBtnCon">
-                                        <button class="caSubBtn caSubOne" @click="caliucheng('caSubTwo')">下一步</button>
+                                        <button class="caSubBtn caSubOne activeOne" @click="caliucheng('caSubTwo')">完成</button>
                                     </div>
                                 </section>
                             </div>
@@ -204,6 +235,7 @@
                     </div>
                 </div>
             </div>
+            <!--
             <div class="caMask" style="display: none;">
                 <div class="caPopup" style="margin-top: -200.5px;">
                     <span class="caClose" @click="closeProp($event)"></span>
@@ -234,6 +266,8 @@
                     </div>
                 </div>
             </div>
+-->
+            <!--
             <div class="caMask" style="display: none;">
                 <div class="caPopup" style="margin-top: -185.5px;">
                     <span class="caClose" @click="closeProp($event)"></span>
@@ -272,7 +306,8 @@
                     </div>
                 </div>
             </div>
-            <div class="caMask" style="display: none;">
+-->
+            <div class="caMask" id="caMask2" style="display: none;">
                 <div class="caPopup" style="margin-top: -185.5px;">
                     <span class="caClose" @click="closeProp($event)"></span>
                     <div class="caContainer">
@@ -287,8 +322,9 @@
                                         <p class="caScName">jike_3835873</p>
                                         <h4>恭喜，完成认证!</h4>
                                         <p class="caCanSeetext">现在你可以免费观看 80% 以上会员课程</p>
-                                        <p class="caStudyNow"><a href="javascript:;">马上去学习 &gt;&gt;</a></p>
+                                        <p class="caStudyNow"><a @click="flush()" href="javascript:;">马上去学习 &gt;&gt;</a></p>
                                     </div>
+                                    <!--
                                     <p class="recommendtitle">为您推荐如下课程</p>
                                     <dl class="viplesson">
                                         <dt>会员课程</dt>
@@ -299,6 +335,7 @@
                                         <dl><a href="http://www.jikexueyuan.com/course/675.html" target="_blank">Spring 入门示例</a></dl>
                                         <dl><a href="http://www.jikexueyuan.com/course/460.html" target="_blank">在 Windows 下搭建 JSP 开发环境</a></dl>
                                     </dl>
+-->
                                 </section>
                             </div>
                         </div>
@@ -315,6 +352,7 @@
 </script>
 <script type="text/javascript" src="js/jquery.min.js "></script>
 <script type="text/javascript" src="js/certificate.min.js"></script>
+<script type="text/javascript" src="json/area.json"></script>
 <link rel="stylesheet" href="css/footer.css?t=1513326254000" />
 <div id="footer">
     <div class="footer-content">
@@ -384,16 +422,17 @@
     new Vue({
         el: '#body',
         data: {
-            u_sex:-1,//性别
-            u_address:"",//现居住地
-            u_direction:"",//技术方向
-            u_level:""//熟悉程度
-            
+            u_sex: -1, //性别
+            u_address: "", //现居住地
+            u_direction: "", //技术方向
+            u_level: "", //熟悉程度
+            phone:""//手机号
+
         },
         created: function() {
             this.showUser();
         },
-        methods: {//页面初始化
+        methods: { //页面初始化
             showUser: function() { //通过cookie查询用户是否处于登陆状态
                 var url = "user/queryByUsers";
                 var str = this.getCookie("phone");
@@ -406,14 +445,22 @@
                             $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
                             $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
                             $("#userpoto").attr("src", response.data.u_photo);
+                            this.phone = str;
                             if (response.data.u_stu_authentication != null) {
-                                $("#main").html("<h2>认证学员<i class='pro-icon'></i> </h2><section class='indentify'><p class='indentify-ok'>您已成为极客学院认证学员，享受认证学员专属特权。</p><div class='indentify-privilege'><img src='img/privilege.jpg' style='margin-left: 80px;'><ul><li>点亮专属认证标识</li><li>免费观看 80% 会员课程</li><li>获得个性化课程推荐</li><li>资源下载、专属优惠等</li></ul></div><a href='index.html' class='indentify-okbtn'>马上去学习</a></section>");
+                                $("#main1").show();
                                 $("#setting_ca").html("<a href='setting_ca.html' class='active'>认证学员</a><i class='pro-icon'></i> <span></span>");
                             } else {
-                                $("#main").html("<h2>认证学员<i class='nopro-icon'></i></h2><section class='indentify'><h3>认证学员特权</h3><div class='indentify-privilege'><img src='img/privilege.jpg' style='margin-left:80px;'><ul><li>点亮专属认证标识</li><li>免费观看 80% 会员课程</li><li>获得个性化课程推荐</li><li>资源下载、专属优惠等</li></ul></div><div class='indentify-stepbar' style='background-image: url(img/stepbar.png);margin-left: 80px;'><h4>申请成为极客学院认证学员，仅需3步</h4></div><ul class='indentify-steps'><li>添加当前职业状态</li><li>选择感兴趣的职业方向</li><li>完成认证</li></ul><button class='indentify-btn green-btn certificate' @click='certificate()'>申请认证</button></section>");
+                                $("#main2").show();
                                 $("#setting_ca").html("<a href='setting_ca.html' class='active'>认证学员</a><i class='nopro-icon'></i> <span></span>");
                             }
-
+                            if (response.data.u_address != "") {
+                                var strs = response.data.u_address.split(" ");
+                                this.onloads(strs[0]);
+                                this.setCity(strs[0], strs[1]);
+                            } else {
+                                this.onloads("北京市");
+                                this.setCity("北京市", "北京市");
+                            }
                         } else {
                             $("#y-login").hide();
                             $("#n-login").show();
@@ -423,7 +470,7 @@
                     $("#y-login").hide();
                     $("#n-login").show();
                 }
-            },//获取本地cookie
+            }, //获取本地cookie
             getCookie: function(key) {
                 var arr1 = document.cookie.split("; ");
                 for (var i = 0; i < arr1.length; i++) {
@@ -432,18 +479,85 @@
                         return decodeURI(arr2[1]);
                     }
                 }
-            },//关闭认证流程窗体
+            }, //关闭认证流程窗体
             closeProp: function(e) {
                 $(e.target).parent().parent().hide();
-            },//申请认证，弹出流程窗体
-            certificate:function(){
-                
-            },//流程进行中，上一步/下一步
-            caliucheng:function(e){
-                
+            }, //申请认证，弹出流程窗体
+            certificate: function() {
+                $("#caMask1").show();
+            }, //流程进行中，上一步/下一步
+            caliucheng: function(e) {
+                var formData = new FormData();
+                formData.append("u_sex",$("#usex").val());
+                formData.append("u_address",$("#proviceSel").val() + " " + $("#citySel").val());
+                formData.append("u_stu_authentication",1);
+                formData.append("phone",this.phone);
+                this.$http.post("user/editMsg", formData).then(function(response) {
+                    if(response.data == 1){//当认证成功时
+                        $("#caMask1").hide();
+                        $("#caMask2").show();
+                    }
+                })
+            },
+            flush: function() {
+                window.location.reload();
+            },
+            onloads: function(txt) { //这个方法用来给省份的select赋值
+                //获取json格式之后转化为数组
+                var json_array = eval(json);
+                var prov = document.getElementById("proviceSel");
+                for (var i = 0; i < json_array.provinces.length; i++) {
+                    var json_p = json_array.provinces[i].provinceName;
+                    var option = new Option(json_p, json_p);
+                    if (json_p == txt) {
+                        option.selected = true;
+                    }
+                    prov.add(option, null);
+                }
+            },
+            setCity: function(prov, txt) {
+                var city = document.getElementById("citySel");
+                //获取json格式之后转化为数组
+                var json_array = eval(json);
+                city.options.length = 0; //清空城市
+                for (var i = 0; i < json_array.provinces.length; i++) {
+                    var json_p = json_array.provinces[i].provinceName;
+                    if (json_p == prov) {
+                        var citys = json_array.provinces[i].citys;
+                        for (var j = 0; j < citys.length; j++) {
+                            var json_c = citys[j].citysName;
+                            var option = new Option(json_c, json_c);
+                            if (json_c == txt) {
+                                option.selected = true;
+                            }
+                            city.add(option, null);
+                        }
+                        break;
+                    }
+                }
             }
         }
-    })
+    });
+
+    function changeCity() { //这个方法就是实现省市级联的核心方法，也是用来给市的select赋值
+        //获取当前选中的省份prov.value;
+        var provValue = document.getElementById("proviceSel").value;
+        var city = document.getElementById("citySel");
+        //获取json格式之后转化为数组
+        var json_array = eval(json);
+        city.options.length = 0; //清空城市
+        for (var i = 0; i < json_array.provinces.length; i++) {
+            var json_p = json_array.provinces[i].provinceName;
+            if (provValue == json_p) {
+                var citys = json_array.provinces[i].citys;
+                for (var j = 0; j < citys.length; j++) {
+                    var json_c = citys[j].citysName;
+                    city.add(new Option(json_c, json_c), null);
+                }
+                break;
+            }
+        }
+    }
 
 </script>
 

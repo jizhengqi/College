@@ -130,7 +130,7 @@ public class UsersController {
 			throws IOException {
 		Subject subject = SecurityUtils.getSubject();
 		subject.logout();
-		response.sendRedirect("/index.html");
+		response.sendRedirect("/" + path + ".html");
 	}
 
 	// 查询登陆者信息
@@ -177,7 +177,7 @@ public class UsersController {
 	@ResponseBody
 	public Integer queryVipById(String u_id) {
 		List<Users> list = us.queryVipById(u_id);
-		if (list.get(0).getU_vip() == 1) {
+		if (null != list.get(0).getU_vip()) {
 			rs = 1;
 		} else {
 			rs = 2;
@@ -274,6 +274,20 @@ public class UsersController {
 	@ResponseBody
 	public Integer editPwd(String phone, String u_pwd, HttpSession session) {
 		return us.editPwd(phone, u_pwd, session);
+	}
+
+	/**
+	 * 认证学员
+	 * 
+	 * @param phone
+	 * @param user
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping("editMsg")
+	@ResponseBody
+	public Integer editMsg(String phone, Users user, HttpSession session) {
+		return us.editMsg(phone, user, session);
 	}
 
 }
