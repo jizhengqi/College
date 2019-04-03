@@ -324,7 +324,7 @@
                 <script src="js/simditor_4c30884.js"></script>
                 <div class="lesson-teacher" id="lesson" v-for="n in lint">
                     <div class="bc-box">
-                        <h2><a href="//www.jikexueyuan.com/course/2707.html">{{ n.c_name }}</a></h2>
+                        <h2><a href="2707.html">{{ n.c_name }}</a></h2>
                         <div class="timebox"><span>5课时，85分钟</span><span class="mar-l30"><i>发布时间：</i>{{ n.c_date }}</span></div>
                         <div class="teacher-infor cf">
                             <a href="//my.jikexueyuan.com/0zVXXaVWg/record/"><img src="img/563026331ba49.jpg" v-bind:alt="n.c_author"></a>
@@ -368,15 +368,6 @@
                             <a class="orinagebtn" id="course_download" course_id="2707" title="下载课程对应的源代码、素材等资料" href="javascript:void('0');" jktag="&posArea=0003&posOper=8015&posColumn=0.1">资料下载</a>
                         </div>
                     </div>
-                    <!--
-                    <div class="less-tag">
-                        <span><a href="//www.jikexueyuan.com/tag/HTML5.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.1">HTML5</a></span>
-                        <span><a href="//www.jikexueyuan.com/tag/HTML.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.2">HTML</a></span>
-                        <span><a href="//www.jikexueyuan.com/tag/CSS3.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.3">CSS3</a></span>
-                        <span><a href="//www.jikexueyuan.com/tag/Photoshop.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.4">Photoshop</a></span>
-                        <span><a href="//www.jikexueyuan.com/tag/DIV CSS.html" jktag="posGP=105002&posArea=0003&posOper=8031&posColumn=.5">DIV CSS</a></span>
-                    </div>
--->
                 </div>
                 <div class="video-list" id="app">
                     <div class="lessonlist-nav cf">
@@ -1038,8 +1029,8 @@
     </script>
     <script type="text/javascript">
         function updVideo(e) {
-            console.log(videoList);
-            alert(videoList[e].v_url);
+            $("#play_video_html5_api").attr("src","/file/" + videoList[e].v_url);
+            console.log($("#play_video_html5_api").attr("src"));
         }
         var cc = 1;
 

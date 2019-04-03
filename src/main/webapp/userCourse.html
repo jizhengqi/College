@@ -177,14 +177,14 @@
                     <li><a href="http://xue.jikexueyuan.com/ke/doing" class=" navbar-li-active ">课程</a></li>
                 </ul>
                 <div class="lesson-card-cont cf">
-                    <ul v-for="c in list" class="lesson-list">
-                        <li>
+                    <ul class="lesson-list">
+                        <li v-for="c in list">
                             <div class="lessonimg-box">
                                 <span class="learn-statu">
                                     学到第1课时
                                 </span>
                                 <a v-bind:href="'2707.html?c_id='+c.c_id+'&c_name='+c.c_name" target="_blank">
-                                    <img src="https://a1.jikexueyuan.com/home/201501/29/f702/54c99015e1130.jpg" class="lessonimg" v-bind:title="c.c_name" alt="c.c_name">
+                                    <img src="img/54c99015e1130.jpg" class="lessonimg" v-bind:title="c.c_name" alt="c.c_name">
                                     <div class="lessonplay" style="opacity: 0;">
                                         <i class="playericon"></i>
                                     </div>
@@ -221,8 +221,8 @@
                                     </div>
                                     <div class="cf">
                                         <div class="lessonicon-box" style="bottom:8px;">
-                                            <a target="_blank" href="//www.jikexueyuan.com/course/bootstrap/">
-                                                <img width="16" src="https://a1.jikexueyuan.com/home/201604/29/4ad3/57231d0e06972.png" alt="bootstrap" title="bootstrap" />
+                                            <a target="_blank" v-bind:href="'2707.html?c_id='+c.c_id+'&c_name='+c.c_name">
+                                                <img width="16" src="img/57231d0e06972.png" alt="bootstrap" title="bootstrap" />
                                             </a>
                                         </div>
                                     </div>
@@ -266,7 +266,7 @@
             this.queryCourse();
             this.showUser();
         },
-        methods: {
+        methods: {//查询我发布的课程
             queryCourse: function() {
                 var url = "/curriculum/queryCurriculum?u_id=1";
                 this.$http.post(url).then(function(response) {

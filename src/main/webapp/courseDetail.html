@@ -233,9 +233,9 @@
                                         <div class="txt">课程加载中...</div>
                                     </div>
                                     <div class="lesson-list" id="changeid" style="display:none">
-                                        <ul v-for="d in liqt" class="cf" style="display: block;">
+                                        <ul class="cf" style="display: block;">
                                             <!--list-->
-                                            <li id="2707" test="0" deg="0">
+                                            <li id="2707" test="0" deg="0" v-for="d in liqt">
                                                 <div class="lessonimg-box">
                                                     <a href="javascript:void(0)" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">
                                                         <img src="https://a1.jikexueyuan.com/home/201604/26/0ff6/571f242278c8d.jpg" class="lessonimg" v-bind:title="d.c_name" v-bind:alt="d.c_name">
