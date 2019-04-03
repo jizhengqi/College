@@ -36,5 +36,5 @@ public interface ModuleDao {
 	public List<Module> queryByL_id(Integer l_id);
 	
 	// 查询
-	public List<Map<String,Object>> SelectByL_id();
+	public List<Map<String,Object>> SelectByL_id(Integer page,Integer limit);
 }

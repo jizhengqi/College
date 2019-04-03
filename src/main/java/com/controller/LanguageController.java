@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.entity.Curriculum;
 import com.entity.Language;
+import com.entity.Module;
 import com.service.LanguageService;
+import com.service.ModuleService;
 
 @Controller
 @RequestMapping("language")
@@ -21,7 +23,12 @@ public class LanguageController {
 
 	@Resource
 	LanguageService languageService;
+	
+	@Resource
+	ModuleService ms;
 
+	Integer rs;
+	
 	@RequestMapping("query")
 	@ResponseBody
 	public Map<String, List<Map<String, List<String>>>> test() {
@@ -38,6 +45,47 @@ public class LanguageController {
 		return list;
 	}
 	
+	// 查询所有的语言分类
+	@RequestMapping("queryAll")
+	@ResponseBody
+	public List<Language> queryAll(){
+		List<Language> list = languageService.queryAll();
+		return list;
+	}
+	
+	// 根据编号查询所有语言分类
+	@RequestMapping("del")
+	@ResponseBody
+	public Integer del(Integer l_id){
+		List<Module> list = ms.queryByl_id(l_id);
+		if(list.size() > 0){
+			rs = 2;
+		}else{
+			languageService.del(l_id);
+			rs = 1;
+		}
+		return rs;
+	}
+	
+	// 添加语言分类
+	@RequestMapping("add")
+	@ResponseBody
+	public Integer add(Language l){
+		languageService.add(l);
+		rs = 1;
+		return rs;
+	}
+	
+	// 修改语言分类
+	// 添加语言分类
+	@RequestMapping("upd")
+	@ResponseBody
+	public Integer upd(Language l){
+		languageService.upd(l);
+		rs = 1;
+		return rs;
+	}
+	
 	// 查询所有语言分类
 	@RequestMapping("queryLanguage")
 	@ResponseBody
@@ -45,9 +93,9 @@ public class LanguageController {
 		List<Language> list = languageService.queryAll();
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("msg", "");
-		map.put("code", "");
-		map.put("count", languageService.queryAll().size());
-		map.put("data", languageService.queryLanguage((page-1)*limit, limit));
+		map.put("code", 0);
+		map.put("count", list.size());
+		map.put("data", languageService.SelectByD_id((page-1)*limit, limit));
 		return map;
 	}
 	

@@ -20,6 +20,8 @@ public class ModuleController {
 
 	@Resource
 	ModuleService ms;
+	
+	Integer rs;
 
 	// 查询所有语言和语言板块
 	@RequestMapping("queryAll")
@@ -30,7 +32,7 @@ public class ModuleController {
 	}
 
 	/**
-	 * 根据语言模块查询所有课程1
+	 * 根据语言模块查询所有课程
 	 * 
 	 */
 	@RequestMapping("queryByModule")
@@ -40,6 +42,33 @@ public class ModuleController {
 		return list;
 	}
 	
+	// 添加语言模块
+	@RequestMapping("add")
+	@ResponseBody
+	public Integer add(Module m){
+		ms.add(m);
+		rs = 1;
+		return rs;
+	}
+	
+	// 修改语言模块
+	@RequestMapping("upd")
+	@ResponseBody
+	public Integer upd(Module m){
+		ms.upd(m);
+		rs = 1;
+		return rs;
+	}
+	
+	// 删除语言模块
+	@RequestMapping("del")
+	@ResponseBody
+	public Integer del(Integer m_id){
+		ms.del(m_id);
+		rs = 1;
+		return rs;
+	}
+	
 	// 查询所有语言分类
 	@RequestMapping("queryModule")
 	@ResponseBody
@@ -47,9 +76,9 @@ public class ModuleController {
 		List<Module> list = ms.SelectAll();
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("msg", "");
-		map.put("code", "");
+		map.put("code", 0);
 		map.put("count", ms.SelectAll().size());
-		map.put("data", ms.queryModule((page-1)*limit, limit));
+		map.put("data", ms.SelectByL_id((page-1)*limit, limit));
 		return map;
 	}
 	
