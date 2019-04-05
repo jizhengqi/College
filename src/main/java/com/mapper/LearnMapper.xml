@@ -3,11 +3,16 @@
 <mapper namespace="com.dao.LearnDao">
 	<!-- 查询所有浏览课程信息 -->
 	<select id="queryAll" parameterType="java.lang.Integer" resultType="com.entity.Learn">
-		select * from learn where l_id = #{param1}
+		select * from learn where u_id = #{param1}
 	</select>
 	
 	<!-- 添加浏览课程信息 -->
 	<insert id="add" parameterType="com.entity.Learn">
-		insert into learn(u_id,c_id,v_id,state,l_date)values(#{u_id},#{c_id},#{v_id},#{state},#{l_date})
+		insert into learn(u_id,c_id,v_id,state,l_date)values(#{u_id},#{c_id},#{v_id},0,now())
 	</insert>
+	
+	<!-- 根据信息查询是否存在 -->
+	<select id="queryByAll" parameterType="com.entity.Learn" resultType="com.entity.Learn">
+		select * from learn where u_id = #{u_id} and c_id = #{c_id} and v_id = #{v_id}
+	</select>
 </mapper>

@@ -3,6 +3,7 @@ package com.service;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -114,5 +115,10 @@ public class VideoService {
 		BufferedOutputStream bos = null;// 输出流
 		String path = myWebConfig.getVideoDir() + filePath;// 拼接下载路径
 		myFileUtils.download(backName, path, bis, bos, response);
+	}
+	
+	// 查询某个课程下的所有视频
+	public List<Map<String,Object>> queryByVideo(Integer c_id){
+		return vd.queryByVideo(c_id);
 	}
 }

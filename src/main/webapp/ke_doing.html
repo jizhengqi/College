@@ -180,7 +180,7 @@
                         <li>
                             <div class="lessonimg-box">
                                 <span class="learn-statu">
-                                    学到第2课时
+                                    	学到第2课时
                                 </span>
                                 <a href="//www.jikexueyuan.com/course/2707.html" target="_blank">
                                     <img src="https://a1.jikexueyuan.com/home/201604/26/0ff6/571f242278c8d.jpg" class="lessonimg" title="整站项目开发实战之网站首页布局搭建" alt="整站项目开发实战之网站首页布局搭建">
@@ -358,10 +358,12 @@
     new Vue({
         el: '#jk-header',
         data: {
-
+			u_ids: "",
+			list: []
         },
         created: function() {
             this.showUser();
+            this.getStudy();
         },
         methods: {
             showUser: function() { //通过cookie查询用户是否处于登陆状态
@@ -376,6 +378,7 @@
                             $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
                             $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
                             $("#userpoto").attr("src", response.data.u_photo);
+                            this.u_ids = response.data.u_id;
                         } else {
                             $("#y-login").hide();
                             $("#n-login").show();
@@ -398,6 +401,14 @@
                         return decodeURI(arr2[1]);
                     }
                 }
+            },
+            // 查看当前用户看过的所有视频信息
+            getStudy: function(){
+            	var url = "/learn/queryByU_id?u_id=" + this.u_ids;
+            	this.$http.get(url).then(function(response) {
+            		console.log(response.data);
+                    this.list = response.data;
+                });
             }
         }
     })

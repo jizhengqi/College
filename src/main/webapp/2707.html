@@ -1012,6 +1012,14 @@
                             return decodeURI(arr2[1]);
                         }
                     }
+                },
+                // 添加浏览记录
+                addLearn: function(){
+                	var v_ids = $("#video_id").val();
+                	var url = "/learn/add?u_id=" + this.u_ids + "&c_id=" + this.getParam("c_id") + "&v_id=" + v_ids;
+                	this.$http.get(url).then(function(response) {
+                        console.log(response);
+                    });
                 }
             }
         });

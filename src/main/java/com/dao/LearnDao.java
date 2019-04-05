@@ -14,4 +14,7 @@ public interface LearnDao {
 	
 	// 添加浏览课程信息
 	public void add(Learn l);
+	
+	// 根据信息查询是否存在
+	public List<Learn> queryByAll(Learn l);
 }

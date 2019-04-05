@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -60,5 +61,12 @@ public class VideoController {
 	public void download(String backName, String filePath,
 			HttpServletResponse response) {
 		videoService.download(backName, filePath, response);
+	}
+	
+	// 查询某个课程下的所有视频
+	@RequestMapping("queryByVideo")
+	@ResponseBody
+	public List<Map<String,Object>> queryByVideo(Integer c_id){
+		return videoService.queryByVideo(c_id);
 	}
 }

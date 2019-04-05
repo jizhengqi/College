@@ -23,6 +23,7 @@
 </head>
 
 <body>
+	<div id="firsts">
     <div id="header_top_notice"></div>
     <div id="jk-header">
         <div class="header">
@@ -158,99 +159,22 @@
             <section class="vip">
                 <div class="statusvip">
                     <div class="statusvip-content">
-                        <h3>
-                            您尚无VIP会员资格 </h3>
-                        <!-- <h3>VIP会员资格已到期</h3> -->
-                        <a href="vip.html" class="green-btn">购买</a>
+                    	<h3 id="h1" style="display: none;">尊敬的会员 </h3>
+                        <h3 id="h2" style="display: none;">您尚无VIP会员资格 </h3>
+                        <h3 id="h3" style="display: none;">VIP会员资格已到期</h3>
+                        <a href="vip.html" id="a1" class="green-btn" style="display: none;">购买</a>
                         <div class="statusvip-bar">
-                            <div class="statusvip-bar-now" style="width:0%"></div>
+                            <div class="statusvip-bar-now" id="d1" style="width:0%"></div>
                         </div>
                     </div>
                     <aside class="statusvip-aside">
-                        <h3>剩余：0天</h3>
+                        <h3>剩余：{{ times }}天</h3>
                     </aside>
                 </div>
-                <!-- <div class="get">
-                    <div class="getarea">
-                        <h3>F码兑换VIP</h3>
-                        <div class="getarea-form">
-                            <input type="text" placeholder="请输入F码" id="getInput">
-                            <button class="green-btn" id="getBtn">兑换</button>
-                        </div>
-                        <p>「F码」可以在各种活动中领取，或向其他会员索要。</p>
-                    </div>
-                    <aside>
-                        <div class="getp">
-                            <p>关注极客学院官方微信</p>
-                            <p>福利活动全知道</p>
-                        </div>
-                        <div class="getcode">
-                            <img src="img/2code.png" alt="二维码">
-                        </div>
-                    </aside>
-                </div>
-                <div class="exchange">
-                    <div class="exchange-nav">
-                        <ul id="exNav" class="cf">
-                            <li class="active">VIP兑换记录</li>
-                            <li>F码兑换记录</li>
-                            <li>已领取F码<span>0</span></li>
-                        </ul>
-                    </div>
-                    <div class="exchange-content">
-                        <ul id="exCon" class="ex-option">
-                            <li class="ex-option-one" style="display:list-item;">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>日期</th>
-                                            <th>数量</th>
-                                            <th>种类</th>
-                                            <th>开始时间</th>
-                                            <th>结束时间</th>
-                                            <th>备注</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li class="ex-option-two">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>F码</th>
-                                            <th>兑换时间</th>
-                                            <th>兑换结果</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </li>
-                            <li class="ex-option-three">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>F码</th>
-                                            <th>兑换时间</th>
-                                            <th>有效时间</th>
-                                            <th>状态</th>
-                                            <th>好友奖励</th>
-                                            <th>我的奖励</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
-                            </li>
-                        </ul>
-                    </div>
-                </div> -->
             </section>
         </div>
     </div>
+</div>
 </body>
 
 
@@ -327,9 +251,9 @@
 <script type="text/javascript" src="js/meiqia.js?t=1513326254000"></script>
 <script>
     new Vue({
-        el: '#jk-header',
+        el: '#firsts',
         data: {
-
+			times : ""
         },
         created: function() {
             this.showUser();
@@ -339,7 +263,7 @@
                 var url = "user/queryByUsers";
                 var str = this.getCookie("phone");
                 var formData = new FormData();
-                formData.append("phone", str)
+                formData.append("phone", str);
                 if (str != "") {
                     this.$http.post(url, formData).then(function(response) {
                         //console.log("data:" + response.data.u_phone);
@@ -347,6 +271,31 @@
                             $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
                             $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
                             $("#userpoto").attr("src", response.data.u_photo);
+                            this.times = this.getDate(new Date(),response.data.u_vip_enddate);
+                            var sdate = this.getDate(response.data.u_vip_date,response.data.u_vip_enddate);
+                            var scv = this.times / sdate * 100;
+                            console.log(sdate);
+                            console.log(scv);
+                            if(response.data.u_vip_enddate != null){
+                            	if(this.times < 1){
+                            		$("#h3").css("display","block");
+                            		$("#h2").css("display","none");
+                            		$("#h1").css("display","none");
+                            		$("#a1").css("display","block");
+                            	}else{
+                            		$("#h1").css("display","block");
+                            		$("#h3").css("display","none");
+                            		$("#h2").css("display","none");
+                            		$("#a1").css("display","none");
+                            	}
+                            	$("#d1").css("width",scv + "%");
+                            }else{
+                            	$("#h1").css("display","none");
+                        		$("#h3").css("display","none");
+                        		$("#h2").css("display","block");
+                        		$("#a1").css("display","block");
+                        		this.times = 0;
+                            }
                             //判断是否认证学院
                             if(response.data.u_stu_authentication != null){
                                 $("#setting_ca").html("<a href='setting_ca.html' class=''>认证学员</a><i class='pro-icon'></i> <span></span>");
@@ -371,6 +320,14 @@
                         return decodeURI(arr2[1]);
                     }
                 }
+            },
+            getDate: function(minTime,MaxTime){
+            	var xyear = Date.parse(MaxTime);
+                var dyear = Date.parse(minTime);
+                var time = xyear - dyear;
+                time = Math.abs(time);
+                var iDays = Math.floor(time / (24 * 3600 * 1000));
+                return iDays;
             }
         }
     })

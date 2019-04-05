@@ -5,12 +5,13 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.LearnDao;
 import com.entity.Learn;
 
-@Mapper
+@Service
 @Transactional
 public class LearnService {
 	
@@ -26,4 +27,10 @@ public class LearnService {
 	public void add(Learn l){
 		ld.add(l);
 	}
+	
+	// 根据信息查询是否存在
+	public List<Learn> queryByAll(Learn l){
+		return ld.queryByAll(l);
+	}
+	
 }

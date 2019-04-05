@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.css" type="text/css">
+    <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="/bootstrap-3.3.7-dist/js/bootstrap.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/vue/vue.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/vue/vue-resource/vue-resource.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/vue/vue-router/vue-router.js" charset="utf-8"></script>
     <style>
         th{
             text-align: center;
@@ -66,12 +71,10 @@
                     </div>
                     <div class="col-md-4">
                         <!--语言模块-->
-                        <div class="form-group">
+                        <div class="form-group" >
                             <label>语言模块：</label>
                             <select class="form-control" name="m_id">
-                                <option value="1">Java</option>
-                                <option value="2">PHP</option>
-                                <option value="3">C++</option>
+                                <option v-for="m in limt" v-bind:value="m.m_id">{{ m.m_name }}</option>
                             </select>
                         </div>
                         <!--课程类型-->
@@ -80,7 +83,7 @@
                             <select class="form-control" name="c_typeOfCourse">
                                 <option value="0">免费</option>
                                 <option value="1">VIP</option>
-                                <option value="2">花钱</option>
+                                <option value="2">极客币</option>
                             </select>
                         </div>
                         <!--课程级别-->
@@ -127,18 +130,13 @@
                     <!-- <td>{{item.u_id}}</td> -->
                     <td>{{item.c_vip}}</td>
                     <td id="courseDetail">
-                        <a v-bind:href="'axios.html?c_id='+item.c_id+'&c_name='+item.c_name">详细信息</a>
+                        <a v-bind:href="'showVideo.html?c_id='+item.c_id+'&c_name='+item.c_name">详细信息</a>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
 </body>
-<script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="/bootstrap-3.3.7-dist/js/bootstrap.js" charset="utf-8"></script>
-<script type="text/javascript" src="/vue/vue.js" charset="utf-8"></script>
-<script type="text/javascript" src="/vue/vue-resource/vue-resource.js" charset="utf-8"></script>
-<script type="text/javascript" src="/vue/vue-router/vue-router.js" charset="utf-8"></script>
 <script>
     var app = new Vue({
         el: "#app",
@@ -164,6 +162,12 @@
 
     var addCourse = new Vue({
         el: "#addCourse",
+        data: {
+        	limt: []
+        },
+        created: function(){
+        	this.getInt();
+        },
         methods: {
             createCourse: function() {
                 //获取上传的值是否准备就绪
@@ -227,6 +231,12 @@
                         $("textarea[name='c_introduction']").parent().addClass("has-error");
                     }
                 }
+            },
+            getInt: function(){
+            	var url = "/module/selectAll";
+            	this.$http.get(url).then(function(response) {
+                    this.limt = response.data;
+                });
             }
         }
     });

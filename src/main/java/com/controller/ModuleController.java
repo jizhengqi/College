@@ -69,6 +69,15 @@ public class ModuleController {
 		return rs;
 	}
 	
+	// 查询语言分类
+	@RequestMapping("selectAll")
+	@ResponseBody
+	public List<Module> selectAll(){
+		List<Module> list = ms.SelectAll();
+		return list;
+	}
+	
+	
 	// 查询所有语言分类
 	@RequestMapping("queryModule")
 	@ResponseBody

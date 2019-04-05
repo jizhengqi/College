@@ -202,6 +202,13 @@
         #course{
         	color: lightblue;
         }
+        input::-webkit-outer-spin-button,
+	    input::-webkit-inner-spin-button {
+	        -webkit-appearance: none;
+	    }
+	    input[type="number"]{
+	        -moz-appearance: textfield;
+	    }
     </style>
 </head>
 
@@ -255,23 +262,33 @@
 					<p class="help-block"></p>
                 </div>
             </div>
-            <div class="form-group">
-                <label>收费方式：</label>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="v_vip" value="1">VIP
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="v_vip" value="0">免费
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="v_vip" value="2">极客币
-                    </label>
-                </div>
+            <div class="row">
+            	<div class="rol-md-4">
+            		<div class="form-group" style="margin-left: 15px;">
+		                <label>收费方式：</label>
+		                <div class="radio">
+		                    <label>
+		                        <input type="radio" name="v_vip" value="1" onclick="showVip(this)">VIP
+		                    </label>
+		                </div>
+		                <div class="radio">
+		                    <label>
+		                        <input type="radio" name="v_vip" value="0" onclick="showVip(this)">免费
+		                    </label>
+		                </div>
+		                <div class="radio">
+		                    <label>
+		                        <input type="radio" name="v_vip" value="2" onclick="showVip(this)">极客币
+		                    </label>
+		                </div>
+		            </div>
+            	</div>
+            	<div class="col-md-8"><!-- 定价 -->
+            		<div id="jikebi" class="form-group has-feedback" style="margin-top: 45px;width: 120px;margin-left: 140px;display: none;">
+		                <input type="number" id="jkb" class="form-control" style="width: 120px;">
+		                <span class="glyphicon form-control-feedback" style="width: 60px;">个极客币</span>
+		            </div>
+            	</div>
             </div>
             <div class="uploadBox">
                 <h3>上传视频</h3>
@@ -283,6 +300,7 @@
                     </label>
                 </div>
                 <p class="help-block"></p>
+                <video id="video" style="display: none;" oncanplaythrough="getTime(this)"></video>
                 <ul class="files">
                     <li v-for="(file, index) in files">
                         <div class="fileInfo">
@@ -326,7 +344,7 @@
     <script type="text/javascript" src="/vue/vue-router/vue-router.js" charset="utf-8"></script>
     
     <script>
-
+    var times;
         new Vue({
             el: '#app',
             data: {
@@ -430,8 +448,17 @@
                     	}
                     }
                     if(undefined == selectVip || "" == selectVip){
-                    	alert("请选择是否为Vip视频！");
+                    	alert("请选择付费方式！");
                     	return;
+                    }else if(2 == selectVip){
+                    	if($("#jkb").val() == ""){
+                    		alert("请填写付费金额");
+                    		return;
+                    	}
+                    	if($("#jkb").val().indexOf(".") != -1 || $("#jkb").val() == 0){
+                    		alert("请填写整数值且不等于0");
+                    		return;
+                    	}
                     }
                     if($("#myFile").val() == ""){
                 		alert("请上传视频教程");
@@ -466,7 +493,11 @@
                     	url = "/video/addVideo";
                     }
                     param.append("v_play_num", 0); //视频观看次数
-                    param.append("v_vip", selectVip); //是否为VIP视频
+                    param.append("v_vip", selectVip); //是否为VIP视频还是免费/支付极客币
+                    if($("#jkb").val() == 2){//如果选择的是支付极客币
+                    	param.append("v_jkb_num",$("#jkb").val());//需要支付的极客币数量
+                    }
+                    param.append("v_length",times);
                     //通过append向form对象添加数据
                     param.append("file", tFiles[0]);
                     //FormData私有类对象，访问不到，可以通过get判断值是否传进去
@@ -561,6 +592,8 @@
                 },//显示上传路径
                 showVideoDir: function(e){
                 	$("#fileBox").next().html(e.target.files[0].name);
+                	$("#video").attr("src",URL.createObjectURL(e.target.files[0]));
+                	console.log($("#video"));
                 },
                 insertParam: function(){
                 	/* let appId = this.$route.params.u_id;
@@ -578,6 +611,28 @@
             }
         });
         
+
+        function getTime(e){
+   			var hour = parseInt((e.duration)/3600);
+   			var minute = parseInt((e.duration%3600)/60);
+   			var second = Math.ceil(e.duration%60);
+   			if(second < 10){
+   				second = "0" + second;
+   			}
+   			if(minute < 10){
+   				minute = "0" + minute;
+   			}
+   			if(hour < 10){
+   				hour = "0" + hour;
+   			}
+   			if(hour == 0){
+   				times = minute+":"+second;
+   			}else{
+   				times = hour+":"+minute+":"+second;
+   			}
+        }
+        
+        
         //显示是否上传资料
         function ziliao(obj){
         	var idx = document.getElementById("ziliaos");
@@ -587,6 +642,15 @@
         	}else{
         		idx.style.display = "none";
         		$("#ziliaos").next().hide();
+        	}
+        }
+        
+        //显示是否使用极客币观看视频
+        function showVip(obj){
+        	if($(obj).val() == 2){
+        		$("#jikebi").show();
+        	}else{
+        		$("#jikebi").hide();
         	}
         }
         

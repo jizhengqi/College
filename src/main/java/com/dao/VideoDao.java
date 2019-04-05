@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -36,4 +37,7 @@ public interface VideoDao {
 
 	// 跟据课程查询所有视频信息
 	public List<Video> queryVideoByC_id(Integer c_id);
+	
+	// 根据课程查询所有的视频信息
+	public List<Map<String,Object>> queryByVideo(Integer c_id);
 }

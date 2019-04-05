@@ -60,30 +60,15 @@
                     <li>
                         <a href="//www.jikexueyuan.com/course/">课程</a><i class="slide-icon"></i>
                         <div class="slide-submeu">
-                            <a href="//www.jikexueyuan.com/course/">课程库</a>
-                            <a href="//ke.jikexueyuan.com/zhiye/">职业路径</a>
-                            <a href="//www.jikexueyuan.com/path/">知识体系图</a>
-                            <a href="//ke.jikexueyuan.com/xilie/">系列课程</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="//www.jikexueyuan.com/partner">企业</a><i class="slide-icon"></i>
-                        <div class="slide-submeu qy-box">
-                            <a href="//zt.jikexueyuan.com/microsoftai"><i class="wr-icon"></i>微软人工智能 </a>
-                            <a href="//zt.jikexueyuan.com/baiduai"><i class="baidu-icon"></i>百度AI图像技术课</a>
-                            <a href="//zt.jikexueyuan.com/aws"><i class="aws-icon"></i>AWS云计算</a>
-                            <a href="//zt.jikexueyuan.com/qcloud"><i class="txy-icon"></i>腾讯云课程专区</a>
-                            <a href="//zt.jikexueyuan.com/qualcomm"><i class="gt-icon"></i>Qualcomm公开课 </a>
-                            <a href="//zt.jikexueyuan.com/b" class="youke-nav"><i class="youke-icon bounce"></i>企业合作新模式</a>
+                            <a href="javascript:void(0)">VIP</a>
+                            <a href="javascript:void(0)">免费</a>
+                            <a href="javascript:void(0)">骇客套餐</a>
                         </div>
                     </li>
                     <li>
                         <a href="//wiki.jikexueyuan.com/">社区</a><i class="slide-icon"></i>
                         <div class="slide-submeu">
-                            <a href="//wiki.jikexueyuan.com/">Wiki</a>
                             <a href="//wenda.jikexueyuan.com/">技术问答</a>
-                            <!--<a href="//qun.jikexueyuan.com/">社群</a>
-						<a href="//download.jikexueyuan.com/">资料下载</a>-->
                         </div>
 
                     </li>
@@ -161,16 +146,9 @@
                         <dt>选择支付方式</dt>
                         <dd>
                             <span class="wechat active">
-                                <img src="img/WeChat.jpg" />
-                            </span>
-                        </dd>
-
-                        <dd>
-                            <span class="alipay">
                                 <img src="img/alipay.jpg" />
                             </span>
                         </dd>
-
                     </dl>
                 </form>
 
@@ -185,9 +163,8 @@
                         </span>
                     </p>
                     <!--end -->
-                    <div class="btn-pay signIn" id="btnPay">去支付</div>
+                    <div class="btn-pay signIn" id="btnPay" onclick="zhifu()">去支付</div>
                 </div>
-
             </section>
 
             <p class="remark"><i class="icon-warn"></i> 请在 24 小时内完成支付，逾期订单将自动关闭。</p>
@@ -359,8 +336,26 @@
                 }
             }
         }
-    })
-
+    });
+    
+    function GetDateNow() {
+		var vNow = new Date();
+		var sNow = "";
+		sNow += String(vNow.getFullYear());
+		sNow += String(vNow.getMonth() + 1);
+		sNow += String(vNow.getDate());
+		sNow += String(vNow.getHours());
+		sNow += String(vNow.getMinutes());
+		sNow += String(vNow.getSeconds());
+		sNow += String(vNow.getMilliseconds());
+		return sNow;
+	}
+    
+    function zhifu(){
+    	var money = $("#payMoney").html();
+   		var s_on = GetDateNow();
+     	window.location.href = "/alipay/notify_url?s_on=" + s_on + "&money=" + money;
+    }
 </script>
 
 </html>
