@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -45,5 +46,10 @@ public class Skill_AskService {
 	// 分页查询
 	public List<Skill_Ask> queryByPage(Integer page,Integer limit){
 		return sad.queryByPage(page, limit);
+	}
+	
+	// 查询所有技术问答页面
+	public List<Map<String,Object>> querySkill_ask(Integer page,Integer limit){
+		return sad.querySkill_ask(page, limit);
 	}
 }

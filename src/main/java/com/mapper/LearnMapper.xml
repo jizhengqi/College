@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.LearnDao">
 	<!-- 查询所有浏览课程信息 -->
-	<select id="queryAll" parameterType="java.lang.Integer" resultType="com.entity.Learn">
+	<select id="queryAll" parameterType="java.lang.String" resultType="com.entity.Learn">
 		select * from learn where u_id = #{param1}
 	</select>
 	

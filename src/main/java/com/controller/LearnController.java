@@ -37,7 +37,7 @@ public class LearnController {
 	// 查询某个用户的查看历史
 	@RequestMapping("queryByU_id")
 	@ResponseBody
-	public List<Learn> queryByU_id(Integer u_id) {
+	public List<Learn> queryByU_id(String u_id) {
 		List<Learn> list = ls.queryAll(u_id);
 		return list;
 	}

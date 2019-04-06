@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -26,5 +27,8 @@ public interface Skill_AskDao {
 	
 	// 根据编号查询技术问答
 	public List<Skill_Ask> queryById(Integer s_id);
+	
+	// 查询所有的技术问答信息
+	public List<Map<String,Object>> querySkill_ask(Integer page,Integer limit);
 	
 }
