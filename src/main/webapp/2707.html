@@ -194,13 +194,14 @@
                     <video class='video-js vjs-default-skin' controls='controls' height='100%' id='play_video' poster="" last_play_position="0" time="234" seq="1" lesson_count="" data-setup='{"example_option":true,"customControlsOnMobile": true}' preload='none' width="100%">
                         <!-- 如果浏览器不兼容HTML5则使用flash播放 -->
                         <input type="hidden" value="java开发之路(一)" id="video_name" />
-                        <source src="/file/f145bee9-b3cd-435f-b741-23d92f66b219.mp4" type="video/mp4" id="s_play" />
+                        <!-- <source src="/file/f145bee9-b3cd-435f-b741-23d92f66b219.mp4" type="video/mp4" id="s_play" /> -->
                         <object id="flash_fallback_1" class="vjs-flash-fallback" width="100%" height="100%" type="application/x-shockwave-flash" data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
                             <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
                             <param name="allowfullscreen" value="true" />
                             <param name="flashvars" value='config={$jsonConfig}' />
                         </object>
                     </video>
+                    <input type="hidden" id="v_idz">
                     <!-- yx-pop -->
                     <div class="yx-popup" id="yxPop">
                         <div class="layout-inner">
@@ -906,21 +907,26 @@
 
     </script>
     <script type="text/javascript">
-        var videoList;
+        var videoList,c_idzs,u_idzs;
         var app = new Vue({
             el: "#wrapper",
             data: {
                 list: [],
                 lint: [],
                 vip: "",
-                u_ids: ""
+                u_ids: "",
+                v_id:0,
+                c_date:0.0
             },
             created: function() {
+                this.showUser();
                 this.getlist();
                 this.getCurriculum();
-                this.showUser();
             },
-            methods: {
+            // mounted:{
+            //     window.addEventListener('beforeunload',e=>this.shut());
+            // },
+            methods: {//获取课程中的视频根据课程编号
                 getCurriculum: function() {
                     var url = "/curriculum/queryById?c_id=" + this.getParam("c_id");
                     $("#ApHead").html(this.getParam("c_name"));
@@ -931,7 +937,7 @@
                         }
                         this.lint = response.data;
                     });
-                },
+                },//获取根据课程ID查询该课程下的所有视频
                 getlist: function() {
                     var url = "/video/queryVideoByC_id?c_id=" + this.getParam("c_id");
                     this.$http.get(url).then(function(response) {
@@ -939,12 +945,31 @@
                             alert(response.status);
                             return;
                         }
+                        if(this.u_ids == ""){//判断是否登录，如果未登录正常显示视频
+                            $("#play_video_html5_api").attr("src","/file/" + response.data[0].v_url);
+                            $("#play_video_html5_api")[0].play();//播放
+                            $("#v_idz").val(response.data[0].v_id);
+                            console.log("没登陆");
+                        }else{//如果登陆了，根据用户ID和课程的ID，从上次暂停的地方开始播放
+                            this.learnning(this.u_ids);
+                            for (var i = 0; i < response.data.length; i++) {
+                                if(response.data[i].v_id == this.v_id){
+                                    $("#play_video_html5_api").attr("src","/file/" + response.data[i].v_url);
+                                    $("#play_video_html5_api")[0].currentTime = this.c_date;
+                                    $("#play_video_html5_api")[0].play();//播放
+                                    $("#v_idz").val(response.data[i].v_id);
+                                    console.log("看过");
+                                }else{
+                                    $("#play_video_html5_api").attr("src","/file/" + response.data[i].v_url);
+                                    $("#play_video_html5_api")[0].play();//播放
+                                    $("#v_idz").val(response.data[0].v_id);
+                                    console.log("没看过");
+                                }
+                            }
+                        }
                         this.list = response.data;
                         videoList = response.data;
                     });
-                },
-                updVideo: function(index) {
-                    /* $("#s_play").prop("src","/file/" + this.list[index].url); */
                 },
                 getVIP: function(param) {
                     var url = "user/queryVipById?u_id=" + param;
@@ -969,18 +994,15 @@
                         console.log(reason);
                     });
                 },
-                getParam: function(str) {
+                getParam: function(str) {//获取上页传来的视频
                     var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));
-                    /* if (result == null || result.length < 1) {
-             	        console.log("result:" + result[1]);
-             	    } */
                     if (result == null || result.length < 1) {
                         return result;
                     } else {
                         return decodeURI(result[1]);
                     }
                 },
-                showUser: function() { //通过cookie查询用户是否处于登陆状态
+                showUser: function() { //页面初始化，通过cookie查询用户是否处于登陆状态，显示登录或未登录状态
                     var url = "user/queryByUsers";
                     var str = this.getCookie("phone");
                     var formData = new FormData();
@@ -993,6 +1015,7 @@
                                 $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
                                 $("#userpoto").attr("src", response.data.u_photo);
                                 this.u_ids = response.data.u_id;
+                                u_idzs = response.data.u_id;
                                 this.getVIP(response.data.u_id);
                             } else {
                                 $("#y-login").hide();
@@ -1003,7 +1026,7 @@
                         $("#y-login").hide();
                         $("#n-login").show();
                     }
-                },
+                },//获取cookie值
                 getCookie: function(key) {
                     var arr1 = document.cookie.split("; ");
                     for (var i = 0; i < arr1.length; i++) {
@@ -1013,12 +1036,23 @@
                         }
                     }
                 },
-                // 添加浏览记录
-                addLearn: function(){
-                	var v_ids = $("#video_id").val();
-                	var url = "/learn/add?u_id=" + this.u_ids + "&c_id=" + this.getParam("c_id") + "&v_id=" + v_ids;
-                	this.$http.get(url).then(function(response) {
+                shut:function(){
+                    this.shut();
+                },
+                addLearn:function(){//记录用户正在学习的情况：需要参数==>用户ID、课程ID、视频ID、视频进度
+                    var url = "/learn/add?u_id=" + this.u_ids + "&c_id=" + this.getParam("c_id") + "&v_id=" + $("#video_id").val() + "&c_date=" + $("#play_video_html5_api")[0].currentTime;
+                    console.log(url);
+                    this.$http.get(url).then(function(response) {
                         console.log(response);
+                    });
+                },
+                learnning:function(u_id){
+                    var url = "/learn/getLearn?u_id=" + u_id + "&c_id=" + this.getParam("c_id");
+                    console.log(url);
+                    this.$http.get(url).then(function(response) {
+                        console.log(response);
+                        this.v_id = response.data.v_id;
+                        this.c_date = response.data.c_date;
                     });
                 }
             }
@@ -1036,10 +1070,40 @@
 
     </script>
     <script type="text/javascript">
+        //切换视频
         function updVideo(e) {
             $("#play_video_html5_api").attr("src","/file/" + videoList[e].v_url);
-            console.log($("#play_video_html5_api").attr("src"));
+            $("#play_video_html5_api")[0].play();//播放
+            $("#v_idz").val(e);//将当前视频ID放入存放处
         }
+
+        //获取当前视频的播放时间
+        function showTime(duration) {
+            var hour = parseInt(duration / 3600);
+            var minute = parseInt(duration % 3600 / 60);
+            var sec = parseInt(duration % 60);
+            if (hour == 0) {
+                alert("视频长度为" + minute + ":" + sec);
+            } else {
+                alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
+            }
+            if(sec < 10){
+                sec = "0" + sec;
+            }
+            if(minute < 10){
+                minute = "0" + minute;
+            }
+            if(hour < 10){
+                hour = "0" + hour;
+            }
+            if(hour == "0"){
+                return minute + ":" + sec;
+            }else{
+                return duration + ":" + hour + ":" + minute + ":" + sec;
+            }
+        }
+
+
         var cc = 1;
 
         function a() {
@@ -1065,50 +1129,6 @@
             } else {
                 alert("穷逼,连个会员都充不起！！！");
                 /* alert("请选择充值会员,或者与原作者联系,谢谢！！！"); */
-            }
-        }
-
-        function getDuration() {
-            if (!isNaN(v.duration)) {
-                clearInterval(timer);
-                var duration = v.duration;
-                var hour = parseInt(duration / 3600);
-                var minute = parseInt(duration % 3600 / 60);
-                var sec = parseInt(duration % 60);
-                if (hour == 0) {
-                    alert("视频长度为" + minute + ":" + sec);
-                } else {
-                    alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
-                }
-            } else {
-                tryTime++;
-                //超过获取视频长度最大重试次数
-                if (tryTime >= maxTry) {
-                    clearInterval(timer);
-                    alert('无法获取视频长度！');
-                }
-            }
-            var timer, tryTime, maxTry = 5,
-                delay = 500;
-
-            function setVideoSrc(f) {
-                clearInterval(timer);
-                var url = URL.createObjectURL(f.files[0]);
-                v.src = url;
-                tryTime = 0;
-                timer = setInterval(getDuration, delay); //直接获取不到duration，会NaN，计时器来获取
-            }
-
-            function showTime() {
-                var duration = v.currentTime;
-                var hour = parseInt(duration / 3600);
-                var minute = parseInt(duration % 3600 / 60);
-                var sec = parseInt(duration % 60);
-                if (hour == 0) {
-                    alert("视频长度为" + minute + ":" + sec);
-                } else {
-                    alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
-                }
             }
         }
     </script>

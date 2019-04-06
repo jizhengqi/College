@@ -15,4 +15,8 @@
 	<select id="queryByAll" parameterType="com.entity.Learn" resultType="com.entity.Learn">
 		select * from learn where u_id = #{u_id} and c_id = #{c_id} and v_id = #{v_id}
 	</select>
+	
+	<select id="getLearnByU_idAndC_id" resultType="com.entity.Learn">
+		select * from learn where u_id = #{u_id} and c_id = #{c_id}
+	</select>
 </mapper>
