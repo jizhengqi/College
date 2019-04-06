@@ -9,15 +9,15 @@ public class Learn implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Integer u_id;
+	private String u_id;
 	private Integer c_id;
 	private Integer v_id;
 	private Integer state;
 	private Date l_date;
-	public Integer getU_id() {
+	public String getU_id() {
 		return u_id;
 	}
-	public void setU_id(Integer u_id) {
+	public void setU_id(String u_id) {
 		this.u_id = u_id;
 	}
 	public Integer getC_id() {
@@ -44,7 +44,7 @@ public class Learn implements Serializable {
 	public void setL_date(Date l_date) {
 		this.l_date = l_date;
 	}
-	public Learn(Integer u_id, Integer c_id, Integer v_id, Integer state,
+	public Learn(String u_id, Integer c_id, Integer v_id, Integer state,
 			Date l_date) {
 		super();
 		this.u_id = u_id;

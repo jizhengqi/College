@@ -11,23 +11,12 @@
 			<if test="u_id != null">
 				u_id,
 			</if>
-			<if test="s_date != null">
-				s_data,
-			</if>
-			<if test="s_question != null">
-				s_question,
-			</if>
-			<if test="s_return_card != null">
-				s_return_card,
-			</if>
-			<if test="s_browse != null">
-				s_browse,
-			</if>
-			<if test="s_solve  != null">
-				s_solve,
-			</if>
+			s_date,s_return_card,s_browse,s_solve,
 			<if test="c_id  != null">
-				c_id
+				c_id,
+			</if>
+			<if test="s_title != null">
+				s_title,
 			</if>
 		</trim>
 		<trim prefix="values(" suffix=")" suffixOverrides=",">
@@ -37,23 +26,12 @@
 			<if test="u_id != null">
 				#{u_id},
 			</if>
-			<if test="s_date != null">
-				#{s_data},
-			</if>
-			<if test="s_question != null">
-				#{s_question},
-			</if>
-			<if test="s_return_card != null">
-				#{s_return_card},
-			</if>
-			<if test="s_browse != null">
-				#{s_browse},
-			</if>
-			<if test="s_solve  != null">
-				#{s_solve},
-			</if>
+			now(),0,0,0,
 			<if test="c_id  != null">
-				#{c_id}
+				#{c_id},
+			</if>
+			<if test="s_title != null">
+				#{s_title},
 			</if>
 		</trim>
 	</insert>
@@ -70,9 +48,6 @@
 			</if>
 			<if test="s_date != null">
 				s_date = #{s_data},
-			</if>
-			<if test="s_question != null">
-				s_question = #{s_question},
 			</if>
 			<if test="s_return_card != null">
 				s_return_card = #{s_return_card},
@@ -116,4 +91,17 @@
 		</if>
 	</select>
 	
+	<!-- 查询所有技术问答信息 -->
+	<select id="querySkill_ask" resultType="Map">
+		select sa.s_id,sa.s_title,sa.s_question,sa.s_date,u.u_realname realname,
+		c.c_name cname,sa.s_return_card,s_browse,s_solve,count(r_id) hd from 
+		skill_ask sa left join users u on sa.u_id = u.u_id left join curriculum c on 
+		sa.c_id = c.c_id left join reply r on sa.s_id = r.s_id group by sa.s_id
+		<if test="param1 != null and param2 != null">
+			limit #{param1},#{param2}
+		</if>
+		<if test="param1 == null and param2 == null">
+			limit 1
+		</if>
+	</select>
 </mapper>

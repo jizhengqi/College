@@ -10,7 +10,7 @@ import com.entity.Learn;
 public interface LearnDao {
 	
 	// 查询所有浏览的课程
-	public List<Learn> queryAll(Integer u_id);
+	public List<Learn> queryAll(String u_id);
 	
 	// 添加浏览课程信息
 	public void add(Learn l);

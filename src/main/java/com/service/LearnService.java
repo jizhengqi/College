@@ -19,7 +19,7 @@ public class LearnService {
 	LearnDao ld;
 	
 	// 查询所有浏览的课程
-	public List<Learn> queryAll(Integer u_id){
+	public List<Learn> queryAll(String u_id){
 		return ld.queryAll(u_id);
 	}
 	

@@ -16,7 +16,7 @@ public class Reply implements Serializable {
 	private Integer s_id;
 	private Integer id;
 	private Integer r_solve;
-	private Integer uid;
+	private String uid;
 	public Integer getR_id() {
 		return r_id;
 	}
@@ -53,14 +53,14 @@ public class Reply implements Serializable {
 	public void setR_solve(Integer r_solve) {
 		this.r_solve = r_solve;
 	}
-	public Integer getUid() {
+	public String getUid() {
 		return uid;
 	}
-	public void setUid(Integer uid) {
+	public void setUid(String uid) {
 		this.uid = uid;
 	}
 	public Reply(Integer r_id, String r_ask, Date r_data, Integer s_id,
-			Integer id, Integer r_solve, Integer uid) {
+			Integer id, Integer r_solve, String uid) {
 		super();
 		this.r_id = r_id;
 		this.r_ask = r_ask;

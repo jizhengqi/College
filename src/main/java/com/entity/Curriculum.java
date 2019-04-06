@@ -26,7 +26,7 @@ public class Curriculum implements Serializable {
 	private Integer c_level;
 	private String c_users;
 	private Integer m_id;
-	private Integer u_id;
+	private String u_id;
 	private Integer c_vip;
 
 	public Integer getC_id() {
@@ -126,11 +126,11 @@ public class Curriculum implements Serializable {
 		this.m_id = m_id;
 	}
 
-	public Integer getU_id() {
+	public String getU_id() {
 		return u_id;
 	}
 
-	public void setU_id(Integer u_id) {
+	public void setU_id(String u_id) {
 		this.u_id = u_id;
 	}
 
@@ -145,7 +145,7 @@ public class Curriculum implements Serializable {
 	public Curriculum(Integer c_id, String c_name, String c_introduction,
 			String c_author, Date c_date, String c_background,
 			String c_Software, Integer c_typeOfCourse, String c_typeOfContent,
-			Integer c_level, String c_users, Integer m_id, Integer u_id,
+			Integer c_level, String c_users, Integer m_id, String u_id,
 			Integer c_vip) {
 		super();
 		this.c_id = c_id;
