@@ -134,15 +134,15 @@
 			</div>
 			<!-- 弹窗 end-->
 			<div class="crumbs">
-				<div class="w-1000">
-                    <a href="//www.jikexueyuan.com/">首页</a>
-                    <em>&gt;</em>
-                    <a href="//www.jikexueyuan.com/course/">职业课程库</a>
-                    <em>&gt;</em>
-                    <a href="//www.jikexueyuan.com/course/html/">HTML</a>
-                    <em>&gt;</em>
-                    <a class="active" href="javascript:;">整站项目开发实战之网站首页布局搭建</a>
-                </div>
+				<!-- <div class="w-1000">
+                                    <a href="//www.jikexueyuan.com/">首页</a>
+                                    <em>&gt;</em>
+                                    <a href="//www.jikexueyuan.com/course/">职业课程库</a>
+                                    <em>&gt;</em>
+                                    <a href="//www.jikexueyuan.com/course/html/">HTML</a>
+                                    <em>&gt;</em>
+                                    <a class="active" href="javascript:;">整站项目开发实战之网站首页布局搭建</a>
+                                </div> -->
             </div>
 			<div id="palyer-box" class="cf">
 				<h1
@@ -164,16 +164,16 @@
 						data-setup='{"example_option":true,"customControlsOnMobile": true}'
 						preload='none' width="100%">
 						<!-- 如果浏览器不兼容HTML5则使用flash播放 -->
-						<input type="hidden" value="java开发之路(一)" id="video_name" />
+						<!-- <input type="hidden" value="java开发之路(一)" id="video_name" /> -->
 						<!-- <source src="/file/sfrf1451fsvfv54145vf.mp4" type="video/mp4" id="s_play" /> -->
-						<object id="flash_fallback_1" class="vjs-flash-fallback"
-							width="100%" height="100%" type="application/x-shockwave-flash"
-							data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
-							<param name="movie"
-								value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
-							<param name="allowfullscreen" value="true" />
-							<param name="flashvars" value='config={$jsonConfig}' />
-						</object>
+						<!-- <object id="flash_fallback_1" class="vjs-flash-fallback"
+                            width="100%" height="100%" type="application/x-shockwave-flash"
+                            data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
+                            <param name="movie"
+                                value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
+                            <param name="allowfullscreen" value="true" />
+                            <param name="flashvars" value='config={$jsonConfig}' />
+                        </object> -->
 					</video>
                     <input type="hidden" id="v_idz">
 					<!-- yx-pop -->
@@ -329,7 +329,7 @@
 				<div class="lesson-teacher" id="lesson" v-for="n in lint">
 					<div class="bc-box">
 						<h2>
-							<a href="2707.html">{{ n.c_name }}</a>
+							<a href="window.location.reload();">{{ n.c_name }}</a>
 						</h2>
 						<div class="timebox">
 							<span>5课时，85分钟</span><span class="mar-l30"><i>发布时间：</i>{{
@@ -383,7 +383,7 @@
 								<div class="text-box">
 									<h2>
 										<a v-bind:href="'javascript:updVideo(&quot;'+index+'&quot;);'">{{v.v_name}}</a>
-										<p class="f_r">03:54</p>
+										<p class="f_r">{{v.v_length}}</p>
 									</h2>
 									<p>{{v.v_intro}}</p>
 								</div></li>
@@ -480,219 +480,6 @@
 				</div>
 				<!--弹出2end-->
 			</div>
-			<div class="onestage w-1000 m ">
-				<h2>相关课程</h2>
-				<div class="lesson-list">
-					<ul class="cf">
-						<li id="2687" test="0" deg="0">
-							<div class="lessonimg-box">
-								<i class="user-action lesson-shoucang " style="display: none;"
-									jktag="&posGP=103001&posArea=0006&posOper=8012&aCId=2687&posColumn=2687.1"></i>
-								<i class="rz-icon"></i> <a
-									href="//www.jikexueyuan.com/course/2687.html" target="_blank"
-									jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2687&posColumn=2687.1">
-									<img
-									src="https://a1.jikexueyuan.com/home/201604/20/06b8/5716df2d1add7.jpg"
-									class="lessonimg" title="Phaser.js 中的物理引擎"
-									alt="Phaser.js 中的物理引擎">
-									<div class="lessonplay" style="opacity: 0;">
-										<i class="playericon"
-											jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2687&posColumn=2687.1"></i>
-									</div>
-								</a>
-							</div>
-							<div class="lesson-infor" style="height: 88px;">
-								<h2 class="lesson-info-h2">
-									<a href="//www.jikexueyuan.com/course/2687.html"
-										target="_blank"
-										jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2687&posColumn=2687.1">Phaser.js
-										中的物理引擎</a>
-								</h2>
-								<p style="height: 0px; opacity: 0; display: none;">本课程主要介绍
-									Phaser.js 中的几种物理引擎，以及其中最基础的 Arcade 物理引擎的使用方法。</p>
-								<div class="timeandicon">
-									<div class="cf">
-										<dl>
-											<dd class="mar-b8">
-												<i class="time-icon"></i><em>3课时 38分钟</em>
-											</dd>
-											<dd class="zhongji">
-												<i class="xinhao-icon"></i><em>初级</em>
-											</dd>
-										</dl>
-										<em class="learn-number">5047人学习</em>
-									</div>
-									<div class="cf">
-										<div class="lessonicon-box">
-											<a href="//www.jikexueyuan.com/course/phaser/"> <img
-												width="16"
-												src="https://wirrorcdn.jikexueyuan.com/category/html5games.png"
-												alt="phaser" title="Phaser"
-												jktag="&posGP=101001&posArea=0006&posOper=8011&aCId=2687&posColumn=2687.1&aCCate=phaser">
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li id="2651" test="0" deg="0">
-							<div class="lessonimg-box">
-								<i class="user-action lesson-shoucang " style="display: none;"
-									jktag="&posGP=103001&posArea=0006&posOper=8012&aCId=2651&posColumn=2651.2"></i>
-								<i class="vip-icon"></i> <a
-									href="//www.jikexueyuan.com/course/2651.html" target="_blank"
-									jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2651&posColumn=2651.2">
-									<img
-									src="https://a1.jikexueyuan.com/home/201604/05/685c/5703162188c8d.jpg"
-									class="lessonimg" title="jQuery 中滚动条事件的应用"
-									alt="jQuery 中滚动条事件的应用">
-									<div class="lessonplay" style="opacity: 0;">
-										<i class="playericon"
-											jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2651&posColumn=2651.2"></i>
-									</div>
-								</a>
-							</div>
-							<div class="lesson-infor" style="height: 88px;">
-								<h2 class="lesson-info-h2">
-									<a href="//www.jikexueyuan.com/course/2651.html"
-										target="_blank"
-										jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2651&posColumn=2651.2">jQuery
-										中滚动条事件的应用</a>
-								</h2>
-								<p style="height: 0px; opacity: 0; display: none;">本课程主要通过
-									jQuery 和 CSS3 进行实际应用。通过网上常见的特效进行事件应用，详细介绍scroll() 事件和
-									scrollTop() 方法的使用。</p>
-								<div class="timeandicon">
-									<div class="cf">
-										<dl>
-											<dd class="mar-b8">
-												<i class="time-icon"></i><em>4课时 108分钟</em>
-											</dd>
-											<dd class="zhongji">
-												<i class="xinhao-icon2"></i><em>中级</em>
-											</dd>
-										</dl>
-										<em class="learn-number">10363人学习</em>
-									</div>
-									<div class="cf">
-										<div class="lessonicon-box">
-											<a href="//www.jikexueyuan.com/course/jquery/"> <img
-												width="16"
-												src="https://a1.jikexueyuan.com/home/201606/12/c538/575cd38804558.png"
-												alt="jquery" title="jQuery"
-												jktag="&posGP=101001&posArea=0006&posOper=8011&aCId=2651&posColumn=2651.1&aCCate=jquery">
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li id="2629" test="0" deg="0">
-							<div class="lessonimg-box">
-								<i class="user-action lesson-shoucang " style="display: none;"
-									jktag="&posGP=103001&posArea=0006&posOper=8012&aCId=2629&posColumn=2629.3"></i>
-								<i class="rz-icon"></i> <a
-									href="//www.jikexueyuan.com/course/2629.html" target="_blank"
-									jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2629&posColumn=2629.3">
-									<img
-									src="https://a1.jikexueyuan.com/home/201603/24/d460/56f35cb427ae4.jpg"
-									class="lessonimg" title="Ext JS 核心概念" alt="Ext JS 核心概念">
-									<div class="lessonplay" style="opacity: 0;">
-										<i class="playericon"
-											jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2629&posColumn=2629.3"></i>
-									</div>
-								</a>
-							</div>
-							<div class="lesson-infor" style="height: 88px;">
-								<h2 class="lesson-info-h2">
-									<a href="//www.jikexueyuan.com/course/2629.html"
-										target="_blank"
-										jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2629&posColumn=2629.3">Ext
-										JS 核心概念</a>
-								</h2>
-								<p style="height: 0px; opacity: 0; display: none;">
-									本课程将为大家讲解在进行 Ext JS
-									开发前，需要学习了解的几个核心概念。在开始学习阶段需要先做到心中有理解，在后续的学习中，再进行详细的理解与实践。</p>
-								<div class="timeandicon">
-									<div class="cf">
-										<dl>
-											<dd class="mar-b8">
-												<i class="time-icon"></i><em>5课时 53分钟</em>
-											</dd>
-											<dd class="zhongji">
-												<i class="xinhao-icon"></i><em>初级</em>
-											</dd>
-										</dl>
-										<em class="learn-number">6957人学习</em>
-									</div>
-									<div class="cf">
-										<div class="lessonicon-box">
-											<a href="//www.jikexueyuan.com/course/extjs/"> <img
-												width="16"
-												src="https://wirrorcdn.jikexueyuan.com/category/webframe.png"
-												alt="extjs" title="Ext JS"
-												jktag="&posGP=101001&posArea=0006&posOper=8011&aCId=2629&posColumn=2629.1&aCCate=extjs">
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li id="2624" test="0" deg="0">
-							<div class="lessonimg-box">
-								<i class="user-action lesson-shoucang " style="display: none;"
-									jktag="&posGP=103001&posArea=0006&posOper=8012&aCId=2624&posColumn=2624.4"></i>
-								<i class="vip-icon"></i> <a
-									href="//www.jikexueyuan.com/course/2624.html" target="_blank"
-									jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2624&posColumn=2624.4">
-									<img
-									src="https://a1.jikexueyuan.com/home/201605/13/e565/57357eaa3241e.png"
-									class="lessonimg" title="使用 jQuery 实现多种类型的导航条（下）"
-									alt="使用 jQuery 实现多种类型的导航条（下）">
-									<div class="lessonplay" style="opacity: 0;">
-										<i class="playericon"
-											jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2624&posColumn=2624.4"></i>
-									</div>
-								</a>
-							</div>
-							<div class="lesson-infor" style="height: 88px;">
-								<h2 class="lesson-info-h2">
-									<a href="//www.jikexueyuan.com/course/2624.html"
-										target="_blank"
-										jktag="&posGP=103001&posArea=0006&posOper=8010&aCId=2624&posColumn=2624.4">使用
-										jQuery 实现多种类型的导航条（下）</a>
-								</h2>
-								<p style="height: 0px; opacity: 0; display: none;">本课程主要通过
-									jQuery 和 CSS3
-									进行实际应用，在上篇主要讲的是最常规的导航条样式，下篇主要讲解折叠菜单的两种方式，学习完这个课程可以轻松的应用 jQuery
-									和 CSS3 的各种交互特效，以及实现菜单的水平和垂直展开方式。</p>
-								<div class="timeandicon">
-									<div class="cf">
-										<dl>
-											<dd class="mar-b8">
-												<i class="time-icon"></i><em>3课时 93分钟</em>
-											</dd>
-											<dd class="zhongji">
-												<i class="xinhao-icon2"></i><em>中级</em>
-											</dd>
-										</dl>
-										<em class="learn-number">8237人学习</em>
-									</div>
-									<div class="cf">
-										<div class="lessonicon-box">
-											<a href="//www.jikexueyuan.com/course/jquery/"> <img
-												width="16"
-												src="https://a1.jikexueyuan.com/home/201606/12/c538/575cd38804558.png"
-												alt="jquery" title="jQuery"
-												jktag="&posGP=101001&posArea=0006&posOper=8011&aCId=2624&posColumn=2624.1&aCCate=jquery">
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
 				<style type="text/css">
 .lesson-list ul {
 	width: 1020px !important;
@@ -746,7 +533,7 @@ ul.pages li.pagetotal {
 	width: 70px !important;
 }
 </style>
-			</div>
+			
 		</div>
 		<link rel="stylesheet" href="css/footer.css?t=1513326254000" />
 		<div id="footer">
@@ -1014,7 +801,7 @@ ul.pages li.pagetotal {
                         this.list = response.data;
                         videoList = response.data;
                         if(this.u_ids == ""){//判断是否登录，如果未登录正常显示视频
-                            $("#play_video_html5_api").attr("src","/file/" + response.data[0].v_url);
+                            $("#play_video").attr("src","/file/" + response.data[0].v_url);
                             $("#v_idz").val(response.data[0].v_id);
                             console.log("没登陆");
                         }else{//如果登陆了，根据用户ID和课程的ID，从上次暂停的地方开始播放
@@ -1032,7 +819,7 @@ ul.pages li.pagetotal {
                                     $("#v_idz").val(this.v_id);
                                     console.log("看过");
                                 } else {
-                                    $("#play_video_html5_api").attr("src","/file/" + this.list[0].v_url);
+                                    $("#play_video").attr("src","/file/" + this.list[0].v_url);
                                     $("#v_idz").val(0);
                                     console.log("没看过");
                                 }

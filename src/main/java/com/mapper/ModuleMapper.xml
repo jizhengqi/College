@@ -21,9 +21,9 @@
 		insert into module(m_name,l_id)values(#{m_name},#{l_id})
 	</insert>
 	
-	<!-- 根据语言模块查询视频 -->
-	<select id="queryByModule" parameterType="java.lang.String" resultType="com.entity.Curriculum">
-		select * from curriculum where m_id = (select m_id from module where m_name = #{param1})
+	<!-- 根据语言模块查询课程 -->
+	<select id="queryByModule" resultType="com.entity.Curriculum">
+		select * from curriculum where m_id = (select m_id from module where m_name = #{param1}) order by c_date
 	</select>
 	
 	<!-- 查询所有语言模块 -->

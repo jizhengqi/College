@@ -22,9 +22,9 @@
 	</delete>
 	
 	<!-- 根据语言查询所有课程 -->
-	<select id="queryByLanguage" parameterType="java.lang.String" resultType="com.entity.Curriculum">
+	<select id="queryByLanguage" resultType="com.entity.Curriculum">
 		select * from curriculum where m_id in (select m_id from module
-		 where l_id = (select l_id from language where l_name = #{param1}))
+		 where l_id = (select l_id from language where l_name = #{param1})) order by c_date
 	</select>
 	
 	<!-- 分页查询所有语言分类 -->

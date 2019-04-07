@@ -93,6 +93,7 @@ public class VideoService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(video);
 		// 执行添加视频详细信息到数据库
 		return vd.addVideo(video);
 	}
@@ -116,9 +117,9 @@ public class VideoService {
 		String path = myWebConfig.getVideoDir() + filePath;// 拼接下载路径
 		myFileUtils.download(backName, path, bis, bos, response);
 	}
-	
+
 	// 查询某个课程下的所有视频
-	public List<Map<String,Object>> queryByVideo(Integer c_id){
+	public List<Map<String, Object>> queryByVideo(Integer c_id) {
 		return vd.queryByVideo(c_id);
 	}
 }

@@ -20,7 +20,7 @@ public class ModuleController {
 
 	@Resource
 	ModuleService ms;
-	
+
 	Integer rs;
 
 	// 查询所有语言和语言板块
@@ -41,55 +41,53 @@ public class ModuleController {
 		List<Curriculum> list = ms.queryByModule(m_name);
 		return list;
 	}
-	
+
 	// 添加语言模块
 	@RequestMapping("add")
 	@ResponseBody
-	public Integer add(Module m){
+	public Integer add(Module m) {
 		ms.add(m);
 		rs = 1;
 		return rs;
 	}
-	
+
 	// 修改语言模块
 	@RequestMapping("upd")
 	@ResponseBody
-	public Integer upd(Module m){
+	public Integer upd(Module m) {
 		ms.upd(m);
 		rs = 1;
 		return rs;
 	}
-	
+
 	// 删除语言模块
 	@RequestMapping("del")
 	@ResponseBody
-	public Integer del(Integer m_id){
+	public Integer del(Integer m_id) {
 		ms.del(m_id);
 		rs = 1;
 		return rs;
 	}
-	
+
 	// 查询语言分类
 	@RequestMapping("selectAll")
 	@ResponseBody
-	public List<Module> selectAll(){
+	public List<Module> selectAll() {
 		List<Module> list = ms.SelectAll();
 		return list;
 	}
-	
-	
+
 	// 查询所有语言分类
 	@RequestMapping("queryModule")
 	@ResponseBody
-	public Map<String,Object> queryModule(Integer page,Integer limit){
+	public Map<String, Object> queryModule(Integer page, Integer limit) {
 		List<Module> list = ms.SelectAll();
-		Map<String,Object> map = new HashMap<String,Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("msg", "");
 		map.put("code", 0);
 		map.put("count", ms.SelectAll().size());
-		map.put("data", ms.SelectByL_id((page-1)*limit, limit));
+		map.put("data", ms.SelectByL_id((page - 1) * limit, limit));
 		return map;
 	}
-	
-	
+
 }
