@@ -14,31 +14,47 @@ import com.service.LearnService;
 @Controller
 @RequestMapping("learn")
 public class LearnController {
-	
+
 	@Resource
 	LearnService ls;
-	
+
 	Integer rs;
-	
+
 	// 添加正在学习的课程信息
 	@RequestMapping("add")
 	@ResponseBody
-	public Integer add(Learn l){
+	public Integer add(Learn l) {
 		List<Learn> list = ls.queryByAll(l);
-		if(list.size() > 0){
-			rs = 1;
-		}else{
+		if (list.size() > 0) {
+			System.out.println("修改:" + l);
+			rs = ls.update(l);
+			System.out.println("修改:" + l);
+		} else {
 			ls.add(l);
 			rs = 1;
 		}
 		return rs;
 	}
-	
+
 	// 查询某个用户的查看历史
 	@RequestMapping("queryByU_id")
 	@ResponseBody
-	public List<Learn> queryByU_id(String u_id){
+	public List<Learn> queryByU_id(String u_id) {
 		List<Learn> list = ls.queryAll(u_id);
 		return list;
+	}
+
+	/**
+	 * 查询学习的课程根据用户ID和课程ID
+	 * 
+	 * @param u_id
+	 * @param c_id
+	 * @return
+	 */
+	@RequestMapping("getLearn")
+	@ResponseBody
+	public Learn getLearnByU_idAndC_id(String u_id, Integer c_id) {
+		System.out.println("进来了");
+		return ls.getLearnByU_idAndC_id(u_id, c_id);
 	}
 }

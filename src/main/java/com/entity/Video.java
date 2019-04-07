@@ -22,7 +22,7 @@ public class Video implements Serializable {
 	private Integer v_play_num;
 	private Integer v_vip;
 	private Integer v_jkb_num;
-	private String v_length;
+	private double v_length;
 
 	public Integer getV_id() {
 		return v_id;
@@ -120,11 +120,11 @@ public class Video implements Serializable {
 		this.v_jkb_num = v_jkb_num;
 	}
 
-	public String getV_length() {
+	public double getV_length() {
 		return v_length;
 	}
 
-	public void setV_length(String v_length) {
+	public void setV_length(double v_length) {
 		this.v_length = v_length;
 	}
 

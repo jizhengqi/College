@@ -573,6 +573,9 @@
                     }
                 },
                 showUser: function() { //通过cookie查询用户是否处于登陆状态
+                    if(this.getParam("d_name") == null){
+                        window.location.href = "index.html";
+                    }
                     var url = "user/queryByUsers";
                     var str = this.getCookie("phone");
                     var formData = new FormData();
