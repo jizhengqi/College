@@ -3,6 +3,10 @@ package com.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.util.DateJsonTypeConvert;
+
 public class Video implements Serializable {
 
 	/**
@@ -15,6 +19,7 @@ public class Video implements Serializable {
 	private String v_url;
 	private String v_intro;
 	private String v_content;
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date v_date;
 	private Integer c_id;
 	private Integer v_data;
@@ -63,7 +68,7 @@ public class Video implements Serializable {
 	public void setV_content(String v_content) {
 		this.v_content = v_content;
 	}
-
+	@JsonSerialize(using = DateJsonTypeConvert.class)
 	public Date getV_date() {
 		return v_date;
 	}

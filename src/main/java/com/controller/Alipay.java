@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
@@ -68,7 +69,7 @@ public class Alipay {
     }
 	
 	@RequestMapping("success")
-    public String success() {
+    public String success(HttpSession session) {
 		String user = (String) SecurityUtils.getSubject().getPrincipal();
 		Users u = us.queryLog(user);
 		LocalDate now = LocalDate.now();
@@ -82,6 +83,11 @@ public class Alipay {
 		u.setU_vip_enddate(endDate);
 		u.setU_vip(1);
 		us.upd(u);
+		Users users = (Users) session.getAttribute(user);
+		users.setU_vip_date(date);
+		users.setU_vip_enddate(endDate);
+		users.setU_vip(1);
+		session.setAttribute(user, users);
 		return "redirect:/setting_vip.html";
 	}
 }

@@ -84,8 +84,6 @@ public class UsersService {
 
 	private List<Users> users = new ArrayList<Users>();
 
-	private int len = 0;
-
 	/**
 	 * 判断用户是否存在用户名
 	 * 
@@ -93,10 +91,7 @@ public class UsersService {
 	 * @return
 	 */
 	public boolean checkUserName(String userName) {
-		if (len == 0) {
-			users = queryAll();
-			len = users.size();
-		}
+		users = queryAll();
 		for (Users user : users) {
 			if (user.getU_phone().equals(userName)) {
 				return true;
