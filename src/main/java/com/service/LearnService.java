@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.LearnDao;
+import com.entity.Curriculum;
 import com.entity.Learn;
 
 @Service
@@ -41,6 +42,11 @@ public class LearnService {
 	 */
 	public Learn getLearnByU_idAndC_id(String u_id, Integer c_id) {
 		return ld.getLearnByU_idAndC_id(u_id, c_id);
+	}
+	
+	// 根据用户ID获取观看的所有课程
+	public List<Curriculum> queryByU_id(String u_id){
+		return ld.queryByU_id(u_id);
 	}
 
 	/**

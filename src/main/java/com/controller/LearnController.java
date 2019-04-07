@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.entity.Curriculum;
 import com.entity.Learn;
 import com.service.LearnService;
 
@@ -39,8 +40,9 @@ public class LearnController {
 	// 查询某个用户的查看历史
 	@RequestMapping("queryByU_id")
 	@ResponseBody
-	public List<Learn> queryByU_id(String u_id) {
-		List<Learn> list = ls.queryAll(u_id);
+	public List<Curriculum> queryByU_id(String u_id) {
+		List<Curriculum> list = ls.queryByU_id(u_id);
+		System.out.println(list);
 		return list;
 	}
 

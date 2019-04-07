@@ -120,27 +120,76 @@
                             <span class="mar-left active-green">我的课程</span>
                         </li>
                     </a>
-                    <a href="userCourse.html">
-                        <li class="select employhover">
-                            <i class=""></i>
-                            <span class="">我发布的课程</span>
-                        </li>
-                    </a>
                 </ul>
             </nav>
         </div>
-
-        <div class="main-cont">
+        <div class="main-cont" id="baby">
             <section class="home-myclass">
                 <ul class="navbar">
                     <li><a href="ke_doing.html" class="">在学</a></li>
                     <li><a href="ke_done.html" class="">学完</a></li>
                     <li><a href="ke_colection.html" class=" navbar-li-active ">收藏</a></li>
                 </ul>
-                <section class="no-purchase">
+                <section class="no-purchase" id="sc" style="display: none;">
                     <img src="img/nopurchase.jpg">
                     <p>你还没有收藏哦</p>
                 </section>
+                <div class="lesson-card-cont cf" id="cos" v-for="s in list">
+                    <ul class="lesson-list">
+                        <li>
+                            <div class="lessonimg-box">
+                                <span class="learn-statu">
+                                    	学到第2课时
+                                </span>
+                                <a href="/2707.html" target="_blank">
+                                    <img src="https://a1.jikexueyuan.com/home/201604/26/0ff6/571f242278c8d.jpg" class="lessonimg" v-bind:title="'+ s.c_name +'" v-bind:alt="'+ s.c_name +'">
+                                    <div class="lessonplay" style="opacity: 0;">
+                                        <i class="playericon"></i>
+                                    </div>
+                                    <div class="lessonplay" style="opacity: 0;">
+                                        <div class="cricle">
+                                            <div class="mask"></div>
+                                            <div class="left">
+                                                <div class="bg"></div>
+                                            </div>
+                                            <div class="cright">
+                                                <div class="bg"></div>
+                                            </div>
+                                            <div class="text"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="lesson-infor">
+                                <h2 class="lesson-info-h2">
+                                    <a href="/2707.html" target="_blank">{{ s.c_name }}</a>
+                                </h2>
+                                <p>{{ s.c_introduction }}</p>
+                                <div class="timeandicon">
+                                    <div class="cf">
+                                        <dl>
+                                            <dd class="mar-b8">
+                                                <i class="time-icon"></i><em>5
+                                                    	课时 85分钟</em>
+                                            </dd>
+                                            <dd class="zhongji" style="display:none;">
+                                                <i class="xinhao-icon2"></i><em>{{ s.c_level }}</em>
+                                            </dd>
+                                        </dl>
+                                        <em class="learn-number">44396 人学习</em>
+                                    </div>
+                                    <div class="cf">
+                                        <div class="lessonicon-box" style="bottom:8px;">
+                                            <a target="_blank" href="javascript:void(0)">
+                                                <img width="16" src="img/webbase.png" alt="html" title="html" />
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </section>
         </div>
     </div>
@@ -159,9 +208,10 @@
 </body>
 <script>
     new Vue({
-        el: '#jk-header',
+        el: '#baby',
         data: {
-
+			u_ids: "",
+			list: []
         },
         created: function() {
             this.showUser();
@@ -181,6 +231,8 @@
                             $("#userpoto").attr("src", response.data.u_photo);
                             $("#touxiang").attr("src",response.data.u_photo);
                             $("#username").html(response.data.u_username);
+                            this.u_ids = response.data.u_id;
+                            this.SelectCollect();
                         } else {
                             $("#y-login").hide();
                             $("#n-login").show();
@@ -199,6 +251,18 @@
                         return decodeURI(arr2[1]);
                     }
                 }
+            },
+            // 查询用户所有收藏的课程
+            SelectCollect: function(){
+            	var url = "collect/queryByU_id?u_id=" + this.u_ids;
+            	this.$http.get(url).then(function(response) {
+                    if(response.data.length != 0){
+                    	this.list = response.data;
+                    }else{
+                    	$("#sc").show();
+                    	$("#cos").hide();
+                    }
+                });
             }
         }
     })

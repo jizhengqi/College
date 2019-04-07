@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +42,19 @@ public class Skill_AskController {
 		}
 		limit = 10;
 		return ss.querySkill_ask((page-1)*limit, limit);
+	}
+	
+	// 分页查询所有技术问答信息
+	@RequestMapping("queryByPage")
+	@ResponseBody
+	public Map<String,Object> queryByPage(Integer page,Integer limit){
+		List<Skill_Ask> list = ss.queryAll();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("msg", "");
+		map.put("code", 0);
+		map.put("count", list.size());
+		map.put("data", ss.querySkill_ask((page-1)*limit, limit));
+		return map;
 	}
 	
 	// 根据编号查询当前技术问答信息

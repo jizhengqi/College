@@ -250,5 +250,10 @@ public class UsersService {
 		}
 		return rs;
 	}
+	
+	// 后台教师查询发布视频信息
+	public List<Users> query_HT_teacher(String uname,String pwd){
+		return ud.query_HT_teacher(uname, pwd);
+	}
 
 }

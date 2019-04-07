@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.entity.Collect;
+import com.entity.Curriculum;
 
 @Mapper
 public interface CollectDao {
@@ -20,4 +21,7 @@ public interface CollectDao {
 
 	// 查询某个用户所有收藏的课程
 	public List<Collect> queryById(String u_id);
+	
+	// 查询用户下的所有的收藏
+	public List<Curriculum> queryByU_id(String u_id);
 }

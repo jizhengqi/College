@@ -800,9 +800,9 @@ ul.pages li.pagetotal {
                         }
                         this.list = response.data;
                         videoList = response.data;
-                        if(this.u_ids == ""){//判断是否登录，如果未登录正常显示视频
-                            $("#play_video").attr("src","/file/" + response.data[0].v_url);
-                            $("#v_idz").val(response.data[0].v_id);
+                        if(this.u_ids == undefined){//判断是否登录，如果未登录正常显示视频
+                            $("#play_video").attr("src","/file/" + this.list[0].v_url);
+                            $("#v_idz").val(0);
                             console.log("没登陆");
                         }else{//如果登陆了，根据用户ID和课程的ID，从上次暂停的地方开始播放
                             var url = "/learn/getLearn?u_id=" + this.u_ids + "&c_id=" + this.getParam("c_id");
@@ -811,7 +811,7 @@ ul.pages li.pagetotal {
                                 console.log(response);
                                 this.v_id = response.data.v_id;
                                 this.c_date = response.data.l_date;
-                                if(this.v_id != 0){
+                                if(this.c_date != 0 && this.c_date != undefined){
                                     $("#play_video").attr("src","/file/" + this.list[this.v_id].v_url);
                                     //document.querySelector('#play_video').src = "/file/" + this.list[this.v_id].v_url;
                                     //$("#play_video_html5_api")[0].currentTime = this.c_date;

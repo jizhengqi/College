@@ -24,6 +24,7 @@
 </head>
 
 <body>
+	<div id="baby">
     <div id="header_top_notice"></div>
     <div id="jk-header">
         <div class="header">
@@ -134,15 +135,17 @@
                                     <a href="center_done.html" class="">学完<div class="footer-dot"></div></a>
                                     <a href="center_collection.html" class="">收藏<div class="footer-dot"></div></a>
                                 </div>
-                                <div class="video-container lesson-list" style="">
-                                    <div class="user-video-title"><button>全部 3</button></div>
+                                <div id="learn-course-missing" id="zx" style="display: none;">
+                                	<img src="img/paizi-me-not-doing-course.png" class="data-missing-bg" /> 
+                                </div>
+                                <div class="video-container lesson-list" id="zx_content" v-for="s in list" style="">
+                                    <div class="user-video-title"><button>全部</button></div>
                                     <ul id="earlyCourses">
                                         <li>
                                             <div class="lessonimg-box">
-
                                                 <button>学到第2课时</button>
-                                                <a href="//www.jikexueyuan.com/course/2707.html" target="_blank">
-                                                    <img src="img/571f242278c8d.jpg" class="lessonimg" title="整站项目开发实战之网站首页布局搭建" alt="整站项目开发实战之网站首页布局搭建">
+                                                <a href="/2707.html" target="_blank">
+                                                    <img src="img/571f242278c8d.jpg" class="lessonimg" v-bind:title="'+ s.c_name +'" v-bind:alt="'+ s.c_name +'">
                                                     <div class="lessonplay" style="opacity: 0;">
                                                         <i class="playericon"></i>
                                                     </div>
@@ -150,8 +153,8 @@
                                             </div>
 
                                             <div class="lesson-infor" style="height: 88px;">
-                                                <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/2707.html" target="_blank">整站项目开发实战之网站首页布局搭建</a></h2>
-                                                <p style="height: 0px; opacity: 0; display: none;">设计本课程的目的是让 Web 前端工程师，可以轻松将设计师提供的 PSD 效果图，切分成 HTML 网页文件，学完本课程可以掌握 PS 软件的切图技巧和 HTML 布局技巧。</p>
+                                                <h2 class="lesson-info-h2"><a href="/2707.html" target="_blank">{{ s.c_name }}</a></h2>
+                                                <p style="height: 0px; opacity: 0; display: none;">{{ s.c_introduction }}</p>
                                                 <div class="timeandicon">
                                                     <div class="cf">
                                                         <dl>
@@ -161,7 +164,7 @@
                                                                     85分钟 </em>
                                                             </dd>
                                                             <dd class="zhongji">
-                                                                <i class="xinhao-icon2"></i><em>中级</em>
+                                                                <i class="xinhao-icon2"></i><em>{{ s.c_solve }}</em>
                                                             </dd>
                                                         </dl>
                                                         <em class="learn-number">44.4K 人学习</em>
@@ -176,129 +179,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li>
-                                            <div class="lessonimg-box">
-
-                                                <button>学到第1课时</button>
-                                                <a href="//www.jikexueyuan.com/course/3063.html" target="_blank">
-                                                    <img src="img/5819563e27263.jpg" class="lessonimg" title="打造你自己的Dragonboard 410c" alt="打造你自己的Dragonboard 410c">
-                                                    <div class="lessonplay" style="opacity: 0;">
-                                                        <i class="playericon"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-
-                                            <div class="lesson-infor" style="height: 88px;">
-                                                <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/3063.html" target="_blank">打造你自己的Dragonboard 410c</a></h2>
-                                                <p style="height: 0px; opacity: 0; display: none;">本课主要阐述Dragonboard 410c支持的软硬件环境，外设接口，以及功能用途的同时，教大家如何去购买及使用Dragonboard 410c开发板。</p>
-                                                <div class="timeandicon">
-                                                    <div class="cf">
-                                                        <dl>
-                                                            <dd class="mar-b8"><i class="time-icon"></i>
-                                                                <em>
-                                                                    3课时
-                                                                    16分钟 </em>
-                                                            </dd>
-                                                            <dd class="zhongji">
-                                                                <i class="xinhao-icon"></i><em>初级</em>
-                                                            </dd>
-                                                        </dl>
-                                                        <em class="learn-number">8318 人学习</em>
-                                                    </div>
-                                                    <div class="cf">
-                                                        <div class="lessonicon-box">
-                                                            <a target="_blank" href="//www.jikexueyuan.com/course/android/">
-                                                                <img width="16" src="img/54578d8e652c3.png" alt="android" title="Android" />
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="lessonimg-box">
-
-                                                <button>学到第1课时</button>
-                                                <a href="//www.jikexueyuan.com/course/516.html" target="_blank">
-                                                    <img src="img/54c99015e1130.jpg" class="lessonimg" title="Bootstrap 简介" alt="Bootstrap 简介">
-                                                    <div class="lessonplay" style="opacity: 0;">
-                                                        <i class="playericon"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-
-                                            <div class="lesson-infor" style="height: 88px;">
-                                                <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/516.html" target="_blank">Bootstrap 简介</a></h2>
-                                                <p style="height: 0px; opacity: 0; display: none;">本套课程主要了解Bootstrap，什么是Bootstrap以及基本的入门使用和全局CSS样式的排版使用。让学员掌握Bootstrap的基本概念和基本应用及优势</p>
-                                                <div class="timeandicon">
-                                                    <div class="cf">
-                                                        <dl>
-                                                            <dd class="mar-b8"><i class="time-icon"></i>
-                                                                <em>
-                                                                    3课时
-                                                                    27分钟 </em>
-                                                            </dd>
-                                                            <dd class="zhongji">
-                                                                <i class="xinhao-icon"></i><em>初级</em>
-                                                            </dd>
-                                                        </dl>
-                                                        <em class="learn-number">80.9K 人学习</em>
-                                                    </div>
-                                                    <div class="cf">
-                                                        <div class="lessonicon-box">
-                                                            <a target="_blank" href="//www.jikexueyuan.com/course/bootstrap/">
-                                                                <img width="16" src="img/57231d0e06972.png" alt="bootstrap" title="Bootstrap" />
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="user-side">
-                            <div class="user-visit-header" id="userVisitHeader" data-bool=''>
-                                <h2>最近学习</h2>
-                            </div>
-                            <div class="study-coursers" id="recentStudyEmpty">
-                                <div class="study-tabs" id="userStudyTabs" data-index='0' data-uid="6290732" data-uuid="0yWVXaUjV">
-                                    <a href="javascript:;" data-clicked="true" id='studyTabMenuOne'>
-                                        <上一次</a> <a class="defaultTabMenu" href="javascript:;" data-clicked="true" id='studyTabMenuTwo'>今天
-                                    </a>
-                                    <a href="javascript:;" data-clicked="false" id='studyTabMenuThree'>下一次></a>
-                                </div>
-                                <div class="studyTabMenu">
-                                    <div id="studyCourseLog">
-                                        <ul id="studyingCourse" data-one="false"></ul>
-                                        <ul id="studyedCourse" data-one="false"></ul>
-                                        <ul id="shouchangCourse" data-one="false"></ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-visit-header">
-                                <h2>我学了谁的课程</h2>
-                            </div>
-                            <div class="user-visit user-popBoxs-container">
-                                <div class="userInfoAbove" data-uid="7390kiPm+pc9rZp+j12zbIkOcUX63KguMVDDooxxq4O2eVAm">
-                                    <a href="/0JgjakPjW/" target="_blank">
-                                        <img src="https://assets.jikexueyuan.com/user/avatar/8d/53/5301836.jpeg" alt="高通" />
-                                    </a>
-                                    <div class="user-info user-info-above"></div>
-                                </div>
-                                <div class="userInfoAbove" data-uid="ee1cQIwv3HT7noAQ60+nqFC2ApCxn27u746ODWu1WTTEgsli">
-                                    <a href="/iwen/" target="_blank">
-                                        <img src="https://assets.jikexueyuan.com/user/avtar/201510/09/01/3dnix2bm14848.jpeg" alt="iwen" />
-                                    </a>
-                                    <div class="user-info user-info-above"></div>
-                                </div>
-                                <div class="userInfoAbove" data-uid="d501JwrLzaQ3q7ckpDUB+pD6m/jjPlsM4XR0OqpgXP2oQ0K9">
-                                    <a href="/0zVXXaVWg/" target="_blank">
-                                        <img src="https://assets.jikexueyuan.com/user/avtar/201604/19/05/028crbc8zvgcf.jpeg" alt="写代码的平面师" />
-                                    </a>
-                                    <div class="user-info user-info-above"></div>
                                 </div>
                             </div>
                         </div>
@@ -397,9 +278,10 @@
 <script type="text/javascript" src="js/meiqia.js?t=1513326254000"></script>
 <script>
     new Vue({
-        el: '#jk-header',
+        el: '#baby',
         data: {
-
+			u_ids: "",
+			list: []
         },
         created: function() {
             this.showUser();
@@ -438,6 +320,8 @@
                             $("#y-login").hide();
                             $("#n-login").show();
                         }
+                        this.u_ids = response.data.u_id;
+                        this.getStudy();
                     });
                 } else {
                     $("#y-login").hide();
@@ -452,6 +336,18 @@
                         return decodeURI(arr2[1]);
                     }
                 }
+            },
+         	// 查看当前用户看过的所有课程信息
+            getStudy: function(){
+            	var url = "learn/queryByU_id?u_id=" + this.u_ids;
+            	this.$http.get(url).then(function(response) {
+                    if(response.data.length != 0){
+                    	this.list = response.data;
+                    }else{
+                    	$("#zx").show();
+                    	$("#zx_content").hide();
+                    }
+                });
             }
         }
     })

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.entity.Collect;
+import com.entity.Curriculum;
 import com.service.CollectService;
 
 @Controller
@@ -33,6 +34,14 @@ public class CollectController {
 			rs = 2;
 		}
 		return rs;
+	}
+	
+	// 查询用户所有的收藏信息
+	@RequestMapping("queryByU_id")
+	@ResponseBody
+	public List<Curriculum> queryByU_id(String u_id){
+		List<Curriculum> list = cs.queryByU_id(u_id);
+		return list;
 	}
 
 }

@@ -44,4 +44,7 @@ public interface UsersDao {
 	
 	// 根据编号判断用户是否是VIP
 	public List<Users> queryVipById(String u_id);
+	
+	// 后台教师登陆查询并发布课程
+	public List<Users> query_HT_teacher(String uname,String pwd);
 }

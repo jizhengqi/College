@@ -30,6 +30,7 @@
 </head>
 
 <body class="no_header">
+	<div id="baby">
     <div id="header_top_notice"></div>
     <div id="jk-header">
         <div class="header">
@@ -119,11 +120,6 @@
                             <span class="mar-left active-green">我的课程</span>
                         </li>
                     </a>
-                    <a href="userCourse.html">
-                        <li class="select employhover">
-                            <span>我发布的课程</span>
-                        </li>
-                    </a>
                 </ul>
             </nav>
         </div>
@@ -134,15 +130,19 @@
                     <li><a href="ke_done.html" class="">学完</a></li>
                     <li><a href="ke_colection.html" class="">收藏</a></li>
                 </ul>
-                <div class="lesson-card-cont cf">
+                <section class="no-purchase" style="display: none" id="yc">
+                    <img src="img/nopurchase.jpg">
+                    <p>你还没有在学的哦</p>
+                </section>
+                <div class="lesson-card-cont cf" id="cons" v-for="s in list">
                     <ul class="lesson-list">
                         <li>
                             <div class="lessonimg-box">
                                 <span class="learn-statu">
                                     	学到第2课时
                                 </span>
-                                <a href="//www.jikexueyuan.com/course/2707.html" target="_blank">
-                                    <img src="https://a1.jikexueyuan.com/home/201604/26/0ff6/571f242278c8d.jpg" class="lessonimg" title="整站项目开发实战之网站首页布局搭建" alt="整站项目开发实战之网站首页布局搭建">
+                                <a href="/2707.html" target="_blank">
+                                    <img src="https://a1.jikexueyuan.com/home/201604/26/0ff6/571f242278c8d.jpg" class="lessonimg" v-bind:title="'+ s.c_name +'" v-bind:alt="'+ s.c_name +'">
                                     <div class="lessonplay" style="opacity: 0;">
                                         <i class="playericon"></i>
                                     </div>
@@ -162,25 +162,25 @@
                             </div>
                             <div class="lesson-infor">
                                 <h2 class="lesson-info-h2">
-                                    <a href="//www.jikexueyuan.com/course/2707.html" target="_blank">整站项目开发实战之网站首页布局搭建</a>
+                                    <a href="/2707.html" target="_blank">{{ s.c_name }}</a>
                                 </h2>
-                                <p>设计本课程的目的是让 Web 前端工程师，可以轻松将设计师提供的 PSD 效果图，切分成 HTML 网页文件，学完本课程可以掌握 PS 软件的切图技巧和 HTML 布局技巧。</p>
+                                <p>{{ s.c_introduction }}</p>
                                 <div class="timeandicon">
                                     <div class="cf">
                                         <dl>
                                             <dd class="mar-b8">
                                                 <i class="time-icon"></i><em>5
-                                                    课时 85分钟</em>
+                                                    	课时 85分钟</em>
                                             </dd>
                                             <dd class="zhongji" style="display:none;">
-                                                <i class="xinhao-icon2"></i><em>中级</em>
+                                                <i class="xinhao-icon2"></i><em>{{ s.c_level }}</em>
                                             </dd>
                                         </dl>
                                         <em class="learn-number">44396 人学习</em>
                                     </div>
                                     <div class="cf">
                                         <div class="lessonicon-box" style="bottom:8px;">
-                                            <a target="_blank" href="//www.jikexueyuan.com/course/html/">
+                                            <a target="_blank" href="javascript:void(0)">
                                                 <img width="16" src="img/webbase.png" alt="html" title="html" />
                                             </a>
                                         </div>
@@ -188,114 +188,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li>
-                            <div class="lessonimg-box">
-                                <span class="learn-statu">
-                                    学到第1课时
-                                </span>
-                                <a href="//www.jikexueyuan.com/course/3063.html" target="_blank">
-                                    <img src="img/5819563e27263.jpg" class="lessonimg" title="打造你自己的Dragonboard 410c" alt="打造你自己的Dragonboard 410c">
-                                    <div class="lessonplay" style="opacity: 0;">
-                                        <i class="playericon"></i>
-                                    </div>
-                                    <div class="lessonplay" style="opacity: 0;">
-                                        <div class="cricle">
-                                            <div class="mask"></div>
-                                            <div class="left">
-                                                <div class="bg"></div>
-                                            </div>
-                                            <div class="cright">
-                                                <div class="bg"></div>
-                                            </div>
-                                            <div class="text"></div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="lesson-infor">
-                                <h2 class="lesson-info-h2">
-                                    <a href="//www.jikexueyuan.com/course/3063.html" target="_blank">打造你自己的Dragonboard 410c</a>
-                                </h2>
-                                <p>本课主要阐述Dragonboard 410c支持的软硬件环境，外设接口，以及功能用途的同时，教大家如何去购买及使用Dragonboard 410c开发板。</p>
-                                <div class="timeandicon">
-                                    <div class="cf">
-                                        <dl>
-                                            <dd class="mar-b8">
-                                                <i class="time-icon"></i><em>3
-                                                    课时 16分钟</em>
-                                            </dd>
-                                            <dd class="zhongji" style="display:none;">
-                                                <i class="xinhao-icon"></i><em>初级</em>
-                                            </dd>
-                                        </dl>
-                                        <em class="learn-number">8317 人学习</em>
-                                    </div>
-                                    <div class="cf">
-                                        <div class="lessonicon-box" style="bottom:8px;">
-                                            <a target="_blank" href="//www.jikexueyuan.com/course/android/">
-                                                <img width="16" src="img/54578d8e652c3.png" alt="android" title="android" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="lessonimg-box">
-                                <span class="learn-statu">
-                                    学到第1课时
-                                </span>
-                                <a href="//www.jikexueyuan.com/course/516.html" target="_blank">
-                                    <img src="img/54c99015e1130.jpg" class="lessonimg" title="Bootstrap 简介" alt="Bootstrap 简介">
-                                    <div class="lessonplay" style="opacity: 0;">
-                                        <i class="playericon"></i>
-                                    </div>
-                                    <div class="lessonplay" style="opacity: 0;">
-                                        <div class="cricle">
-                                            <div class="mask"></div>
-                                            <div class="left">
-                                                <div class="bg"></div>
-                                            </div>
-                                            <div class="cright">
-                                                <div class="bg"></div>
-                                            </div>
-                                            <div class="text"></div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="lesson-infor">
-                                <h2 class="lesson-info-h2">
-                                    <a href="//www.jikexueyuan.com/course/516.html" target="_blank">Bootstrap 简介</a>
-                                </h2>
-                                <p>本套课程主要了解Bootstrap，什么是Bootstrap以及基本的入门使用和全局CSS样式的排版使用。让学员掌握Bootstrap的基本概念和基本应用及优势</p>
-                                <div class="timeandicon">
-                                    <div class="cf">
-                                        <dl>
-                                            <dd class="mar-b8">
-                                                <i class="time-icon"></i><em>3
-                                                    课时 27分钟</em>
-                                            </dd>
-                                            <dd class="zhongji" style="display:none;">
-                                                <i class="xinhao-icon"></i><em>初级</em>
-                                            </dd>
-                                        </dl>
-                                        <em class="learn-number">80913 人学习</em>
-                                    </div>
-                                    <div class="cf">
-                                        <div class="lessonicon-box" style="bottom:8px;">
-                                            <a target="_blank" href="//www.jikexueyuan.com/course/bootstrap/">
-                                                <img width="16" src="img/57231d0e06972.png" alt="bootstrap" title="bootstrap" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
                     </ul>
-                </div>
-                <div class="pages-cont">
-                    <div class="pages cf"><a href="javascript:;" class="li-page-disable pgFirst">首页</a> <a href="javascript:;" class="li-page-disable pgPrev">上一页</a> <a href="javascript:;" class="li-page-active page-number">1</a> <a href="javascript:;" class="li-page-disable pgPrev">下一页</a> <a href="javascript:;" class="li-page-disable pgFirst">尾页</a></div>
                 </div>
             </section>
         </div>
@@ -312,24 +205,24 @@
             <div class="copyright">Copyright © 2013-2018 jikexueyuan.com All Rights Reserved. 京ICP备11018032号 京公网安备11010802013056</div>
         </div>
     </div>
+    </div>
 </body>
 <script>
-    new Vue({
-        el: '#jk-header',
+    var baby = new Vue({
+        el: '#baby',
         data: {
 			u_ids: "",
 			list: []
         },
         created: function() {
             this.showUser();
-            this.getStudy();
         },
         methods: {
             showUser: function() { //通过cookie查询用户是否处于登陆状态
                 var url = "user/queryByUsers";
                 var str = this.getCookie("phone");
                 var formData = new FormData();
-                formData.append("phone", str)
+                formData.append("phone", str);
                 if (str != "") {
                     this.$http.post(url, formData).then(function(response) {
                         //console.log("data:" + response.data.u_phone);
@@ -338,6 +231,7 @@
                             $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
                             $("#userpoto").attr("src", response.data.u_photo);
                             this.u_ids = response.data.u_id;
+                            this.getStudy();
                         } else {
                             $("#y-login").hide();
                             $("#n-login").show();
@@ -361,16 +255,20 @@
                     }
                 }
             },
-            // 查看当前用户看过的所有视频信息
+            // 查看当前用户看过的所有课程信息
             getStudy: function(){
             	var url = "/learn/queryByU_id?u_id=" + this.u_ids;
             	this.$http.get(url).then(function(response) {
-            		console.log(response.data);
-                    this.list = response.data;
+                    if(response.data.length != 0){
+                    	this.list = response.data;
+                    }else{
+                    	$("#yc").show();
+                    	$("#cons").hide();
+                    }
                 });
             }
         }
-    })
+    });
 
 </script>
 

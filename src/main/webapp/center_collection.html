@@ -137,56 +137,51 @@
                                     <a href="center_done.html" class="">学完<div class="footer-dot"></div></a>
                                     <a href="center_collection.html" class="activeCourseNav">收藏<div class="footer-dot"></div></a>
                                 </div>
-                                <div id="learn-course-missing">
-                                    <img src="img/paizi-me-not-collection-course.png" class="data-missing-bg" /> </div>
-                                <div class="video-container lesson-list" style="display:none;">
+                                <div id="learn-course-missing" id="sc" style="display:none;">
+                                    <img src="img/paizi-me-not-collection-course.png" class="data-missing-bg" /> 
+                                </div>
+                                <div class="video-container lesson-list" id="sc_content" v-for="s in list" style="">
                                     <div class="user-video-title"><button>全部 </button></div>
                                     <ul id="earlyCourses">
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                                    	<li>
+                                            <div class="lessonimg-box">
+                                                <button>学到第2课时</button>
+                                                <a href="/2707.html" target="_blank">
+                                                    <img src="img/571f242278c8d.jpg" class="lessonimg" v-bind:title="'+ s.c_name +'" v-bind:alt="'+ s.c_name +'">
+                                                    <div class="lessonplay" style="opacity: 0;">
+                                                        <i class="playericon"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
 
-                        <div class="user-side">
-                            <div class="user-visit-header" id="userVisitHeader" data-bool=''>
-                                <h2>最近学习</h2>
-                            </div>
-                            <div class="study-coursers" id="recentStudyEmpty">
-                                <div class="study-tabs" id="userStudyTabs" data-index='0' data-uid="6290732" data-uuid="0yWVXaUjV">
-                                    <a href="javascript:;" data-clicked="true" id='studyTabMenuOne'>
-                                        <上一次</a> <a class="defaultTabMenu" href="javascript:;" data-clicked="true" id='studyTabMenuTwo'>今天
-                                    </a>
-                                    <a href="javascript:;" data-clicked="false" id='studyTabMenuThree'>下一次></a>
-                                </div>
-                                <div class="studyTabMenu">
-                                    <div id="studyCourseLog">
-                                        <ul id="studyingCourse" data-one="false"></ul>
-                                        <ul id="studyedCourse" data-one="false"></ul>
-                                        <ul id="shouchangCourse" data-one="false"></ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-visit-header">
-                                <h2>我学了谁的课程</h2>
-                            </div>
-                            <div class="user-visit user-popBoxs-container">
-                                <div class="userInfoAbove" data-uid="cd92G+P0YPO6SWJcaX9OrUSi3iBzFpRThyXDk9IjTWrOheJy">
-                                    <a href="/0JgjakPjW/" target="_blank">
-                                        <img src="https://assets.jikexueyuan.com/user/avatar/8d/53/5301836.jpeg" alt="高通" />
-                                    </a>
-                                    <div class="user-info user-info-above"></div>
-                                </div>
-                                <div class="userInfoAbove" data-uid="11a3JcSC28p0yzaQ9Jlt0tIU4PU1iEyo3vCL7NhfTiEkqtLs">
-                                    <a href="/iwen/" target="_blank">
-                                        <img src="https://assets.jikexueyuan.com/user/avtar/201510/09/01/3dnix2bm14848.jpeg" alt="iwen" />
-                                    </a>
-                                    <div class="user-info user-info-above"></div>
-                                </div>
-                                <div class="userInfoAbove" data-uid="f963kJJRMQK7ugzUzlqYIjaB/iG08XYEFbisv9vAhdGOiG5e">
-                                    <a href="/0zVXXaVWg/" target="_blank">
-                                        <img src="https://assets.jikexueyuan.com/user/avtar/201604/19/05/028crbc8zvgcf.jpeg" alt="写代码的平面师" />
-                                    </a>
-                                    <div class="user-info user-info-above"></div>
+                                            <div class="lesson-infor" style="height: 88px;">
+                                                <h2 class="lesson-info-h2"><a href="/2707.html" target="_blank">{{ s.c_name }}</a></h2>
+                                                <p style="height: 0px; opacity: 0; display: none;">{{ s.c_introduction }}</p>
+                                                <div class="timeandicon">
+                                                    <div class="cf">
+                                                        <dl>
+                                                            <dd class="mar-b8"><i class="time-icon"></i>
+                                                                <em>
+                                                                    5课时
+                                                                    85分钟 </em>
+                                                            </dd>
+                                                            <dd class="zhongji">
+                                                                <i class="xinhao-icon2"></i><em>{{ s.c_solve }}</em>
+                                                            </dd>
+                                                        </dl>
+                                                        <em class="learn-number">44.4K 人学习</em>
+                                                    </div>
+                                                    <div class="cf">
+                                                        <div class="lessonicon-box">
+                                                            <a target="_blank" href="//www.jikexueyuan.com/course/html/">
+                                                                <img width="16" src="img/webbase.png" alt="html" title="HTML" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -293,7 +288,8 @@
     new Vue({
         el: '#jk-header',
         data: {
-
+			u_ids: "",
+			list: []
         },
         created: function() {
             this.showUser();
@@ -332,6 +328,8 @@
                             $("#y-login").hide();
                             $("#n-login").show();
                         }
+                        this.u_ids = response.data.u_id;
+                        this.SelectCollect();
                     });
                 } else {
                     $("#y-login").hide();
@@ -346,6 +344,18 @@
                         return decodeURI(arr2[1]);
                     }
                 }
+            },
+         	// 查询用户所有收藏的课程
+            SelectCollect: function(){
+            	var url = "collect/queryByU_id?u_id=" + this.u_ids;
+            	this.$http.get(url).then(function(response) {
+                    if(response.data.length != 0){
+                    	this.list = response.data;
+                    }else{
+                    	$("#sc").show();
+                    	$("#sc_content").hide();
+                    }
+                });
             }
         }
     })
