@@ -43,4 +43,14 @@ public class LearnService {
 		return ld.getLearnByU_idAndC_id(u_id, c_id);
 	}
 
+	/**
+	 * 修改学习情况
+	 * 
+	 * @param l
+	 * @return
+	 */
+	public Integer update(Learn l) {
+		return ld.update(l);
+	}
+
 }

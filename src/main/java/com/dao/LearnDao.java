@@ -26,4 +26,12 @@ public interface LearnDao {
 	 * @return
 	 */
 	public Learn getLearnByU_idAndC_id(String u_id, Integer c_id);
+
+	/**
+	 * 修改学习情况
+	 * 
+	 * @param l
+	 * @return
+	 */
+	public Integer update(Learn l);
 }

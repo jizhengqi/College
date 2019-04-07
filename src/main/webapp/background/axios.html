@@ -613,23 +613,7 @@
         
 
         function getTime(e){
-   			var hour = parseInt((e.duration)/3600);
-   			var minute = parseInt((e.duration%3600)/60);
-   			var second = Math.ceil(e.duration%60);
-   			if(second < 10){
-   				second = "0" + second;
-   			}
-   			if(minute < 10){
-   				minute = "0" + minute;
-   			}
-   			if(hour < 10){
-   				hour = "0" + hour;
-   			}
-   			if(hour == 0){
-   				times = minute+":"+second;
-   			}else{
-   				times = hour+":"+minute+":"+second;
-   			}
+        	times = e.duration;
         }
         
         

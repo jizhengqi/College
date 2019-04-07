@@ -8,15 +8,30 @@
 	
 	<!-- 添加浏览课程信息 -->
 	<insert id="add" parameterType="com.entity.Learn">
-		insert into learn(u_id,c_id,v_id,state,l_date)values(#{u_id},#{c_id},#{v_id},0,now())
+		insert into learn(u_id,c_id,v_id,state,l_date) values(#{u_id},#{c_id},#{v_id},0,now())
 	</insert>
 	
 	<!-- 根据信息查询是否存在 -->
 	<select id="queryByAll" parameterType="com.entity.Learn" resultType="com.entity.Learn">
-		select * from learn where u_id = #{u_id} and c_id = #{c_id} and v_id = #{v_id}
+		select * from learn where u_id = #{u_id} and c_id = #{c_id}
 	</select>
 	
 	<select id="getLearnByU_idAndC_id" resultType="com.entity.Learn">
-		select * from learn where u_id = #{u_id} and c_id = #{c_id}
+		select * from learn where u_id = #{param1} and c_id = #{param2}
 	</select>
+	<update id="update" parameterType="com.entity.Learn">
+		update learn
+		<set>
+			<if test="v_id != null ">
+				v_id = #{v_id},
+			</if>
+			<if test="state != null ">
+				state = #{state},
+			</if>
+			<if test="l_date != null">
+				l_date = #{l_date}
+			</if>
+		</set>
+		where u_id = #{u_id} and c_id = #{c_id}
+	</update>
 </mapper>
