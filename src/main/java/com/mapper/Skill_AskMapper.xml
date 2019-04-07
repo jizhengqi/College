@@ -104,4 +104,13 @@
 			limit 1
 		</if>
 	</select>
+	
+	<!-- 根据编号查询当前技术问答信息 -->
+	<select id="querySkill_askByid" parameterType="java.lang.Integer" resultType="Map">
+		select sa.s_id,sa.s_title,sa.s_question,sa.s_date,u.u_realname realname,
+		c.c_name cname,sa.s_return_card,s_browse,s_solve,count(r_id) hd from 
+		skill_ask sa left join users u on sa.u_id = u.u_id left join curriculum c on 
+		sa.c_id = c.c_id left join reply r on sa.s_id = r.s_id group by sa.s_id 
+		having sa.s_id = #{param1}
+	</select>
 </mapper>

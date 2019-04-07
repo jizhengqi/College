@@ -13,7 +13,7 @@ public class Learn implements Serializable {
 	private Integer c_id;
 	private Integer v_id;
 	private Integer state;
-	private Date l_date;
+	private double l_date;
 	public String getU_id() {
 		return u_id;
 	}
@@ -38,14 +38,14 @@ public class Learn implements Serializable {
 	public void setState(Integer state) {
 		this.state = state;
 	}
-	public Date getL_date() {
+	public double getL_date() {
 		return l_date;
 	}
-	public void setL_date(Date l_date) {
+	public void setL_date(double l_date) {
 		this.l_date = l_date;
 	}
 	public Learn(String u_id, Integer c_id, Integer v_id, Integer state,
-			Date l_date) {
+			double l_date) {
 		super();
 		this.u_id = u_id;
 		this.c_id = c_id;

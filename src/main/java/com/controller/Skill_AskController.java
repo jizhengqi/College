@@ -1,10 +1,12 @@
 package com.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,6 +21,7 @@ public class Skill_AskController {
 	Skill_AskService ss;
 	
 	Integer rs;
+	Integer pageNum;
 	
 	// 添加技术问答
 	@RequestMapping("add")
@@ -30,15 +33,37 @@ public class Skill_AskController {
 	}
 	
 	// 分页查询所有的技术问答信息
-	@RequestMapping("queryByPage")
+	@RequestMapping("querySkill_ask")
 	@ResponseBody
-	public List<Skill_Ask> queryByPage(Integer page,Integer limit){
-		if(null == page){
+	public List<Map<String,Object>> querySkill_ask(Integer page,Integer limit,Model model){
+		if(null == page || page < 0){
 			page = 1;
 		}
-		if(null == limit){
-			limit = 10;
+		limit = 10;
+		return ss.querySkill_ask((page-1)*limit, limit);
+	}
+	
+	// 根据编号查询当前技术问答信息
+	@RequestMapping("querySkill_askByid")
+	@ResponseBody
+	public List<Map<String,Object>> querySkill_askByid(Integer s_id){
+		return ss.querySkill_askByid(s_id);
+	}
+	
+	// 查询所有的条数并且返回
+	@RequestMapping("queryBy")
+	@ResponseBody
+	public Integer queryBy(){
+		Integer counts = ss.queryAll().size();
+		if(counts < 10){
+			pageNum = 1;
+		}else if(counts > 10){
+			if(counts % 10 == 0){
+				pageNum = counts / 10;
+			}else{
+				pageNum = counts / 10 + 1;
+			}
 		}
-		return ss.queryByPage((page-1)*limit, limit);
+		return pageNum;
 	}
 }
