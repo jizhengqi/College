@@ -610,10 +610,26 @@
                 }
             }
         });
-        
 
-        function getTime(e){
-        	times = e.duration;
+        var timer, tryTime, maxTry = 5,delay = 500;
+        function getTime(e) {
+            var v = document.getElementById("video");
+            clearInterval(timer);
+            tryTime = 0;
+            timer = setInterval(function() {
+                if (!isNaN(v.duration)) {
+                    clearInterval(timer);
+                    times = v.duration;
+                    console.log("times:" + times);
+                } else {
+                    tryTime++;
+                    //超过获取视频长度最大重试次数
+                    if (tryTime >= maxTry) {
+                        clearInterval(timer);
+                        alert('无法获取视频长度！');
+                    }
+                }
+            }, delay); //直接获取不到duration，会NaN，计时器来获取
         }
         
         

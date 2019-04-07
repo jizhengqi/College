@@ -22,9 +22,9 @@
 	</delete>
 	
 	<!-- 根据技术方向查询所有课程信息 -->
-	<select id="queryByDirection" parameterType="java.lang.String" resultType="com.entity.Curriculum">
+	<select id="queryByDirection" resultType="com.entity.Curriculum">
 		select * from curriculum where m_id in (select m_id from module where l_id in(select l_id from language
-		 where d_id = (select d_id from direction where d_name = #{param1})))
+		 where d_id = (select d_id from direction where d_name = #{param1}))) order by c_date
 	</select>
 	
 	<!-- 分页查询所有技术方向 -->

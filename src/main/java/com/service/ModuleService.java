@@ -57,8 +57,9 @@ public class ModuleService {
 	public List<Module> queryByl_id(Integer l_id) {
 		return md.queryByL_id(l_id);
 	}
-	
-	public List<Map<String,Object>> SelectByL_id(Integer page,Integer limit){
+
+	public List<Map<String, Object>> SelectByL_id(Integer page, Integer limit) {
 		return md.SelectByL_id(page, limit);
 	}
+
 }

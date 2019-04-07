@@ -22,25 +22,27 @@ public class ShiroConfiguration {
 			// 拦截器.
 			Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 			// 配置不会被拦截的链接 顺序判断
-			filterChainDefinitionMap.put("/**", "anon");
+			filterChainDefinitionMap.put("user/login", "anon");
 			filterChainDefinitionMap.put("/css/**", "anon");
 			filterChainDefinitionMap.put("/img/**", "anon");
 			filterChainDefinitionMap.put("/js/**", "anon");
 			filterChainDefinitionMap.put("/video/**", "anon");
-			filterChainDefinitionMap.put("user/login", "anon");
 			filterChainDefinitionMap.put("/webapp/userCourse.html", "authc");
 			filterChainDefinitionMap.put("/webapp/center_doing.html", "authc");
 			filterChainDefinitionMap.put("/webapp/center_done.html", "authc");
-			filterChainDefinitionMap.put("/webapp/center_collection.html", "authc");
+			filterChainDefinitionMap.put("/webapp/center_collection.html",
+					"authc");
 			filterChainDefinitionMap.put("/webapp/setting_ca.html", "authc");
 			filterChainDefinitionMap.put("/webapp/setting_vip.html", "authc");
 			filterChainDefinitionMap.put("/webapp/setting_jkb.html", "authc");
 			filterChainDefinitionMap.put("/webapp/security.html", "authc");
-			filterChainDefinitionMap.put("/webapp/setting_message.html", "authc");
+			filterChainDefinitionMap.put("/webapp/setting_message.html",
+					"authc");
 			filterChainDefinitionMap.put("/webapp/ke_center.html", "authc");
 			filterChainDefinitionMap.put("/webapp/ke_doing.html", "authc");
 			filterChainDefinitionMap.put("/webapp/learn_center.html", "authc");
 			filterChainDefinitionMap.put("/webapp/setting_user.html", "authc");
+			filterChainDefinitionMap.put("/**", "authc");
 			// 配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
 			filterChainDefinitionMap.put("/logout", "logout");
 			// <!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
