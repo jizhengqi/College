@@ -797,8 +797,12 @@ ul.pages li.pagetotal {
                             alert(response.status);
                             return;
                         }
-                        this.list = response.data;
-                        videoList = response.data;
+                        var datas = response.data;
+                        for (var i = 0; i < datas.length; i++) {
+                        	datas[i].v_length = this.showTime(datas[i].v_length);
+                        }
+                        this.list = datas;
+                        videoList = datas;
                         if(this.u_ids == undefined){//判断是否登录，如果未登录正常显示视频
                             $("#play_video").attr("src","/file/" + this.list[0].v_url);
                             $("#v_idz").val(0);
@@ -933,7 +937,26 @@ ul.pages li.pagetotal {
                         this.v_id = response.data.v_id;
                         this.c_date = response.data.c_date;
                     });
-                }
+                },
+                showTime:function(duration) {
+		            var hour = parseInt(duration / 3600);
+		            var minute = parseInt(duration % 3600 / 60);
+		            var sec = parseInt(duration % 60);
+		            if(sec < 10){
+		                sec = "0" + sec;
+		            }
+		            if(minute < 10){
+		                minute = "0" + minute;
+		            }
+		            if(hour == "0"){
+		                return minute + ":" + sec;
+		            }else{
+		            	if(hour < 10){
+			                hour = "0" + hour;
+			            }
+		                return hour + ":" + minute + ":" + sec;
+		            }
+		        }
             }
         });
 
@@ -961,11 +984,6 @@ ul.pages li.pagetotal {
             var hour = parseInt(duration / 3600);
             var minute = parseInt(duration % 3600 / 60);
             var sec = parseInt(duration % 60);
-            if (hour == 0) {
-                alert("视频长度为" + minute + ":" + sec);
-            } else {
-                alert("视频长度为：" + duration + "   " + hour + ":" + minute + ":" + sec);
-            }
             if(sec < 10){
                 sec = "0" + sec;
             }
