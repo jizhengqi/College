@@ -37,8 +37,9 @@ public class ModuleController {
 	 */
 	@RequestMapping("queryByModule")
 	@ResponseBody
-	public List<Curriculum> queryByModule(String m_name) {
-		List<Curriculum> list = ms.queryByModule(m_name);
+	public List<Curriculum> queryByModule(String m_name, Integer c_vip,
+			Integer c_level) {
+		List<Curriculum> list = ms.queryByModule(m_name, c_vip, c_level);
 		return list;
 	}
 

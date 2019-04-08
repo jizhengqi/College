@@ -25,7 +25,7 @@
 </head>
 
 <body>
-
+	<div id="baby">
     <div id="header_top_notice"></div>
     <div id="jk-header">
         <div class="header">
@@ -36,34 +36,19 @@
             </h1>
             <nav style="width:490px;">
                 <ul>
-                    <li>
-                        <a href="index.html" class="home">首页</a>
-                    </li>
-                    <li class="careerpath">
-                        <a href="javascript:void(0)">职业</a><i class="slide-icon"></i>
-                        <div class="zhiye-submenu slide-submeu">
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">课程</a><i class="slide-icon"></i>
-                        <div class="slide-submeu">
-                            <a href="javascript:void(0)">免费</a>
-                            <a href="javascript:void(0)">VIP</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">企业</a><i class="slide-icon"></i>
-                        <div class="slide-submeu qy-box">
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">社区</a><i class="slide-icon"></i>
-                        <div class="slide-submeu">
-                            <a href="//wenda.jikexueyuan.com/">技术问答</a>
-                        </div>
-
-                    </li>
-                </ul>
+                        <li>
+                            <a href="index.html" class="home">首页</a>
+                        </li>
+                        <li class="careerpath">
+                            <a href="">VIP</a>
+                        </li>
+                        <li>
+                            <a href="">免费</a>
+                        </li>
+                        <li>
+                            <a href="art.html" target="_blank">技术问答</a>
+                        </li>
+                    </ul>
             </nav>
             <div class="nav-other">
                 <div id="y-login">
@@ -193,7 +178,6 @@
     </div>
     <!-- container end -->
     </div>
-
 </body>
 
 <script>
@@ -224,22 +208,22 @@
     <div class="footer-content">
         <div class="contact-way">
             <div class="other-way">
-                <a href="//blog.jikexueyuan.com/28.html " target="_blank" class="weixin-icon"></a>
+                <a href="javascript:void(0)" target="_blank" class="weixin-icon"></a>
                 <!--<a href="" class="tencen-icon"></a>-->
-                <a href="//weibo.com/jikexueyuan" target="_blank" class="sina-icon"></a>
-                <a href="//twitter.com/jikexueyuan" target="_blank" class="facebook-icon"></a>
-                <a href="//plus.google.com/communities/117673330839635588089" target="_blank" class="google-icon"></a>
+                <a href="javascript:void(0)" target="_blank" class="sina-icon"></a>
+                <a href="javascript:void(0)" target="_blank" class="facebook-icon"></a>
+                <a href="javascript:void(0)" target="_blank" class="google-icon"></a>
             </div>
         </div>
         <nav>
-            <a href="//help.jikexueyuan.com/" target="_blank">关于我们</a><i>|</i>
-            <a href="//help.jikexueyuan.com/join.html" target="_blank">加入我们</a><i>|</i>
-            <a href="//help.jikexueyuan.com/contact.html" target="_blank">联系我们</a><i>|</i>
-            <a href="//zt.jikexueyuan.com/b" target="_blank">企业合作</a><i>|</i>
-            <a href="//j.jikexueyuan.com/evangelist/apply" target="_blank">讲师合作</a><i>|</i>
-            <a href="//help.jikexueyuan.com/" target="_blank">帮助中心</a><i>|</i>
-            <a href="//blog.jikexueyuan.com/" target="_blank">黑板报</a><i>|</i>
-            <a href="//www.jikexueyuan.com/friendlink.html" target="_blank">友情链接</a>
+            <a href="javascript:void(0)" target="_blank">关于我们</a><i>|</i>
+            <a href="javascript:void(0)" target="_blank">加入我们</a><i>|</i>
+            <a href="javascript:void(0)" target="_blank">联系我们</a><i>|</i>
+            <a href="javascript:void(0)" target="_blank">企业合作</a><i>|</i>
+            <a href="apply.html" target="_blank">讲师合作</a><i>|</i>
+            <a href="javascript:void(0)" target="_blank">帮助中心</a><i>|</i>
+            <a href="javascript:void(0)" target="_blank">黑板报</a><i>|</i>
+            <a href="javascript:void(0)" target="_blank">友情链接</a>
         </nav>
         <div class="copyright">Copyright © 2013-2018 jikexueyuan.com All Rights Reserved. 京ICP备11018032号 京公网安备11010802013056</div>
     </div>
@@ -286,7 +270,7 @@
 <script type="text/javascript" src="js/meiqia.js?t=1513326254000"></script>
 <script>
     new Vue({
-        el: '#jk-header',
+        el: '#baby',
         data: {
 			u_ids: "",
 			list: []
@@ -333,7 +317,7 @@
                         }
                         this.u_ids = response.data.u_id;
                         this.SelectCollect();
-                    }); 
+                    });
                 } else {
                     $("#y-login").hide();
                     $("#n-login").show();

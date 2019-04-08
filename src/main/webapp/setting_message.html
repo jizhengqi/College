@@ -32,34 +32,19 @@
             </h1>
             <nav style="width:490px;">
                 <ul>
-                    <li>
-                        <a href="index.html" class="home">首页</a>
-                    </li>
-                    <li class="careerpath">
-                        <a href="javascript:void(0)">职业</a><i class="slide-icon"></i>
-                        <div class="zhiye-submenu slide-submeu">
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">课程</a><i class="slide-icon"></i>
-                        <div class="slide-submeu">
-                            <a href="javascript:void(0)">免费</a>
-                            <a href="javascript:void(0)">VIP</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">企业</a><i class="slide-icon"></i>
-                        <div class="slide-submeu qy-box">
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">社区</a><i class="slide-icon"></i>
-                        <div class="slide-submeu">
-                            <a href="art.html">技术问答</a>
-                        </div>
-
-                    </li>
-                </ul>
+                        <li>
+                            <a href="index.html" class="home">首页</a>
+                        </li>
+                        <li class="careerpath">
+                            <a href="">VIP</a>
+                        </li>
+                        <li>
+                            <a href="">免费</a>
+                        </li>
+                        <li>
+                            <a href="art.html" target="_blank">技术问答</a>
+                        </li>
+                    </ul>
             </nav>
             <div class="nav-other">
                 <div id="y-login">
@@ -314,6 +299,9 @@
         },
         methods: {
             showUser: function() { //通过cookie查询用户是否处于登陆状态
+            	if(this.getCookie("phone") == null){
+                	window.location.href = "index.html";
+                }
                 var url = "user/queryByUsers";
                 var str = this.getCookie("phone");
                 var formData = new FormData();

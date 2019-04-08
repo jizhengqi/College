@@ -86,25 +86,26 @@ public class LanguageService {
 			}
 			direction.put(list.get(i).getD_name(), languages);
 		}
-		//MyFileUtils.writeToFile("D:/direction.txt", direction.toString());
+		// MyFileUtils.writeToFile("D:/direction.txt", direction.toString());
 		return direction;
 	}
-	
+
 	// 根据语言查询所有课程
-	public List<Curriculum> queryByLanguage(String l_name){
-		return ld.queryByLanguage(l_name);
+	public List<Curriculum> queryByLanguage(String l_name, Integer c_vip,
+			Integer c_level) {
+		return ld.queryByLanguage(l_name, c_vip, c_level);
 	}
-	
+
 	// 分页查询所有技术方向
-	public List<Language> queryLanguage(Integer page,Integer limit){
+	public List<Language> queryLanguage(Integer page, Integer limit) {
 		return ld.queryLanguage(page, limit);
 	}
-	
-	public List<Language> queryByD_id(Integer d_id){
+
+	public List<Language> queryByD_id(Integer d_id) {
 		return ld.queryByD_id(d_id);
 	}
-	
-	public List<Map<String,Object>> SelectByD_id(Integer page,Integer limit){
+
+	public List<Map<String, Object>> SelectByD_id(Integer page, Integer limit) {
 		return ld.SelectByD_id(page, limit);
 	}
 }

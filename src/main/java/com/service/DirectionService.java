@@ -14,33 +14,34 @@ import com.entity.Direction;
 @Service
 @Transactional
 public class DirectionService {
-	
+
 	@Resource
 	DirectionDao dd;
-	
-	public List<Direction> queryAll(){
+
+	public List<Direction> queryAll() {
 		return dd.queryAll();
 	}
-	
-	public void add(Direction d){
+
+	public void add(Direction d) {
 		dd.add(d);
 	}
-	
-	public void upd(Direction d){
+
+	public void upd(Direction d) {
 		dd.upd(d);
 	}
-	
-	public void del(Integer d_id){
+
+	public void del(Integer d_id) {
 		dd.del(d_id);
 	}
-	
-	public List<Curriculum> queryByDirection(String d_name){
-		return dd.queryByDirection(d_name);
+
+	public List<Curriculum> queryByDirection(String d_name, Integer c_vip,
+			Integer c_level) {
+		return dd.queryByDirection(d_name, c_vip, c_level);
 	}
-	
+
 	// 分页查询所有技术方向
-	public List<Direction> queryDirection(Integer page,Integer limit){
+	public List<Direction> queryDirection(Integer page, Integer limit) {
 		return dd.queryDirection(page, limit);
 	}
-	
+
 }

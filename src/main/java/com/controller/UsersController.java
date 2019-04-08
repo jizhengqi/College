@@ -317,4 +317,35 @@ public class UsersController {
 		return str;
 	}
 
+	/**
+	 * 查询不道师主页
+	 * 
+	 * @param phone
+	 * @return
+	 */
+	@RequestMapping("querybds")
+	@ResponseBody
+	public Users getUsers(String u_name) {
+		System.out.println("极客" + u_name);
+		for (int i = 0; i < us.getUser().size(); i++) {
+			if (us.getUser().get(i).getU_username().equals(u_name)) {
+				System.out.println(us.getUser().get(i));
+				return us.getUser().get(i);
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * 添加布道师
+	 * 
+	 * @param user
+	 * @return
+	 */
+	@RequestMapping("addBuDaoShi")
+	@ResponseBody
+	public Integer addBuDaoShi(Users user, HttpSession session) {
+		return us.addBuDaoShi(user, session);
+	}
+
 }

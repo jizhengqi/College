@@ -23,6 +23,11 @@
     <script type="text/javascript" src="js/vue2.5.13.min.js"></script>
     <script type="text/javascript" src="js/axios0.18.0.min.js"></script>
     <script type="text/javascript" src="js/vue-resource.js"></script>
+    <style>
+        input[type=date]::-webkit-inner-spin-button { visibility: hidden; }
+        input[type=date]::-webkit-clear-button{ visibility: hidden; }
+        input[type=date]::-webkit-datetime-edit-text{} 
+    </style>
 
     <div id="header_top_notice"></div>
     <div id="jk-header">
@@ -34,34 +39,19 @@
             </h1>
             <nav style="width:490px;">
                 <ul>
-                    <li>
-                        <a href="index.html" class="home">首页</a>
-                    </li>
-                    <li class="careerpath">
-                        <a href="javascript:void(0)">职业</a><i class="slide-icon"></i>
-                        <div class="zhiye-submenu slide-submeu">
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">课程</a><i class="slide-icon"></i>
-                        <div class="slide-submeu">
-                            <a href="javascript:void(0)">免费</a>
-                            <a href="javascript:void(0)">VIP</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">企业</a><i class="slide-icon"></i>
-                        <div class="slide-submeu qy-box">
-                        </div>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">社区</a><i class="slide-icon"></i>
-                        <div class="slide-submeu">
-                            <a href="art.html">技术问答</a>
-                        </div>
-
-                    </li>
-                </ul>
+                        <li>
+                            <a href="index.html" class="home">首页</a>
+                        </li>
+                        <li class="careerpath">
+                            <a href="">VIP</a>
+                        </li>
+                        <li>
+                            <a href="">免费</a>
+                        </li>
+                        <li>
+                            <a href="art.html" target="_blank">技术问答</a>
+                        </li>
+                    </ul>
             </nav>
             <div class="nav-other">
                 <div id="y-login">
@@ -160,8 +150,8 @@
                         </li>
                         <li>
                             <label for="calendar">生日</label>
-                            <div class="inputbox">
-                                <input id="calendar" class="laydate-icon" type="text" name="birthday" value="">
+                            <div class="inputbox" style="padding: 0px;">
+                                <input id="calendar" class="" type="date" name="birthday" value="" min="1800-01-01" max="2019-01-01" style="width: 130px;margin: 0px;height: 30px;border: 1px solid lightgray;padding-left: 5px;">
                             </div>
                         </li>
                         <li>
@@ -415,6 +405,9 @@
         },
         methods: {
             showUser: function() { //通过cookie查询用户是否处于登陆状态
+            	if(this.getCookie("phone") == null){
+                	window.location.href = "index.html";
+                }
                 var url = "user/queryByUsers";
                 var str = this.getCookie("phone");
                 $("#u_phone").val(str);
@@ -430,6 +423,7 @@
                             $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
                             $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
                             $("#userpoto").attr("src", response.data.u_photo);
+                            $("#touxiang").attr("src", response.data.u_photo);
                             $("#username").html(response.data.u_username);
                             $("#uname").val(response.data.u_username);
                             $("#truename").val(response.data.u_realname);

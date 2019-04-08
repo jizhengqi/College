@@ -24,7 +24,8 @@ public interface ModuleDao {
 	public void del(Integer m_id);
 
 	// 根据语言模块查询视频
-	public List<Curriculum> queryByModule(String m_name);
+	public List<Curriculum> queryByModule(String m_name, Integer c_vip,
+			Integer c_level);
 
 	// 查询所有语言模块
 	public List<Module> SelectAll();

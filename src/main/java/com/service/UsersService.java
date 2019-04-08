@@ -53,22 +53,22 @@ public class UsersService {
 	}
 
 	// 查询所有认证导师信息
-	public List<Users> queryByTeacher(Integer page,Integer limit){
-		return ud.queryByTeacher(page,limit);
+	public List<Users> queryByTeacher(Integer page, Integer limit) {
+		return ud.queryByTeacher(page, limit);
 	}
-	
+
 	// 查询所有认证导师
-	public List<Users> queryByTeachers(){
+	public List<Users> queryByTeachers() {
 		return ud.queryByTeachers();
 	}
 
 	// 查询所有VIP用户
-	public List<Users> queryByVIP(Integer page,Integer limit){
-		return ud.queryByVIP(page,limit);
+	public List<Users> queryByVIP(Integer page, Integer limit) {
+		return ud.queryByVIP(page, limit);
 	}
-	
+
 	// 查询所有VIP
-	public List<Users> queryByVIPs(){
+	public List<Users> queryByVIPs() {
 		return ud.queryByVIPs();
 	}
 
@@ -82,7 +82,7 @@ public class UsersService {
 		return ud.queryVipById(u_id);
 	}
 
-	private List<Users> users = new ArrayList<Users>();
+	public List<Users> users = new ArrayList<Users>();
 
 	/**
 	 * 判断用户是否存在用户名
@@ -250,10 +250,41 @@ public class UsersService {
 		}
 		return rs;
 	}
-	
+
 	// 后台教师查询发布视频信息
-	public List<Users> query_HT_teacher(String uname,String pwd){
+	public List<Users> query_HT_teacher(String uname, String pwd) {
 		return ud.query_HT_teacher(uname, pwd);
+	}
+
+	/**
+	 * 获取所有布道师
+	 */
+	public List<Users> getUser() {
+		return queryAll();
+	}
+
+	/**
+	 * 添加布道师
+	 * 
+	 * @param user
+	 * @return
+	 */
+	public Integer addBuDaoShi(Users user, HttpSession session) {
+		Integer rs = 0;
+		try {
+			Users users = (Users) session.getAttribute(user.getU_phone());
+			users.setU_realname(user.getU_realname());
+			users.setU_phone(user.getU_phone());
+			users.setU_email(user.getU_email());
+			users.setU_qq(user.getU_qq());
+			users.setU_teacher(1);
+			ud.upd(users);
+			session.setAttribute(users.getU_phone(), users);
+			rs = 1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rs;
 	}
 
 }

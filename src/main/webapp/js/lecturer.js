@@ -234,7 +234,7 @@ var lecturer = {
         if (lecturer.lock) {
            $.ajax({
                 type: 'POST',
-                url: "",
+                url: "ascds/asdcsdc",
                 dataType: 'json',
                 data: data,
                 success: function (data) {

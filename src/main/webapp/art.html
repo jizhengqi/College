@@ -26,6 +26,7 @@
 	<script src="/vue/vue-axios/axios0.18.0.min.js"></script>
 	<script src="/vue/vue-resource/vue-resource.js"></script>
 	<script type="text/javascript" src="/vue/vue-router/vue-router.js"></script>
+	<div id="baby">
 	<div id="header_top_notice"></div>
 	<div id="jk-header">
 		<div class="header">
@@ -36,20 +37,19 @@
 			</h1>
 			<nav style="width:490px;">
 				<ul>
-					<li><a href="/index.html" class="home">首页</a></li>
-					<li class="careerpath"><a href="javascript:void(0)">职业</a><i
-						class="slide-icon"></i></li>
-					<li><a href="javascript:void(0)">课程</a><i
-						class="slide-icon"></i>
-						<div class="slide-submeu">
-							<a href="javascript:void(0)">免费</a> <a href="javascript:void(0)">VIP</a>
-						</div></li>
-					<li><a href="javascript:void(0)">社区</a><i
-						class="slide-icon"></i>
-						<div class="slide-submeu">
-							<a href="art.html">技术问答</a>
-						</div></li>
-				</ul>
+                        <li>
+                            <a href="index.html" class="home">首页</a>
+                        </li>
+                        <li class="careerpath">
+                            <a href="">VIP</a>
+                        </li>
+                        <li>
+                            <a href="">免费</a>
+                        </li>
+                        <li>
+                            <a href="art.html" target="_blank">技术问答</a>
+                        </li>
+                    </ul>
 			</nav>
 			<div class="nav-other">
                     <div id="y-login">
@@ -1130,168 +1130,15 @@
 			<!-- /main -->
 			<!-- sidebar -->
 			<div id="sidebar">
-				<div class="overview-que home-side1">
-					<h2>让每一个问题都被解决</h2>
-					<ul>
-						<li><span>问题总数:</span> <strong class="color-red">25586</strong>
-						</li>
-						<li><span>已解决:</span> <strong class="color-green">25086</strong>
-							<em>98.0%</em></li>
-
-						<li><span>待回复:</span> <strong>500 </strong> <em>2.0%</em></li>
-					</ul>
-				</div>
 				<div class="hot-que home-side3">
 					<h2>热门问答</h2>
-					<ul>
+					<ul v-for="s in list">
 						<li><a href="javascript:void(0)"
 							target="_blank"><img
 								src="img/57231d532b9a5.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">【问答技巧】怎样提问才能让我的问题更快速被解答？</a>
-						</li>
-						<li><a href="javascript:void(0)"
-							target="_blank"><img
-								src="img/57231d0e06972.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">Bootstrap
-								最新版 V4 中文文档</a></li>
-						<li><a href="javascript:void(0)"
-							target="_blank"><img
-								src="img/devbase.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">【老师分享】对LPS的Manacher算法感兴趣的同学请参考...</a>
-						</li>
-						<li><a href="javascript:void(0)"
-							target="_blank"><img
-								src="img/games.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">请问如何下载视频</a>
-						</li>
-						<li><a href="javascript:void(0)"
-							target="_blank"><img
-								src="img/57231d0e06972.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">aria-expanded,aria-hidden到底做什么...</a>
-						</li>
-						<li><a href="javascript:void(0)"
-							target="_blank"><img
-								src="img/57231d0e06972.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">老师，如何用Bootstrap布局一个垂直水平居中，没思路呀</a>
-						</li>
-						<li><a href="javascript:void(0)"
-							target="_blank"><img
-								src="img/54578d8e652c3.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">现在新建android项目，layout下面有个conten...</a>
-						</li>
-						<li><a href="javascript:void(0)"
-							target="_blank"><img
-								src="img/54578d8e652c3.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">不同fragment实现不同的功能</a>
-						</li>
-						<li><a href="javascript:void(0)"
-							target="_blank"><img
-								src="img/57231d0e06972.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">form-group和form-control有什么实质的区...</a>
-						</li>
-						<li><a href="javascript:void(0)"
-							target="_blank"><img
-								src="img/mobile.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">超级菜鸟想成为怎么成长？</a>
+								alt="" /></a> <a href="javascript:void(0)" target="_blank">{{ s.s_title }}</a>
 						</li>
 					</ul>
-				</div>
-
-				<!--ad start-->
-				<!--ad end-->
-
-				<!-- 问答帮帮团 -->
-				<div class="recommend-member home-side4">
-					<h2>
-						<strong>问答帮帮团</strong> <a href="javascript:void(0)">加入帮帮团</a>
-					</h2>
-					<div class="show-area">
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/avatar_2971624.jpg"
-								alt="陈世帝" />
-								<p>陈世帝</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/560239.jpeg"
-								alt="寄存心" />
-								<p>寄存心</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/08h8xdq852rnq.jpeg"
-								alt="麒麟才子" />
-								<p>麒麟才子</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/26qylw4u9wn48.jpeg"
-								alt="黄烦烦" />
-								<p>黄烦烦</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank">
-								<img
-								src="img/3cbink1u9fuos.jpeg"
-								alt="柴雪飞" />
-								<p>柴雪飞</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/3a6abbshufok4.jpeg"
-								alt="施雨轩" />
-								<p>施雨轩</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/0ewp89cn8c6sp.jpeg"
-								alt="贾寒" />
-								<p>贾寒</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/008gcnh9wtby8.jpeg"
-								alt="小嘿" />
-								<p>小嘿</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/1229777.jpeg"
-								alt="余俊魁" />
-								<p>余俊魁</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/2jsvwgg12ig4o.jpeg"
-								alt="范琪" />
-								<p>范琪</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/2wc6acs3puw48.jpeg"
-								alt="Suool" />
-								<p>Suool</p>
-							</a>
-						</div>
-						<div class="unit">
-							<a href="javascript:void(0)" target="_blank"> <img
-								src="img/default.gif"
-								alt="林钦宏" />
-								<p>林钦宏</p>
-							</a>
-						</div>
-					</div>
 				</div>
 			</div>
 			<!-- /sidebar -->
@@ -1364,6 +1211,7 @@
 			</span> <span class="top"><i></i></span>
 		</div>
 	</div>
+	</div>
 	<script type="text/javascript"
 		src="//e.jikexueyuan.com/static/js/login_register.min.js?t=1513326254000"></script>
 	<script>
@@ -1395,7 +1243,7 @@
 	</script>
 	<script type="text/javascript">
 		var app = new Vue({
-			el: '#app',
+			el: '#baby',
 			data: {
 				list: [],
 				pageNum: "",

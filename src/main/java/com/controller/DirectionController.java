@@ -92,8 +92,11 @@ public class DirectionController {
 	 */
 	@RequestMapping("queryByDirection")
 	@ResponseBody
-	public List<Curriculum> queryByDirection(String d_name, Model model) {
-		List<Curriculum> list = ds.queryByDirection(d_name);
+	public List<Curriculum> queryByDirection(String d_name, Integer c_vip,
+			Integer c_level, Model model) {
+		System.out.println(c_vip);
+		System.out.println(c_level);
+		List<Curriculum> list = ds.queryByDirection(d_name, c_vip, c_level);
 		return list;
 	}
 

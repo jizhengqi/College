@@ -37,28 +37,13 @@
                             <a href="index.html" class="home">首页</a>
                         </li>
                         <li class="careerpath">
-                            <a href="javascript:void(0)">职业</a><i class="slide-icon"></i>
-                            <div class="zhiye-submenu slide-submeu">
-                            </div>
+                            <a href="">VIP</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">课程</a><i class="slide-icon"></i>
-                            <div class="slide-submeu">
-                                <a href="javascript:void(0)">免费</a>
-                                <a href="javascript:void(0)">VIP</a>
-                            </div>
+                            <a href="">免费</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">企业</a><i class="slide-icon"></i>
-                            <div class="slide-submeu qy-box">
-                            </div>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">社区</a><i class="slide-icon"></i>
-                            <div class="slide-submeu">
-                                <a href="javascript:void(0)">技术问答</a>
-                            </div>
-
+                            <a href="art.html" target="_blank">技术问答</a>
                         </li>
                     </ul>
                 </nav>
@@ -195,7 +180,7 @@
                                     <label>新密码</label>
                                 </div>
                                 <div class="item-cont">
-                                    <input type="password" class="txt sm new-pw" id="newPwd" maxlength="32" />
+                                    <input type="password" class="txt sm new-pw" id="newPwd" maxlength="12" />
                                     <div class="safety pwd-strong">
                                         <span class="level-1" level="1">弱</span>
                                         <span class="level-2" level="2">中</span>
@@ -208,7 +193,7 @@
                                     <label>确认密码</label>
                                 </div>
                                 <div class="item-cont no-right">
-                                    <input type="password" class="txt sm repeat-pw" id="rePwd" maxlength="32" />
+                                    <input type="password" class="txt sm repeat-pw" id="rePwd" maxlength="12" />
                                 </div>
                             </div>
                             <div class="form-item">
@@ -338,11 +323,11 @@
     <div class="footer-content">
         <div class="contact-way">
             <div class="other-way">
-                <a href="//blog.jikexueyuan.com/28.html " target="_blank" class="weixin-icon"></a>
+                <a href="javascript:void(0) " target="_blank" class="weixin-icon"></a>
                 <!--<a href="" class="tencen-icon"></a>-->
-                <a href="//weibo.com/jikexueyuan" target="_blank" class="sina-icon"></a>
-                <a href="//twitter.com/jikexueyuan" target="_blank" class="facebook-icon"></a>
-                <a href="//plus.google.com/communities/117673330839635588089" target="_blank" class="google-icon"></a>
+                <a href="javascript:void(0)" target="_blank" class="sina-icon"></a>
+                <a href="javascript:void(0)" target="_blank" class="facebook-icon"></a>
+                <a href="javascript:void(0)" target="_blank" class="google-icon"></a>
             </div>
         </div>
         <nav>
@@ -436,6 +421,9 @@
                 $("#newCode").val("");
             }, //页面初始化时，显示数据
             showUser: function() { //通过cookie查询用户是否处于登陆状态
+            	if(this.getCookie("phone") == null){
+                	window.location.href = "index.html";
+                }
                 var url = "user/queryByUsers";
                 var str = this.getCookie("phone");
                 var formData = new FormData();

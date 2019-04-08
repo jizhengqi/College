@@ -33,7 +33,7 @@
             <div class="header">
                 <h1>
                     <a href="index.html" class="logo">
-                        <img src="img/logo.png?t=1513326254000" width="100px" alt="骇客学院" style="margin-top: -40px;" />
+                        <img src="img/logo.png?t=1513326254000" width="100px" alt="骇客学院" />
                     </a>
                 </h1>
                 <nav style="width:490px;">
@@ -42,27 +42,13 @@
                             <a href="index.html" class="home">首页</a>
                         </li>
                         <li class="careerpath">
-                            <a href="javascript:void(0)">职业</a><i class="slide-icon"></i>
-                            <div class="zhiye-submenu slide-submeu">
-                            </div>
+                            <a href="javascript:void(0)">VIP</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">课程</a><i class="slide-icon"></i>
-                            <div class="slide-submeu">
-                                <a href="javascript:void(0)">免费</a>
-                                <a href="javascript:void(0)">VIP</a>
-                            </div>
+                            <a href="javascript:void(0)">免费</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">企业</a><i class="slide-icon"></i>
-                            <div class="slide-submeu qy-box">
-                            </div>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">社区</a><i class="slide-icon"></i>
-                            <div class="slide-submeu">
-                                <a href="art.html">技术问答</a>
-                            </div>
+                            <a href="art.html" target="_blank">技术问答</a>
                         </li>
                     </ul>
                 </nav>
@@ -78,7 +64,7 @@
                         </div>
                         <span class="userinfo-login" id="userinfo-login" style="display: inline-block;">
                             <a href="setting_user.html">
-                                <img src="https://assets.jikexueyuan.com/user/avtar/default.gif" id="userpoto">
+                                <img src="img/default.gif" id="userpoto">
                             </a>
                             <i id="uservip-icon"></i>
                             <div class="slide-submeu user-slide">
@@ -118,19 +104,9 @@
                                         <div class="wrap">
                                             <div class="sortMode">
                                                 <h1 id="searchType">HTML</h1>
-                                                <dl><dt><span class="type-title-one">最新</span><i class="arrow"></i></dt>
-                                                    <dd>
-                                                        <p class="lesson-new">
-                                                            <a href="最新" ref="nofollow">最新</a>
-                                                        </p>
-                                                        <p class="lesson-new">
-                                                            <a href="最热" ref="nofollow">最热</a>
-                                                        </p>
-                                                    </dd>
-                                                </dl>
                                                 <!-- new课程类型 -->
                                                 <dl><dt><span class="type-title-tow">课程类型</span><i class="arrow"></i></dt>
-                                                    <dd>
+                                                    <dd id="fufei">
                                                         <p class="lesson-detailed">
                                                             <a href="VIP" ref="nofollow">VIP</a>
                                                         </p>
@@ -146,7 +122,7 @@
                                                     </dd>
                                                 </dl>
                                                 <dl><dt><span class="type-title-three">难度等级</span><i class="arrow"></i></dt>
-                                                    <dd>
+                                                    <dd id="dengji">
                                                         <p class="level-one">
                                                             <a href="javascript:void(0)" ref="nofollow">初级</a>
                                                         </p>
@@ -186,17 +162,17 @@
                                     <div class="lesson-list" id="changeid" style="display:none">
                                         <ul class="cf" style="display: block;">
                                             <!--list-->
-                                            <li id="2707" test="0" deg="0" v-for="d in liqt">
-                                                <div class="lessonimg-box">
+                                            <li id="2707" test="0" deg="0" v-for="d in liqt" v-bind:onclick="'linkto(&quot;2707.html?c_id='+d.c_id+'&c_name='+d.c_name + '&quot;,&quot;' + d.c_vip + '&quot;)'">
+                                                <div class="lessonimg-box" >
                                                     <a href="javascript:void(0)" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">
                                                         <img src="https://a1.jikexueyuan.com/home/201604/26/0ff6/571f242278c8d.jpg" class="lessonimg" v-bind:title="d.c_name" v-bind:alt="d.c_name">
                                                         <div class="lessonplay" style="opacity: 0;">
-                                                            <a v-bind:href="'2707.html?c_id='+d.c_id+'&c_name='+d.c_name"><i class="playericon" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1"></i></a>
+                                                            <a href="javascript:"><i class="playericon" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1"></i></a>
                                                         </div>
                                                     </a>
                                                 </div>
                                                 <div class="lesson-infor" style="height: 88px;">
-                                                    <h2 class="lesson-info-h2"><a href="//www.jikexueyuan.com/course/2707.html" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">{{ d.c_name }}</a></h2>
+                                                    <h2 class="lesson-info-h2"><a href="" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">{{ d.c_name }}</a></h2>
                                                     <p style="height: 0px; opacity: 0; display: none;">
                                                         {{ d.c_introduction }}
                                                     </p>
@@ -214,8 +190,8 @@
                                                         </div>
                                                         <div class="cf">
                                                             <div class="lessonicon-box">
-                                                                <a href="//www.jikexueyuan.com/course/html/">
-                                                                    <img width="16" src="https://wirrorcdn.jikexueyuan.com/category/webbase.png" alt="html" title="HTML" jktag="&posGP=101001&posArea=0002&posOper=2005&aCId=2707&posColumn=2707.1&aCCate=html">
+                                                                <a href="javascript:void(0)">
+                                                                    <img width="16" src="img/webbase.png" alt="html" title="HTML" jktag="&posGP=101001&posArea=0002&posOper=2005&aCId=2707&posColumn=2707.1&aCCate=html">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -267,11 +243,10 @@
             <div class="footer-content">
                 <div class="contact-way">
                     <div class="other-way">
-                        <a href="//blog.jikexueyuan.com/28.html " target="_blank" class="weixin-icon"></a>
-                        <!--<a href="" class="tencen-icon"></a>-->
-                        <a href="//weibo.com/jikexueyuan" target="_blank" class="sina-icon"></a>
-                        <a href="//twitter.com/jikexueyuan" target="_blank" class="facebook-icon"></a>
-                        <a href="//plus.google.com/communities/117673330839635588089" target="_blank" class="google-icon"></a>
+                        <a href="javascript:void(0) " target="_blank" class="weixin-icon"></a>
+                        <a href="javascript:void(0)" target="_blank" class="sina-icon"></a>
+                        <a href="javascript:void(0)" target="_blank" class="facebook-icon"></a>
+                        <a href="javascript:void(0)" target="_blank" class="google-icon"></a>
                     </div>
                 </div>
                 <nav>
@@ -471,7 +446,8 @@
                 list: [],
                 liqt: [],
                 u_name: "",
-                u_id: 0
+                u_id: "",
+                vip:0
             },
             created: function() {
                 //this.Directions();
@@ -498,14 +474,28 @@
                     var url = ""; //根据条件查询学习课程
                     if (this.getParam("m_name") != "" && this.getParam("m_name") != null) {
                         url = "module/queryByModule?m_name=" + this.getParam("m_name");
+                        //生成访问链接，可以按照付费方式和难度等级查询课程, Integer c_vip,Integer c_level
+                        $("#fufei").html("<p class='lesson-detailed'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>VIP</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=0&c_level=&quot;)' ref='nofollow'>免费</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>极客币专享</a></p><p class='lesson-all'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&quot;)' ref='nofollow'>全部</a></p>");
+                        //等级
+                        $("#dengji").html("<p class='level-one'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=&c_level=1&quot;)' ref='nofollow'>初级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=&c_level=2&quot;)' ref='nofollow'>中级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=&c_level=3&quot;)' ref='nofollow'>高级</a></p><p class='level-all'><a href='&quot;javascript:queryCourse(module/queryByModule?m_name=" + this.getParam("m_name") + "&quot;)' ref='nofollow'> 全部 </a></p>");
+                        //
                         $("#searchType").html(this.getParam("m_name"));
                         $("#positions").html("<a href='index.html'>首页</a><em>&gt;</em><a href='courseDetail.html?d_name=" + this.getParam("d_name") + "'>" + this.getParam("d_name") + "</a><em>&gt;</em><a href='courseDetail.html?l_name=" + this.getParam("l_name") + "&d_name=" + this.getParam("d_name") + "'>" + this.getParam("l_name") + "</a><em>&gt;</em><a href='courseDetail.html?m_name=" + this.getParam("m_name") + "&d_name=" + this.getParam("d_name") + "&l_name=" + this.getParam("l_name") + "'>" + this.getParam("m_name") + "</a>");
                     } else if (this.getParam("l_name") != "" && this.getParam("l_name") != null) {
                         url = "language/queryByLanguage?l_name=" + this.getParam("l_name");
+                        //VIP
+                        $("#fufei").html("<p class='lesson-detailed'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>VIP</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=0&c_level=&quot;)' ref='nofollow'>免费</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>极客币专享</a></p><p class='lesson-all'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&quot;)' ref='nofollow'>全部</a></p>");
+                        //等级
+                        $("#dengji").html("<p class='level-one'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=&c_level=1&quot;)' ref='nofollow'>初级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=&c_level=2&quot;)' ref='nofollow'>中级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=&c_level=3&quot;)' ref='nofollow'>高级</a></p><p class='level-all'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&quot;)' ref='nofollow'> 全部 </a></p>");
+                        //
                         $("#searchType").html(this.getParam("l_name"));
                         $("#positions").html("<a href='index.html'>首页</a><em>&gt;</em><a href='courseDetail.html?d_name=" + this.getParam("d_name") + "'>" + this.getParam("d_name") + "</a><em>&gt;</em><a href='courseDetail.html?l_name=" + this.getParam("l_name") + "&d_name=" + this.getParam("d_name") + "'>" + this.getParam("l_name") + "</a>");
                     } else if (this.getParam("d_name") != "" && this.getParam("d_name") != null) {
                         url = "direction/queryByDirection?d_name=" + this.getParam("d_name");
+                        //VIP
+                        $("#fufei").html("<p class='lesson-detailed'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>VIP</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=0&c_level=&quot;)' ref='nofollow'>免费</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>极客币专享</a></p><p class='lesson-all'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&quot;)' ref='nofollow'>全部</a></p>");
+                        //等级
+                        $("#dengji").html("<p class='level-one'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=&c_level=1&quot;)' ref='nofollow'>初级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=&c_level=2&quot;)' ref='nofollow'>中级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=&c_level=3&quot;)' ref='nofollow'>高级</a></p><p class='level-all'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&quot;)' ref='nofollow'> 全部 </a></p>");
                         //当前位置
                         $("#searchType").html(this.getParam("d_name"));
                         //位置
@@ -553,6 +543,8 @@
                                 $("#y-login").hide();
                                 $("#n-login").show();
                             }
+                            this.u_id = response.data.u_id;
+                            this.vip = response.data.u_vip;
                         });
                     } else {
                         $("#y-login").hide();
@@ -567,9 +559,44 @@
                             return decodeURI(arr2[1]);
                         }
                     }
+                },
+                setLiqt:function(data){
+                    app.$set(app.$data,"liqt",data);
                 }
             }
         });
+
+        function queryCourse(url){
+            $.ajax({
+                url:url,
+                type:'post',
+                success:function(data){
+                    console.log(data);
+                    app.setLiqt(data);
+                },
+                error:function(error){
+                    console.log(error);
+                }
+            });
+        }
+
+        function linkto(url,e){
+            if(app.$data.u_id == undefined || app.$data.u_id == ""){
+                window.location.href = "Login.html";
+            }else{
+                if(e == 1){//VIP视频
+                    if(app.$data.vip == 1){//VIP用户
+                        window.location.href = url;
+                    }else{
+                        alert("您还不是VIP，去充值");
+                    }
+                }else if(e == 2){//极客币视频
+                    alert("付费制视频");
+                }else{
+                    window.location.href = url;
+                }
+            }
+        }
 
     </script>
 </body>

@@ -37,27 +37,13 @@
                             <a href="index.html" class="home">首页</a>
                         </li>
                         <li class="careerpath">
-                            <a href="javascript:void(0)">职业</a><i class="slide-icon"></i>
-                            <div class="zhiye-submenu slide-submeu">
-                            </div>
+                            <a href="">VIP</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">课程</a><i class="slide-icon"></i>
-                            <div class="slide-submeu">
-                                <a href="javascript:void(0)">免费</a>
-                                <a href="javascript:void(0)">VIP</a>
-                            </div>
+                            <a href="">免费</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">企业</a><i class="slide-icon"></i>
-                            <div class="slide-submeu qy-box">
-                            </div>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">社区</a><i class="slide-icon"></i>
-                            <div class="slide-submeu">
-                                <a href="art.html">技术问答</a>
-                            </div>
+                            <a href="art.html" target="_blank">技术问答</a>
                         </li>
                     </ul>
                 </nav>
@@ -393,6 +379,9 @@
         },
         methods: { //页面初始化
             showUser: function() { //通过cookie查询用户是否处于登陆状态
+            	if(this.getCookie("phone") == null){
+                	window.location.href = "index.html";
+                }
                 var url = "user/queryByUsers";
                 var str = this.getCookie("phone");
                 var formData = new FormData();

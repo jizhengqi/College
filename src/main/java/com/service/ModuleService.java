@@ -40,8 +40,9 @@ public class ModuleService {
 	}
 
 	// 根据语言模块查询课程
-	public List<Curriculum> queryByModule(String m_name) {
-		return md.queryByModule(m_name);
+	public List<Curriculum> queryByModule(String m_name, Integer c_vip,
+			Integer c_level) {
+		return md.queryByModule(m_name, c_vip, c_level);
 	}
 
 	// 查询所有语言模块
