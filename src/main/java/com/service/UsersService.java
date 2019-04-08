@@ -250,9 +250,9 @@ public class UsersService {
 		}
 		return rs;
 	}
-	
+
 	// 后台教师查询发布视频信息
-	public List<Users> query_HT_teacher(String uname,String pwd){
+	public List<Users> query_HT_teacher(String uname, String pwd) {
 		return ud.query_HT_teacher(uname, pwd);
 	}
 
@@ -277,6 +277,7 @@ public class UsersService {
 			users.setU_phone(user.getU_phone());
 			users.setU_email(user.getU_email());
 			users.setU_qq(user.getU_qq());
+			users.setU_teacher(1);
 			ud.upd(users);
 			session.setAttribute(users.getU_phone(), users);
 			rs = 1;
