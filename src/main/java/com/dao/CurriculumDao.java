@@ -45,4 +45,13 @@ public interface CurriculumDao {
 	
 	// 查询课程信息
 	public List<Map<String,Object>> selectAll();
+	
+	// 根据技术方向查询所有的评论信息
+	public List<Map<String,Object>> queryByDirection(String d_name);
+	
+	// 根据语言分类查询所有的评论信息
+	public List<Map<String,Object>> queryByLanguage(String l_name);
+	
+	// 根据语言模块查询所有的评论信息
+	public List<Map<String,Object>> queryByModule(String m_name);
 }

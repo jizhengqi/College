@@ -286,5 +286,10 @@ public class UsersService {
 		}
 		return rs;
 	}
+	
+	// 修改用户VIP过期
+	public void updVip_ById(String u_id){
+		ud.updVip_ByID(u_id);
+	}
 
 }

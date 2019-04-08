@@ -377,7 +377,8 @@
 			data: {
 				lint: [],
 				lirt: [],
-				u_ids: ""
+				u_ids: "",
+				vips: ""
 			},
 			created: function(){
 				this.Skill_askByid();
@@ -413,11 +414,12 @@
                                 $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
                                 $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
                                 $("#userpoto").attr("src", response.data.u_photo);
-                                this.u_ids = response.data.u_id;
                             } else {
                                 $("#y-login").hide();
                                 $("#n-login").show();
                             }
+                            this.u_ids = response.data.u_id;
+                            this.vips = response.data.u_vip;
                         });
                     } else {
                         $("#y-login").hide();
@@ -435,16 +437,23 @@
                 },
                 addReply: function(){
                 	var content = CKEDITOR.instances.edi.getData();
-                	var url = "reply/add?r_ask=" + $(content).html() + "&s_id=" + this.getParam("s_id") + "&uid=" + this.u_ids;
-                	this.$http.get(url).then(function(response){
-                		if(response.data == 1){
-                			layui.use('layer', function(){
-              				  var layer = layui.layer;
-              				  layer.msg('发布成功！');
-              				});
-                			window.location.reload();
-                		}
-                	});
+                	if(this.vips == 1){
+                		var url = "reply/add?r_ask=" + $(content).html() + "&s_id=" + this.getParam("s_id") + "&uid=" + this.u_ids;
+                    	this.$http.get(url).then(function(response){
+                    		if(response.data == 1){
+                    			layui.use('layer', function(){
+                  				  var layer = layui.layer;
+                  				  layer.msg('发布成功！');
+                  				});
+                    			window.location.reload();
+                    		}
+                    	});
+                	}else{
+                		layui.use('layer', function(){
+           				  var layer = layui.layer;
+           				  layer.msg('您不是VIP无法发布信息！');
+           				});
+                	}
                 },
 				getParam: function(str) {//获取上页传来的视频
                     var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));

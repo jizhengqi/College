@@ -92,4 +92,31 @@
 		left join video v on c.c_id = v.c_id group by c.c_id order by c_date desc limit 4
 	</select>
 	
+	<!-- 根据技术方向查询所有的评论信息 -->
+	<select id="queryByDirection" parameterType="java.lang.String" resultType="Map">
+		select sa.s_id,sa.s_title,sa.s_question,sa.s_date,u.u_realname realname,c.c_name cname,sa.s_return_card,s_browse,s_solve,count(r_id) hd from skill_ask sa 
+		left join users u on sa.u_id = u.u_id left join curriculum c on sa.c_id = c.c_id 
+		left join reply r on sa.s_id = r.s_id where c.c_id in (select c_id from curriculum 
+		where m_id in(select m_id from module where l_id in (select l_id from language where d_id in
+		(select d_id from direction where d_name=#{param1})))) group by sa.s_id
+	</select>
+	
+	<!-- 根据语言分类查询所有的评论信息 -->
+	<select id="queryByLanguage" parameterType="java.lang.String" resultType="Map">
+		select sa.s_id,sa.s_title,sa.s_question,sa.s_date,u.u_realname realname,c.c_name cname,
+		sa.s_return_card,s_browse,s_solve,count(r_id) hd from skill_ask sa left join users u on 
+		sa.u_id = u.u_id left join curriculum c on sa.c_id = c.c_id left join reply r on sa.s_id = r.s_id 
+		where c.c_id in (select c_id from curriculum where m_id in(select m_id from module 
+		where l_id in (select l_id from language where l_name = #{param1}))) group by sa.s_id
+	</select>
+	
+	<!-- 根据语言模块查询所有的评论信息 -->
+	<select id="queryByModule" parameterType="java.lang.String" resultType="Map">
+		select sa.s_id,sa.s_title,sa.s_question,sa.s_date,u.u_realname realname,c.c_name cname,
+		sa.s_return_card,s_browse,s_solve,count(r_id) hd from skill_ask sa left join 
+		users u on sa.u_id = u.u_id left join curriculum c on sa.c_id = c.c_id left join reply r on sa.s_id = r.s_id 
+		where c.c_id in (select c_id from curriculum where m_id in(select m_id from module 
+		where m_name = #{param1})) group by sa.s_id
+	</select>
+	
 </mapper>

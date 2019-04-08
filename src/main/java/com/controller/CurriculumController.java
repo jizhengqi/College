@@ -81,5 +81,28 @@ public class CurriculumController {
 		List<Map<String, Object>> list = curriculumService.selectAll();
 		return list;
 	}
-
+	
+	// 根据技术方向查询所有问题
+	@RequestMapping("queryByDirection")
+	@ResponseBody
+	public List<Map<String,Object>> queryByDirection(String d_name){
+		List<Map<String, Object>> list = curriculumService.queryByDirection(d_name);
+		return list;
+	}
+	
+	// 根据技术方向查询所有问题
+	@RequestMapping("queryByLanguage")
+	@ResponseBody
+	public List<Map<String,Object>> queryByLanguage(String l_name){
+		List<Map<String, Object>> list = curriculumService.queryByLanguage(l_name);
+		return list;
+	}
+		
+	// 根据技术方向查询所有问题
+	@RequestMapping("queryByModule")
+	@ResponseBody
+	public List<Map<String,Object>> queryByModule(String m_name){
+		List<Map<String, Object>> list = curriculumService.queryByModule(m_name);
+		return list;
+	}
 }

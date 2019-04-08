@@ -28,6 +28,7 @@ public class Curriculum implements Serializable {
 	private Integer m_id;
 	private String u_id;
 	private Integer c_vip;
+	private Integer jkb;
 
 	public Integer getC_id() {
 		return c_id;
@@ -142,11 +143,19 @@ public class Curriculum implements Serializable {
 		this.c_vip = c_vip;
 	}
 
+	public Integer getJkb() {
+		return jkb;
+	}
+
+	public void setJkb(Integer jkb) {
+		this.jkb = jkb;
+	}
+
 	public Curriculum(Integer c_id, String c_name, String c_introduction,
 			String c_author, Date c_date, String c_background,
 			String c_Software, Integer c_typeOfCourse, String c_typeOfContent,
 			Integer c_level, String c_users, Integer m_id, String u_id,
-			Integer c_vip) {
+			Integer c_vip,Integer jkb) {
 		super();
 		this.c_id = c_id;
 		this.c_name = c_name;
@@ -177,6 +186,6 @@ public class Curriculum implements Serializable {
 				+ ", c_typeOfCourse=" + c_typeOfCourse + ", c_typeOfContent="
 				+ c_typeOfContent + ", c_level=" + c_level + ", c_users="
 				+ c_users + ", m_id=" + m_id + ", u_id=" + u_id + ", c_vip="
-				+ c_vip + "]";
+				+ c_vip + ",jkb=" + jkb +"]";
 	}
 }

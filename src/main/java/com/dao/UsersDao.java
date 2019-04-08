@@ -49,4 +49,7 @@ public interface UsersDao {
 
 	// 后台教师登陆查询并发布课程
 	public List<Users> query_HT_teacher(String uname, String pwd);
+	
+	// 修改用户变为不是VIP
+	public void updVip_ByID(String u_id);
 }

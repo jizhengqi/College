@@ -72,4 +72,19 @@ public class CurriculumService {
 	public List<Map<String,Object>> selectAll(){
 		return cd.selectAll();
 	}
+	
+	// 根据技术方向获取所有问题
+	public List<Map<String,Object>> queryByDirection(String d_name){
+		return cd.queryByDirection(d_name);
+	}
+	
+	// 根据语言分类获取所有问题
+	public List<Map<String,Object>> queryByLanguage(String l_name){
+		return cd.queryByLanguage(l_name);
+	}
+	
+	// 根据语言模块获取所有问题
+	public List<Map<String,Object>> queryByModule(String m_name){
+		return cd.queryByModule(m_name);
+	}
 }
