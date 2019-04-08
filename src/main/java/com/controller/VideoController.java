@@ -57,16 +57,36 @@ public class VideoController {
 		return videoService.queryVideoByC_id(c_id);
 	}
 
+	/**
+	 * 下载视频
+	 * 
+	 * @param backName
+	 * @param filePath
+	 * @param response
+	 */
 	@RequestMapping("downloadVideo")
 	public void download(String backName, String filePath,
 			HttpServletResponse response) {
 		videoService.download(backName, filePath, response);
 	}
-	
+
 	// 查询某个课程下的所有视频
 	@RequestMapping("queryByVideo")
 	@ResponseBody
-	public List<Map<String,Object>> queryByVideo(Integer c_id){
+	public List<Map<String, Object>> queryByVideo(Integer c_id) {
 		return videoService.queryByVideo(c_id);
+	}
+
+	/**
+	 * 下载视频资料
+	 * 
+	 * @param backName
+	 * @param filePath
+	 * @param response
+	 */
+	@RequestMapping("downloadZip")
+	public void downloadZip(String backName, String filePath,
+			HttpServletResponse response) {
+		videoService.downloadZip(backName, filePath, response);
 	}
 }

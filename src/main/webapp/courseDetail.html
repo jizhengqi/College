@@ -582,18 +582,18 @@
 
         function linkto(url,e){
             if(app.$data.u_id == undefined || app.$data.u_id == ""){
-                window.location.href = "Login.html";
+                window.open("Login.html");
             }else{
                 if(e == 1){//VIP视频
                     if(app.$data.vip == 1){//VIP用户
-                        window.location.href = url;
+                        window.open(url);
                     }else{
                         alert("您还不是VIP，去充值");
                     }
                 }else if(e == 2){//极客币视频
                     alert("付费制视频");
                 }else{
-                    window.location.href = url;
+                    window.open(url);
                 }
             }
         }

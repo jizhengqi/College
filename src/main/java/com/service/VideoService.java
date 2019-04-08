@@ -122,4 +122,12 @@ public class VideoService {
 	public List<Map<String, Object>> queryByVideo(Integer c_id) {
 		return vd.queryByVideo(c_id);
 	}
+
+	public void downloadZip(String backName, String filePath,
+			HttpServletResponse response) {
+		BufferedInputStream bis = null;// 输入流
+		BufferedOutputStream bos = null;// 输出流
+		String path = myWebConfig.getVideoDir() + filePath;// 拼接下载路径
+		myFileUtils.download(backName, path, bis, bos, response);
+	}
 }

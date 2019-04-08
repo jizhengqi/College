@@ -122,12 +122,12 @@
 			<div class="jk-uptodate">
 		    <h2>最新课程</h2>
 		    <ul>
-		        <li class="uptodate" v-for="z in lizt" >
+		        <li class="uptodate" v-for="z in lizt" v-bind:onclick="'linkto(&quot;2707.html?c_id='+z.c_id+'&c_name='+z.c_name + '&quot;,&quot;' + z.c_vip + '&quot;)'">
 		            <a v-bind:href="'2707.html?c_id='+ z.c_id +'&c_name=' + z.c_name + ''" target="_blank">
 		                <img class="uptodate-img" src="images/646f3cea-46e9-4ceb-809b-3d3b47ea7a61.png" alt="">
 		                <p class="uptodate-title">{{ z.c_name }}</p>
 		                <p class="uptodate-info">
-		                   		{{ z.c_level == 1 ? '初级':'中级' }}
+		                   		{{ z.c_level == 1 ? '初级':(z.c_level == 2 ? '中级':'高级') }}
 		                    <span>|</span>{{ z.cid }}门课
 		                </p>
 		            </a>
@@ -418,7 +418,9 @@
             data: {
                 list: {},
                 liqt: [],
-                lizt: []
+                lizt: [],
+                u_id:"",
+                vip:""
             },
             created: function() {
                 this.alls();
@@ -452,6 +454,8 @@
                                 $("#y-login").hide();
                                 $("#n-login").show();
                             }
+                            this.u_id = response.data.u_id;
+                            this.vip = response.data.u_vip;
                         });
                     } else {
                         $("#y-login").hide();
@@ -475,6 +479,24 @@
                 }
             }
         });
+
+        function linkto(url,e){
+            if(app.$data.u_id == undefined || app.$data.u_id == ""){
+                window.open("Login.html");
+            }else{
+                if(e == 1){//VIP视频
+                    if(app.$data.vip == 1){//VIP用户
+                        window.open(url);
+                    }else{
+                        alert("您还不是VIP，去充值");
+                    }
+                }else if(e == 2){//极客币视频
+                    alert("付费制视频");
+                }else{
+                    window.open(url);
+                }
+            }
+        }
 
     </script>
 </body>

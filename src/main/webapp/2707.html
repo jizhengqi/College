@@ -196,10 +196,10 @@
 								</div>
 							</div>
 						</li>
-						<li class="xiazai" @click="upload(vip)"><a
+						<li class="xiazai"><a
 							href="javascript:void(0)" class="down-course down-ajax"
 							id="down_video"><i></i>
-								<p>下载</p> </a>
+								<p>下载1</p> </a>
 							<div class="xiazai-box">
 								<a href="javascript:void(0)" class="down-course down-ajax"
 									jktag="&posArea=0002&posOper=8006&posColumn=3.1">下载本节视频</a>
@@ -273,17 +273,17 @@
                             3.必备的切图技巧及图片优化<br />
                             4.背景图片定位的应用<br />
                             5.简化代码——共用类似的 CSS 样式 -->
-							<br /> <br /> <b>软件环境：</b>{{ n.c_Software }} <br /> <br /> <b>是否提供资料：</b>是
-							<br /> <br /> <b>课程等级：</b>{{ n.c_level }} <br /> <br /> <b>适合人群：</b>
+							<br /> <br /> <b>软件环境：</b>{{ n.c_Software }} <br /> <br /> <b>是否提供资料：</b>{{v_data== 0 ? '否':'是'}}
+							<br /> <br /> <b>课程等级：</b>{{ n.c_level == 1 ? '初级':(n.c_level == 2 ? '中级':'高级') }} <br /> <br /> <b>适合人群：</b>
 							<br /> {{ n.c_users }}
 						</div>
 						<div class="btn-box">
 							<a href="javascript:void(0);" @click="shoucang()" class="greenbtn sc_btn user-action"
 								id="shouchang-towbtn"
 								jktag="&posArea=0003&posOper=8013&posColumn=0.1">收藏</a> <a
-								class="orinagebtn" id="course_download" course_id="2707"
-								title="下载课程对应的源代码、素材等资料" href="javascript:void('0');"
-								jktag="&posArea=0003&posOper=8015&posColumn=0.1">资料下载</a>
+								class="orinagebtn"
+								title="下载课程对应的源代码、素材等资料" href="javascript:void(0)" @click="downZip('video/downloadZip')"
+								>资料下载</a>
 						</div>
 					</div>
 				</div>
@@ -601,7 +601,10 @@ ul.pages li.pagetotal {
                 vip: "",
                 u_ids: "",
                 v_id:0,
-                c_date:0.0
+                c_date:0.0,
+                v_data:0,
+                v_name:"",
+                v_data_url:""
             },
             created: function() {
                 this.showUser();
@@ -635,6 +638,9 @@ ul.pages li.pagetotal {
                         if(this.u_ids == undefined){//判断是否登录，如果未登录正常显示视频
                             $("#play_video").attr("src","/file/" + this.list[0].v_url);
                             $("#v_idz").val(0);
+                            this.v_data = this.list[0].v_data;
+                            this.v_name = this.list[0].v_name;
+                            this.v_data_url = this.list[0].v_data_url;
                             console.log("没登陆");
                         }else{//如果登陆了，根据用户ID和课程的ID，从上次暂停的地方开始播放
                             var url = "/learn/getLearn?u_id=" + this.u_ids + "&c_id=" + this.getParam("c_id");
@@ -649,10 +655,16 @@ ul.pages li.pagetotal {
                                     //$("#play_video_html5_api")[0].currentTime = this.c_date;
                                     document.querySelector('#play_video').currentTime = this.c_date;
                                     $("#v_idz").val(this.v_id);
+                                    this.v_data = this.list[this.v_id].v_data;
+                                    this.v_name = this.list[this.v_id].v_name;
+                            		this.v_data_url = this.list[this.v_id].v_data_url;
                                     console.log("看过");
                                 } else {
                                     $("#play_video").attr("src","/file/" + this.list[0].v_url);
                                     $("#v_idz").val(0);
+                                    this.v_data = this.list[0].v_data;
+                                    this.v_name = this.list[0].v_name;
+                            		this.v_data_url = this.list[0].v_data_url;
                                     console.log("没看过");
                                 }
                                 setInterval(this.addLearn, 10000);
@@ -791,6 +803,14 @@ ul.pages li.pagetotal {
 			            }
 		                return hour + ":" + minute + ":" + sec;
 		            }
+		        },
+		        downZip:function(e){
+		        	if(this.vip != 1){
+		        		alert("亲，只有VIP才能下载呢！");
+		        		return;
+		        	}
+		        	var path = e + "?backName=" + this.v_name + "&filePath=" + this.v_data_url;
+		        	window.location.href = path;
 		        }
             }
         });
@@ -812,6 +832,9 @@ ul.pages li.pagetotal {
             $("#play_video_html5_api").attr("src","/file/" + videoList[e].v_url);
             $("#play_video_html5_api")[0].play();//播放
             $("#v_idz").val(e);//将当前视频ID放入存放处
+            app.$set(app.$data,"v_name",videoList[e].v_name);
+            app.$set(app.$data,"v_data_url",videoList[e].v_data_url);
+            app.$set(app.$data,"v_data",videoList[e].v_data);
         }
 
         //获取当前视频的播放时间
