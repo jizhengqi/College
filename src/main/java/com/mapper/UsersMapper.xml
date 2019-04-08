@@ -328,4 +328,9 @@
 	<select id="query_HT_teacher" resultType="com.entity.Users">
 		select * from users where u_phone = #{param1} and u_pwd = #{param2} and u_teacher = 1
 	</select>
+	
+	<!-- 修改用户会员过期 -->
+	<update id="updVip_ByID" parameterType="java.lang.String">
+		update users set u_vip = 0 where u_id = #{param1}
+	</update>
 </mapper>

@@ -347,5 +347,14 @@ public class UsersController {
 	public Integer addBuDaoShi(Users user, HttpSession session) {
 		return us.addBuDaoShi(user, session);
 	}
+	
+	// 修改信息
+	@RequestMapping("updVip_ById")
+	@ResponseBody
+	public Integer updVip_ById(String u_id) {
+		us.updVip_ById(u_id);
+		rs = 1;
+		return rs;
+	}
 
 }

@@ -223,6 +223,18 @@
                             $("#userpoto").attr("src", response.data.u_photo);
                             console.log(new Date() + " ," + response.data.u_vip_enddate);
                             this.times = this.getDate(response.data.u_vip_date,response.data.u_vip_enddate) - this.getDate(response.data.u_vip_date,new Date());
+                            if(this.times < 0){
+                            	this.times = 0;
+                            	$.ajax({
+                            		url:'user/updVip_ById',
+                            		data:{"u_id":response.data.u_id},
+                            		type:'post',
+                            		dataType:'json',
+                            		success:function(data){
+                            			console.log(data);
+                            		}
+                            	});
+                            }
                             var sdate = this.getDate(response.data.u_vip_date,response.data.u_vip_enddate);
                             var scv = this.times / sdate * 100;
                             console.log(sdate);
