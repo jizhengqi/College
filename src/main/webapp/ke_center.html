@@ -163,7 +163,7 @@
                             <span class="local" id="address">现居住地：河南省 郑州市</span></p>
                         <p class="common-data-detail" id="intro">一句话介绍一下自己吧，让别人更了解你</p>
                     </div>
-                    <a href="setting_user.html" class="edit-data">编辑个人资料</a>
+                    <a href="setting_user.html" id="editUser" class="edit-data">编辑个人资料</a>
                 </div>
 
                 <div class="user-course">
@@ -177,10 +177,10 @@
                             <div class="user-course-container">
                                 <div class="study-title-footer"></div>
                                 <div class="user-study-title">
-                                    <a href="ke_center.html" class="activeCourseNav">首页<div class="footer-dot"></div></a>
-                                    <a href="center_doing.html" class="">在学<div class="footer-dot"></div></a>
-                                    <a href="center_done.html" class="">学完<div class="footer-dot"></div></a>
-                                    <a href="center_collection.html" class="">收藏<div class="footer-dot"></div></a>
+                                    <a href="ke_center.html" id="shouye" class="activeCourseNav">首页<div class="footer-dot"></div></a>
+                                    <a href="center_doing.html" id="zaixue" class="">在学<div class="footer-dot"></div></a>
+                                    <a href="center_done.html" id="xuewan" class="">学完<div class="footer-dot"></div></a>
+                                    <a href="center_collection.html" id="shoucang" class="">收藏<div class="footer-dot"></div></a>
                                 </div>
                                 <div class="video-container lesson-list" style="">
                                     <div class="user-video-title"><button>全部 3</button></div>
@@ -459,11 +459,25 @@
         },
         methods: {
             showUser: function() { //通过cookie查询用户是否处于登陆状态
-                var url = "user/queryByUsers";
-                var str = this.getCookie("phone");
+                var url = "";
                 var formData = new FormData();
-                formData.append("phone", str)
-                if (str != "") {
+                if(this.getParam("u_name") != null){
+                    url = "user/querybds";
+                    formData.append("u_name", this.getParam("u_name"));
+                    url = "user/querybds";
+                    str = this.getParam("u_name");
+                    $("#navHome").attr("href",$("#navHome").attr("href") + "?u_name=" + this.getParam("u_name"));
+                    $("#navStudy").attr("href",$("#navStudy").attr("href") + "?u_name=" + this.getParam("u_name"));
+                    $("#shouye").attr("href",$("#shouye").attr("href") + "?u_name=" + this.getParam("u_name"));
+                    $("#zaixue").attr("href",$("#zaixue").attr("href") + "?u_name=" + this.getParam("u_name"));
+                    $("#xuewan").attr("href",$("#xuewan").attr("href") + "?u_name=" + this.getParam("u_name"));
+                    $("#shoucang").attr("href",$("#shoucang").attr("href") + "?u_name=" + this.getParam("u_name"));
+                    $("#editUser").hide();
+                }else{
+                    url = "user/queryByUsers";
+                    formData.append("phone", this.getCookie("phone"));
+                }
+                if (this.getCookie("phone") != "" || this.getParam("u_name") != null) {
                     this.$http.post(url, formData).then(function(response) {
                         //console.log("data:" + response.data.u_phone);
                         if (response.data.u_phone == str) {
@@ -512,6 +526,17 @@
                     if (arr2[0] == key) {
                         return decodeURI(arr2[1]);
                     }
+                }
+            },
+            getParam: function(str) {
+                var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));
+                /* if (result == null || result.length < 1) {
+                    console.log("result:" + result[1]);
+                } */
+                if (result == null || result.length < 1) {
+                    return result;
+                } else {
+                    return decodeURI(result[1]);
                 }
             }
         }

@@ -24,7 +24,16 @@
 	<!-- 根据技术方向查询所有课程信息 -->
 	<select id="queryByDirection" resultType="com.entity.Curriculum">
 		select * from curriculum where m_id in (select m_id from module where l_id in(select l_id from language
-		 where d_id = (select d_id from direction where d_name = #{param1}))) order by c_date
+		 <where>
+		 	d_id = (select d_id from direction where d_name = #{param1})))
+		 	<if test="param2 != null">
+		 		and c_vip = #{param2} 
+		 	</if>
+		 	<if test="param3 != null">
+		 		and c_level = #{param3}
+		 	</if>
+				order by c_date desc
+		 </where>
 	</select>
 	
 	<!-- 分页查询所有技术方向 -->

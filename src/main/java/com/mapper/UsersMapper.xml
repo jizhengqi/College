@@ -323,4 +323,5 @@
 	<select id="queryByTeachers" resultType="com.entity.Users">
 		select * from users where u_teacher = 1
 	</select>
+
 </mapper>

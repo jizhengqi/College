@@ -23,6 +23,11 @@
     <script type="text/javascript" src="js/vue2.5.13.min.js"></script>
     <script type="text/javascript" src="js/axios0.18.0.min.js"></script>
     <script type="text/javascript" src="js/vue-resource.js"></script>
+    <style>
+        input[type=date]::-webkit-inner-spin-button { visibility: hidden; }
+        input[type=date]::-webkit-clear-button{ visibility: hidden; }
+        input[type=date]::-webkit-datetime-edit-text{} 
+    </style>
 
     <div id="header_top_notice"></div>
     <div id="jk-header">
@@ -201,8 +206,8 @@
                         </li>
                         <li>
                             <label for="calendar">生日</label>
-                            <div class="inputbox">
-                                <input id="calendar" class="laydate-icon" type="text" name="birthday" value="">
+                            <div class="inputbox" style="padding: 0px;">
+                                <input id="calendar" class="" type="date" name="birthday" value="" min="1800-01-01" max="2019-01-01" style="width: 130px;margin: 0px;height: 30px;border: 1px solid lightgray;padding-left: 5px;">
                             </div>
                         </li>
                         <li>

@@ -383,11 +383,11 @@
                         <ul class="form-cont">
                             <li>
                                 <label for=""><sup>*</sup>姓名：</label>
-                                <input type="text" name="u_realname" value="姬正奇" placeholder="输入您的姓名" autofocus="autofocus" id="realname">
+                                <input type="text" name="u_realname" value="" placeholder="输入您的姓名" autofocus="autofocus" id="realname">
                             </li>
                             <li>
                                 <label for=""><sup>*</sup>手机：</label>
-                                <input type="text" name="u_phone" value="13643835873" placeholder="输入您的手机号" id="mobile">
+                                <input type="text" name="u_phone" value="" placeholder="输入您的手机号" id="mobile">
                             </li>
                             <li>
                                 <label for=""><sup>*</sup>邮箱：</label>
@@ -397,71 +397,6 @@
                                 <label for=""><sup>*</sup>QQ：</label>
                                 <input type="text" name="u_qq" placeholder="输入您的QQ号码" id="qq">
                             </li>
-                            <li>
-                                <label for="" class="ckbox"><sup>*</sup>技术方向：</label>
-                                <div class="cks">
-                                    <label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="1">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">Android工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="2">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">Web大前端工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="5">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">JavaWeb工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="6">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">PHP工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="7">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">iOS工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="8">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">运维工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="9">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">测试工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="10">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">大数据工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="13">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">Python Web工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="14">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">Go语言工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="16">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">UI/UX设计师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="26">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">VR 工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="31">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">人工智能工程师</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="33">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">其他</em>
-                                    </label><label>
-                                        <input type="checkbox" name="d_id" hidden="hidden" class="input direction_id" value="34">
-                                        <em class="ckb"></em>
-                                        <em class="ckt">云计算工程师</em>
-                                    </label> </div>
-                            </li>
                             <li id="showDirection" style="display: none;">
                                 <label for=""></label>
                                 <textarea maxlength="500" placeholder="请在这填写你的意向课程，如有线上课程请填写相关URL地址。" id="direction_desc"></textarea>
@@ -470,7 +405,7 @@
                                 <label for=""><sup>*</sup>验证码：</label>
                                 <div id="verify-cont" class="verify-cont"></div>
                             </li>
-                            <li class="tips cf">
+                            <li class="tips cf" style="display: none">
                                 <p>详细信息将获得优先机会</p>
                                 <p>展开<i class="arrows"></i></p>
                             </li>
@@ -578,7 +513,7 @@
                                     <textarea maxlength="500" placeholder="请在这里填写其他的介绍" id="intro"></textarea>
                                 </li>
                             </div>
-                            <a href="javascript:" class="btn-submit" id="subBtn" @click="submits()">立即提交</a>
+                            <a href="javascript:" class="btn-submit" onclick="submits()">立即提交</a>
                         </ul>
                     </form>
                 </div>
@@ -633,6 +568,28 @@
                         assistant_nc.init(nc_option);
                     }
                 });
+
+                function submits(){//Serializable
+                    console.log($("#nc_1__scale_text").children().children().html());
+                    console.log($("#frm").serialize());
+                    if($("#nc_1__scale_text").children().children().html() == "验证通过"){
+                        console.log("提交中");
+                        $.ajax({
+                            url:'user/addBuDaoShi',
+                            data:$("#frm").serialize(),
+                            type:'post',
+                            success:function(data){
+                                if(data == 1){
+                                    alert("提交成功！审核通过后，将会短信通知您");
+                                }else{
+                                    alert("失败");
+                                }
+                            }
+                        });
+                    }else{
+                        alert("请填写验证码");
+                    }
+                }
 
             </script>
         </body>
@@ -690,6 +647,7 @@
                             $("#y-login").hide();
                             $("#n-login").show();
                         }
+                        $("#u_phone").val(response.data.u_phone);
                     });
                 } else {
                     $("#y-login").hide();

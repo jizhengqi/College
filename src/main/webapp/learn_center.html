@@ -162,7 +162,7 @@
                                 <span class="local" id="address">现居住地：河南省 郑州市</span></p>
                             <p class="common-data-detail" id="intro">一句话介绍一下自己吧，让别人更了解你</p>
                         </div>
-                        <a href="setting_user.html" class="edit-data">编辑个人资料</a>
+                        <a href="setting_user.html" id="editUser" class="edit-data">编辑个人资料</a>
                     </div>
 
                     <div class="user-course">
@@ -452,11 +452,19 @@
         },
         methods: {
             showUser: function() { //通过cookie查询用户是否处于登陆状态
-                var url = "user/queryByUsers";
-                var str = this.getCookie("phone");
+                var url = "";
                 var formData = new FormData();
-                formData.append("phone", str)
-                if (str != "") {
+                if(this.getParam("u_name") != null){
+                    url = "user/querybds";
+                    formData.append("u_name", this.getParam("u_name"));
+                    $("#navStudy").attr("href",$("#navStudy").attr("href") + "?u_name=" + this.getParam("u_name"));
+                    $("#navHome").attr("href",$("#navHome").attr("href") + "?u_name=" + this.getParam("u_name"));
+                    $("#editUser").hide();
+                }else{
+                    url = "user/queryByUsers";
+                    formData.append("phone", this.getCookie("phone"));
+                }
+                if (this.getCookie("phone") != "" || this.getParam("u_name") != null) {
                     this.$http.post(url, formData).then(function(response) {
                         //console.log("data:" + response.data.u_phone);
                         if (response.data.u_phone == str) {
@@ -510,6 +518,17 @@
                     this.list = response.data;
                     console.log(this.list);
                 });
+            },
+            getParam: function(str) {
+                var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));
+                /* if (result == null || result.length < 1) {
+                    console.log("result:" + result[1]);
+                } */
+                if (result == null || result.length < 1) {
+                    return result;
+                } else {
+                    return decodeURI(result[1]);
+                }
             }
         }
     })

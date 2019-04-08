@@ -23,7 +23,17 @@
 	
 	<!-- 根据语言模块查询课程 -->
 	<select id="queryByModule" resultType="com.entity.Curriculum">
-		select * from curriculum where m_id = (select m_id from module where m_name = #{param1}) order by c_date
+		select * from curriculum
+		<where>
+		 	m_id = (select m_id from module where m_name = #{param1})
+		 	<if test="param2 != null">
+		 		and c_vip = #{param2} 
+		 	</if>
+		 	<if test="param3 != null">
+		 		and c_level = #{param3}
+		 	</if>
+				order by c_date desc
+		 </where>
 	</select>
 	
 	<!-- 查询所有语言模块 -->

@@ -240,6 +240,17 @@
                         return decodeURI(arr2[1]);
                     }
                 }
+            },
+            getParam: function(str) {
+                var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));
+                /* if (result == null || result.length < 1) {
+                    console.log("result:" + result[1]);
+                } */
+                if (result == null || result.length < 1) {
+                    return result;
+                } else {
+                    return decodeURI(result[1]);
+                }
             }
         }
     })
