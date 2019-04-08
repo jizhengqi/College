@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -41,4 +42,7 @@ public interface CurriculumDao {
 	 * @return
 	 */
 	public List<Curriculum> queryCurriculum(String u_id);
+	
+	// 查询课程信息
+	public List<Map<String,Object>> selectAll();
 }

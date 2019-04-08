@@ -149,7 +149,6 @@
         },
         methods: {
             getlist: function() {
-            	alert(this.u_ids)
                 var url = "/curriculum/queryCurriculum?u_id=" + this.u_ids;
                 this.$http.get(url).then(function(response) {
                     if (response.status != 200) {
@@ -162,7 +161,6 @@
             selects: function(){
     			var url = "/user/getUsers";
     			this.$http.post(url).then(function(response){
-    				console.log(response.data);
     				this.namets = response.data.u_realname;
     				this.u_ids = response.data.u_id;
     				this.getlist();

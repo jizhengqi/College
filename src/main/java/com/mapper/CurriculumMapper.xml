@@ -86,4 +86,10 @@
 		c_typeOfContent,c_level,c_users,m_id,u_id,c_vip from curriculum where u_id = #{param1} order by c_id
 	</select>
 	
+	<!-- 查询前台推荐课程 -->
+	<select id="selectAll" resultType="Map">
+		select c.c_id,c.c_name,c.c_level,count(v.c_id) cid from curriculum c 
+		left join video v on c.c_id = v.c_id group by c.c_id order by c_date desc limit 4
+	</select>
+	
 </mapper>

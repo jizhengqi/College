@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -65,5 +66,10 @@ public class CurriculumService {
 	 */
 	public List<Curriculum> queryCurriculum(String u_id) {
 		return cd.queryCurriculum(u_id);
-	}	
+	}
+	
+	// 查询前台推荐课程
+	public List<Map<String,Object>> selectAll(){
+		return cd.selectAll();
+	}
 }

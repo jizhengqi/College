@@ -73,5 +73,13 @@ public class CurriculumController {
 		List<Curriculum> list = curriculumService.queryById(c_id);
 		return list;
 	}
+	
+	// 查询前台推荐课程
+	@RequestMapping("selectAll")
+	@ResponseBody
+	public List<Map<String,Object>> selectAll(){
+		List<Map<String, Object>> list = curriculumService.selectAll();
+		return list;
+	}
 
 }

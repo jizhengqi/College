@@ -423,10 +423,12 @@
                 if (str != "") {
                     this.$http.post(url, formData).then(function(response) {
                         //console.log("data:" + response.data.u_phone);
-                        if (response.data.u_phone == str) {
+                    	if (response.data.u_phone == undefined || response.data.u_phone == ""){
+                        	$("#y-login").hide();
+                            $("#n-login").show();
+                        }else if (response.data.u_phone == str) {
                             $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
                             $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
-                            $("#touxiang").attr("src", response.data.u_photo);
                             $("#userpoto").attr("src", response.data.u_photo);
                             $("#username").html(response.data.u_username);
                             $("#uname").val(response.data.u_username);
@@ -459,7 +461,7 @@
                 } else {
                     $("#y-login").hide();
                     $("#n-login").show();
-                }
+                }           
             },
             getCookie: function(key) {
                 var arr1 = document.cookie.split("; ");
