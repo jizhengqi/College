@@ -84,8 +84,6 @@ public class UsersService {
 
 	public List<Users> users = new ArrayList<Users>();
 
-	private int len = 0;
-
 	/**
 	 * 判断用户是否存在用户名
 	 * 
@@ -93,10 +91,7 @@ public class UsersService {
 	 * @return
 	 */
 	public boolean checkUserName(String userName) {
-		if (len == 0) {
-			users = queryAll();
-			len = users.size();
-		}
+		users = queryAll();
 		for (Users user : users) {
 			if (user.getU_phone().equals(userName)) {
 				return true;
@@ -254,6 +249,11 @@ public class UsersService {
 			e.printStackTrace();
 		}
 		return rs;
+	}
+	
+	// 后台教师查询发布视频信息
+	public List<Users> query_HT_teacher(String uname,String pwd){
+		return ud.query_HT_teacher(uname, pwd);
 	}
 
 	/**

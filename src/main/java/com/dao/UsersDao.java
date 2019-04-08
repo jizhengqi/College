@@ -46,4 +46,7 @@ public interface UsersDao {
 	public List<Users> queryVipById(String u_id);
 
 	public Integer addBuDaoShi(Users user);
+
+	// 后台教师登陆查询并发布课程
+	public List<Users> query_HT_teacher(String uname, String pwd);
 }

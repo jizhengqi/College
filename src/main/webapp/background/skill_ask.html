@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>skill_ask.html</title>
+	
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/WeAdmin/static/css/font.css">
+	<link rel="stylesheet" href="/WeAdmin/static/css/weadmin.css">
+	<link rel="stylesheet" href="/layui/css/layui.css"  media="all">
+    <script src="/WeAdmin/lib/layui/layui.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="/js/vue2.5.13.min.js"></script>
+	<script type="text/javascript" src="/js/axios0.18.0.min.js"></script>
+	<script type="text/javascript" src="/js/vue-resource.js"></script>
+	<script type="text/javascript">
+	layui.use('table', function() {
+		var table = layui.table;
+		table.render({
+			elem : '#demo',
+			url : '/skill_ask/queryByPage',
+			cols : [ [ //标题栏
+			{
+				field : 's_id',
+				title : '编号',
+				width : 80
+			}, {
+				field : 's_title',
+				title : '标题',
+				width : 200
+			}, {
+				field : 's_question',
+				title : '提出的问题',
+				width : 300
+			}, {
+				field : 's_date',
+				title : '发布时间',
+				width : 200
+			}, {
+				field : 'realname',
+				title : '作者',
+				width : 200
+			}, {
+				field : 'cname',
+				title : '所属课程',
+				width : 200
+			}, {
+				field : 'hd',
+				title : '回帖数',
+				width : 80
+			}  ] ],
+			page : true,
+		});
+	});
+	</script>
+  </head>
+  
+  <body>
+    <table id="demo"></table>
+  </body>
+</html>

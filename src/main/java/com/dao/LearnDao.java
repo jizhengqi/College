@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.entity.Curriculum;
 import com.entity.Learn;
 
 @Mapper
@@ -30,8 +31,12 @@ public interface LearnDao {
 	/**
 	 * 修改学习情况
 	 * 
-	 * @param l
+	 * @param
 	 * @return
 	 */
 	public Integer update(Learn l);
+	
+	// 查询某个用户下的所有课程
+	public List<Curriculum> queryByU_id(String u_id);
+	
 }

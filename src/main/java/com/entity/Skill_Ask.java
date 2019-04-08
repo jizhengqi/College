@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.util.DateJsonTypeConvert;
 
 public class Skill_Ask implements Serializable {
 
@@ -43,6 +45,7 @@ public class Skill_Ask implements Serializable {
 	public Date getS_date() {
 		return s_date;
 	}
+	@JsonSerialize(using = DateJsonTypeConvert.class)
 	public void setS_date(Date s_date) {
 		this.s_date = s_date;
 	}

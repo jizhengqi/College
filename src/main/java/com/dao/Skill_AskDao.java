@@ -31,4 +31,6 @@ public interface Skill_AskDao {
 	// 查询所有的技术问答信息
 	public List<Map<String,Object>> querySkill_ask(Integer page,Integer limit);
 	
+	// 根据编号查询当前技术问答的信息
+	public List<Map<String,Object>> querySkill_askByid(Integer s_id);
 }

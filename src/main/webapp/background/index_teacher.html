@@ -65,85 +65,15 @@
 </header>
 <aside class="Hui-aside">
 	<div class="menu_dropdown bk_2">
-		<dl id="menu-article">
-		<dt><i class="Hui-iconfont">&#xe616;</i> 技术方向管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-		<dd>
-			<ul>
-				<li><a data-href="article-list.html" data-title="技术管理" href="javascript:void(0)">技术管理</a></li>
-				<li><a data-href="direction-add.html" data-title="技术方向" href="javascript:void(0)">技术方向</a></li>
-				<li><a data-href="language-add.html" data-title="语言分类" href="javascript:void(0)">语言分类</a></li>
-				<li><a data-href="module-add.html" data-title="语言模块" href="javascript:void(0)">语言模块</a></li>
-			</ul>
-		</dd>
-	</dl>
-		<dl id="menu-product">
-			<dt><i class="Hui-iconfont">&#xe620;</i> 视频管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+		<dl id="menu-picture">
+			<dt><i class="Hui-iconfont">&#xe613;</i> 课程管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="javascript:void(0)" data-title="视频管理" href="javascript:void(0)">视频管理</a></li>
-			</ul>
-		</dd>
-	</dl>
-		<dl id="menu-comments">
-			<dt><i class="Hui-iconfont">&#xe622;</i> 用户信息管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a data-href="user_authentication.html" data-title="认证列表" href="javascript:;">认证列表</a></li>
-					<li><a data-href="javascript:void(0)" data-title="公司导师" href="javascript:void(0)">公司导师</a></li>
-					<li><a data-href="user_VIP.html" data-title="会员列表" href="javascript:;">会员列表</a></li>
-			</ul>
-		</dd>
-	</dl>
-		<dl id="menu-member">
-			<dt><i class="Hui-iconfont">&#xe60d;</i> 课程详情<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a data-href="curriculum.html" data-title="课程详情" href="javascript:;">课程详情</a></li>
-					<li><a data-href="member-scoreoperation.html" data-title="积分管理" href="javascript:;">积分管理</a></li>
-			</ul>
-		</dd>
-	</dl>
-		<dl id="menu-admin">
-			<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a data-href="admin-role.html" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
-					<li><a data-href="admin-permission.html" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
-					<li><a data-href="admin-list.html" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
-			</ul>
-		</dd>
-	</dl>
-		<dl id="menu-tongji">
-		<dt><i class="Hui-iconfont">&#xe61a;</i> 系统统计<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-		<dd>
-			<ul>
-				<li><a data-href="charts-1.html" data-title="折线图" href="javascript:void(0)">折线图</a></li>
-				<li><a data-href="charts-2.html" data-title="时间轴折线图" href="javascript:void(0)">时间轴折线图</a></li>
-				<li><a data-href="charts-3.html" data-title="区域图" href="javascript:void(0)">区域图</a></li>
-				<li><a data-href="charts-4.html" data-title="柱状图" href="javascript:void(0)">柱状图</a></li>
-				<li><a data-href="charts-5.html" data-title="饼状图" href="javascript:void(0)">饼状图</a></li>
-				<li><a data-href="charts-6.html" data-title="3D柱状图" href="javascript:void(0)">3D柱状图</a></li>
-				<li><a data-href="charts-7.html" data-title="3D饼状图" href="javascript:void(0)">3D饼状图</a></li>
-			</ul>
-		</dd>
-	</dl>
-	<dl id="menu-system">
-			<dt><i class="Hui-iconfont">&#xe62e;</i> 视频详情<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a data-href="system-base.html" data-title="系统设置" href="javascript:void(0)">视频设置</a></li>
-			</ul>
-		</dd>
-	</dl>
-	<dl id="menu-system">
-			<dt><i class="Hui-iconfont">&#xe62e;</i> 技术问答<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
-				<ul>
-					<li><a data-href="skill_ask.html" data-title="问答管理" href="javascript:void(0)">问答管理</a></li>
-			</ul>
-		</dd>
-	</dl>
-</div>
+					<li><a data-href="course.html" data-title="课程管理" href="javascript:void(0)">课程管理</a></li>
+				</ul>
+			</dd>
+		</dl>
+	</div>
 </aside>
 <div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
 <section class="Hui-article-box">
@@ -254,11 +184,10 @@ var str = new Vue({
 	},
 	methods:{
 		selects: function(){
-			var url = "/admin/getAdmins";
+			var url = "/user/getUsers";
 			this.$http.post(url).then(function(response){
 				console.log(response.data);
-				this.list = response.data;
-				this.namets = this.list[0].a_name;
+				this.namets = response.data.u_realname;
 			});
 		}
 	}

@@ -178,7 +178,7 @@ public class UsersController {
 	public Integer queryVipById(String u_id) {
 		List<Users> list = us.queryVipById(u_id);
 		if (null != list) {
-			rs = 2;
+			return 2;
 		}
 		if (null != list.get(0).getU_vip()) {
 			rs = 1;
@@ -291,6 +291,30 @@ public class UsersController {
 	@ResponseBody
 	public Integer editMsg(String phone, Users user, HttpSession session) {
 		return us.editMsg(phone, user, session);
+	}
+	
+	// 后台教师登陆发布信息
+	@RequestMapping("query_HT_teacher")
+	@ResponseBody
+	public Integer query_HT_teacher(String uname,String pwd,HttpSession session){
+		List<Users> list = us.query_HT_teacher(uname, pwd);
+		if(list.size() > 0){
+			rs = 1;
+			session.setAttribute("teacher", list.get(0));
+		}else{
+			rs = 2;
+		}
+		return rs;
+	}
+	
+	// 获取当前后台登陆者的信息
+	@SuppressWarnings("unchecked")
+	@RequestMapping("getUsers")
+	@ResponseBody
+	public Users getUsers(HttpSession session){
+		Users str = (Users) session.getAttribute("teacher");
+		System.out.println(str);
+		return str;
 	}
 
 	/**

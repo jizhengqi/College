@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dao.CollectDao;
 import com.entity.Collect;
+import com.entity.Curriculum;
 
 @Service
 @Transactional
@@ -39,5 +40,10 @@ public class CollectService {
 	// 查询某个用户所有收藏的课程
 	public List<Collect> queryById(String u_id) {
 		return cd.queryById(u_id);
+	}
+	
+	// 查询用户收藏的所有课程
+	public List<Curriculum> queryByU_id(String u_id){
+		return cd.queryByU_id(u_id);
 	}
 }

@@ -141,14 +141,16 @@
     var app = new Vue({
         el: "#app",
         data: {
-            list: []
+            list: [],
+            u_ids: ""
         },
         created: function() {
-            this.getlist();
+            this.selects();
         },
         methods: {
             getlist: function() {
-                var url = "/curriculum/queryCurriculum?u_id=1";
+            	alert(this.u_ids)
+                var url = "/curriculum/queryCurriculum?u_id=" + this.u_ids;
                 this.$http.get(url).then(function(response) {
                     if (response.status != 200) {
                         alert(response.status);
@@ -156,17 +158,28 @@
                     }
                     this.list = response.data;
                 });
-            }
+            },
+            selects: function(){
+    			var url = "/user/getUsers";
+    			this.$http.post(url).then(function(response){
+    				console.log(response.data);
+    				this.namets = response.data.u_realname;
+    				this.u_ids = response.data.u_id;
+    				this.getlist();
+    			});
+    		}
         }
     })
 
     var addCourse = new Vue({
         el: "#addCourse",
         data: {
-        	limt: []
+        	limt: [],
+        	u_ids: ""
         },
         created: function(){
         	this.getInt();
+        	this.selects();
         },
         methods: {
             createCourse: function() {
@@ -184,7 +197,7 @@
                     var url = "/curriculum/addCurriculum";
                     let formData = new FormData(document.querySelector("#course"));
                     formData.append("c_date", new Date());
-                    formData.append("u_id", '1');
+                    formData.append("u_id", this.u_ids);
                     console.log(formData);
                     this.$http.post(url, formData).then(function(response) {
                         if (response.status != 200) {
@@ -237,7 +250,15 @@
             	this.$http.get(url).then(function(response) {
                     this.limt = response.data;
                 });
-            }
+            },
+            selects: function(){
+    			var url = "/user/getUsers";
+    			this.$http.post(url).then(function(response){
+    				console.log(response.data);
+    				this.namets = response.data.u_realname;
+    				this.u_ids = response.data.u_id;
+    			});
+    		}
         }
     });
 

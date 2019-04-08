@@ -31,7 +31,7 @@
 		<div class="header">
 			<h1>
 				<a href="//www.jikexueyuan.com" class="logo"> <img
-					src="/images/logo.png?t=1513326254000" width="100" alt="骇客学院" />
+					src="/img/logo.png?t=1513326254000" width="100" alt="骇客学院" />
 				</a>
 			</h1>
 			<nav style="width:490px;">
@@ -39,7 +39,7 @@
 					<li><a href="/index.html" class="home">首页</a></li>
 					<li class="careerpath"><a href="javascript:void(0)">职业</a><i
 						class="slide-icon"></i></li>
-					<li><a href="//www.jikexueyuan.com/course/">课程</a><i
+					<li><a href="javascript:void(0)">课程</a><i
 						class="slide-icon"></i>
 						<div class="slide-submeu">
 							<a href="javascript:void(0)">免费</a> <a href="javascript:void(0)">VIP</a>
@@ -51,21 +51,36 @@
 						</div></li>
 				</ul>
 			</nav>
-			<div class="search">
-				<input class="searchinput" id="searchinput"
-					placeholder="搜索课程、问答或Wiki" /> <span class="search-icon"
-					id="search-bottom"></span>
-				<div class="search-result"></div>
-			</div>
-			<div class="nav-other" id="nav-other">
-				<div class="centerbox" style="display: none;">
-					<a href="javascript:void(0)" class="learn-center" title="学习中心"></a>
-				</div>
-				<div class="centerbox" style="display: none;">
-					<a href="javascript:void(0)" class="message" id="message"
-						title="消息中心"><i class="have" id="have" style="display: none;"></i></a>
-				</div>
-			</div>
+			<div class="nav-other">
+                    <div id="y-login">
+                        <div class="centerbox" style="display: inline-block;">
+                            <a href="ke_doing.html" class="learn-center" title="学习中心"></a>
+                        </div>
+                        <div class="centerbox" style="display: inline-block;">
+                            <a href="" class="message" id="message" title="消息中心">
+                                <i class="have" id="have" style="display: none;"></i>
+                            </a>
+                        </div>
+                        <span class="userinfo-login" id="userinfo-login" style="display: inline-block;">
+                            <a href="setting_user.html">
+                                <img src="img/default.gif" id="userpoto">
+                            </a>
+                            <i id="uservip-icon"></i>
+                            <div class="slide-submeu user-slide">
+                                <a href="ke_doing.html"><i class="learningcenter-icon"></i>学习中心</a>
+                                <a href="learn_center.html"><i class="homepage-icon"></i>个人主页</a>
+                                <a href="setting_user.html"><i class="set-icon"></i>账号设置</a>
+                                <a href="user/logout?path=index"><i class="exit-icon"></i>退出登录</a>
+                            </div>
+                        </span>
+                    </div>
+                    <div id="n-login">
+                        <span class="userinfo-notlogin">
+                            <a href="Login.html">登录</a><i></i>
+                            <a href="Register.html">注册</a>
+                        </span>
+                    </div>
+                </div>
 		</div>
 	</div>
 
@@ -1045,9 +1060,7 @@
 															<dd class="cf">
 																<a href="https://wenda.jikexueyuan.com/lists/b2c/"
 																	cgid="63">B2C</a>
-
 															</dd>
-
 														</dl>
 													</div>
 												</div>
@@ -1055,7 +1068,7 @@
 										</li>
 										<li>
 											<div>
-												<a cgid="1" href="https://wenda.jikexueyuan.com">全部分类</a>
+												<a cgid="1" href="javascript:void(0)">全部分类</a>
 											</div>
 										</li>
 									</ul>
@@ -1063,30 +1076,6 @@
 								</div>
 								<!-- /分类列表 -->
 							</div>
-						</div>
-						<div class="qsort-see">
-							<dl>
-								<dt>查看：</dt>
-								<dd>
-									<a class="default" href="https://wenda.jikexueyuan.com">默认</a>
-								</dd>
-								/
-								<dd>
-									<a class="good" rel="nofollow"
-										href="https://wenda.jikexueyuan.com/lists?status=is_good"><i
-										class="icon-diamond"></i>问答精华</a>
-								</dd>
-								/
-								<dd>
-									<a class="new" rel="nofollow"
-										href="https://wenda.jikexueyuan.com/lists?status=zero">待回复</a>
-								</dd>
-								/
-								<dd>
-									<a class="new" rel="nofollow"
-										href="https://wenda.jikexueyuan.com/lists?status=new">最新创建</a>
-								</dd>
-							</dl>
 						</div>
 					</div>
 					<!-- /wrap -->
@@ -1101,14 +1090,14 @@
 						</a></li>
 						<li class="askpv">
 							<div>
-								<strong>40.7k</strong>
+								<strong>{{ s.s_browse }}</strong>
 								<p>浏览</p>
 							</div>
 						</li>
 						<li class="asktit">
 							<p class="caption cf">
 							<h3>
-								<a href="javascript:void(0)"
+								<a v-bind:href="'question.html?s_id='+s.s_id+''"
 									target="_blank">{{ s.s_title }}</a>
 							</h3><!--  <span class="setop">置顶</span> -->
 							</p>
@@ -1124,885 +1113,18 @@
 							</p>
 						</li>
 					</ul>
-					<!-- <ul class="cf">
-						<li class="askstatus"><a class="solve" href="javascript:;">
-								<strong>25</strong>
-								<p>解决</p>
-						</a></li>
-
-						<li class="askpv">
-							<div>
-								<strong>24k</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/27538/"
-									target="_blank">Bootstrap 最新版 V4 中文文档</a>
-							</h3> <span class="setop">置顶</span>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/cntnn11/"
-									target="_blank"> cntnn11 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/516.html">Bootstrap 简介</a></span>
-								&middot; <span> <a
-									href="http://my.jikexueyuan.com/0zgWVWWqW/" target="_blank">
-										wx_r5f4zket </a> &middot; 11月20日 回答
-								</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="reply" href="javascript:;">
-								<strong>8</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>6.8k</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/32319/"
-									target="_blank">【老师分享】《名企数据结构面试题之初识DFS与BFS》，让你练出IT界的A4腰！</a>
-							</h3> <span class="setop">置顶</span>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/subvoid/"
-									target="_blank"> subVoid </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/2669.html">初识 DFS 与 BFS</a></span>
-								&middot; <span> <a
-									href="http://my.jikexueyuan.com/luoyan18/" target="_blank">
-										jike_1517672 </a> &middot; 2017年08月31日 回答
-								</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="reply" href="javascript:;">
-								<strong>1</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>10.4k</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/28716/"
-									target="_blank">【老师分享】对LPS的Manacher算法感兴趣的同学请参考以下解法。</a>
-							</h3> <span class="setop">置顶</span>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/subvoid/"
-									target="_blank"> subVoid </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/2142.html">神奇的回文</a></span>
-								&middot; <span> <a
-									href="http://my.jikexueyuan.com/dream/" target="_blank">
-										任亚楠 </a> &middot; 2015年10月23日 回答
-								</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="reply" href="javascript:;">
-								<strong>2</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>647</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/37755/"
-									target="_blank">0-0 我居然看到了16年的小伙伴喊更新的慢。。。。。。</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/kotori/"
-									target="_blank"> ことり </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/2023.html">Laravel 框架概述</a></span>
-								&middot; <span> <a
-									href="http://my.jikexueyuan.com/0zWkXUjPk/" target="_blank">
-										wx_mcs85h43 </a> &middot; 12月10日 回答
-								</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>6</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38510/"
-									target="_blank">这个老师讲的是个屁啊</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0JWkXqkaj/"
-									target="_blank"> jike_0414191 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/114.html">Java面向对象中引用的传递</a></span>
-								&middot; <span> 12月10日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>6</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38509/"
-									target="_blank">为什么没有对应的下载链接？</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0zWkXUjPk/"
-									target="_blank"> wx_mcs85h43 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/4234.html">开始构建WordPress主题</a></span>
-								&middot; <span> 12月10日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="reply" href="javascript:;">
-								<strong>4</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>777</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/29872/"
-									target="_blank">播放器加载不了中文路径和中文名的视频文件怎么办？</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/my_java_com/"
-									target="_blank"> jike_mo34n8ai </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/248.html">Java视频播放器的制作</a></span>
-								&middot; <span> <a
-									href="http://my.jikexueyuan.com/0zWkXUkUg/" target="_blank">
-										jike_萌 </a> &middot; 12月07日 回答
-								</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>13</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38508/"
-									target="_blank">集群启动报错问题</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0NjPjXjVq/"
-									target="_blank"> 菜鸟起飞中 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/2547.html">Hadoop 集群与管理</a></span>
-								&middot; <span> 12月07日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>22</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38507/"
-									target="_blank">iwen讲得的确烂</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0SWkXqXaU/"
-									target="_blank"> 颓废高音 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/132.html">Java
-										String字符串详解</a></span> &middot; <span> 12月01日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>12</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38506/"
-									target="_blank">常量</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0SVXUjaVj/"
-									target="_blank"> t1辉子 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/699.html">Python 语法基础</a></span>
-								&middot; <span> 12月01日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>12</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38505/"
-									target="_blank">老师的语气好有感情，像是在参加演讲比赛呢，哈哈哈哈</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0SVXUjaVj/"
-									target="_blank"> t1辉子 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/594.html">Python 初识</a></span>
-								&middot; <span> 12月01日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>25</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38504/"
-									target="_blank">启动tomcat时出现的报错</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0yWkqjWVP/"
-									target="_blank"> wx_bls5cjea </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/2125.html">SSH
-										鲜花礼品网用户注册、登录、注销及管理</a></span> &middot; <span> 11月30日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>13</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38503/"
-									target="_blank">cordova app 怎么发送ajax请求？</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0yVgWXWUX/"
-									target="_blank"> lrj </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/1511.html">Cordova
-										常用插件的使用</a></span> &middot; <span> 11月29日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>16</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38502/"
-									target="_blank">红框里面的-是什么意思</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0mWkUaUjU/"
-									target="_blank"> qq_s7g2y946 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/2034.html">Perl
-										正则表达式（二）</a></span> &middot; <span> 11月29日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>17</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38501/"
-									target="_blank">讲的非常好，声音非常有磁性，非常的清楚</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0NWkPXqXU/"
-									target="_blank"> qq_9s6q1xkn </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/2063.html">ZooKeeper
-										客户端的使用(二)</a></span> &middot; <span> 11月28日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="reply" href="javascript:;">
-								<strong>1</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>38</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38494/"
-									target="_blank">老师，starttime=1f中的f是什么意思？</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0HWkPkUPj/"
-									target="_blank"> jike_0951796 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/461.html">脚本开发中的基础数学</a></span>
-								&middot; <span> <a
-									href="http://my.jikexueyuan.com/0mjqgXjPg/" target="_blank">
-										骇客学院_吕布 </a> &middot; 11月28日 回答
-								</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="reply" href="javascript:;">
-								<strong>2</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>1.6k</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/9787/"
-									target="_blank">请问Android Studio怎么导入聚合数据SDK？</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0zVXqWqXX/"
-									target="_blank"> KOINHUG </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/356.html">聚合数据 Android
-										项目开发实战:天气</a></span> &middot; <span> <a
-									href="http://my.jikexueyuan.com/0iWkXaPVP/" target="_blank">
-										jike_7808851 </a> &middot; 11月28日 回答
-								</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="reply" href="javascript:;">
-								<strong>2</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>349</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/9019/"
-									target="_blank">老师讲的是老板的sdk ，</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0NVXjajjV/"
-									target="_blank"> 12103420 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/356.html">聚合数据 Android
-										项目开发实战:天气</a></span> &middot; <span> <a
-									href="http://my.jikexueyuan.com/0iWkXaPVP/" target="_blank">
-										jike_7808851 </a> &middot; 11月28日 回答
-								</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>21</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38500/"
-									target="_blank">返回220问题，系统反应垃圾邮件</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0mWkUPgka/"
-									target="_blank"> 说殊人 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/738.html">Base64
-										编码的编程使用</a></span> &middot; <span> 11月26日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>21</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38499/"
-									target="_blank">安装cordova为什么要先安装node.js</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0yVgWXWUX/"
-									target="_blank"> lrj </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/799.html">Cordova 入门和基础</a></span>
-								&middot; <span> 11月25日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>20</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38498/"
-									target="_blank">为什么后面都是150</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0mWkUaUjU/"
-									target="_blank"> qq_s7g2y946 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/1415.html">Perl 控制结构</a></span>
-								&middot; <span> 11月24日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="reply" href="javascript:;">
-								<strong>1</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>217</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/37786/"
-									target="_blank">无法初始化</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0JgUkqPqj/"
-									target="_blank"> jike_0382590 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/356.html">聚合数据 Android
-										项目开发实战:天气</a></span> &middot; <span> <a
-									href="http://my.jikexueyuan.com/0iWkXaPVP/" target="_blank">
-										jike_7808851 </a> &middot; 11月23日 回答
-								</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>20</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38497/"
-									target="_blank">代码字体</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0SgWgjaXg/"
-									target="_blank"> jike_28614041 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/2477.html">使用 jQuery
-										实现多种类型的导航条（上）</a></span> &middot; <span> 11月23日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="reply" href="javascript:;">
-								<strong>2</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>753</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/35773/"
-									target="_blank">关于INT信号</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0JgqXXgPk/"
-									target="_blank"> qq_qtsuckjd </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/1558.html">Nginx
-										的启动、停止与信号控制</a></span> &middot; <span> <a
-									href="http://my.jikexueyuan.com/0yVgWXWUX/" target="_blank">
-										lrj </a> &middot; 11月22日 回答
-								</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>29</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38496/"
-									target="_blank">老师，我这选择项，不会自动刷新</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0xqXkqVkq/"
-									target="_blank"> qq_z74p3juk </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/818.html">ASP.NET MVC
-										Javascript 与 Ajax (二)</a></span> &middot; <span> 11月22日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>21</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38495/"
-									target="_blank">不会刷新项</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0xqXkqVkq/"
-									target="_blank"> qq_z74p3juk </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/818.html">ASP.NET MVC
-										Javascript 与 Ajax (二)</a></span> &middot; <span> 11月22日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>26</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38493/"
-									target="_blank">老师我的AndroidStudio3.3无法自动创建带有Fragment的工程</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0ijqqaqWj/"
-									target="_blank"> 雷桐林 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/708.html">Android
-										Fragment</a></span> &middot; <span> 11月21日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>23</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38492/"
-									target="_blank">SessionSavePath没起作用</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0xjaWUaaU/"
-									target="_blank"> jike_chenpengru </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/1903.html">构建轻博客系统之用户管理</a></span>
-								&middot; <span> 11月18日 提问</span>
-							</p>
-						</li>
-					</ul>
-					<ul class="cf">
-
-						<li class="askstatus"><a class="noreply" href="javascript:;">
-								<strong>0</strong>
-								<p>回答</p>
-						</a></li>
-						<li class="askpv">
-							<div>
-								<strong>30</strong>
-								<p>浏览</p>
-							</div>
-						</li>
-						<li class="asktit">
-							<p class="caption cf">
-							<h3>
-								<a href="https://wenda.jikexueyuan.com/question/38491/"
-									target="_blank">还有更深入的课程吗</a>
-							</h3>
-							</p>
-							<p class="mark">
-								<span> <a href="http://my.jikexueyuan.com/0HgPgqgkP/"
-									target="_blank"> 资料免费分享VX_AA77711122 </a>
-								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/2098.html">JVM
-										自动内存管理：对象判定和回收算法</a></span> &middot; <span> 11月15日 提问</span>
-							</p>
-						</li>
-					</ul> -->
-
 					<div id="page-nav">
-						<a class='prev last no'>上一页</a> &nbsp;<a class='on'
-							href='javascript:;'>1</a>&nbsp;<a href='?listRows=30&page=2'>2</a>&nbsp;<a
-							href='?listRows=30&page=3'>3</a>&nbsp;<a>...</a>&nbsp;<a
-							href='?listRows=30&page=853'>853</a> <a class='next'
-							href='?listRows=30&page=2'><span><em>下一页</em></span></a> <span
-							class='gopage'><form method='get' action=''>
-								去第<input type='hidden' name='listRows' value='30' /><input
-									name='page' type='text' class='page_text' min='1' max='100000'
-									size='5' maxlength='5' value='1' />页
+						<a class='prev last no'>上一页</a> &nbsp;
+						<a class='next' href='?limit=10&page=2'><span><em>下一页</em></span></a> 
+						<span class='gopage'>
+							<form method='get' action=''>
+								去第<input type='hidden' name='limit' value='10' />
+								<input name='page' type='text' class='page_text' min='1' max='100000' size='5' maxlength='5' value='1' />页
 								<button>确定</button>
-							</form></span>
-						<div class="show-item">
-							<span>每页显示</span>
-							<dl>
-								<dt>
-									<span class="">30</span> <i class="arrow"></i>
-								</dt>
-								<dd>
-									<p class="">
-										<a
-											href="https://wenda.jikexueyuan.com/lists//?page=1&listRows=30">30</a>
-									</p>
-									<p class="">
-										<a
-											href="https://wenda.jikexueyuan.com/lists//?page=1&listRows=60">60</a>
-									</p>
-									<p class="">
-										<a
-											href="https://wenda.jikexueyuan.com/lists//?page=1&listRows=90">90</a>
-									</p>
-								</dd>
-							</dl>
-						</div>
+							</form>
+						</span>
+						<span>总页数：{{ pageNum }}</span>
 					</div>
-
 				</div>
 			</div>
 			<!-- /main -->
@@ -2085,35 +1207,35 @@
 					</h2>
 					<div class="show-area">
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/sid/" target="_blank"> <img
+							<a href="javascript:void(0)" target="_blank"> <img
 								src="img/avatar_2971624.jpg"
 								alt="陈世帝" />
 								<p>陈世帝</p>
 							</a>
 						</div>
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/7yJgWaVjX/" target="_blank"> <img
+							<a href="javascript:void(0)" target="_blank"> <img
 								src="img/560239.jpeg"
 								alt="寄存心" />
 								<p>寄存心</p>
 							</a>
 						</div>
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/0mqajajUa/" target="_blank"> <img
+							<a href="javascript:void(0)" target="_blank"> <img
 								src="img/08h8xdq852rnq.jpeg"
 								alt="麒麟才子" />
 								<p>麒麟才子</p>
 							</a>
 						</div>
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/0HjkVVPPk/" target="_blank"> <img
+							<a href="javascript:void(0)" target="_blank"> <img
 								src="img/26qylw4u9wn48.jpeg"
 								alt="黄烦烦" />
 								<p>黄烦烦</p>
 							</a>
 						</div>
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/cxfsunshine/" target="_blank">
+							<a href="javascript:void(0)" target="_blank">
 								<img
 								src="img/3cbink1u9fuos.jpeg"
 								alt="柴雪飞" />
@@ -2121,42 +1243,42 @@
 							</a>
 						</div>
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/7myXVPakk/" target="_blank"> <img
+							<a href="javascript:void(0)" target="_blank"> <img
 								src="img/3a6abbshufok4.jpeg"
 								alt="施雨轩" />
 								<p>施雨轩</p>
 							</a>
 						</div>
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/cold/" target="_blank"> <img
+							<a href="javascript:void(0)" target="_blank"> <img
 								src="img/0ewp89cn8c6sp.jpeg"
 								alt="贾寒" />
 								<p>贾寒</p>
 							</a>
 						</div>
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/0mVXjakaP/" target="_blank"> <img
+							<a href="javascript:void(0)" target="_blank"> <img
 								src="img/008gcnh9wtby8.jpeg"
 								alt="小嘿" />
 								<p>小嘿</p>
 							</a>
 						</div>
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/0ykVVXUUU/" target="_blank"> <img
+							<a href="javascript:void(0)" target="_blank"> <img
 								src="img/1229777.jpeg"
 								alt="余俊魁" />
 								<p>余俊魁</p>
 							</a>
 						</div>
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/0mjXjagkq/" target="_blank"> <img
+							<a href="javascript:void(0)" target="_blank"> <img
 								src="img/2jsvwgg12ig4o.jpeg"
 								alt="范琪" />
 								<p>范琪</p>
 							</a>
 						</div>
 						<div class="unit">
-							<a href="//my.jikexueyuan.com/suool/" target="_blank"> <img
+							<a href="javascript:void(0)" target="_blank"> <img
 								src="img/2wc6acs3puw48.jpeg"
 								alt="Suool" />
 								<p>Suool</p>
@@ -2275,19 +1397,62 @@
 		var app = new Vue({
 			el: '#app',
 			data: {
-				list: []
+				list: [],
+				pageNum: "",
+				page: ""
 			},
 			created: function(){
 				this.querySkill_ask();
+				this.queryBy();
+				this.showUser();
 			},
 			methods: {
 				querySkill_ask: function(){
-					var url = "skill_ask/queryByPage";
+					var url = "skill_ask/querySkill_ask";
 					this.$http.get(url).then(function(response) {
 						this.list = response.data;
-                        console.log(response.data);
                     });
-				}
+				},
+				queryBy: function(){
+					var url = "skill_ask/queryBy";
+					this.$http.get(url).then(function(response) {
+						this.pageNum = response.data;
+                    });
+				},
+				showUser: function() { //通过cookie查询用户是否处于登陆状态
+                    var url = "user/queryByUsers";
+                    var str = this.getCookie("phone");
+                    var formData = new FormData();
+                    formData.append("phone", str);
+                    if (str != "") {
+                        this.$http.post(url, formData).then(function(response) {
+                            //console.log("data:" + response.data.u_phone);
+                            if (response.data.u_phone == undefined || response.data.u_phone == ""){
+                            	$("#y-login").hide();
+                                $("#n-login").show();
+                            }else if (response.data.u_phone == str) {
+                                $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
+                                $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
+                                $("#userpoto").attr("src", response.data.u_photo);
+                            } else {
+                                $("#y-login").hide();
+                                $("#n-login").show();
+                            }
+                        });
+                    } else {
+                        $("#y-login").hide();
+                        $("#n-login").show();
+                    }
+                },
+                getCookie: function(key) {
+                    var arr1 = document.cookie.split("; ");
+                    for (var i = 0; i < arr1.length; i++) {
+                        var arr2 = arr1[i].split("="); //通过=截断，把name=Jack截断成[name,Jack]数组;
+                        if (arr2[0] == key) {
+                            return decodeURI(arr2[1]);
+                        }
+                    }
+                }
 			}
 		});
 	</script>

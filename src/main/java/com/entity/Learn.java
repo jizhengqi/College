@@ -48,7 +48,6 @@ public class Learn implements Serializable {
 	public double getL_date() {
 		return l_date;
 	}
-
 	public void setL_date(double l_date) {
 		this.l_date = l_date;
 	}

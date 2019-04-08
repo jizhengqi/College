@@ -52,4 +52,9 @@ public class Skill_AskService {
 	public List<Map<String,Object>> querySkill_ask(Integer page,Integer limit){
 		return sad.querySkill_ask(page, limit);
 	}
+	
+	// 根据编号查询当前技术问答信息
+	public List<Map<String,Object>> querySkill_askByid(Integer s_id){
+		return sad.querySkill_askByid(s_id);
+	}
 }

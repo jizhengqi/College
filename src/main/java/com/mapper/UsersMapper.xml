@@ -323,5 +323,9 @@
 	<select id="queryByTeachers" resultType="com.entity.Users">
 		select * from users where u_teacher = 1
 	</select>
-
+	
+	<!-- 查询当前用户信息 -->
+	<select id="query_HT_teacher" resultType="com.entity.Users">
+		select * from users where u_phone = #{param1} and u_pwd = #{param2} and u_teacher = 1
+	</select>
 </mapper>
