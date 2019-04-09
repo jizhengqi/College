@@ -93,7 +93,6 @@ public class VideoService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(video);
 		// 执行添加视频详细信息到数据库
 		return vd.addVideo(video);
 	}

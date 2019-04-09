@@ -36,12 +36,12 @@
                         <li>
                             <a href="index.html" class="home">首页</a>
                         </li>
-                        <li class="careerpath">
+                        <!-- <li class="careerpath">
                             <a href="">VIP</a>
                         </li>
                         <li>
                             <a href="">免费</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="art.html" target="_blank">技术问答</a>
                         </li>
@@ -439,7 +439,7 @@
                     var url = "user/queryByUsers";
                     var str = this.getCookie("phone");
                     var formData = new FormData();
-                    formData.append("phone", str)
+                    formData.append("phone", str);
                     if (str != "") {
                         this.$http.post(url, formData).then(function(response) {
                             //console.log("data:" + response.data.u_phone);
@@ -497,7 +497,7 @@
                 }
             }
         }
-
+        
     </script>
 </body>
 

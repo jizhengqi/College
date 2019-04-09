@@ -33,7 +33,6 @@ public class CurriculumController {
 	@ResponseBody
 	public Integer addCurriculum(Curriculum curriculum) {
 		curriculum.setC_vip(curriculum.getC_typeOfCourse());
-		System.out.println(curriculum);
 		return curriculumService.addCurriculum(curriculum);
 	}
 
@@ -57,6 +56,10 @@ public class CurriculumController {
 	@RequestMapping("queryByPage")
 	@ResponseBody
 	public Map<String,Object> queryByPage(Integer page,Integer limit){
+		if(null == page){
+			page = 1;
+		}
+		limit = 1000;
 		List<Curriculum> list = curriculumService.queryByPage((page-1)*limit, limit);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("msg", "");

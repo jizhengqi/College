@@ -150,9 +150,7 @@ public class UsersService {
 			sessionUser.setU_sex(user.getU_sex());
 			sessionUser.setU_birthday(user.getU_birthday());
 			sessionUser.setU_address(user.getU_address());
-			System.out.println("intro:" + user.getU_intro());
 			sessionUser.setU_intro(user.getU_intro());
-			System.out.println("session:" + sessionUser);
 			ud.upd(sessionUser);// 修改用户信息
 			session.setAttribute(user.getU_phone(), sessionUser);
 			rs = 1;

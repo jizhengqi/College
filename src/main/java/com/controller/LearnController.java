@@ -27,9 +27,7 @@ public class LearnController {
 	public Integer add(Learn l) {
 		List<Learn> list = ls.queryByAll(l);
 		if (list.size() > 0) {
-			System.out.println("修改:" + l);
 			rs = ls.update(l);
-			System.out.println("修改:" + l);
 		} else {
 			ls.add(l);
 			rs = 1;
@@ -42,7 +40,6 @@ public class LearnController {
 	@ResponseBody
 	public List<Curriculum> queryByU_id(String u_id) {
 		List<Curriculum> list = ls.queryByU_id(u_id);
-		System.out.println(list);
 		return list;
 	}
 
@@ -56,7 +53,6 @@ public class LearnController {
 	@RequestMapping("getLearn")
 	@ResponseBody
 	public Learn getLearnByU_idAndC_id(String u_id, Integer c_id) {
-		System.out.println("进来了");
 		return ls.getLearnByU_idAndC_id(u_id, c_id);
 	}
 }

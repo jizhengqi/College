@@ -20,10 +20,6 @@ public class CollectService {
 
 	// 根据信息查询是否关注当前视频
 	public List<Collect> queryByCollect(String u_id, Integer c_id, Integer v_id) {
-		System.out.println(u_id);
-		System.out.println(c_id);
-		System.out.println(v_id);
-		System.out.println(cd.queryByCollect(u_id, c_id, v_id));
 		return cd.queryByCollect(u_id, c_id, v_id);
 	}
 

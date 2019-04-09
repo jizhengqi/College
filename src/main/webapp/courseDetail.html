@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/course_fefbd4c.css" />
     <link rel="stylesheet" href="css/loading_03ba72f.css" />
     <link rel="stylesheet" href="css/lessonlist_d41d8cd.css" />
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="js/growingio.js?t=1513326254000"></script>
     <script type="text/javascript" src="js/mask.js?t=1513326254000"></script>
@@ -24,6 +25,7 @@
     <script src="/vue/vue-axios/axios0.18.0.min.js"></script>
     <script src="/vue/vue-resource/vue-resource.js"></script>
     <script type="text/javascript" src="/vue/vue-router/vue-router.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/layui/layui.js"></script>
 </head>
 
 <body>
@@ -41,12 +43,12 @@
                         <li>
                             <a href="index.html" class="home">首页</a>
                         </li>
-                        <li class="careerpath">
+                        <!-- <li class="careerpath">
                             <a href="javascript:void(0)">VIP</a>
                         </li>
                         <li>
                             <a href="javascript:void(0)">免费</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="art.html" target="_blank">技术问答</a>
                         </li>
@@ -113,9 +115,6 @@
                                                         <p class="lesson-detailed">
                                                             <a href="免费" ref="nofollow">免费</a>
                                                         </p>
-                                                        <p class="lesson-detailed">
-                                                            <a href="极客币专享" ref="nofollow">极客币专享</a>
-                                                        </p>
                                                         <p class="lesson-all">
                                                             <a href="全部" ref="nofollow">全部</a>
                                                         </p>
@@ -165,7 +164,7 @@
                                             <li id="2707" test="0" deg="0" v-for="d in liqt" v-bind:onclick="'linkto(&quot;2707.html?c_id='+d.c_id+'&c_name='+d.c_name + '&quot;,&quot;' + d.c_vip + '&quot;)'">
                                                 <div class="lessonimg-box" >
                                                     <a href="javascript:void(0)" target="_blank" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1">
-                                                        <img src="https://a1.jikexueyuan.com/home/201604/26/0ff6/571f242278c8d.jpg" class="lessonimg" v-bind:title="d.c_name" v-bind:alt="d.c_name">
+                                                        <img src="img/571f242278c8d.jpg" class="lessonimg" v-bind:title="d.c_name" v-bind:alt="d.c_name">
                                                         <div class="lessonplay" style="opacity: 0;">
                                                             <a href="javascript:"><i class="playericon" jktag="&posGP=103001&posArea=0002&posOper=2004&aCId=2707&posColumn=2707.1"></i></a>
                                                         </div>
@@ -475,16 +474,16 @@
                     if (this.getParam("m_name") != "" && this.getParam("m_name") != null) {
                         url = "module/queryByModule?m_name=" + this.getParam("m_name");
                         //生成访问链接，可以按照付费方式和难度等级查询课程, Integer c_vip,Integer c_level
-                        $("#fufei").html("<p class='lesson-detailed'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>VIP</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=0&c_level=&quot;)' ref='nofollow'>免费</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>极客币专享</a></p><p class='lesson-all'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&quot;)' ref='nofollow'>全部</a></p>");
+                        $("#fufei").html("<p class='lesson-detailed'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>VIP</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=0&c_level=&quot;)' ref='nofollow'>免费</a></p><p class='lesson-all'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&quot;)' ref='nofollow'>全部</a></p>");
                         //等级
-                        $("#dengji").html("<p class='level-one'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=&c_level=1&quot;)' ref='nofollow'>初级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=&c_level=2&quot;)' ref='nofollow'>中级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=&c_level=3&quot;)' ref='nofollow'>高级</a></p><p class='level-all'><a href='&quot;javascript:queryCourse(module/queryByModule?m_name=" + this.getParam("m_name") + "&quot;)' ref='nofollow'> 全部 </a></p>");
+                        $("#dengji").html("<p class='level-one'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=&c_level=1&quot;)' ref='nofollow'>初级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=&c_level=2&quot;)' ref='nofollow'>中级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;module/queryByModule?m_name=" + this.getParam("m_name") + "&c_vip=&c_level=3&quot;)' ref='nofollow'>高级</a></p><p class='level-all'><a href='javascript:queryCourse(module/queryByModule?m_name=" + this.getParam("m_name") + "&quot;)' ref='nofollow'> 全部 </a></p>");
                         //
                         $("#searchType").html(this.getParam("m_name"));
                         $("#positions").html("<a href='index.html'>首页</a><em>&gt;</em><a href='courseDetail.html?d_name=" + this.getParam("d_name") + "'>" + this.getParam("d_name") + "</a><em>&gt;</em><a href='courseDetail.html?l_name=" + this.getParam("l_name") + "&d_name=" + this.getParam("d_name") + "'>" + this.getParam("l_name") + "</a><em>&gt;</em><a href='courseDetail.html?m_name=" + this.getParam("m_name") + "&d_name=" + this.getParam("d_name") + "&l_name=" + this.getParam("l_name") + "'>" + this.getParam("m_name") + "</a>");
                     } else if (this.getParam("l_name") != "" && this.getParam("l_name") != null) {
                         url = "language/queryByLanguage?l_name=" + this.getParam("l_name");
                         //VIP
-                        $("#fufei").html("<p class='lesson-detailed'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>VIP</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=0&c_level=&quot;)' ref='nofollow'>免费</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>极客币专享</a></p><p class='lesson-all'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&quot;)' ref='nofollow'>全部</a></p>");
+                        $("#fufei").html("<p class='lesson-detailed'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>VIP</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=0&c_level=&quot;)' ref='nofollow'>免费</a></p><p class='lesson-all'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&quot;)' ref='nofollow'>全部</a></p>");
                         //等级
                         $("#dengji").html("<p class='level-one'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=&c_level=1&quot;)' ref='nofollow'>初级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=&c_level=2&quot;)' ref='nofollow'>中级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&c_vip=&c_level=3&quot;)' ref='nofollow'>高级</a></p><p class='level-all'><a href='javascript:queryCourse(&quot;language/queryByLanguage?l_name=" + this.getParam("l_name") + "&quot;)' ref='nofollow'> 全部 </a></p>");
                         //
@@ -493,7 +492,7 @@
                     } else if (this.getParam("d_name") != "" && this.getParam("d_name") != null) {
                         url = "direction/queryByDirection?d_name=" + this.getParam("d_name");
                         //VIP
-                        $("#fufei").html("<p class='lesson-detailed'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>VIP</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=0&c_level=&quot;)' ref='nofollow'>免费</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>极客币专享</a></p><p class='lesson-all'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&quot;)' ref='nofollow'>全部</a></p>");
+                        $("#fufei").html("<p class='lesson-detailed'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=1&c_level=&quot;)' ref='nofollow'>VIP</a></p><p class='lesson-detailed'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=0&c_level=&quot;)' ref='nofollow'>免费</a></p><p class='lesson-all'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&quot;)' ref='nofollow'>全部</a></p>");
                         //等级
                         $("#dengji").html("<p class='level-one'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=&c_level=1&quot;)' ref='nofollow'>初级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=&c_level=2&quot;)' ref='nofollow'>中级</a></p><p class='level-one'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&c_vip=&c_level=3&quot;)' ref='nofollow'>高级</a></p><p class='level-all'><a href='javascript:queryCourse(&quot;direction/queryByDirection?d_name=" + this.getParam("d_name") + "&quot;)' ref='nofollow'> 全部 </a></p>");
                         //当前位置
@@ -503,7 +502,7 @@
                     }
                     this.$http.post(url).then(function(response) {
                         if (response.status != 200) {
-                            alert(response.status);
+                            console.log(response.status);
                             return;
                         }
                         this.liqt = response.data;
@@ -588,10 +587,16 @@
                     if(app.$data.vip == 1){//VIP用户
                         window.open(url);
                     }else{
-                        alert("您还不是VIP，去充值");
+                    	layui.use('layer', function(){
+           				   var layer = layui.layer;
+           				   layer.msg('您还不是VIP，去充值');
+           				});
                     }
                 }else if(e == 2){//极客币视频
-                    alert("付费制视频");
+                	layui.use('layer', function(){
+       				   var layer = layui.layer;
+       				   layer.msg('付费制视频');
+       				});
                 }else{
                     window.open(url);
                 }

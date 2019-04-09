@@ -37,12 +37,12 @@
                         <li>
                             <a href="index.html" class="home">首页</a>
                         </li>
-                        <li class="careerpath">
+                        <!-- <li class="careerpath">
                             <a href="">VIP</a>
                         </li>
                         <li>
                             <a href="">免费</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="art.html" target="_blank">技术问答</a>
                         </li>
@@ -94,7 +94,7 @@
 
                         <div class="common-data">
                             <h3><span id="username"></span>
-                                <a href="setting_ca.html" class="pro-icon"></a>
+                                <a href="setting_ca.html" class="pro-icon" id="setpro"></a>
                                 <a href="setting_vip.html" class="novip-icon" id="setvip"></a>
                             </h3>
                             <p class="common-data-info"><span id="sex">性别：保密</span>
@@ -114,9 +114,9 @@
                             <div class="user-course-cont">
                                 <div id='courseStudy' class="user-course-container">
                                     <h2 id="b1">学习的课程</h2>
-                                    <div class="video-container lesson-list" id="bb" v-for="s in livt">
+                                    <div class="video-container lesson-list" id="bb">
                                         <ul>
-                                            <li>
+                                            <li v-for="s in livt">
                                                 <div class="lessonimg-box">
                                                     <button>学到第2课时</button>
                                                     <a href="/2707.html" target="_blank">
@@ -336,6 +336,11 @@
                                 $("#setvip").css("background-image", "url(img/novip.png)");
                             } else {
                                 $("#setvip").css("background-image", "url(img/vip.png)");
+                            }
+                            if (response.data.u_stu_authentication == null) {
+                                $("#setpro").css("background-image", "url(img/nopro.png)");
+                            } else {
+                                $("#setpro").css("background-image", "url(img/pro.png)");
                             }
                             this.uid = response.data.u_id;
                             this.getStudy();

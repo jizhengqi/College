@@ -76,7 +76,6 @@ public class UsersController {
 	@ResponseBody
 	public String login(String uname, String pwd, HttpSession session,
 			HttpServletResponse response) {
-		System.out.println(uname + "--------" + pwd);
 		String msg = "";
 		Subject subject = SecurityUtils.getSubject();
 		if (!subject.isAuthenticated()) {
@@ -98,27 +97,20 @@ public class UsersController {
 				return "1";
 			} catch (IncorrectCredentialsException e) {
 				msg = "登录密码错误";
-				System.out.println("登录密码错误!!!" + e);
 			} catch (ExcessiveAttemptsException e) {
 				msg = "登录失败次数过多";
-				System.out.println("登录失败次数过多!!!" + e);
 			} catch (LockedAccountException e) {
 				msg = "帐号已被锁定";
-				System.out.println("帐号已被锁定!!!" + e);
 			} catch (DisabledAccountException e) {
 				msg = "帐号已被禁用";
-				System.out.println("帐号已被禁用!!!" + e);
 			} catch (ExpiredCredentialsException e) {
 				msg = "帐号已过期";
-				System.out.println("帐号已过期!!!" + e);
 			} catch (UnknownAccountException e) {
 				msg = "帐号不存在";
-				System.out.println("帐号不存在!!!" + e);
 			} catch (UnauthorizedException e) {
 				msg = "您没有得到相应的授权！";
-				System.out.println("您没有得到相应的授权！" + e);
 			} catch (Exception e) {
-				System.out.println("出错！！！" + e);
+				e.printStackTrace();
 			}
 		}
 		return msg;
@@ -138,7 +130,6 @@ public class UsersController {
 	@ResponseBody
 	public Users queryByUsers(HttpSession session, String phone) {
 		Users user = (Users) session.getAttribute(phone);
-		System.out.println(user);
 		if (null != user) {
 			return user;
 		} else {
@@ -233,8 +224,7 @@ public class UsersController {
 			Date date = DateUtils.StringToDate(birthday, "yyyy-MM-dd");
 			user.setU_birthday(date);
 		}
-		System.out.println("参数：" + user);
-		System.out.println(us.editUserName(user, session));
+		us.editUserName(user, session);
 		response.sendRedirect("/setting_user.html");
 	}
 
@@ -313,7 +303,6 @@ public class UsersController {
 	@ResponseBody
 	public Users getUsers(HttpSession session){
 		Users str = (Users) session.getAttribute("teacher");
-		System.out.println(str);
 		return str;
 	}
 
@@ -326,10 +315,8 @@ public class UsersController {
 	@RequestMapping("querybds")
 	@ResponseBody
 	public Users getUsers(String u_name) {
-		System.out.println("极客" + u_name);
 		for (int i = 0; i < us.getUser().size(); i++) {
 			if (us.getUser().get(i).getU_username().equals(u_name)) {
-				System.out.println(us.getUser().get(i));
 				return us.getUser().get(i);
 			}
 		}

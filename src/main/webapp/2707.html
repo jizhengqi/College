@@ -45,8 +45,8 @@
 				<nav style="width:490px;">
 					<ul>
 						<li><a href="index.html" class="home">首页</a></li>
-						<li class="careerpath"><a href="javascript:void(0)">VIP</a></li>
-						<li><a href="javascript:void(0)">免费</a></li>
+						<!-- <li class="careerpath"><a href="javascript:void(0)">VIP</a></li>
+						<li><a href="javascript:void(0)">免费</a></li> -->
 						<li><a href="art.html">技术问答</a></li>
 					</ul>
 				</nav>
@@ -256,8 +256,6 @@
 								n.c_date }}</span>
 						</div>
 						<div class="teacher-infor cf">
-							<a href="//my.jikexueyuan.com/0zVXXaVWg/record/"><img
-								src="img/563026331ba49.jpg" v-bind:alt="n.c_author"></a>
 							<div class="infor-text">
 								<strong><a v-bind:href="'learn_center.html?u_name='+n.c_author"><i>作者：</i>{{
 										n.c_author }}</a></strong>
@@ -616,7 +614,7 @@ ul.pages li.pagetotal {
                     $("#ApHead").html(this.getParam("c_name"));
                     this.$http.get(url).then(function(response) {
                         if (response.status != 200) {
-                            alert(response.status);
+                            console.log(response.status);
                             return;
                         }
                         this.lint = response.data;
@@ -626,7 +624,7 @@ ul.pages li.pagetotal {
                     var url = "/video/queryVideoByC_id?c_id=" + this.getParam("c_id");
                     this.$http.get(url).then(function(response) {
                         if (response.status != 200) {
-                            alert(response.status);
+                            console.log(response.status);
                             return;
                         }
                         var datas = response.data;
@@ -676,7 +674,7 @@ ul.pages li.pagetotal {
                     var url = "user/queryVipById?u_id=" + param;
                     this.$http.get(url).then(function(response) {
                         if (response.status != 200) {
-                            alert(response.status);
+                            console.log(response.status);
                             return;
                         }
                         this.vip = response.data;
@@ -687,9 +685,15 @@ ul.pages li.pagetotal {
                     var url = "collect/queryByCollect?u_id=" + this.u_ids + "&c_id=" + this.getParam("c_id") + "&v_id=" + v_ids;
                     this.$http.get(url).then(function(response) {
                         if (response.data == 1) {
-                            alert("取消收藏");
+                        	layui.use('layer', function(){
+               				  var layer = layui.layer;
+               				  layer.msg('取消收藏！');
+               				});
                         } else if (response.data == 2) {
-                            alert("收藏成功");
+                        	layui.use('layer', function(){
+               				   var layer = layui.layer;
+               				   layer.msg('收藏成功！');
+               				});
                         }
                     }).catch(function(reason) {
                         console.log(reason);
@@ -740,7 +744,7 @@ ul.pages li.pagetotal {
                                 $("#userpoto").attr("src", response.data.u_photo);
                                 this.u_ids = response.data.u_id;
                                 u_idzs = response.data.u_id;
-                                this.getVIP(response.data.u_id);
+                                this.vip = response.data.u_vip;
                             } else {
                                 $("#y-login").hide();
                                 $("#n-login").show();
@@ -806,7 +810,10 @@ ul.pages li.pagetotal {
 		        },
 		        downZip:function(e){
 		        	if(this.vip != 1){
-		        		alert("亲，只有VIP才能下载呢！");
+		        		layui.use('layer', function(){
+           				   var layer = layui.layer;
+           				   layer.msg('亲，只有VIP才能下载呢！！');
+           				});
 		        		return;
 		        	}
 		        	var path = e + "?backName=" + this.v_name + "&filePath=" + this.v_data_url;
@@ -888,7 +895,10 @@ ul.pages li.pagetotal {
             if (vip == 1) {
                 /* window.location.href = "video/downloadVideo?backName="+ $("#video_name").val() +"&filePath=f145bee9-b3cd-435f-b741-23d92f66b219.mp4"; */
             } else {
-                alert("穷逼,连个会员都充不起！！！");
+            	layui.use('layer', function(){
+   				   var layer = layui.layer;
+   				   layer.msg('穷逼,连个会员都充不起！！！');
+   				});
                 /* alert("请选择充值会员,或者与原作者联系,谢谢！！！"); */
             }
         }

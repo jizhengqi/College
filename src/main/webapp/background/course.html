@@ -12,6 +12,8 @@
 	<script type="text/javascript" src="/vue/vue.js" charset="utf-8"></script>
 	<script type="text/javascript" src="/vue/vue-resource/vue-resource.js" charset="utf-8"></script>
 	<script type="text/javascript" src="/vue/vue-router/vue-router.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/layui/layui.js"></script>
+	<link rel="stylesheet" href="/layui/css/layui.css" media="all">
     <style>
         th{
             text-align: center;
@@ -83,7 +85,7 @@
                             <select class="form-control" name="c_typeOfCourse">
                                 <option value="0">免费</option>
                                 <option value="1">VIP</option>
-                                <option value="2">极客币</option>
+                                <!-- <option value="2">极客币</option> -->
                             </select>
                         </div>
                         <!--课程级别-->
@@ -130,7 +132,7 @@
                     <!-- <td>{{item.u_id}}</td> -->
                     <td>{{item.c_vip}}</td>
                     <td id="courseDetail">
-                        <a v-bind:href="'showVideo.html?c_id='+item.c_id+'&c_name='+item.c_name">详细信息</a>
+                        <a v-bind:href="'showVideo.html?c_id='+item.c_id+'&c_name='+item.c_name+'&c_vip=' + item.c_vip+'&a=0'">详细信息</a>
                     </td>
                 </tr>
             </table>
@@ -152,7 +154,7 @@
                 var url = "/curriculum/queryCurriculum?u_id=" + this.u_ids;
                 this.$http.get(url).then(function(response) {
                     if (response.status != 200) {
-                        alert(response.status);
+                        console.log(response.status);
                         return;
                     }
                     this.list = response.data;
@@ -199,16 +201,19 @@
                     console.log(formData);
                     this.$http.post(url, formData).then(function(response) {
                         if (response.status != 200) {
-                            alert(response.status);
+                            console.log(response.status);
                             return;
                         }
-                        alert("添加成功");
+                        console.log("添加成功");
                         window.location.reload();
                     }).catch(function(error) {
-                        alert("失败！");
+                        console.log("失败！");
                     });
                 } else {
-                    alert("请完善课程信息！");
+                    layui.use('layer', function(){
+       				   var layer = layui.layer;
+       				   layer.msg('请完善课程信息！');
+       				});
                     if (c_name == "" || c_name.length > 30) {
                         $("input[name='c_name']").parent().removeClass("has-success");
                         $("input[name='c_name']").next().removeClass("glyphicon-ok");

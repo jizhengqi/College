@@ -39,12 +39,12 @@
                         <li>
                             <a href="index.html" class="home">首页</a>
                         </li>
-                        <li class="careerpath">
+                        <!-- <li class="careerpath">
                             <a href="">VIP</a>
                         </li>
                         <li>
                             <a href="">免费</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="art.html" target="_blank">技术问答</a>
                         </li>
@@ -125,10 +125,10 @@
                                 <div id="learn-course-missing" id="sc" style="display:none;">
                                     <img src="img/paizi-me-not-collection-course.png" class="data-missing-bg" /> 
                                 </div>
-                                <div class="video-container lesson-list" id="sc_content" v-for="s in list" style="">
+                                <div class="video-container lesson-list" id="sc_content" style="">
                                     <div class="user-video-title"><button>全部 </button></div>
                                     <ul id="earlyCourses">
-                                    	<li>
+                                    	<li v-for="s in list">
                                             <div class="lessonimg-box">
                                                 <button>学到第2课时</button>
                                                 <a href="/2707.html" target="_blank">

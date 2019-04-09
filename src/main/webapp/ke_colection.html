@@ -41,12 +41,12 @@
                         <li>
                             <a href="index.html" class="home">首页</a>
                         </li>
-                        <li class="careerpath">
+                        <!-- <li class="careerpath">
                             <a href="">VIP</a>
                         </li>
                         <li>
                             <a href="">免费</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="art.html" target="_blank">技术问答</a>
                         </li>
@@ -111,9 +111,9 @@
 					<img src="img/nopurchase.jpg">
 					<p>你还没有收藏哦</p>
 				</section>
-				<div class="lesson-card-cont cf" id="cos" v-for="s in list">
+				<div class="lesson-card-cont cf" id="cos">
 					<ul class="lesson-list">
-						<li>
+						<li v-for="s in list">
 							<div class="lessonimg-box">
 								<span class="learn-statu"> 学到第2课时 </span> <a href="/2707.html"
 									target="_blank"> <img

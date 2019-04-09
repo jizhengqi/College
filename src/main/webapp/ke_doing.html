@@ -42,12 +42,12 @@
                         <li>
                             <a href="index.html" class="home">首页</a>
                         </li>
-                        <li class="careerpath">
+                        <!-- <li class="careerpath">
                             <a href="">VIP</a>
                         </li>
                         <li>
                             <a href="">免费</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="art.html" target="_blank">技术问答</a>
                         </li>
@@ -113,9 +113,9 @@
 						<img src="img/nopurchase.jpg">
 						<p>你还没有在学的哦</p>
 					</section>
-					<div class="lesson-card-cont cf" id="cons" v-for="s in list">
+					<div class="lesson-card-cont cf" id="cons">
 						<ul class="lesson-list">
-							<li>
+							<li v-for="s in list">
 								<div class="lessonimg-box">
 									<span class="learn-statu"> 学到第2课时 </span> <a href="/2707.html"
 										target="_blank"> <img
@@ -245,14 +245,24 @@
 								} else if (response.data.u_phone == str) {
 									$("#y-login").show(); //如果查询的用户账号与本地储存的值相等
 									$("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
-									$("#userpoto").attr("src",
-											response.data.u_photo);
+									$("#userpoto").attr("src",response.data.u_photo);
 									this.u_ids = response.data.u_id;
 									this.getStudy();
 								} else {
 									$("#y-login").hide();
 									$("#n-login").show();
 								}
+								//判断是否是VIP
+	                            if (response.data.u_vip == null) {
+	                                $("#setvip").css("background-image", "url(img/novip.png)");
+	                            } else {
+	                                $("#setvip").css("background-image", "url(img/vip.png)");
+	                            }
+								if (response.data.u_stu_authentication == null) {
+	                                $("#setpro").css("background-image", "url(img/nopro.png)");
+	                            } else {
+	                                $("#setpro").css("background-image", "url(img/pro.png)");
+	                            }
 								if (null != response.data.u_photo) {
 									$("#touxiang").attr("src",
 											response.data.u_photo);

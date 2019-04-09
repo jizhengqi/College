@@ -42,12 +42,12 @@
                         <li>
                             <a href="index.html" class="home">首页</a>
                         </li>
-                        <li class="careerpath">
+                        <!-- <li class="careerpath">
                             <a href="">VIP</a>
                         </li>
                         <li>
                             <a href="">免费</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="art.html" target="_blank">技术问答</a>
                         </li>
@@ -96,9 +96,7 @@
                     <!--认证学员-->
                 </li>
                 <li><a href="setting_vip.html" class="">我的VIP</a></li>
-                <li><a href="setting_jkb.html" class="">我的骇客币</a></li>
                 <li><a href="security.html" class="">账号安全</a></li>
-                <li><a href="setting_message.html" class="">消息设置</a></li>
             </ul>
         </nav>
         <div class="main">
@@ -141,7 +139,7 @@
                             <div class="inputbox">
                                 <span class="select-box-sex">
                                     <select id="usex" name="u_sex">
-                                        <option value="2">保密</option>
+                                        <option value="2" selected="selected">保密</option>
                                         <option value="1">男</option>
                                         <option value="0">女</option>
                                     </select>
@@ -332,11 +330,11 @@
     <div class="footer-content">
         <div class="contact-way">
             <div class="other-way">
-                <a href="//blog.jikexueyuan.com/28.html " target="_blank" class="weixin-icon"></a>
+                <a href="javascript: " target="_blank" class="weixin-icon"></a>
                 <!--<a href="" class="tencen-icon"></a>-->
-                <a href="//weibo.com/jikexueyuan" target="_blank" class="sina-icon"></a>
-                <a href="//twitter.com/jikexueyuan" target="_blank" class="facebook-icon"></a>
-                <a href="//plus.google.com/communities/117673330839635588089" target="_blank" class="google-icon"></a>
+                <a href="javascript:" target="_blank" class="sina-icon"></a>
+                <a href="javascript:" target="_blank" class="facebook-icon"></a>
+                <a href="javascript:" target="_blank" class="google-icon"></a>
             </div>
         </div>
         <nav>
@@ -412,7 +410,7 @@
                 var str = this.getCookie("phone");
                 $("#u_phone").val(str);
                 var formData = new FormData();
-                formData.append("phone", str)
+                formData.append("phone", str);
                 if (str != "") {
                     this.$http.post(url, formData).then(function(response) {
                         //console.log("data:" + response.data.u_phone);
@@ -433,7 +431,7 @@
                             var date = new Date(+new Date(dateee) + 8 * 3600 * 1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '');
                             $("#calendar").val(date.substr(0,10));
                             $("#basArea").val(response.data.u_intro);
-                            if (response.data.u_address != "") {
+                            if (response.data.u_address != "" && response.data.u_address != undefined) {
                                 var strs = response.data.u_address.split(" ");
                                 this.onloads(strs[0]);
                                 this.setCity(strs[0], strs[1]);
@@ -450,12 +448,14 @@
                         } else {
                             $("#y-login").hide();
                             $("#n-login").show();
+                            this.onloads("北京市");
+                            this.setCity("北京市", "北京市");
                         }
                     });
                 } else {
                     $("#y-login").hide();
                     $("#n-login").show();
-                }           
+                }
             },
             getCookie: function(key) {
                 var arr1 = document.cookie.split("; ");

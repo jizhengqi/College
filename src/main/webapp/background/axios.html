@@ -266,17 +266,17 @@
             	<div class="rol-md-4">
             		<div class="form-group" style="margin-left: 15px;">
 		                <label>收费方式：</label>
-		                <div class="radio">
+		                <div class="radio" id="vips">
 		                    <label>
 		                        <input type="radio" name="v_vip" value="1" onclick="showVip(this)">VIP
 		                    </label>
 		                </div>
-		                <div class="radio">
+		                <div class="radio" id="mf">
 		                    <label>
 		                        <input type="radio" name="v_vip" value="0" onclick="showVip(this)">免费
 		                    </label>
 		                </div>
-		                <div class="radio">
+		                <div class="radio" style="display: none;">
 		                    <label>
 		                        <input type="radio" name="v_vip" value="2" onclick="showVip(this)">极客币
 		                    </label>
@@ -600,6 +600,13 @@
                 	alert(appId); */
                 	$("#c_id").val(this.getParam("c_id"));
                 	$("#course").html(this.getParam("c_name"));
+                	if(this.getParam("c_vip") == 1){
+                		$("#vips").show();
+                		$("#mf").hide();
+                	}else{
+                		$("#vips").hide();
+                		$("#mf").show();
+                	}
                 },
                 getParam: function(str){
                 	var result = window.location.search.match(new RegExp("[\?\&]" + str + "=([^\&]+)", "i"));

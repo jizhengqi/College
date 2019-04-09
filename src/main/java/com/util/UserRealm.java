@@ -44,7 +44,6 @@ public class UserRealm extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(
 			AuthenticationToken token) throws AuthenticationException {
-		System.out.println("MyShiroRealm.doGetAuthenticationInfo()");
 		// 获取用户的输入的账号.
 		String username = (String) token.getPrincipal();
 		// 通过username从数据库中查找 User对象，如果找到，没找到.

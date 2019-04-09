@@ -40,12 +40,12 @@
                         <li>
                             <a href="index.html" class="home">首页</a>
                         </li>
-                        <li class="careerpath">
+                        <!-- <li class="careerpath">
                             <a href="">VIP</a>
                         </li>
                         <li>
                             <a href="">免费</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="art.html" target="_blank">技术问答</a>
                         </li>
@@ -142,12 +142,12 @@
 								<strong>{{ s.hd }}</strong>
 								<p>回答</p>
 						</a></li>
-						<li class="askpv">
+						<!-- <li class="askpv">
 							<div>
 								<strong>{{ s.s_browse }}</strong>
 								<p>浏览</p>
 							</div>
-						</li>
+						</li> -->
 						<li class="asktit">
 							<p class="caption cf">
 							<h3>
@@ -159,9 +159,9 @@
 								<span> <a href="javascript:void(0)"
 									target="_blank"> 骇客学院 </a>
 								</span> &middot; <span><a target="_blank"
-									href="//www.jikexueyuan.com/course/127.html">{{ s.cname }}</a></span>
+									href="javascript:void(0)">{{ s.cname }}</a></span>
 								&middot; <span> <a
-									href="http://my.jikexueyuan.com/luoyan18/" target="_blank">
+									href="javascript:void(0)" target="_blank">
 										{{ s.realname }} </a> &middot; {{ s.s_date }} 回答
 								</span>
 							</p>
@@ -187,10 +187,10 @@
 				<div class="hot-que home-side3">
 					<h2>热门问答</h2>
 					<ul v-for="s in list">
-						<li><a href="javascript:void(0)"
+						<li><a href="javascript:voidl(0)"
 							target="_blank"><img
 								src="img/57231d532b9a5.png"
-								alt="" /></a> <a href="javascript:void(0)" target="_blank">{{ s.s_title }}</a>
+								alt="" /></a> <a v-bind:href="'question.html?s_id='+s.s_id+''" target="_blank">{{ s.s_title }}</a>
 						</li>
 					</ul>
 				</div>
@@ -324,7 +324,7 @@
                     });
 				},
 				showUser: function() { //通过cookie查询用户是否处于登陆状态
-					if (this.getCookie("phone") == null) {
+					if (this.getCookie("phone") == null || this.getCookie("phone") == undefined) {
 						window.location.href = "index.html";
 					}
                     var url = "user/queryByUsers";

@@ -64,7 +64,6 @@ public class DirectionController {
 	@ResponseBody
 	public Integer del(Integer d_id) {
 		List<Language> list = ls.queryByD_id(d_id);
-		System.out.println(d_id);
 		if (list.size() > 0) {
 			rs = 2;
 		} else {
@@ -94,8 +93,6 @@ public class DirectionController {
 	@ResponseBody
 	public List<Curriculum> queryByDirection(String d_name, Integer c_vip,
 			Integer c_level, Model model) {
-		System.out.println(c_vip);
-		System.out.println(c_level);
 		List<Curriculum> list = ds.queryByDirection(d_name, c_vip, c_level);
 		return list;
 	}

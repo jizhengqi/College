@@ -63,8 +63,12 @@
 		},
 		methods: {
 			VideoAll: function(){
-				$("#header").html(this.getParam("c_name") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a id='addVideo'>新增视频</a></small>");
-				$("#addVideo").attr("href","axios.html?c_id="+this.getParam("c_id")+"&c_name="+this.getParam("c_name"));
+				if(this.getParam("a") != 1){
+					$("#header").html(this.getParam("c_name") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<small><a id='addVideo'>新增视频</a></small>");
+				}else{
+					$("#header").html(this.getParam("c_name"));
+				}
+				$("#addVideo").attr("href","axios.html?c_id="+this.getParam("c_id")+"&c_name="+this.getParam("c_name")+"&c_vip=" + this.getParam("c_vip"));
 				var url = "/video/queryByVideo?c_id=" + this.getParam("c_id");
 				this.$http.get(url).then(function(response) {
                     this.livt = response.data;

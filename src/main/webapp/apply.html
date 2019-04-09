@@ -15,11 +15,13 @@
     <link rel="stylesheet" type="text/css" href="css/lecturer.css">
     <link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
     <link rel="stylesheet" type="text/css" href="css/toastr.css">
-
+	<link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
+	
     <!-- 此段必须要引入 t为小时级别的时间戳 -->
     <link type="text/css" href="css/nc.css" rel="stylesheet" />
     <script type="text/javascript" src="js/nc.js"></script>
     <!-- 引入结束 -->
+    <script type="text/javascript" src="layui/layui.js"></script>
     <script type="text/javascript" src="js/vue2.5.13.min.js"></script>
     <script type="text/javascript" src="js/axios0.18.0.min.js"></script>
     <script type="text/javascript" src="js/vue-resource.js"></script>
@@ -49,35 +51,25 @@
             <div id="jk-header">
                 <div class="header">
                     <h1>
-                        <a href="//www.jikexueyuan.com" class="logo" style="position: relative; top: -45px; left: -8px;">
+                        <a href="javascript:void(0)" class="logo" style="position: relative; top: -10px; left: -8px;">
                             <img src="img/logo.png?t=1513326254000" width="135" alt="骇客学院" />
                         </a>
                     </h1>
                     <nav style="width:490px;">
                         <ul>
-                            <li>
-                                <a href="index.html" class="home">首页</a>
-                            </li>
-                            <li>
-                                <a href="//www.jikexueyuan.com/course/">课程</a><i class="slide-icon"></i>
-                                <div class="slide-submeu">
-                                    <a href="javascript:void(0)">免费</a>
-                                    <a href="javascript:void(0)">VIP</a>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">企业</a><i class="slide-icon"></i>
-                                <div class="slide-submeu qy-box">
-                                </div>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)">社区</a><i class="slide-icon"></i>
-                                <div class="slide-submeu">
-                                    <a href="art.html">技术问答</a>
-                                </div>
-
-                            </li>
-                        </ul>
+                        <li>
+                            <a href="index.html" class="home">首页</a>
+                        </li>
+                        <!-- <li class="careerpath">
+                            <a href="">VIP</a>
+                        </li>
+                        <li>
+                            <a href="">免费</a>
+                        </li> -->
+                        <li>
+                            <a href="art.html" target="_blank">技术问答</a>
+                        </li>
+                    </ul>
                     </nav>
                     <div class="nav-other">
                         <div id="y-login">
@@ -124,7 +116,8 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="wrap">
-                                <a href="javascript:" class=" joinUs ">加入我们</a>
+                                <a href="javascript:" class=" joinUs " id="jrwm">加入我们</a>
+                                <a href="/background/login_teacher.html" id="fbkc" style="display: none;">发布课程</a>
                             </div>
                         </div>
                     </div>
@@ -534,26 +527,29 @@
                             type:'post',
                             success:function(data){
                                 if(data == 1){
-                                    alert("提交成功！审核通过后，将会短信通知您");
+                                	layui.use('layer', function(){
+                       				   var layer = layui.layer;
+                       				   layer.msg('提交成功！审核通过后，将会短信通知您');
+                       				});
+                                	$("#form").hide();
                                 }else{
-                                    alert("失败");
+                                	layui.use('layer', function(){
+                       				   var layer = layui.layer;
+                       				   layer.msg('失败');
+                       				});
                                 }
                             }
                         });
                     }else{
-                        alert("请填写验证码");
+                        layui.use('layer', function(){
+           				   var layer = layui.layer;
+           				   layer.msg('请填写验证码');
+           				});
                     }
                 }
 
             </script>
         </body>
-
-
-        <!-- container end -->
-        <!-- footer -->
-
-
-        <!-- footer end -->
     </div>
     <!-- wrapper end -->
     <!--<link href="http://e.jikexueyuan.com/static/css/register.css" rel="stylesheet" type="text/css">-->
@@ -587,19 +583,33 @@
                 alert(1);
             },
             showUser: function() { //通过cookie查询用户是否处于登陆状态
+            	if(this.getCookie("phone") == null){
+                	window.location.href = "index.html";
+                }
                 var url = "user/queryByUsers";
                 var str = this.getCookie("phone");
                 var formData = new FormData();
-                formData.append("phone", str)
+                formData.append("phone", str);
                 if (str != "") {
                     this.$http.post(url, formData).then(function(response) {
                         //console.log("data:" + response.data.u_phone);
-                        if (response.data.u_phone == str) {
+                        if (response.data.u_phone == undefined || response.data.u_phone == ""){
+                           	$("#y-login").hide();
+                            $("#n-login").show();
+                        }else if (response.data.u_phone == str) {
                             $("#y-login").show(); //如果查询的用户账号与本地储存的值相等
                             $("#n-login").hide(); //则显示长在登录状态，否则显示离线状态
+                            $("#userpoto").attr("src", response.data.u_photo);
                         } else {
                             $("#y-login").hide();
                             $("#n-login").show();
+                        }
+                        if(response.data.u_teacher == 1){
+                        	$("#jrwm").hide();
+                        	$("#fbkc").show();
+                        }else{
+                        	$("#jrwm").show();
+                        	$("#fbkc").hide();
                         }
                         $("#u_phone").val(response.data.u_phone);
                     });
